@@ -1,0 +1,693 @@
+5 StarMax	I520.59961.schedulesdirect.org	US: 5 StarMax | US: 5 StarMax HD | USA 5 StarMax | 5 StarMax HD
+A&E	I265.10035.schedulesdirect.org	US: A&E | US: A&E HD | USA A&E | A&E HD
+A&E East HD	I265.51529.schedulesdirect.org	US: A&E East HD | USA A&E East HD | A&E East
+ABC Localish	I1178.35892.gracenote.com	US: ABC Localish | US: ABC Localish HD | USA ABC Localish | ABC Localish HD
+ABC Localish	I217.35892.gracenote.com	US: ABC Localish | US: ABC Localish HD | USA ABC Localish | ABC Localish HD
+ACC Network	I612.111905.schedulesdirect.org	US: ACC Network | US: ACC Network HD | USA ACC Network | ACC Network HD | US: ACCN HD | ACCN
+Accn Espn	I612.111871.schedulesdirect.org	US: Accn Espn | US: Accn Espn HD | USA Accn Espn | Accn Espn HD
+AccuWeather HD	I361.91994.schedulesdirect.org	US: AccuWeather HD | USA AccuWeather HD
+ActionMax	I519.59948.schedulesdirect.org	US: ActionMax | US: ActionMax HD | USA ActionMax | ActionMax HD
+Altitude Sports	I413.65596.gracenote.com	US: Altitude Sports | US: Altitude Sports HD | USA Altitude Sports | Altitude Sports HD
+AMC	I254.10021.schedulesdirect.org	US: AMC | US: AMC HD | USA AMC | AMC HD
+AMC East HD	I254.59337.schedulesdirect.org	US: AMC East HD | USA AMC East HD | AMC East
+AMC+	I1557.114759.schedulesdirect.org	US: AMC+ | US: AMC+ HD | USA AMC+ | AMC+ HD
+AMC+	I557.114759.schedulesdirect.org	US: AMC+ | US: AMC+ HD | USA AMC+ | AMC+ HD
+American Heroes Channel	I287.18284.schedulesdirect.org	US: American Heroes Channel | US: American Heroes Channel HD | USA American Heroes Channel | American Heroes Channel HD
+American Heroes Channel HD	I287.78808.schedulesdirect.org	US: American Heroes Channel HD | USA American Heroes Channel HD | American Heroes Channel
+Anheuser Busch Private Network	I9577.71790.schedulesdirect.org	US: Anheuser Busch Private Network | US: Anheuser Busch Private Network HD | USA Anheuser Busch Private Network | Anheuser Busch Private Network HD
+Animal Planet	I282.16331.schedulesdirect.org	US: Animal Planet | US: Animal Planet HD | USA Animal Planet | Animal Planet HD
+Animal Planet HD	I282.57394.schedulesdirect.org	US: Animal Planet HD | USA Animal Planet HD | Animal Planet
+Antena 3	I458.16800.schedulesdirect.org	US: Antena 3 | US: Antena 3 HD | USA Antena 3 | Antena 3 HD
+Antenna TV	I1185.31044.gracenote.com	US: Antenna TV | US: Antenna TV HD | USA Antenna TV | Antenna TV HD
+Antenna TV	I353.31044.gracenote.com	US: Antenna TV | US: Antenna TV HD | USA Antenna TV | Antenna TV HD
+ASPiRE HD	I381.97409.schedulesdirect.org	US: ASPiRE HD | USA ASPiRE HD | ASPiRE
+AXS TV	I340.28506.schedulesdirect.org	US: AXS TV | US: AXS TV HD | USA AXS TV | AXS TV HD
+BabyFirst TV	I293.50338.schedulesdirect.org	US: BabyFirst TV | US: BabyFirst TV HD | USA BabyFirst TV | BabyFirst TV HD
+Bandamax	I433.54867.schedulesdirect.org	US: Bandamax | US: Bandamax HD | USA Bandamax | Bandamax HD
+Bang U	I596.74063.schedulesdirect.org	US: Bang U | US: Bang U HD | USA Bang U | Bang U HD
+Barvanna Network	I9581.116634.schedulesdirect.org	US: Barvanna Network | US: Barvanna Network HD | USA Barvanna Network | Barvanna Network HD
+BBC America	I264.18332.schedulesdirect.org	US: BBC America | US: BBC America HD | USA BBC America | BBC America HD
+BBC America HD	I264.64492.schedulesdirect.org	US: BBC America HD | USA BBC America HD | BBC America
+BBC Earth	I1627.53128.schedulesdirect.org	US: BBC Earth | US: BBC Earth HD | USA BBC Earth | BBC Earth HD
+BBC Earth	I811.53128.schedulesdirect.org	US: BBC Earth | US: BBC Earth HD | USA BBC Earth | BBC Earth HD
+BBC News (North America) HD	I346.101449.schedulesdirect.org	US: BBC News (North America) HD | USA BBC News (North America) HD | BBC News (North America)
+BBC World News	I510.89542.schedulesdirect.org	US: BBC World News | US: BBC World News HD | USA BBC World News | BBC World News HD
+beIN Sports	I1412.91308.schedulesdirect.org	US: beIN Sports | US: beIN Sports HD | USA beIN Sports | beIN Sports USA HD
+BET	I329.10051.schedulesdirect.org	US: BET | US: BET HD | USA BET | BET HD
+BET Gospel	I362.16484.gracenote.com	US: BET Gospel | US: BET Gospel HD | USA BET Gospel | BET Gospel HD
+BET HD	I329.63236.schedulesdirect.org	US: BET HD | USA BET HD | BET
+BET HD (Pacific)	I329.64673.schedulesdirect.org	US: BET HD | USA BET HD | BET
+Bet Her	I330.14897.schedulesdirect.org	US: Bet Her | US: Bet Her HD | USA Bet Her | Bet Her HD
+Big Ten Network	I610.56783.schedulesdirect.org	US: Big Ten Network | US: Big Ten Network HD | USA Big Ten Network | Big Ten Network HD | US: BIG TEN HD | US: BTN HD | BTN
+Big Ten Network HD	I610.58321.schedulesdirect.org	US: Big Ten Network HD | USA Big Ten Network HD | Big Ten Network | US: BIG TEN HD | US: BTN HD | BTN
+Big Ten Network Overflow	I610.61135.schedulesdirect.org	US: Big Ten Network Overflow | US: Big Ten Network Overflow HD | USA Big Ten Network Overflow | Big Ten Network Overflow HD | US: BIG TEN HD | US: BTN HD | Big Ten Network HD | BTN
+Big Ten Network Overflow HD	I610.61143.schedulesdirect.org	US: Big Ten Network Overflow HD | USA Big Ten Network Overflow HD | Big Ten Network Overflow | US: BIG TEN HD | US: BTN HD | Big Ten Network HD | BTN
+Bloomberg Business Television	I353.14755.schedulesdirect.org	US: Bloomberg Business Television | US: Bloomberg Business Television HD | USA Bloomberg Business Television | Bloomberg Business Television HD
+Bloomberg HD	I353.71799.schedulesdirect.org	US: Bloomberg HD | USA Bloomberg HD | Bloomberg
+Blossom TV	I375.151128.schedulesdirect.org	US: Blossom TV | US: Blossom TV HD | USA Blossom TV | Blossom TV HD
+Boomerang	I298.21883.schedulesdirect.org	US: Boomerang | US: Boomerang HD | USA Boomerang | Boomerang HD
+Bounce	I82.73067.schedulesdirect.org	US: Bounce | US: Bounce HD | USA Bounce | Bounce HD
+Bravo	I237.10057.schedulesdirect.org	US: Bravo | US: Bravo HD | USA Bravo | Bravo HD
+Bravo HD	I237.58625.schedulesdirect.org	US: Bravo HD | USA Bravo HD | Bravo
+BraZZers TV Plus	I597.74065.schedulesdirect.org	US: BraZZers TV Plus | US: BraZZers TV Plus HD | USA BraZZers TV Plus | BraZZers TV Plus HD
+BYU-TV	I374.21855.schedulesdirect.org	US: BYU-TV | US: BYU-TV HD | USA BYU-TV | BYU-TV HD
+C-Span	I350.10161.schedulesdirect.org	US: C-Span | US: C-Span HD | USA C-Span | C-Span HD
+CA - CBC Calgary	I245.15939.schedulesdirect.org	US: CBC Calgary | US: CBC Calgary HD | USA CBC Calgary | CBC Calgary HD
+CA - CBC Fredericton	I196.16261.schedulesdirect.org	CBC Fredericton | US: CBC Fredericton | US: CBC Fredericton HD | USA CBC Fredericton | CBC Fredericton HD
+CA - CBC Halifax	I1010.72723.schedulesdirect.org	CBC Halifax | US: CBC Halifax | US: CBC Halifax HD | USA CBC Halifax
+CA - CBC Montreal	I206.10092.schedulesdirect.org	CBC Montreal | US: CBC Montreal | US: CBC Montreal HD | USA CBC Montreal | CBC Montreal HD
+CA - CBC News	I502.10094.schedulesdirect.org	CBC News | US: CBC News | US: CBC News HD | USA CBC News | CBC News HD
+CA - CBC Ottawa	I208.10097.schedulesdirect.org	US: CBC Ottawa | US: CBC Ottawa HD | USA CBC Ottawa | CBC Ottawa HD
+CA - CBC Toronto	I1050.46245.schedulesdirect.org	CBC Toronto | US: CBC Toronto | US: CBC Toronto HD | USA CBC Toronto
+CA - CBC Toronto	I210.46245.schedulesdirect.org	CBC Toronto | US: CBC Toronto | US: CBC Toronto HD | USA CBC Toronto
+CA - CBC Toronto	I802.46245.schedulesdirect.org	CBC Toronto | US: CBC Toronto | US: CBC Toronto HD | USA CBC Toronto
+CA - CBC Vancouver	I251.10100.schedulesdirect.org	US: CBC Vancouver | US: CBC Vancouver HD | USA CBC Vancouver | CBC Vancouver HD
+CA - CBC Windsor	I587.10088.schedulesdirect.org	CBC Windsor | US: CBC Windsor | US: CBC Windsor HD | USA CBC Windsor | CBC Windsor HD
+CA - CBC Winnipeg	I1090.72940.schedulesdirect.org	CBC Winnipeg | US: CBC Winnipeg | US: CBC Winnipeg HD | USA CBC Winnipeg
+CA - CITY TV Calgary	I1133.69551.schedulesdirect.org	CITY TV Calgary | US: CITY TV Calgary | US: CITY TV Calgary HD | USA CITY TV Calgary
+CA - City TV Montreal	I1033.72895.schedulesdirect.org	City TV Montreal | US: City TV Montreal | US: City TV Montreal HD | USA City TV Montreal
+CA - CITY TV Toronto	I1053.34200.schedulesdirect.org	CITY TV Toronto | US: CITY TV Toronto | US: CITY TV Toronto HD | USA CITY TV Toronto
+CA - CITY TV Toronto	I803.34200.schedulesdirect.org	CITY TV Toronto | US: CITY TV Toronto | US: CITY TV Toronto HD | USA CITY TV Toronto
+CA - City TV Vancouver	I253.10136.schedulesdirect.org	US: City TV Vancouver | US: City TV Vancouver HD | USA City TV Vancouver | City TV Vancouver HD
+CA - CTV 2	I1054.72705.schedulesdirect.org	US: CTV 2 | US: CTV 2 HD | USA CTV 2 | CTV 2 HD
+CA - CTV 2	I209.10116.schedulesdirect.org	US: CTV 2 | US: CTV 2 HD | USA CTV 2 | CTV 2 HD
+CA - CTV Barrie	I584.10128.schedulesdirect.org	CTV Barrie | US: CTV Barrie | US: CTV Barrie HD | USA CTV Barrie | CTV Barrie HD
+CA - CTV Calgary	I1131.62890.schedulesdirect.org	CTV Calgary | US: CTV Calgary | US: CTV Calgary HD | USA CTV Calgary
+CA - CTV Calgary	I1502.62890.schedulesdirect.org	CTV Calgary | US: CTV Calgary | US: CTV Calgary HD | USA CTV Calgary
+CA - CTV Calgary	I900.62890.schedulesdirect.org	CTV Calgary | US: CTV Calgary | US: CTV Calgary HD | USA CTV Calgary
+CA - CTV Halifax	I1011.72780.schedulesdirect.org	CTV Halifax | US: CTV Halifax | US: CTV Halifax HD | USA CTV Halifax
+CA - CTV Halifax	I1515.72780.schedulesdirect.org	CTV Halifax | US: CTV Halifax | US: CTV Halifax HD | USA CTV Halifax
+CA - CTV Montreal	I1031.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
+CA - CTV Montreal	I1512.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
+CA - CTV Montreal	I205.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
+CA - CTV Toronto	I1051.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
+CA - CTV Toronto	I1510.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
+CA - CTV Toronto	I212.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
+CA - CTV Toronto	I800.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
+CA - Global News BC	I252.10050.schedulesdirect.org	Global News BC | US: Global News BC | US: Global News BC HD | USA Global News BC | Global News BC HD
+CA - Global News Halifax	I198.17396.schedulesdirect.org	Global News Halifax | US: Global News Halifax | US: Global News Halifax HD | USA Global News Halifax | Global News Halifax HD
+CA - Global News Halifax	I204.17396.schedulesdirect.org	Global News Halifax | US: Global News Halifax | US: Global News Halifax HD | USA Global News Halifax | Global News Halifax HD
+CA - Global News Kingston	I233.10137.schedulesdirect.org	Global News Kingston | US: Global News Kingston | US: Global News Kingston HD | USA Global News Kingston | Global News Kingston HD
+CA - Global News Montreal	I234.17406.schedulesdirect.org	Global News Montreal | US: Global News Montreal | US: Global News Montreal HD | USA Global News Montreal | Global News Montreal HD
+CA - Global News Peterborough	I217.10114.schedulesdirect.org	Global News Peterborough | US: Global News Peterborough | US: Global News Peterborough HD | USA Global News Peterborough | Global News Peterborough HD
+CA - Global News Regina	I594.17143.schedulesdirect.org	Global News Regina | US: Global News Regina | US: Global News Regina HD | USA Global News Regina | Global News Regina HD
+CA - Global News Saskatoon	I236.15993.schedulesdirect.org	Global News Saskatoon | US: Global News Saskatoon | US: Global News Saskatoon HD | USA Global News Saskatoon | Global News Saskatoon HD
+CA - Global News Saskatoon	I68.15993.schedulesdirect.org	Global News Saskatoon | US: Global News Saskatoon | US: Global News Saskatoon HD | USA Global News Saskatoon | Global News Saskatoon HD
+CA - Global News Winnipeg	I226.13834.schedulesdirect.org	Global News Winnipeg | US: Global News Winnipeg | US: Global News Winnipeg HD | USA Global News Winnipeg | Global News Winnipeg HD
+CA - RDI	I125.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | RDI HD
+CA - RDI	I1816.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | RDI HD
+CA - RDI	I872.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | RDI HD
+CA: RDS	I123.15676.schedulesdirect.org	RDS | US: RDS | US: RDS HD | USA RDS | RDS HD
+CA: RDS 2	I192.73271.schedulesdirect.org	RDS 2 | US: RDS 2 | US: RDS 2 HD | USA RDS 2 | RDS 2 HD
+CA: RDS 2 HD	I1881.73275.schedulesdirect.org	US: RDS 2 HD | USA RDS 2 HD | RDS 2
+CA: RDS 2 HD	I1899.73275.schedulesdirect.org	US: RDS 2 HD | USA RDS 2 HD | RDS 2
+CA: RDS Info	I124.39080.schedulesdirect.org	RDS Info | US: RDS Info | US: RDS Info HD | USA RDS Info | RDS Info HD
+CA: TVA Sports 2 HD	I1884.90206.schedulesdirect.org	US: TVA Sports 2 HD | USA TVA Sports 2 HD | TVA Sports 2
+CA: TVA Sports FHD	I1883.73142.schedulesdirect.org	TVA Sports FHD | US: TVA Sports FHD | US: TVA Sports FHD HD | USA TVA Sports FHD | TVA Sports FHD HD | TVA Sports
+CA: TVA Sports FHD	I193.73142.schedulesdirect.org	TVA Sports FHD | US: TVA Sports FHD | US: TVA Sports FHD HD | USA TVA Sports FHD | TVA Sports FHD HD | TVA Sports
+Cable News Network	I202.10142.schedulesdirect.org	US: Cable News Network | US: Cable News Network HD | USA Cable News Network | Cable News Network HD
+Canal Once	I447.36139.schedulesdirect.org	US: Canal Once | US: Canal Once HD | USA Canal Once | Canal Once HD
+Caracol Television	I417.39719.schedulesdirect.org	US: Caracol Television | US: Caracol Television HD | USA Caracol Television | Caracol Television HD
+Cartoon Network	I296.12131.schedulesdirect.org	US: Cartoon Network | US: Cartoon Network HD | USA Cartoon Network | Cartoon Network HD
+Cartoon Network (Pacific)	I297.18151.schedulesdirect.org	US: Cartoon Network | US: Cartoon Network HD | USA Cartoon Network | Cartoon Network HD
+Cartoon Network HD	I296.60048.schedulesdirect.org	US: Cartoon Network HD | USA Cartoon Network HD | Cartoon Network
+CASH	I337.96368.schedulesdirect.org	US: CASH | US: CASH HD | USA CASH | CASH HD
+CASH	I97.96368.schedulesdirect.org	US: CASH | US: CASH HD | USA CASH | CASH HD
+CBO	I2057.92409.schedulesdirect.org	US: CBO | US: CBO HD | USA CBO | CBO HD
+CBS Sports Network	I221.16365.schedulesdirect.org	US: CBS Sports Network | US: CBS Sports Network HD | USA CBS Sports Network | CBS Sports Network HD | US: CBS SPORTS HD | US: CBSSN HD | CBSSN
+CBS Sports Network HD	I221.59250.schedulesdirect.org	US: CBS Sports Network HD | USA CBS Sports Network HD | CBS Sports Network | US: CBS SPORTS HD | US: CBSSN HD | CBSSN
+CCTV4-China Central TV	I2052.24248.schedulesdirect.org	US: CCTV4-China Central TV | US: CCTV4-China Central TV HD | USA CCTV4-China Central TV | CCTV4-China Central TV HD
+CCTV4-China Central TV	I2113.24248.schedulesdirect.org	US: CCTV4-China Central TV | US: CCTV4-China Central TV HD | USA CCTV4-China Central TV | CCTV4-China Central TV HD
+CGTN	I2053.29114.schedulesdirect.org	US: CGTN | US: CGTN HD | USA CGTN | CGTN HD
+CGTN	I2119.29114.schedulesdirect.org	US: CGTN | US: CGTN HD | USA CGTN | CGTN HD
+Charming China	I2055.66645.schedulesdirect.org	US: Charming China | US: Charming China HD | USA Charming China | Charming China HD
+Charming China	I2116.66645.schedulesdirect.org	US: Charming China | US: Charming China HD | USA Charming China | Charming China HD
+CHCH Channel	I1057.60123.schedulesdirect.org	US: CHCH Channel | US: CHCH Channel HD | USA CHCH Channel | CHCH Channel HD
+CHCH Channel	I218.60123.schedulesdirect.org	US: CHCH Channel | US: CHCH Channel HD | USA CHCH Channel | CHCH Channel HD
+Cheddar	I354.109333.schedulesdirect.org	US: Cheddar | US: Cheddar HD | USA Cheddar | Cheddar HD
+Chicago Sports Network	I25.183131.gracenote.com	US: Chicago Sports Network | US: Chicago Sports Network HD | USA Chicago Sports Network | Chicago Sports Network HD
+Christian Television Network	I376.49128.schedulesdirect.org	US: Christian Television Network | US: Christian Television Network HD | USA Christian Television Network | Christian Television Network HD
+CinCanal US	I423.62401.schedulesdirect.org	US: CinCanal US | US: CinCanal US HD | USA CinCanal US | CinCanal US HD
+Cinemax	I515.10120.schedulesdirect.org	US: Cinemax | US: Cinemax HD | USA Cinemax | Cinemax HD
+Cinemax (Pacific)	I516.12508.schedulesdirect.org	US: Cinemax | US: Cinemax HD | USA Cinemax | Cinemax HD
+Cinemax East	I515.34933.schedulesdirect.org	US: Cinemax East | US: Cinemax East HD | USA Cinemax East | Cinemax East HD
+Cinemax East Latino HD	I523.59965.schedulesdirect.org	US: Cinemax East Latino HD | USA Cinemax East Latino HD | Cinemax East Latino
+Cinemax HD (Pacific)	I516.35975.schedulesdirect.org	US: Cinemax HD | USA Cinemax HD | Cinemax
+CityTV	I214.10125.schedulesdirect.org	US: CityTV | US: CityTV HD | USA CityTV | CityTV HD
+CLEO TV	I341.110289.schedulesdirect.org	US: CLEO TV | US: CLEO TV HD | USA CLEO TV
+CMT	I327.10138.schedulesdirect.org	US: CMT | US: CMT HD | USA CMT | CMT HD
+CMT	I327.59440.schedulesdirect.org	US: CMT | US: CMT HD | USA CMT
+CNBC	I355.10139.schedulesdirect.org	US: CNBC | US: CNBC HD | USA CNBC | CNBC HD
+CNBC HD	I355.58780.schedulesdirect.org	US: CNBC HD | USA CNBC HD | CNBC
+CNBC World	I357.26849.schedulesdirect.org	US: CNBC World | US: CNBC World HD | USA CNBC World | CNBC World HD
+CNN en Español	I419.17054.schedulesdirect.org	US: CNN en Español | US: CNN en Español HD | USA CNN en Español | CNN en Español HD
+CNN HD	I202.58646.schedulesdirect.org	US: CNN HD | USA CNN HD | CNN | US: CNN | CNN USA
+CNN Headline News	I204.10145.schedulesdirect.org	US: CNN Headline News | US: CNN Headline News HD | USA CNN Headline News | CNN Headline News HD
+CNN Headline News HD	I204.64549.schedulesdirect.org	US: CNN Headline News HD | USA CNN Headline News HD | CNN Headline News
+CNN International	I358.10146.schedulesdirect.org	US: CNN International | US: CNN International HD | USA CNN International | CNN International HD
+Comedy Central	I249.10149.schedulesdirect.org	US: Comedy Central | US: Comedy Central HD | USA Comedy Central | Comedy Central HD
+Comedy Central East HD	I249.62420.schedulesdirect.org	US: Comedy Central East HD | USA Comedy Central East HD | Comedy Central East
+Comedy Central HD (Pacific)	I249.64599.schedulesdirect.org	US: Comedy Central HD | USA Comedy Central HD | Comedy Central
+Comedy TV	I382.82470.schedulesdirect.org	US: Comedy TV | US: Comedy TV HD | USA Comedy TV
+Comet TV	I24.3.46785.gracenote.com	US: Comet TV | US: Comet TV HD | USA Comet TV | Comet TV HD
+Cooking Channel	I232.30156.schedulesdirect.org	US: Cooking Channel | US: Cooking Channel HD | USA Cooking Channel | Cooking Channel HD
+Cooking Channel HD	I232.68065.schedulesdirect.org	US: Cooking Channel HD | USA Cooking Channel HD | Cooking Channel
+Cottage Life	I641.26779.schedulesdirect.org	US: Cottage Life | US: Cottage Life HD | USA Cottage Life | Cottage Life HD
+Cowboy Channel	I603.10188.schedulesdirect.org	US: Cowboy Channel | US: Cowboy Channel HD | USA Cowboy Channel | Cowboy Channel HD
+COZI TV	I80.78851.schedulesdirect.org	US: COZI TV | US: COZI TV HD | USA COZI TV | COZI TV HD
+CRAVE 1	I300.10191.schedulesdirect.org	US: CRAVE 1 | US: CRAVE 1 HD | USA CRAVE 1 | CRAVE 1 HD
+CRAVE 2	I301.12222.schedulesdirect.org	US: CRAVE 2 | US: CRAVE 2 HD | USA CRAVE 2 | CRAVE 2 HD
+CRAVE 3	I302.12223.schedulesdirect.org	US: CRAVE 3 | US: CRAVE 3 HD | USA CRAVE 3 | CRAVE 3 HD
+CRAVE 4	I303.21351.schedulesdirect.org	US: CRAVE 4 | US: CRAVE 4 HD | USA CRAVE 4 | CRAVE 4 HD
+Crime & Investigation Network	I571.61469.schedulesdirect.org	US: Crime & Investigation Network | US: Crime & Investigation Network HD | USA Crime & Investigation Network
+CSPAN2	I351.10162.schedulesdirect.org	US: CSPAN2 | US: CSPAN2 HD | USA CSPAN2 | CSPAN2 HD
+CTV News	I501.17615.schedulesdirect.org	US: CTV News | US: CTV News HD | USA CTV News | CTV News HD
+DejaView	I636.26873.schedulesdirect.org	US: DejaView | US: DejaView HD | USA DejaView | DejaView HD
+Destination America	I286.16617.schedulesdirect.org	US: Destination America | US: Destination America HD | USA Destination America | Destination America HD
+Destination America HD	I286.60468.schedulesdirect.org	US: Destination America HD | USA Destination America HD | Destination America
+DirecTV - MLB Extra Innings - MLBEI	I720.20609.schedulesdirect.org	US: DirecTV - MLB Extra Innings - MLBEI | US: DirecTV - MLB Extra Innings - MLBEI HD | USA DirecTV - MLB Extra Innings - MLBEI | DirecTV - MLB Extra Innings - MLBEI HD
+DirecTV GETIT	I263.101697.schedulesdirect.org	US: DirecTV GETIT | US: DirecTV GETIT HD | USA DirecTV GETIT | DirecTV GETIT HD
+DIRECTV Lifetime	I252.97682.schedulesdirect.org	US: DIRECTV Lifetime | US: DIRECTV Lifetime HD | USA DIRECTV Lifetime | DIRECTV Lifetime HD
+DIRECTV NEWS MIX	I200.12782.schedulesdirect.org	US: DIRECTV NEWS MIX | US: DIRECTV NEWS MIX HD | USA DIRECTV NEWS MIX | DIRECTV NEWS MIX HD
+DIRECTV NEWS MIX	I71.12782.schedulesdirect.org	US: DIRECTV NEWS MIX | US: DIRECTV NEWS MIX HD | USA DIRECTV NEWS MIX | DIRECTV NEWS MIX HD
+DirecTV Sports Mix	I750.12784.schedulesdirect.org	US: DirecTV Sports Mix | US: DirecTV Sports Mix HD | USA DirecTV Sports Mix | DirecTV Sports Mix HD
+DIRECTV Sports MixHD	I205.94102.schedulesdirect.org	US: DIRECTV Sports MixHD | US: DIRECTV Sports MixHD HD | USA DIRECTV Sports MixHD | DIRECTV Sports MixHD HD
+DIRECTV Sports MixHD	I600.94102.schedulesdirect.org	US: DIRECTV Sports MixHD | US: DIRECTV Sports MixHD HD | USA DIRECTV Sports MixHD | DIRECTV Sports MixHD HD
+DIRECTV Sports Subscriptions	I100.92534.schedulesdirect.org	US: DIRECTV Sports Subscriptions | US: DIRECTV Sports Subscriptions HD | USA DIRECTV Sports Subscriptions | DIRECTV Sports Subscriptions HD
+DirecTV VALU	I325.75761.schedulesdirect.org	US: DirecTV VALU | US: DirecTV VALU HD | USA DirecTV VALU | DirecTV VALU HD
+DirecTV VALU	I91.75761.schedulesdirect.org	US: DirecTV VALU | US: DirecTV VALU HD | USA DirecTV VALU | DirecTV VALU HD
+Discovery Channel	I278.11150.schedulesdirect.org	US: Discovery Channel | US: Discovery Channel HD | USA Discovery Channel | Discovery Channel HD
+Discovery Channel HD	I278.56905.schedulesdirect.org	US: Discovery Channel HD | USA Discovery Channel HD | Discovery Channel
+Discovery Channel LatinoAmerica	I413.19247.schedulesdirect.org	US: Discovery Channel LatinoAmerica | US: Discovery Channel LatinoAmerica HD | USA Discovery Channel LatinoAmerica | Discovery Channel LatinoAmerica HD
+Discovery Familia	I436.58428.schedulesdirect.org	US: Discovery Familia | US: Discovery Familia HD | USA Discovery Familia | Discovery Familia HD
+Discovery Family	I294.16618.schedulesdirect.org	US: Discovery Family | US: Discovery Family HD | USA Discovery Family | Discovery Family HD
+Discovery Family Channel HD	I294.67749.schedulesdirect.org	US: Discovery Family Channel HD | USA Discovery Family Channel HD | Discovery Family Channel
+Discovery ID East	I285.65342.schedulesdirect.org	US: Discovery ID East | US: Discovery ID East HD | USA Discovery ID East | Discovery ID East HD
+Discovery ID US	I285.16615.schedulesdirect.org	US: Discovery ID US | US: Discovery ID US HD | USA Discovery ID US | Discovery ID US HD
+Discovery life	I261.16125.schedulesdirect.org	US: Discovery life | US: Discovery life HD | USA Discovery life | Discovery life HD
+Disney Channel	I290.10171.schedulesdirect.org	US: Disney Channel | US: Disney Channel HD | USA Disney Channel | Disney Channel HD
+Disney Channel (Pacific)	I291.12510.schedulesdirect.org	US: Disney Channel | US: Disney Channel HD | USA Disney Channel | Disney Channel HD
+Disney Channel East HD	I290.59684.schedulesdirect.org	US: Disney Channel East HD | USA Disney Channel East HD | Disney Channel East
+DISNEY JR US	I289.74796.schedulesdirect.org	US: DISNEY JR US | US: DISNEY JR US HD | USA DISNEY JR US | DISNEY JR US HD
+Disney Jr US	I289.74885.schedulesdirect.org	US: Disney Jr US | US: Disney Jr US HD | USA Disney Jr US | Disney Jr US HD
+Disney XD	I292.18279.schedulesdirect.org	US: Disney XD | US: Disney XD HD | USA Disney XD | Disney XD HD
+Disney XD HD	I292.60006.schedulesdirect.org	US: Disney XD HD | USA Disney XD HD | Disney XD
+DOG TV	I562.82446.schedulesdirect.org	US: DOG TV | US: DOG TV HD | USA DOG TV | DOG TV HD
+DTV ARANG	I2095.87649.schedulesdirect.org	US: DTV ARANG | US: DTV ARANG HD | USA DTV ARANG | DTV ARANG HD
+DVGLBW	I78.49523.schedulesdirect.org	US: DVGLBW | US: DVGLBW HD | USA DVGLBW | DVGLBW HD
+E!	I236.10989.schedulesdirect.org	US: E! | US: E! HD | USA E! | E! HD
+E! Entertainment Television HD	I236.61812.schedulesdirect.org	US: E! Entertainment Television HD | USA E! Entertainment Television HD | E! Entertainment Television
+EarthX	I267.126128.schedulesdirect.org	US: EarthX | US: EarthX HD | USA EarthX | EarthX HD
+EBS America	I2087.69411.schedulesdirect.org	US: EBS America | US: EBS America HD | USA EBS America | EBS America HD
+Encore Action	I541.72015.schedulesdirect.org	US: Encore Action | US: Encore Action HD | USA Encore Action | Encore Action HD
+ESPN	I206.10179.schedulesdirect.org	US: ESPN | US: ESPN HD | USA ESPN | ESPN HD | USA ESPN HD | ESPN USA
+ESPN (Alternate)	I209.19620.schedulesdirect.org	US: ESPN | US: ESPN HD | USA ESPN | ESPN HD | USA ESPN HD | ESPN USA
+ESPN Deportes	I466.25595.schedulesdirect.org	US: ESPN Deportes | US: ESPN Deportes HD | USA ESPN Deportes | ESPN Deportes HD
+ESPN Deportes	I466.71914.schedulesdirect.org	US: ESPN Deportes | US: ESPN Deportes HD | USA ESPN Deportes
+ESPN HD	I206.32645.schedulesdirect.org	US: ESPN HD | USA ESPN HD | ESPN | US: ESPN | ESPN USA
+ESPN2	I209.12444.schedulesdirect.org	US: ESPN2 | US: ESPN2 HD | USA ESPN2 | ESPN2 HD | USA ESPN2 HD
+ESPN2 (Alternate)	I209.19621.schedulesdirect.org	US: ESPN2 | US: ESPN2 HD | USA ESPN2 | ESPN2 HD | USA ESPN2 HD
+ESPN2 HD	I209.45507.schedulesdirect.org	US: ESPN2 HD | USA ESPN2 HD | ESPN2 | US: ESPN2
+ESPNEWS	I207.16485.schedulesdirect.org	US: ESPNEWS | US: ESPNEWS HD | USA ESPNEWS | ESPNEWS HD | US: ESPN NEWS HD
+ESPNEWS HD	I207.59976.schedulesdirect.org	US: ESPNEWS HD | USA ESPNEWS HD | ESPNEWS | US: ESPN NEWS HD | US: ESPNEWS
+ESPNU	I208.45654.schedulesdirect.org	US: ESPNU | US: ESPNU HD | USA ESPNU | ESPNU HD
+ESPNU HD	I208.60696.schedulesdirect.org	US: ESPNU HD | USA ESPNU HD | ESPNU | US: ESPNU
+Estrella TV	I442.65064.schedulesdirect.org	US: Estrella TV | US: Estrella TV HD | USA Estrella TV | Estrella TV HD
+ETBN Enlace USA	I448.33527.schedulesdirect.org	US: ETBN Enlace USA | US: ETBN Enlace USA HD | USA ETBN Enlace USA | ETBN Enlace USA HD
+Eternal Word Television Network	I370.10183.schedulesdirect.org	US: Eternal Word Television Network | US: Eternal Word Television Network HD | USA Eternal Word Television Network | Eternal Word Television Network HD
+Family Movie Classic	I314.122068.schedulesdirect.org	US: Family Movie Classic | US: Family Movie Classic HD | USA Family Movie Classic | Family Movie Classic HD
+Fanduel Sports Network Florida	I1720.50728.gracenote.com	US: Fanduel Sports Network Florida | US: Fanduel Sports Network Florida HD | USA Fanduel Sports Network Florida | Fanduel Sports Network Florida HD
+Fanduel Sports Network Mid West	I1748.50057.gracenote.com	US: Fanduel Sports Network Mid West | US: Fanduel Sports Network Mid West HD | USA Fanduel Sports Network Mid West | Fanduel Sports Network Mid West HD
+Fanduel Sports Network South	I1724.75970.gracenote.com	US: Fanduel Sports Network South | US: Fanduel Sports Network South HD | USA Fanduel Sports Network South | Fanduel Sports Network South HD
+Fanduel Sports Network South West	I1753.35295.gracenote.com	US: Fanduel Sports Network South West | US: Fanduel Sports Network South West HD | USA Fanduel Sports Network South West | Fanduel Sports Network South West HD
+Fanduel Sports Network Souther California	I1774.59625.gracenote.com	US: Fanduel Sports Network Souther California | US: Fanduel Sports Network Souther California HD | USA Fanduel Sports Network Souther California | Fanduel Sports Network Souther California HD
+FanDuel TV	I602.21345.schedulesdirect.org	US: FanDuel TV | US: FanDuel TV HD | USA FanDuel TV | FanDuel TV HD
+Fight Network	I388.81448.schedulesdirect.org	US: Fight Network | US: Fight Network HD | USA Fight Network | Fight Network HD
+Film 24h	I2037.105824.schedulesdirect.org	US: Film 24h | US: Film 24h HD | USA Film 24h | Film 24h HD
+Flix	I556.10201.schedulesdirect.org	US: Flix | US: Flix HD | USA Flix | Flix HD
+FM HD	I386.72094.schedulesdirect.org	US: FM HD | USA FM HD | FM
+Food Network	I231.12574.schedulesdirect.org	US: Food Network | US: Food Network HD | USA Food Network | Food Network HD
+Food Network East HD	I231.50747.schedulesdirect.org	US: Food Network East HD | USA Food Network East HD | Food Network East
+Fox Business	I359.58649.schedulesdirect.org	US: Fox Business | US: Fox Business HD | USA Fox Business | Fox Business HD
+Fox Business HD	I359.58718.schedulesdirect.org	US: Fox Business HD | USA Fox Business HD | Fox Business
+Fox Deportes	I465.15377.schedulesdirect.org	US: Fox Deportes | US: Fox Deportes HD | USA Fox Deportes | Fox Deportes HD
+Fox Deportes HD	I465.72189.schedulesdirect.org	US: Fox Deportes HD | USA Fox Deportes HD | Fox Deportes
+Fox News Channel	I360.16374.schedulesdirect.org	US: Fox News Channel | US: Fox News Channel HD | USA Fox News Channel | Fox News Channel HD | US: FOX NEWS HD | US: Fox News | FOX NEWS
+Fox News Channel HD	I360.60179.schedulesdirect.org	US: Fox News Channel HD | USA Fox News Channel HD | Fox News Channel | US: FOX NEWS HD | US: Fox News | FOX NEWS
+Fox Soccer Plus	I621.66879.schedulesdirect.org	US: Fox Soccer Plus | US: Fox Soccer Plus HD | USA Fox Soccer Plus | Fox Soccer Plus HD
+Fox Soccer Plus HD	I621.66880.schedulesdirect.org	US: Fox Soccer Plus HD | USA Fox Soccer Plus HD | Fox Soccer Plus
+Fox Sports 1 US	I219.82541.schedulesdirect.org	US: Fox Sports 1 US | US: Fox Sports 1 US HD | USA Fox Sports 1 US | Fox Sports 1 US HD | US: FS1 HD | US: FOX SPORTS 1 HD | US: FS1 | FS1 HD
+Fox Sports 1 US HD	I219.82547.schedulesdirect.org	US: Fox Sports 1 US HD | USA Fox Sports 1 US HD | Fox Sports 1 US | US: FS1 HD | US: FOX SPORTS 1 HD | US: FS1 | Fox Sports 1
+Fox Sports 2 US	I618.33178.schedulesdirect.org	US: Fox Sports 2 US | US: Fox Sports 2 US HD | USA Fox Sports 2 US | Fox Sports 2 US HD | US: FS2 HD | US: FOX SPORTS 2 HD | US: FS2 | FS2 HD
+Fox Sports 2 US HD	I618.59305.schedulesdirect.org	US: Fox Sports 2 US HD | USA Fox Sports 2 US HD | Fox Sports 2 US | US: FS2 HD | US: FOX SPORTS 2 HD | US: FS2 | Fox Sports 2
+Fox Sports Racing	I421.30189.schedulesdirect.org	US: Fox Sports Racing | US: Fox Sports Racing HD | USA Fox Sports Racing | Fox Sports Racing HD
+Free Speech TV	I348.16220.schedulesdirect.org	US: Free Speech TV | US: Free Speech TV HD | USA Free Speech TV | Free Speech TV HD
+FREEFORM	I311.10093.schedulesdirect.org	US: FREEFORM | US: FREEFORM HD | USA FREEFORM | FREEFORM HD
+FREEFORM HD	I311.59615.schedulesdirect.org	US: FREEFORM HD | USA FREEFORM HD | FREEFORM
+Fuse	I339.59116.schedulesdirect.org	US: Fuse | US: Fuse HD | USA Fuse
+FX	I248.14321.schedulesdirect.org	US: FX | US: FX HD | USA FX | FX HD
+FX East HD	I248.58574.schedulesdirect.org	US: FX East HD | USA FX East HD | FX East
+FXM	I258.14988.schedulesdirect.org	US: FXM | US: FXM HD | USA FXM | FXM HD
+FXM	I258.70253.schedulesdirect.org	US: FXM | US: FXM HD | USA FXM | FXM HD
+FXX	I259.17927.schedulesdirect.org	US: FXX | US: FXX HD | USA FXX | FXX HD
+FXX East HD	I259.66379.schedulesdirect.org	US: FXX East HD | USA FXX East HD | FXX East
+FYI	I266.16834.schedulesdirect.org	US: FYI | US: FYI HD | USA FYI | FYI HD
+FYI Channel HD	I266.58988.schedulesdirect.org	US: FYI Channel HD | USA FYI Channel HD | FYI Channel
+Galavision	I404.10222.schedulesdirect.org	US: Galavision | US: Galavision HD | USA Galavision | Galavision HD
+Galavision	I404.68367.schedulesdirect.org	US: Galavision | US: Galavision HD | USA Galavision | Galavision HD
+Game Show Network	I233.14909.schedulesdirect.org	US: Game Show Network | US: Game Show Network HD | USA Game Show Network | Game Show Network HD
+Game Show Network HD	I233.68827.schedulesdirect.org	US: Game Show Network HD | USA Game Show Network HD | Game Show Network
+Gem Shopping Network	I1081.26643.gracenote.com	US: Gem Shopping Network | US: Gem Shopping Network HD | USA Gem Shopping Network | Gem Shopping Network HD
+Gem Shopping Network	I111.26643.gracenote.com	US: Gem Shopping Network | US: Gem Shopping Network HD | USA Gem Shopping Network | Gem Shopping Network HD
+GMA Life TV	I2069.60152.schedulesdirect.org	US: GMA Life TV | US: GMA Life TV HD | USA GMA Life TV | GMA Life TV HD
+GMA Pinoy TV	I2061.46463.schedulesdirect.org	US: GMA Pinoy TV | US: GMA Pinoy TV HD | USA GMA Pinoy TV | GMA Pinoy TV HD
+GOD TV	I365.52697.schedulesdirect.org	US: GOD TV | US: GOD TV HD | USA GOD TV | GOD TV HD
+Golden Eagle Broadcasting	I363.18999.schedulesdirect.org	US: Golden Eagle Broadcasting | US: Golden Eagle Broadcasting HD | USA Golden Eagle Broadcasting | Golden Eagle Broadcasting HD
+Golf Channel	I218.14899.schedulesdirect.org	US: Golf Channel | US: Golf Channel HD | USA Golf Channel | Golf Channel HD | US: Golf HD
+Golf Channel HD	I218.61854.schedulesdirect.org	US: Golf Channel HD | USA Golf Channel HD | Golf Channel | US: Golf HD
+Great American Family	I326.16062.schedulesdirect.org	US: Great American Family | US: Great American Family HD | USA Great American Family | Great American Family HD
+Great American Family	I326.82892.schedulesdirect.org	US: Great American Family | US: Great American Family HD | USA Great American Family
+Grit	I81.89922.schedulesdirect.org	US: Grit | US: Grit HD | USA Grit | Grit HD
+GZTV	I2102.87930.schedulesdirect.org	US: GZTV | US: GZTV HD | USA GZTV | GZTV HD
+H2 History	I629.26772.schedulesdirect.org	US: H2 History | US: H2 History HD | USA H2 History | H2 History HD
+Hallmark Channel	I312.11221.schedulesdirect.org	US: Hallmark Channel | US: Hallmark Channel HD | USA Hallmark Channel | Hallmark Channel HD
+Hallmark Channel HD	I312.66268.schedulesdirect.org	US: Hallmark Channel HD | USA Hallmark Channel HD | Hallmark Channel
+Hallmark Family	I564.105723.schedulesdirect.org	US: Hallmark Family | US: Hallmark Family HD | USA Hallmark Family | Hallmark Family HD
+Hallmark Movies & Mysteries	I565.46710.schedulesdirect.org	US: Hallmark Movies & Mysteries | US: Hallmark Movies & Mysteries HD | USA Hallmark Movies & Mysteries | Hallmark Movies & Mysteries HD
+HBO	I501.10240.schedulesdirect.org	US: HBO | US: HBO HD | USA HBO | HBO HD
+HBO (Pacific)	I504.10244.schedulesdirect.org	US: HBO | US: HBO HD | USA HBO | HBO HD
+HBO Comedy East	I506.59839.schedulesdirect.org	US: HBO Comedy East | US: HBO Comedy East HD | USA HBO Comedy East | HBO Comedy East HD
+HBO East	I501.19548.schedulesdirect.org	US: HBO East | US: HBO East HD | USA HBO East | HBO East HD
+HBO East Latino	I511.24553.schedulesdirect.org	US: HBO East Latino | US: HBO East Latino HD | USA HBO East Latino | HBO East Latino HD
+HBO East Latino HD	I511.59837.schedulesdirect.org	US: HBO East Latino HD | USA HBO East Latino HD | HBO East Latino
+HBO West	I504.19566.schedulesdirect.org	US: HBO West | US: HBO West HD | USA HBO West | HBO West HD
+HDnet Movies	I566.33668.schedulesdirect.org	US: HDnet Movies | US: HDnet Movies HD | USA HDnet Movies | HDnet Movies HD
+Heroes & Icons	I1167.61780.gracenote.com	US: Heroes & Icons | US: Heroes & Icons HD | USA Heroes & Icons | Heroes & Icons HD
+Heroes & Icons	I358.61780.gracenote.com	US: Heroes & Icons | US: Heroes & Icons HD | USA Heroes & Icons | Heroes & Icons HD
+HGTV East	I229.14902.schedulesdirect.org	US: HGTV East | US: HGTV East HD | USA HGTV East | HGTV East HD
+HGTV East HD	I229.49788.schedulesdirect.org	US: HGTV East HD | USA HGTV East HD | HGTV East
+History	I269.14771.schedulesdirect.org	US: History | US: History HD | USA History | History HD
+History Channel LatinoAmerica	I443.43362.schedulesdirect.org	US: History Channel LatinoAmerica | US: History Channel LatinoAmerica HD | USA History Channel LatinoAmerica | History Channel LatinoAmerica HD
+History HD	I269.57708.schedulesdirect.org	US: History HD | USA History HD | History
+HITN	I461.17142.schedulesdirect.org	US: HITN | US: HITN HD | USA HITN | HITN HD
+Hogar HD	I434.114881.schedulesdirect.org	US: Hogar HD | USA Hogar HD | Hogar
+Hogar TV	I434.87063.schedulesdirect.org	US: Hogar TV | US: Hogar TV HD | USA Hogar TV | Hogar TV HD
+Hola TV	I430.62161.schedulesdirect.org	US: Hola TV | US: Hola TV HD | USA Hola TV | Hola TV HD
+Home Shopping Network	I240.10269.schedulesdirect.org	US: Home Shopping Network | US: Home Shopping Network HD | USA Home Shopping Network | Home Shopping Network HD
+Home Shopping Network	I70.10269.schedulesdirect.org	US: Home Shopping Network | US: Home Shopping Network HD | USA Home Shopping Network | Home Shopping Network HD
+HSN	I240.62077.schedulesdirect.org	US: HSN | US: HSN HD | USA HSN
+HSN	I70.62077.schedulesdirect.org	US: HSN | US: HSN HD | USA HSN
+HSN2	I310.10270.schedulesdirect.org	US: HSN2 | US: HSN2 HD | USA HSN2 | HSN2 HD
+Hustler Mature	I595.59522.schedulesdirect.org	US: Hustler Mature | US: Hustler Mature HD | USA Hustler Mature | Hustler Mature HD
+Hustler TV	I599.45498.schedulesdirect.org	US: Hustler TV | US: Hustler TV HD | USA Hustler TV | Hustler TV HD
+i-CABLE News	I2109.78910.schedulesdirect.org	US: i-CABLE News | US: i-CABLE News HD | USA i-CABLE News | i-CABLE News HD
+i24 News English	I343.87376.schedulesdirect.org	US: i24 News English | US: i24 News English HD | USA i24 News English | i24 News English HD
+iCable Finance Info News Channel	I2108.79880.schedulesdirect.org	US: iCable Finance Info News Channel | US: iCable Finance Info News Channel HD | USA iCable Finance Info News Channel | iCable Finance Info News Channel HD
+IFC	I333.14873.schedulesdirect.org	US: IFC | US: IFC HD | USA IFC | IFC HD
+IFC HD	I333.59444.schedulesdirect.org	US: IFC HD | USA IFC HD | IFC
+Impact Network	I380.71798.schedulesdirect.org	US: Impact Network | US: Impact Network HD | USA Impact Network | Impact Network HD
+INSP	I364.11066.schedulesdirect.org	US: INSP | US: INSP HD | USA INSP | INSP HD
+INSP HD	I364.82773.schedulesdirect.org	US: INSP HD | USA INSP HD | INSP
+ION Television	I305.76894.schedulesdirect.org	US: ION Television | US: ION Television HD | USA ION Television
+JBS	I388.74978.schedulesdirect.org	US: JBS | US: JBS HD | USA JBS | JBS HD
+Jewelry Television	I313.16604.schedulesdirect.org	US: Jewelry Television | US: Jewelry Television HD | USA Jewelry Television | Jewelry Television HD
+Jewelry Television	I72.16604.schedulesdirect.org	US: Jewelry Television | US: Jewelry Television HD | USA Jewelry Television | Jewelry Television HD
+Justice Central	I383.78850.schedulesdirect.org	US: Justice Central | US: Justice Central HD | USA Justice Central
+Kapatid	I2071.75621.schedulesdirect.org	US: Kapatid | US: Kapatid HD | USA Kapatid | Kapatid HD
+KBS World 24	I2085.110950.schedulesdirect.org	US: KBS World 24 | US: KBS World 24 HD | USA KBS World 24 | KBS World 24 HD
+Knowledge Network	I268.14492.schedulesdirect.org	US: Knowledge Network | US: Knowledge Network HD | USA Knowledge Network | Knowledge Network HD
+Laff	I239.92091.gracenote.com	US: Laff | US: Laff HD | USA Laff | Laff HD
+Life Channel	I335.26768.schedulesdirect.org	US: Life Channel | US: Life Channel HD | USA Life Channel | Life Channel HD
+LifeS	I2086.138912.schedulesdirect.org	US: LifeS | US: LifeS HD | USA LifeS | LifeS HD
+Lifetime	I252.10918.schedulesdirect.org	US: Lifetime | US: Lifetime HD | USA Lifetime | Lifetime HD
+Lifetime East HD	I252.60150.schedulesdirect.org	US: Lifetime East HD | USA Lifetime East HD | Lifetime East
+Lifetime Movie Network	I253.18480.schedulesdirect.org	US: Lifetime Movie Network | US: Lifetime Movie Network HD | USA Lifetime Movie Network | Lifetime Movie Network HD
+Lifetime Movie Network HD	I253.55887.schedulesdirect.org	US: Lifetime Movie Network HD | USA Lifetime Movie Network HD | Lifetime Movie Network
+Living Faith Network HD	I379.96013.schedulesdirect.org	US: Living Faith Network HD | USA Living Faith Network HD | Living Faith Network
+Logo TV	I272.46762.schedulesdirect.org	US: Logo TV | US: Logo TV HD | USA Logo TV | Logo TV HD
+LooLoo Kids TV	I9308.172126.schedulesdirect.org	US: LooLoo Kids TV | US: LooLoo Kids TV HD | USA LooLoo Kids TV | LooLoo Kids TV HD
+Love Nature	I1625.52745.schedulesdirect.org	US: Love Nature | US: Love Nature HD | USA Love Nature | Love Nature HD
+Love Nature	I810.52745.schedulesdirect.org	US: Love Nature | US: Love Nature HD | USA Love Nature | Love Nature HD
+Magnolia Network	I230.18544.schedulesdirect.org	US: Magnolia Network | US: Magnolia Network HD | USA Magnolia Network | Magnolia Network HD
+Magnolia Network	I230.67375.schedulesdirect.org	US: Magnolia Network | US: Magnolia Network HD | USA Magnolia Network
+Makeful	I530.99429.schedulesdirect.org	US: Makeful | US: Makeful HD | USA Makeful | Makeful HD
+Masn	I432.59607.gracenote.com	US: Masn | US: Masn HD | USA Masn | Masn HD
+MAVTV	I214.61036.schedulesdirect.org	US: MAVTV | US: MAVTV HD | USA MAVTV | MAVTV HD
+MBC America	I2081.50270.schedulesdirect.org	US: MBC America | US: MBC America HD | USA MBC America | MBC America HD
+MBN Plus	I2088.72536.schedulesdirect.org	US: MBN Plus | US: MBN Plus HD | USA MBN Plus | MBN Plus HD
+Me TV	I77.70436.schedulesdirect.org	US: Me TV | US: Me TV HD | USA Me TV | Me TV HD
+Mega TV	I405.58698.schedulesdirect.org	US: Mega TV | US: Mega TV HD | USA Mega TV | Mega TV HD
+Mega TV HD	I405.69301.schedulesdirect.org	US: Mega TV HD | USA Mega TV HD
+MGM+	I558.65687.schedulesdirect.org	US: MGM+ | US: MGM+ HD | USA MGM+
+MGM+ 2	I1873.67929.gracenote.com	US: MGM+ 2 | US: MGM+ 2 HD | USA MGM+ 2 | MGM+ 2 HD
+MGM+ Drive In	I539.68409.gracenote.com	US: MGM+ Drive In | US: MGM+ Drive In HD | USA MGM+ Drive In | MGM+ Drive In HD
+MGM+ Hits	I559.67929.schedulesdirect.org	US: MGM+ Hits | US: MGM+ Hits HD | USA MGM+ Hits
+MGM+ Marquee	I560.74073.schedulesdirect.org	US: MGM+ Marquee | US: MGM+ Marquee HD | USA MGM+ Marquee
+MLB 1	I721.75674.schedulesdirect.org	US: MLB 1 | US: MLB 1 HD | USA MLB 1 | MLB 1 HD
+MLB 10	I730.60887.schedulesdirect.org	US: MLB 10 | US: MLB 10 HD | USA MLB 10 | MLB 10 HD
+MLB 11	I731.60888.schedulesdirect.org	US: MLB 11 | US: MLB 11 HD | USA MLB 11 | MLB 11 HD
+MLB 12	I732.60889.schedulesdirect.org	US: MLB 12 | US: MLB 12 HD | USA MLB 12 | MLB 12 HD
+MLB 13	I733.60890.schedulesdirect.org	US: MLB 13 | US: MLB 13 HD | USA MLB 13 | MLB 13 HD
+MLB 14	I734.50109.schedulesdirect.org	US: MLB 14 | US: MLB 14 HD | USA MLB 14 | MLB 14 HD
+MLB 15	I736.50111.schedulesdirect.org	US: MLB 15 | US: MLB 15 HD | USA MLB 15 | MLB 15 HD
+MLB 16	I737.50112.schedulesdirect.org	US: MLB 16 | US: MLB 16 HD | USA MLB 16 | MLB 16 HD
+MLB 17	I738.50113.schedulesdirect.org	US: MLB 17 | US: MLB 17 HD | USA MLB 17 | MLB 17 HD
+MLB 18	I739.50114.schedulesdirect.org	US: MLB 18 | US: MLB 18 HD | USA MLB 18 | MLB 18 HD
+MLB 19	I740.50116.schedulesdirect.org	US: MLB 19 | US: MLB 19 HD | USA MLB 19 | MLB 19 HD
+MLB 2	I722.60878.schedulesdirect.org	US: MLB 2 | US: MLB 2 HD | USA MLB 2 | MLB 2 HD
+MLB 20	I741.50117.schedulesdirect.org	US: MLB 20 | US: MLB 20 HD | USA MLB 20 | MLB 20 HD
+MLB 21	I742.50118.schedulesdirect.org	US: MLB 21 | US: MLB 21 HD | USA MLB 21 | MLB 21 HD
+MLB 22	I743.50119.schedulesdirect.org	US: MLB 22 | US: MLB 22 HD | USA MLB 22 | MLB 22 HD
+MLB 23	I744.50120.schedulesdirect.org	US: MLB 23 | US: MLB 23 HD | USA MLB 23 | MLB 23 HD
+MLB 24	I745.50121.schedulesdirect.org	US: MLB 24 | US: MLB 24 HD | USA MLB 24 | MLB 24 HD
+MLB 25	I746.50122.schedulesdirect.org	US: MLB 25 | US: MLB 25 HD | USA MLB 25 | MLB 25 HD
+MLB 26	I747.50123.schedulesdirect.org	US: MLB 26 | US: MLB 26 HD | USA MLB 26 | MLB 26 HD
+MLB 27	I748.50124.schedulesdirect.org	US: MLB 27 | US: MLB 27 HD | USA MLB 27 | MLB 27 HD
+MLB 28	I749.50125.schedulesdirect.org	US: MLB 28 | US: MLB 28 HD | USA MLB 28 | MLB 28 HD
+MLB 3	I723.60879.schedulesdirect.org	US: MLB 3 | US: MLB 3 HD | USA MLB 3 | MLB 3 HD
+MLB 4	I724.60880.schedulesdirect.org	US: MLB 4 | US: MLB 4 HD | USA MLB 4 | MLB 4 HD
+MLB 5	I725.60881.schedulesdirect.org	US: MLB 5 | US: MLB 5 HD | USA MLB 5 | MLB 5 HD
+MLB 6	I726.60882.schedulesdirect.org	US: MLB 6 | US: MLB 6 HD | USA MLB 6 | MLB 6 HD
+MLB 7	I727.60883.schedulesdirect.org	US: MLB 7 | US: MLB 7 HD | USA MLB 7 | MLB 7 HD
+MLB 8	I728.60884.schedulesdirect.org	US: MLB 8 | US: MLB 8 HD | USA MLB 8 | MLB 8 HD
+MLB 9	I729.60885.schedulesdirect.org	US: MLB 9 | US: MLB 9 HD | USA MLB 9 | MLB 9 HD
+MLB Extra Innings 735	I735.50110.schedulesdirect.org	US: MLB Extra Innings 735 | US: MLB Extra Innings 735 HD | USA MLB Extra Innings 735 | MLB Extra Innings 735 HD
+MLB Network	I213.62079.schedulesdirect.org	US: MLB Network | US: MLB Network HD | USA MLB Network | MLB Network HD
+MLB Network Alternate	I213.62083.schedulesdirect.org	US: MLB Network Alternate | US: MLB Network Alternate HD | USA MLB Network Alternate | MLB Network Alternate HD | US: MLB NETWORK HD | US: MLB Network | MLB Network HD | MLB NETWORK
+MLB Network HD	I213.62081.schedulesdirect.org	US: MLB Network HD | USA MLB Network HD | MLB Network | US: MLB Network
+MLB Network HD Alternate	I213.62085.schedulesdirect.org	US: MLB Network HD Alternate | USA MLB Network HD Alternate | MLB Network Alternate | US: MLB NETWORK HD | US: MLB Network | MLB Network HD | MLB NETWORK
+MLB Network Strike Zone HD	I719.75220.schedulesdirect.org	US: MLB Network Strike Zone HD | USA MLB Network Strike Zone HD | MLB Network Strike Zone | US: MLB NETWORK HD | US: MLB Network | MLB Network HD | MLB NETWORK
+MLS Direct Kick - Direct TV - MLSSO	I471.20612.schedulesdirect.org	US: MLS Direct Kick - Direct TV - MLSSO | US: MLS Direct Kick - Direct TV - MLSSO HD | USA MLS Direct Kick - Direct TV - MLSSO | MLS Direct Kick - Direct TV - MLSSO HD
+MLS Direct Kick - Direct TV - MLSSO6	I476.21043.schedulesdirect.org	US: MLS Direct Kick - Direct TV - MLSSO6 | US: MLS Direct Kick - Direct TV - MLSSO6 HD | USA MLS Direct Kick - Direct TV - MLSSO6 | MLS Direct Kick - Direct TV - MLSSO6 HD
+MLS Direct Kick - Direct TV - MLSSO7	I477.60403.schedulesdirect.org	US: MLS Direct Kick - Direct TV - MLSSO7 | US: MLS Direct Kick - Direct TV - MLSSO7 HD | USA MLS Direct Kick - Direct TV - MLSSO7 | MLS Direct Kick - Direct TV - MLSSO7 HD
+MLS Direct Kick - Direct TV - MLSSO8	I478.60404.schedulesdirect.org	US: MLS Direct Kick - Direct TV - MLSSO8 | US: MLS Direct Kick - Direct TV - MLSSO8 HD | USA MLS Direct Kick - Direct TV - MLSSO8 | MLS Direct Kick - Direct TV - MLSSO8 HD
+Monumental Sports Network	I424.32537.gracenote.com	US: Monumental Sports Network | US: Monumental Sports Network HD | USA Monumental Sports Network | Monumental Sports Network HD
+MoreMax	I517.59373.schedulesdirect.org	US: MoreMax | US: MoreMax HD | USA MoreMax | MoreMax HD
+MotorTrend	I281.31046.schedulesdirect.org	US: MotorTrend | US: MotorTrend HD | USA MotorTrend | MotorTrend HD
+MTV	I160.10986.gracenote.com	US: MTV | US: MTV HD | USA MTV | MTV HD
+MTV - Music Television	I331.10986.schedulesdirect.org	US: MTV - Music Television | US: MTV - Music Television HD | USA MTV - Music Television | MTV - Music Television HD
+MTV - Music Television HD	I331.60964.schedulesdirect.org	US: MTV - Music Television HD | USA MTV - Music Television HD | MTV - Music Television
+MTV - Music Television HD (Pacific)	I331.64630.schedulesdirect.org	US: MTV - Music Television HD | USA MTV - Music Television HD | MTV - Music Television
+MTV 2	I332.16361.schedulesdirect.org	US: MTV 2 | US: MTV 2 HD | USA MTV 2 | MTV 2 HD
+MTV Classic	I336.22561.schedulesdirect.org	US: MTV Classic | US: MTV Classic HD | USA MTV Classic | MTV Classic HD
+MTV Live	I572.49141.schedulesdirect.org	US: MTV Live | US: MTV Live HD | USA MTV Live | MTV Live HD
+MTV2: Music Television HD	I332.75077.schedulesdirect.org	US: MTV2: Music Television HD | USA MTV2: Music Television HD | MTV2: Music Television
+Multimedios USA	I412.95743.schedulesdirect.org	US: Multimedios USA | US: Multimedios USA HD | USA Multimedios USA | Multimedios USA HD
+MYX Channel	I2067.55451.schedulesdirect.org	US: MYX Channel | US: MYX Channel HD | USA MYX Channel | MYX Channel HD
+N+ Foro	I453.76964.schedulesdirect.org	US: N+ Foro | US: N+ Foro HD | USA N+ Foro | N+ Foro HD
+Nat Geo Mundo	I435.72449.schedulesdirect.org	US: Nat Geo Mundo | US: Nat Geo Mundo HD | USA Nat Geo Mundo | Nat Geo Mundo HD
+Nat Geo Wild East	I283.66804.schedulesdirect.org	US: Nat Geo Wild East | US: Nat Geo Wild East HD | USA Nat Geo Wild East | Nat Geo Wild East HD
+Nat Geo Wild East HD	I283.67331.schedulesdirect.org	US: Nat Geo Wild East HD | USA Nat Geo Wild East HD | Nat Geo Wild East
+National Geographic	I276.24959.schedulesdirect.org	US: National Geographic | US: National Geographic HD | USA National Geographic | National Geographic HD
+National Geographic East	I276.49438.schedulesdirect.org	US: National Geographic East | US: National Geographic East HD | USA National Geographic East | National Geographic East HD
+NBA League Pass 1	I751.20810.schedulesdirect.org	US: NBA League Pass 1 | US: NBA League Pass 1 HD | USA NBA League Pass 1 | NBA League Pass 1 HD
+NBA League Pass 10	I760.21115.schedulesdirect.org	US: NBA League Pass 10 | US: NBA League Pass 10 HD | USA NBA League Pass 10 | NBA League Pass 10 HD
+NBA League Pass 2	I752.20811.schedulesdirect.org	US: NBA League Pass 2 | US: NBA League Pass 2 HD | USA NBA League Pass 2 | NBA League Pass 2 HD
+NBA League Pass 2 HD	I752.72809.schedulesdirect.org	US: NBA League Pass 2 HD | USA NBA League Pass 2 HD | NBA League Pass 2
+NBA League Pass 3	I753.20812.schedulesdirect.org	US: NBA League Pass 3 | US: NBA League Pass 3 HD | USA NBA League Pass 3 | NBA League Pass 3 HD
+NBA League Pass 3 HD	I753.72831.schedulesdirect.org	US: NBA League Pass 3 HD | USA NBA League Pass 3 HD | NBA League Pass 3
+NBA League Pass 4	I754.21044.schedulesdirect.org	US: NBA League Pass 4 | US: NBA League Pass 4 HD | USA NBA League Pass 4 | NBA League Pass 4 HD
+NBA League Pass 4 HD	I754.72832.schedulesdirect.org	US: NBA League Pass 4 HD | USA NBA League Pass 4 HD | NBA League Pass 4
+NBA League Pass 5	I755.21045.schedulesdirect.org	US: NBA League Pass 5 | US: NBA League Pass 5 HD | USA NBA League Pass 5 | NBA League Pass 5 HD
+NBA League Pass 5 HD	I755.72833.schedulesdirect.org	US: NBA League Pass 5 HD | USA NBA League Pass 5 HD | NBA League Pass 5
+NBA League Pass 6	I756.21046.schedulesdirect.org	US: NBA League Pass 6 | US: NBA League Pass 6 HD | USA NBA League Pass 6 | NBA League Pass 6 HD
+NBA League Pass 6 HD	I756.72834.schedulesdirect.org	US: NBA League Pass 6 HD | USA NBA League Pass 6 HD | NBA League Pass 6
+NBA League Pass 7	I757.21047.schedulesdirect.org	US: NBA League Pass 7 | US: NBA League Pass 7 HD | USA NBA League Pass 7 | NBA League Pass 7 HD
+NBA League Pass 7 HD	I757.72835.schedulesdirect.org	US: NBA League Pass 7 HD | USA NBA League Pass 7 HD | NBA League Pass 7
+NBA League Pass 761	I761.50152.schedulesdirect.org	US: NBA League Pass 761 | US: NBA League Pass 761 HD | USA NBA League Pass 761 | NBA League Pass 761 HD
+NBA League Pass 762	I762.50153.schedulesdirect.org	US: NBA League Pass 762 | US: NBA League Pass 762 HD | USA NBA League Pass 762 | NBA League Pass 762 HD
+NBA League Pass 763	I763.50154.schedulesdirect.org	US: NBA League Pass 763 | US: NBA League Pass 763 HD | USA NBA League Pass 763 | NBA League Pass 763 HD
+NBA League Pass 764	I764.65313.schedulesdirect.org	US: NBA League Pass 764 | US: NBA League Pass 764 HD | USA NBA League Pass 764 | NBA League Pass 764 HD
+NBA League Pass 765	I765.65315.schedulesdirect.org	US: NBA League Pass 765 | US: NBA League Pass 765 HD | USA NBA League Pass 765 | NBA League Pass 765 HD
+NBA League Pass 766	I766.65317.schedulesdirect.org	US: NBA League Pass 766 | US: NBA League Pass 766 HD | USA NBA League Pass 766 | NBA League Pass 766 HD
+NBA League Pass 767	I767.65318.schedulesdirect.org	US: NBA League Pass 767 | US: NBA League Pass 767 HD | USA NBA League Pass 767 | NBA League Pass 767 HD
+NBA League Pass 768	I768.65319.schedulesdirect.org	US: NBA League Pass 768 | US: NBA League Pass 768 HD | USA NBA League Pass 768 | NBA League Pass 768 HD
+NBA League Pass 8	I758.21048.schedulesdirect.org	US: NBA League Pass 8 | US: NBA League Pass 8 HD | USA NBA League Pass 8 | NBA League Pass 8 HD
+NBA League Pass 8 HD	I758.72836.schedulesdirect.org	US: NBA League Pass 8 HD | USA NBA League Pass 8 HD | NBA League Pass 8
+NBA League Pass 9	I759.21049.schedulesdirect.org	US: NBA League Pass 9 | US: NBA League Pass 9 HD | USA NBA League Pass 9 | NBA League Pass 9 HD
+NBA League Pass 9 HD	I759.72837.schedulesdirect.org	US: NBA League Pass 9 HD | USA NBA League Pass 9 HD | NBA League Pass 9
+NBA League Pass/MLS Direct Kick HDTV	I751.95845.schedulesdirect.org	US: NBA League Pass/MLS Direct Kick HDTV | US: NBA League Pass/MLS Direct Kick HDTV HD | USA NBA League Pass/MLS Direct Kick HDTV | NBA League Pass/MLS Direct Kick HDTV HD | NBA League Pass/MLS Direct KickTV
+NBA TV	I216.32281.schedulesdirect.org	US: NBA TV | US: NBA TV HD | USA NBA TV | NBA TV HD
+NBA TV HD	I216.45526.schedulesdirect.org	US: NBA TV HD | USA NBA TV HD | NBA TV | US: NBA TV
+NBC East Stream	I9110.109718.schedulesdirect.org	US: NBC East Stream | US: NBC East Stream HD | USA NBC East Stream | NBC East Stream HD
+NBC Sport Network	I619.194412.schedulesdirect.org	US: NBC Sport Network | US: NBC Sport Network HD | USA NBC Sport Network | NBC Sport Network HD
+NBC Sports Bay Area	I419.63138.gracenote.com	US: NBC Sports Bay Area | US: NBC Sports Bay Area HD | USA NBC Sports Bay Area | NBC Sports Bay Area HD
+NBC Sports California	I438.73565.gracenote.com	US: NBC Sports California | US: NBC Sports California HD | USA NBC Sports California | NBC Sports California HD
+NBC Universo	I410.14791.schedulesdirect.org	US: NBC Universo | US: NBC Universo HD | USA NBC Universo | NBC Universo HD
+NBC Universo HD	I410.91588.schedulesdirect.org	US: NBC Universo HD | USA NBC Universo HD | NBC Universo
+NBC West Stream	I9400.109719.schedulesdirect.org	US: NBC West Stream | US: NBC West Stream HD | USA NBC West Stream | NBC West Stream HD
+NESN	I434.35038.gracenote.com	US: NESN | US: NESN HD | USA NESN | NESN HD
+Newsmax	I1115.97163.gracenote.com	US: Newsmax | US: Newsmax HD | USA Newsmax | Newsmax HD
+Newsmax TV	I349.87925.schedulesdirect.org	US: Newsmax TV | US: Newsmax TV HD | USA Newsmax TV | Newsmax TV HD | US: NEWSMAX HD | Newsmax HD
+Newsmax TV HD	I349.97163.schedulesdirect.org	US: Newsmax TV HD | USA Newsmax TV HD | Newsmax TV | US: NEWSMAX HD | Newsmax HD
+NewsNation	I307.91096.schedulesdirect.org	US: NewsNation | US: NewsNation HD | USA NewsNation | NewsNation HD
+NewsNation SD	I307.91097.schedulesdirect.org	US: NewsNation SD | US: NewsNation SD HD | USA NewsNation SD | NewsNation SD HD
+Next Level Sports HD	I623.87000.schedulesdirect.org	US: Next Level Sports HD | USA Next Level Sports HD | Next Level Sports
+NFL Network	I212.34710.schedulesdirect.org	US: NFL Network | US: NFL Network HD | USA NFL Network | NFL Network HD
+NFL Network HD	I212.45399.schedulesdirect.org	US: NFL Network HD | USA NFL Network HD | NFL Network | US: NFL Network
+NFL Redzone	I211.65025.schedulesdirect.org	US: NFL Redzone | US: NFL Redzone HD | USA NFL Redzone
+NFL SUNDAY TICKET RED ZONE	I211.47216.schedulesdirect.org	US: NFL SUNDAY TICKET RED ZONE | US: NFL SUNDAY TICKET RED ZONE HD | USA NFL SUNDAY TICKET RED ZONE | NFL SUNDAY TICKET RED ZONE HD
+NHK 1 HD	I2049.98286.schedulesdirect.org	US: NHK 1 HD | USA NHK 1 HD | NHK 1
+NHK World-Japan	I322.59155.schedulesdirect.org	US: NHK World-Japan | US: NHK World-Japan HD | USA NHK World-Japan | NHK World-Japan HD
+NHL Center Ice 769	I769.50135.schedulesdirect.org	US: NHL Center Ice 769 | US: NHL Center Ice 769 HD | USA NHL Center Ice 769 | NHL Center Ice 769 HD
+NHL Center Ice 770	I770.50136.schedulesdirect.org	US: NHL Center Ice 770 | US: NHL Center Ice 770 HD | USA NHL Center Ice 770 | NHL Center Ice 770 HD
+NHL Center Ice 771	I771.50137.schedulesdirect.org	US: NHL Center Ice 771 | US: NHL Center Ice 771 HD | USA NHL Center Ice 771 | NHL Center Ice 771 HD
+NHL Center Ice 772	I772.50138.schedulesdirect.org	US: NHL Center Ice 772 | US: NHL Center Ice 772 HD | USA NHL Center Ice 772 | NHL Center Ice 772 HD
+NHL Center Ice 773	I773.50139.schedulesdirect.org	US: NHL Center Ice 773 | US: NHL Center Ice 773 HD | USA NHL Center Ice 773 | NHL Center Ice 773 HD
+NHL Center Ice 774	I774.50140.schedulesdirect.org	US: NHL Center Ice 774 | US: NHL Center Ice 774 HD | USA NHL Center Ice 774 | NHL Center Ice 774 HD
+NHL Center Ice 775	I775.54348.schedulesdirect.org	US: NHL Center Ice 775 | US: NHL Center Ice 775 HD | USA NHL Center Ice 775 | NHL Center Ice 775 HD
+NHL Center Ice 776	I776.54349.schedulesdirect.org	US: NHL Center Ice 776 | US: NHL Center Ice 776 HD | USA NHL Center Ice 776 | NHL Center Ice 776 HD
+NHL Center Ice 777	I777.83059.schedulesdirect.org	US: NHL Center Ice 777 | US: NHL Center Ice 777 HD | USA NHL Center Ice 777 | NHL Center Ice 777 HD
+NHL Center Ice 778	I778.83060.schedulesdirect.org	US: NHL Center Ice 778 | US: NHL Center Ice 778 HD | USA NHL Center Ice 778 | NHL Center Ice 778 HD
+NHL Center Ice 779	I779.83061.schedulesdirect.org	US: NHL Center Ice 779 | US: NHL Center Ice 779 HD | USA NHL Center Ice 779 | NHL Center Ice 779 HD
+NHL Center Ice 780	I780.83064.schedulesdirect.org	US: NHL Center Ice 780 | US: NHL Center Ice 780 HD | USA NHL Center Ice 780 | NHL Center Ice 780 HD
+NHL Center Ice 781	I781.83065.schedulesdirect.org	US: NHL Center Ice 781 | US: NHL Center Ice 781 HD | USA NHL Center Ice 781 | NHL Center Ice 781 HD
+NHL Center Ice 782	I782.83069.schedulesdirect.org	US: NHL Center Ice 782 | US: NHL Center Ice 782 HD | USA NHL Center Ice 782 | NHL Center Ice 782 HD
+NHL Center Ice 783	I783.83070.schedulesdirect.org	US: NHL Center Ice 783 | US: NHL Center Ice 783 HD | USA NHL Center Ice 783 | NHL Center Ice 783 HD
+NHL Center Ice 784	I784.83158.schedulesdirect.org	US: NHL Center Ice 784 | US: NHL Center Ice 784 HD | USA NHL Center Ice 784 | NHL Center Ice 784 HD
+NHL Center Ice 785	I785.83171.schedulesdirect.org	US: NHL Center Ice 785 | US: NHL Center Ice 785 HD | USA NHL Center Ice 785 | NHL Center Ice 785 HD
+NHL Center Ice 786	I786.83207.schedulesdirect.org	US: NHL Center Ice 786 | US: NHL Center Ice 786 HD | USA NHL Center Ice 786 | NHL Center Ice 786 HD
+NHL Center Ice 787	I787.83307.schedulesdirect.org	US: NHL Center Ice 787 | US: NHL Center Ice 787 HD | USA NHL Center Ice 787 | NHL Center Ice 787 HD
+NHL Network	I215.58570.schedulesdirect.org	US: NHL Network | US: NHL Network HD | USA NHL Network | NHL Network HD
+NHL Network	I215.58690.schedulesdirect.org	US: NHL Network | US: NHL Network HD | USA NHL Network
+Nick Jr	I301.19211.schedulesdirect.org	US: Nick Jr | US: Nick Jr HD | USA Nick Jr | Nick Jr HD
+Nick Jr HD	I301.82649.schedulesdirect.org	US: Nick Jr HD | USA Nick Jr HD | Nick Jr
+Nickelodeon	I299.11006.schedulesdirect.org	US: Nickelodeon | US: Nickelodeon HD | USA Nickelodeon | Nickelodeon HD
+Nickelodeon (Pacific)	I300.11007.schedulesdirect.org	US: Nickelodeon | US: Nickelodeon HD | USA Nickelodeon | Nickelodeon HD
+Nickelodeon East HD	I299.59432.schedulesdirect.org	US: Nickelodeon East HD | USA Nickelodeon East HD | Nickelodeon East
+NickTeen East	I303.59036.schedulesdirect.org	US: NickTeen East | US: NickTeen East HD | USA NickTeen East | NickTeen East HD
+Nicktoons	I302.30420.schedulesdirect.org	US: Nicktoons | US: Nicktoons HD | USA Nicktoons | Nicktoons HD
+Nippon TV Channel	I2041.111293.schedulesdirect.org	US: Nippon TV Channel | US: Nippon TV Channel HD | USA Nippon TV Channel | Nippon TV Channel HD
+Nosey	I50.5.113685.gracenote.com	US: Nosey | US: Nosey HD | USA Nosey | Nosey HD
+NRB TV	I378.49097.schedulesdirect.org	US: NRB TV | US: NRB TV HD | USA NRB TV | NRB TV HD
+NTN24	I418.61988.schedulesdirect.org	US: NTN24 | US: NTN24 HD | USA NTN24 | NTN24 HD
+Omni 1	I215.10105.schedulesdirect.org	US: Omni 1 | US: Omni 1 HD | USA Omni 1 | Omni 1 HD
+Omni 2	I216.31558.schedulesdirect.org	US: Omni 2 | US: Omni 2 HD | USA Omni 2 | Omni 2 HD
+Oprah Winfrey Network	I279.70387.schedulesdirect.org	US: Oprah Winfrey Network | US: Oprah Winfrey Network HD | USA Oprah Winfrey Network | Oprah Winfrey Network HD
+Oprah Winfrey Network (Pacific A Feed)	I279.95746.schedulesdirect.org	US: Oprah Winfrey Network | US: Oprah Winfrey Network HD | USA Oprah Winfrey Network | Oprah Winfrey Network HD
+Oprah Winfrey Network HD	I279.70388.schedulesdirect.org	US: Oprah Winfrey Network HD | USA Oprah Winfrey Network HD | Oprah Winfrey Network
+Outdoor Channel	I606.14776.schedulesdirect.org	US: Outdoor Channel | US: Outdoor Channel HD | USA Outdoor Channel | Outdoor Channel HD
+Outdoor Channel HD	I606.46737.schedulesdirect.org	US: Outdoor Channel HD | USA Outdoor Channel HD | Outdoor Channel
+Outside TV	I390.80651.gracenote.com	US: Outside TV | US: Outside TV HD | USA Outside TV | Outside TV HD
+Ovation	I274.15807.schedulesdirect.org	US: Ovation | US: Ovation HD | USA Ovation | Ovation HD
+Ovation HD	I274.69061.schedulesdirect.org	US: Ovation HD | USA Ovation HD | Ovation
+Oxygen True Crime	I251.21484.schedulesdirect.org	US: Oxygen True Crime | US: Oxygen True Crime HD | USA Oxygen True Crime | Oxygen True Crime HD
+Oxygen True Crime HD	I251.70522.schedulesdirect.org	US: Oxygen True Crime HD | USA Oxygen True Crime HD | Oxygen True Crime
+Paramount Network	I241.11163.schedulesdirect.org	US: Paramount Network | US: Paramount Network HD | USA Paramount Network | Paramount Network HD
+Paramount Network	I241.59186.schedulesdirect.org	US: Paramount Network | US: Paramount Network HD | USA Paramount Network
+Paramount+ with Showtime	I545.11115.schedulesdirect.org	US: Paramount+ with Showtime | US: Paramount+ with Showtime HD | USA Paramount+ with Showtime | Paramount+ with Showtime HD
+Paramount+ with Showtime (Pacific)	I546.11117.schedulesdirect.org	US: Paramount+ with Showtime | US: Paramount+ with Showtime HD | USA Paramount+ with Showtime | Paramount+ with Showtime HD
+Paramount+ with Showtime HD	I545.21868.schedulesdirect.org	US: Paramount+ with Showtime HD | USA Paramount+ with Showtime HD | Paramount+ with Showtime
+Paramount+ with Showtime HD (Pacific)	I546.22532.schedulesdirect.org	US: Paramount+ with Showtime HD | USA Paramount+ with Showtime HD | Paramount+ with Showtime
+Pasiones HD	I444.61776.schedulesdirect.org	US: Pasiones HD | USA Pasiones HD | Pasiones
+Penthouse TV XX5 Premium	I587.74711.schedulesdirect.org	US: Penthouse TV XX5 Premium | US: Penthouse TV XX5 Premium HD | USA Penthouse TV XX5 Premium | Penthouse TV XX5 Premium HD
+PI KBS World	I2082.53079.schedulesdirect.org	US: PI KBS World | US: PI KBS World HD | USA PI KBS World | PI KBS World HD
+Pixl	I388.70113.gracenote.com	US: Pixl | US: Pixl HD | USA Pixl | Pixl HD
+Playboy HD	I589.50404.schedulesdirect.org	US: Playboy HD | USA Playboy HD | Playboy
+Playboy HD	I590.50404.schedulesdirect.org	US: Playboy HD | USA Playboy HD | Playboy
+Playboy Premium HD	I576.76898.schedulesdirect.org	US: Playboy Premium HD | USA Playboy Premium HD | Playboy Premium
+Playboy TV	I590.14075.schedulesdirect.org	US: Playboy TV | US: Playboy TV HD | USA Playboy TV | Playboy TV HD
+Playboy TV Latin America	I578.38944.schedulesdirect.org	US: Playboy TV Latin America | US: Playboy TV Latin America HD | USA Playboy TV Latin America | Playboy TV Latin America HD
+Playboy TV Latin America	I586.38944.schedulesdirect.org	US: Playboy TV Latin America | US: Playboy TV Latin America HD | USA Playboy TV Latin America | Playboy TV Latin America HD
+POP	I273.16715.schedulesdirect.org	US: POP | US: POP HD | USA POP | POP HD
+POP HD	I273.68796.schedulesdirect.org	US: POP HD | USA POP HD | POP
+Pursuit Channel	I604.60111.schedulesdirect.org	US: Pursuit Channel | US: Pursuit Channel HD | USA Pursuit Channel | Pursuit Channel HD
+QVC	I275.11069.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC | QVC HD
+QVC	I275.60222.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC
+QVC	I317.11069.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC | QVC HD
+QVC	I317.60222.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC
+QVC	I70.11069.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC | QVC HD
+QVC	I70.60222.schedulesdirect.org	US: QVC | US: QVC HD | USA QVC
+QVC2 (QVC)	I315.82682.schedulesdirect.org	US: QVC2 (QVC) | US: QVC2 (QVC) HD | USA QVC2 (QVC) | QVC2 (QVC) HD
+QVC2 (QVC)	I76.82682.schedulesdirect.org	US: QVC2 (QVC) | US: QVC2 (QVC) HD | USA QVC2 (QVC) | QVC2 (QVC) HD
+QVC2 (QVC)	I79.82682.schedulesdirect.org	US: QVC2 (QVC) | US: QVC2 (QVC) HD | USA QVC2 (QVC) | QVC2 (QVC) HD
+QVC3	I318.101260.schedulesdirect.org	US: QVC3 | US: QVC3 HD | USA QVC3 | QVC3 HD
+RAI	I2021.17250.schedulesdirect.org	US: RAI | US: RAI HD | USA RAI | RAI HD
+Rai News 24	I2022.78803.schedulesdirect.org	US: Rai News 24 | US: Rai News 24 HD | USA Rai News 24 | Rai News 24 HD
+Rai Premium	I2023.46350.schedulesdirect.org	US: Rai Premium | US: Rai Premium HD | USA Rai Premium | Rai Premium HD
+Reality Kings TV	I594.65223.schedulesdirect.org	US: Reality Kings TV | US: Reality Kings TV HD | USA Reality Kings TV | Reality Kings TV HD
+Reelz Channel	I238.52199.schedulesdirect.org	US: Reelz Channel | US: Reelz Channel HD | USA Reelz Channel | Reelz Channel HD
+Reelz Channel HD	I238.68385.schedulesdirect.org	US: Reelz Channel HD | USA Reelz Channel HD | Reelz Channel
+Revolt HD	I384.83098.schedulesdirect.org	US: Revolt HD | USA Revolt HD | Revolt
+RFD TV HD	I345.63717.schedulesdirect.org	US: RFD TV HD | USA RFD TV HD
+RT International	I722.21063.schedulesdirect.org	US: RT International | US: RT International HD | USA RT International | RT International HD
+Science	I284.16616.schedulesdirect.org	US: Science | US: Science HD | USA Science | Science HD
+Science Channel HD	I284.57390.schedulesdirect.org	US: Science Channel HD | USA Science Channel HD | Science Channel
+SEC Network	I611.89535.schedulesdirect.org	US: SEC Network | US: SEC Network HD | USA SEC Network | SEC Network HD | US: SEC HD | SECN
+SEC Network HD	I611.89714.schedulesdirect.org	US: SEC Network HD | USA SEC Network HD | SEC Network | US: SEC HD | SECN
+SHO 2	I547.11116.schedulesdirect.org	US: SHO 2 | US: SHO 2 HD | USA SHO 2 | SHO 2 HD
+SHO 2 HD	I547.58533.schedulesdirect.org	US: SHO 2 HD | USA SHO 2 HD | SHO 2
+SHO x BET HD	I548.68340.schedulesdirect.org	US: SHO x BET HD | USA SHO x BET HD | SHO x BET
+Shop LC	I226.56032.schedulesdirect.org	US: Shop LC | US: Shop LC HD | USA Shop LC | Shop LC HD
+Shop LC	I75.56032.schedulesdirect.org	US: Shop LC | US: Shop LC HD | USA Shop LC | Shop LC HD
+Shorts TV	I573.67454.schedulesdirect.org	US: Shorts TV | US: Shorts TV HD | USA Shorts TV | Shorts TV HD
+Showtime Bet	I548.20622.schedulesdirect.org	US: Showtime Bet | US: Showtime Bet HD | USA Showtime Bet | Showtime Bet HD
+Showtime Extreme	I549.18086.schedulesdirect.org	US: Showtime Extreme | US: Showtime Extreme HD | USA Showtime Extreme | Showtime Extreme HD
+Showtime Extreme	I549.60947.schedulesdirect.org	US: Showtime Extreme | US: Showtime Extreme HD | USA Showtime Extreme
+Showtime Family Zone	I552.103892.schedulesdirect.org	US: Showtime Family Zone | US: Showtime Family Zone HD | USA Showtime Family Zone
+Showtime Next	I551.68342.schedulesdirect.org	US: Showtime Next | US: Showtime Next HD | USA Showtime Next
+Showtime Showcase	I550.61001.schedulesdirect.org	US: Showtime Showcase | US: Showtime Showcase HD | USA Showtime Showcase
+Showtime Women	I1850.25272.gracenote.com	US: Showtime Women | US: Showtime Women HD | USA Showtime Women | Showtime Women HD
+Showtime Women	I585.25272.gracenote.com	US: Showtime Women | US: Showtime Women HD | USA Showtime Women | Showtime Women HD
+Slice	I601.15181.schedulesdirect.org	US: Slice | US: Slice HD | USA Slice | Slice HD
+Smithsonian Channel	I570.58532.schedulesdirect.org	US: Smithsonian Channel | US: Smithsonian Channel HD | USA Smithsonian Channel | Smithsonian Channel HD
+So Yummy	I563.115674.schedulesdirect.org	US: So Yummy | US: So Yummy HD | USA So Yummy | So Yummy HD
+SonLife Broadcasting Network	I344.67676.schedulesdirect.org	US: SonLife Broadcasting Network | US: SonLife Broadcasting Network HD | USA SonLife Broadcasting Network | SonLife Broadcasting Network HD
+SonLife Broadcasting Network HD	I344.91314.schedulesdirect.org	US: SonLife Broadcasting Network HD | USA SonLife Broadcasting Network HD
+Sony Movie Channel HD	I568.69130.schedulesdirect.org	US: Sony Movie Channel HD | USA Sony Movie Channel HD | Sony Movie Channel
+Sportsman Channel	I605.33930.schedulesdirect.org	US: Sportsman Channel | US: Sportsman Channel HD | USA Sportsman Channel | Sportsman Channel HD
+Sportsnet 360	I1410.49952.schedulesdirect.org	US: Sportsnet 360 | US: Sportsnet 360 HD | USA Sportsnet 360
+Sportsnet 360	I410.49952.schedulesdirect.org	US: Sportsnet 360 | US: Sportsnet 360 HD | USA Sportsnet 360
+Sportsnet 360	I845.49952.schedulesdirect.org	US: Sportsnet 360 | US: Sportsnet 360 HD | USA Sportsnet 360
+Sportsnet East	I406.18798.schedulesdirect.org	US: Sportsnet East | US: Sportsnet East HD | USA Sportsnet East | Sportsnet East HD
+Sportsnet One	I409.68858.schedulesdirect.org	US: Sportsnet One | US: Sportsnet One HD | USA Sportsnet One | Sportsnet One HD
+Sportsnet Ontario	I1405.62111.schedulesdirect.org	US: Sportsnet Ontario | US: Sportsnet Ontario HD | USA Sportsnet Ontario
+Sportsnet Ontario	I405.62111.schedulesdirect.org	US: Sportsnet Ontario | US: Sportsnet Ontario HD | USA Sportsnet Ontario
+Sportsnet Ontario	I846.62111.schedulesdirect.org	US: Sportsnet Ontario | US: Sportsnet Ontario HD | USA Sportsnet Ontario
+Sportsnet Pacific	I407.18801.schedulesdirect.org	US: Sportsnet Pacific | US: Sportsnet Pacific HD | USA Sportsnet Pacific | Sportsnet Pacific HD
+Sportsnet Pittsburgh	I428.49882.gracenote.com	US: Sportsnet Pittsburgh | US: Sportsnet Pittsburgh HD | USA Sportsnet Pittsburgh | Sportsnet Pittsburgh HD
+Sportsnet West	I408.18800.schedulesdirect.org	US: Sportsnet West | US: Sportsnet West HD | USA Sportsnet West | Sportsnet West HD
+Sportsnet World	I420.57735.schedulesdirect.org	US: Sportsnet World | US: Sportsnet World HD | USA Sportsnet World | Sportsnet World HD
+Starz	I525.12719.schedulesdirect.org	US: Starz | US: Starz HD | USA Starz | Starz HD
+Starz (Pacific)	I526.12741.schedulesdirect.org	US: Starz | US: Starz HD | USA Starz | Starz HD
+Starz Cinema East	I531.67236.schedulesdirect.org	US: Starz Cinema East | US: Starz Cinema East HD | USA Starz Cinema East | Starz Cinema East HD
+Starz Comedy	I528.57569.schedulesdirect.org	US: Starz Comedy | US: Starz Comedy HD | USA Starz Comedy
+Starz East HD	I525.34941.schedulesdirect.org	US: Starz East HD | USA Starz East HD | Starz East
+Starz Edge	I529.16311.schedulesdirect.org	US: Starz Edge | US: Starz Edge HD | USA Starz Edge | Starz Edge HD
+Starz Edge East HD	I529.57573.schedulesdirect.org	US: Starz Edge East HD | USA Starz Edge East HD | Starz Edge East
+Starz Encore	I535.10178.schedulesdirect.org	US: Starz Encore | US: Starz Encore HD | USA Starz Encore | Starz Encore HD
+Starz Encore (Pacific)	I536.17125.schedulesdirect.org	US: Starz Encore | US: Starz Encore HD | USA Starz Encore | Starz Encore HD
+Starz Encore Action	I541.14871.schedulesdirect.org	US: Starz Encore Action | US: Starz Encore Action HD | USA Starz Encore Action | Starz Encore Action HD
+Starz Encore Black	I540.14870.schedulesdirect.org	US: Starz Encore Black | US: Starz Encore Black HD | USA Starz Encore Black | Starz Encore Black HD
+Starz Encore Classic	I537.14764.schedulesdirect.org	US: Starz Encore Classic | US: Starz Encore Classic HD | USA Starz Encore Classic | Starz Encore Classic HD
+Starz Encore East	I535.36225.schedulesdirect.org	US: Starz Encore East | US: Starz Encore East HD | USA Starz Encore East | Starz Encore East HD
+Starz Encore Español SD	I426.102905.schedulesdirect.org	US: Starz Encore Español SD | US: Starz Encore Español SD HD | USA Starz Encore Español SD | Starz Encore Español SD HD
+Starz Encore Family	I542.102903.schedulesdirect.org	US: Starz Encore Family | US: Starz Encore Family HD | USA Starz Encore Family | Starz Encore Family HD
+Starz Encore Suspense	I539.14766.schedulesdirect.org	US: Starz Encore Suspense | US: Starz Encore Suspense HD | USA Starz Encore Suspense | Starz Encore Suspense HD
+Starz Encore Westerns	I538.102906.schedulesdirect.org	US: Starz Encore Westerns | US: Starz Encore Westerns HD | USA Starz Encore Westerns | Starz Encore Westerns HD
+Starz HD (Pacific)	I526.34949.schedulesdirect.org	US: Starz HD | USA Starz HD | Starz
+Starz in Black	I530.16833.schedulesdirect.org	US: Starz in Black | US: Starz in Black HD | USA Starz in Black | Starz in Black HD
+Starz In Black East HD	I530.67235.schedulesdirect.org	US: Starz In Black East HD | USA Starz In Black East HD | Starz In Black East
+Starz Kids & Family East	I527.57581.schedulesdirect.org	US: Starz Kids & Family East | US: Starz Kids & Family East HD | USA Starz Kids & Family East | Starz Kids & Family East HD
+Sundance TV	I239.16108.schedulesdirect.org	US: Sundance TV | US: Sundance TV HD | USA Sundance TV | Sundance TV HD
+Sundance TV HD	I239.71280.schedulesdirect.org	US: Sundance TV HD | USA Sundance TV HD | Sundance TV
+Syfy	I244.11097.schedulesdirect.org	US: Syfy | US: Syfy HD | USA Syfy | Syfy HD
+Syfy HD	I244.58623.schedulesdirect.org	US: Syfy HD | USA Syfy HD | Syfy
+Tastemade	I235.107076.schedulesdirect.org	US: Tastemade | US: Tastemade HD | USA Tastemade | Tastemade HD
+TBD	I1183.108537.gracenote.com	US: TBD | US: TBD HD | USA TBD | TBD HD
+TBD	I365.108537.gracenote.com	US: TBD | US: TBD HD | USA TBD | TBD HD
+TBN Inspire	I371.122276.schedulesdirect.org	US: TBN Inspire | US: TBN Inspire HD | USA TBN Inspire | TBN Inspire HD
+TBS	I247.11867.schedulesdirect.org	US: TBS | US: TBS HD | USA TBS | TBS HD
+TBS East HD	I247.58515.schedulesdirect.org	US: TBS East HD | USA TBS East HD | TBS East
+TBS HD (Pacific)	I247.67890.schedulesdirect.org	US: TBS HD | USA TBS HD | TBS | US: TBS
+TCM US	I256.12852.schedulesdirect.org	US: TCM US | US: TCM US HD | USA TCM US | TCM US HD
+TCM US HD	I256.64312.schedulesdirect.org	US: TCM US HD | USA TCM US HD | TCM US
+TCT	I377.62881.schedulesdirect.org	US: TCT | US: TCT HD | USA TCT | TCT HD
+Telecentro canal 13	I429.60690.schedulesdirect.org	US: Telecentro canal 13 | US: Telecentro canal 13 HD | USA Telecentro canal 13 | Telecentro canal 13 HD
+Telemundo Internacional	I406.77606.schedulesdirect.org	US: Telemundo Internacional | US: Telemundo Internacional HD | USA Telemundo Internacional | Telemundo Internacional HD
+Tennis Channel	I217.33395.schedulesdirect.org	US: Tennis Channel | US: Tennis Channel HD | USA Tennis Channel | Tennis Channel HD | US: Tennis HD
+Tennis Channel HD	I217.60316.schedulesdirect.org	US: Tennis Channel HD | USA Tennis Channel HD | Tennis Channel | US: Tennis HD
+The First	I347.114934.schedulesdirect.org	US: The First | US: The First HD | USA The First | The First HD
+The Grio	I342.132272.schedulesdirect.org	US: The Grio | US: The Grio HD | USA The Grio
+The Hope Channel	I368.49266.schedulesdirect.org	US: The Hope Channel | US: The Hope Channel HD | USA The Hope Channel | The Hope Channel HD
+The Movie Channel	I553.11160.schedulesdirect.org	US: The Movie Channel | US: The Movie Channel HD | USA The Movie Channel | The Movie Channel HD
+The Movie Channel	I553.35329.schedulesdirect.org	US: The Movie Channel | US: The Movie Channel HD | USA The Movie Channel
+The Movie Channel (Pacific)	I554.12509.schedulesdirect.org	US: The Movie Channel | US: The Movie Channel HD | USA The Movie Channel | The Movie Channel HD
+The Movie Channel Extra HD	I555.60951.schedulesdirect.org	US: The Movie Channel Extra HD | USA The Movie Channel Extra HD | The Movie Channel Extra
+The Travel Channel	I277.11180.schedulesdirect.org	US: The Travel Channel | US: The Travel Channel HD | USA The Travel Channel | The Travel Channel HD
+The Travel Channel HD	I277.59303.schedulesdirect.org	US: The Travel Channel HD | USA The Travel Channel HD | The Travel Channel
+The Weather Channel	I362.11187.schedulesdirect.org	US: The Weather Channel | US: The Weather Channel HD | USA The Weather Channel | The Weather Channel HD
+The Weather Channel HD	I362.58812.schedulesdirect.org	US: The Weather Channel HD | USA The Weather Channel HD | The Weather Channel
+The Weather Network	I505.10170.schedulesdirect.org	US: The Weather Network | US: The Weather Network HD | USA The Weather Network | The Weather Network HD
+The Word Network	I373.21781.schedulesdirect.org	US: The Word Network | US: The Word Network HD | USA The Word Network | The Word Network HD
+TLC	I280.11158.schedulesdirect.org	US: TLC | US: TLC HD | USA TLC | TLC HD
+TLC HD (US)	I280.57391.schedulesdirect.org	US: TLC HD (US) | USA TLC HD (US) | TLC (US)
+TNT	I245.11164.schedulesdirect.org	US: TNT | US: TNT HD | USA TNT | TNT HD | TNT USA
+TNT HD	I245.42642.schedulesdirect.org	US: TNT HD | USA TNT HD | TNT | US: TNT | TNT USA
+TNT HD (Pacific)	I245.61340.schedulesdirect.org	US: TNT HD | USA TNT HD | TNT | US: TNT | TNT USA
+Trinity Broadcasting Network HD	I372.59539.schedulesdirect.org	US: Trinity Broadcasting Network HD | USA Trinity Broadcasting Network HD
+Tru TV	I246.10153.schedulesdirect.org	US: Tru TV | US: Tru TV HD | USA Tru TV | Tru TV HD
+Tru TV HD	I246.64490.schedulesdirect.org	US: Tru TV HD | USA Tru TV HD | Tru TV
+TSC shopping channel	I113.15997.schedulesdirect.org	US: TSC shopping channel | US: TSC shopping channel HD | USA TSC shopping channel | TSC shopping channel HD
+TSC shopping channel	I286.15997.schedulesdirect.org	US: TSC shopping channel | US: TSC shopping channel HD | USA TSC shopping channel | TSC shopping channel HD
+TSC shopping channel	I598.15997.schedulesdirect.org	US: TSC shopping channel | US: TSC shopping channel HD | USA TSC shopping channel | TSC shopping channel HD
+TSC shopping channel	I660.15997.schedulesdirect.org	US: TSC shopping channel | US: TSC shopping channel HD | USA TSC shopping channel | TSC shopping channel HD
+TSN 1	I400.11182.schedulesdirect.org	US: TSN 1 | US: TSN 1 HD | USA TSN 1 | TSN 1 HD
+TSN 2	I401.18990.schedulesdirect.org	US: TSN 2 | US: TSN 2 HD | USA TSN 2 | TSN 2 HD
+TSN 3	I402.90118.schedulesdirect.org	US: TSN 3 | US: TSN 3 HD | USA TSN 3 | TSN 3 HD
+TSN 4	I403.90122.schedulesdirect.org	US: TSN 4 | US: TSN 4 HD | USA TSN 4 | TSN 4 HD
+TSN 5	I404.90124.schedulesdirect.org	US: TSN 5 | US: TSN 5 HD | USA TSN 5 | TSN 5 HD
+TUDN	I464.75176.schedulesdirect.org	US: TUDN | US: TUDN HD | USA TUDN | TUDN HD
+TUDN	I464.77033.schedulesdirect.org	US: TUDN | US: TUDN HD | USA TUDN | TUDN HD
+TV Chile	I437.16046.schedulesdirect.org	US: TV Chile | US: TV Chile HD | USA TV Chile | TV Chile HD
+TV Land	I106.16123.gracenote.com	US: TV Land | US: TV Land HD | USA TV Land | TV Land HD
+TV Land	I304.16123.schedulesdirect.org	US: TV Land | US: TV Land HD | USA TV Land | TV Land HD
+TV Land HD	I304.73541.schedulesdirect.org	US: TV Land HD | USA TV Land HD | TV Land
+TV One	I328.61960.schedulesdirect.org	US: TV One | US: TV One HD | USA TV One
+TVE	I460.16217.schedulesdirect.org	US: TVE | US: TVE HD | USA TVE | TVE HD
+TyC Sports	I469.111046.schedulesdirect.org	US: TyC Sports | US: TyC Sports HD | USA TyC Sports | TyC Sports HD
+UniMAS	I408.68040.schedulesdirect.org	US: UniMAS | US: UniMAS HD | USA UniMAS
+Univision	I402.11118.schedulesdirect.org	US: Univision | US: Univision HD | USA Univision | Univision HD
+Univision HD	I402.68049.schedulesdirect.org	US: Univision HD | USA Univision HD
+Univision West	I403.14762.schedulesdirect.org	US: Univision West | US: Univision West HD | USA Univision West | Univision West HD
+UP TV	I338.44940.schedulesdirect.org	US: UP TV | US: UP TV HD | USA UP TV | UP TV HD
+US - ABC 7 Detroit	I7.1.19601.gracenote.com	ABC 7 Detroit | US: ABC 7 Detroit HD | USA ABC 7 Detroit | ABC 7 Detroit HD
+US - ABC Chicago	I1007.20456.gracenote.com	ABC Chicago | US: ABC Chicago HD | USA ABC Chicago | ABC Chicago HD
+US - ABC Chicago	I187.20456.gracenote.com	ABC Chicago | US: ABC Chicago HD | USA ABC Chicago | ABC Chicago HD
+US - CBS Chicago	I1002.20454.gracenote.com	CBS Chicago | US: CBS Chicago HD | USA CBS Chicago | CBS Chicago HD
+US - CBS Chicago	I189.20454.gracenote.com	CBS Chicago | US: CBS Chicago HD | USA CBS Chicago | CBS Chicago HD
+US - CBS Detroit	I6.1.25664.gracenote.com	CBS Detroit | US: CBS Detroit HD | USA CBS Detroit | CBS Detroit HD
+US - Fox 32 Chicago	I1032.20361.gracenote.com	Fox 32 Chicago | US: Fox 32 Chicago HD | USA Fox 32 Chicago | Fox 32 Chicago HD
+US - Fox 32 Chicago	I190.20361.gracenote.com	Fox 32 Chicago | US: Fox 32 Chicago HD | USA Fox 32 Chicago | Fox 32 Chicago HD
+US - FOX News Detroit	I2.1.19600.gracenote.com	FOX News Detroit | US: FOX News Detroit HD | USA FOX News Detroit | FOX News Detroit HD
+US - NBC Chicago	I1005.20452.gracenote.com	NBC Chicago | US: NBC Chicago HD | USA NBC Chicago | NBC Chicago HD
+US - NBC Chicago	I188.20452.gracenote.com	NBC Chicago | US: NBC Chicago HD | USA NBC Chicago | NBC Chicago HD
+US - Telemundo Chicago	I1044.24521.gracenote.com	Telemundo Chicago | US: Telemundo Chicago HD | USA Telemundo Chicago | Telemundo Chicago HD
+US - Telemundo Chicago	I193.24521.gracenote.com	Telemundo Chicago | US: Telemundo Chicago HD | USA Telemundo Chicago | Telemundo Chicago HD
+USA Network	I242.11207.schedulesdirect.org	US: USA Network | US: USA Network HD | USA USA Network | USA Network HD | USA HD
+USA Network East HD	I242.58452.schedulesdirect.org	US: USA Network East HD | USA USA Network East HD | USA Network East | US: USA NETWORK HD | US: USA Network | USA HD
+Ve Plus	I409.102305.schedulesdirect.org	US: Ve Plus | US: Ve Plus HD | USA Ve Plus | Ve Plus HD
+VGN TV	I2031.88484.schedulesdirect.org	US: VGN TV | US: VGN TV HD | USA VGN TV | VGN TV HD
+VH1	I335.11218.schedulesdirect.org	US: VH1 | US: VH1 HD | USA VH1 | VH1 HD
+VH1 HD	I335.60046.schedulesdirect.org	US: VH1 HD | USA VH1 HD | VH1
+Vice	I271.18822.schedulesdirect.org	US: Vice | US: Vice HD | USA Vice | Vice HD
+Vice HD	I271.65732.schedulesdirect.org	US: Vice HD | USA Vice HD | Vice
+Video Rola	I415.25615.schedulesdirect.org	US: Video Rola | US: Video Rola HD | USA Video Rola | Video Rola HD
+VividTV	I585.79566.schedulesdirect.org	US: VividTV | US: VividTV HD | USA VividTV | VividTV HD
+VividTV	I598.79566.schedulesdirect.org	US: VividTV | US: VividTV HD | USA VividTV | VividTV HD
+VME	I440.55250.schedulesdirect.org	US: VME | US: VME HD | USA VME | VME HD
+Wapa	I414.44322.schedulesdirect.org	US: Wapa | US: Wapa HD | USA Wapa | Wapa HD
+WE TV	I260.16409.schedulesdirect.org	US: WE TV | US: WE TV HD | USA WE TV | WE TV HD
+WE tv HD	I260.59296.schedulesdirect.org	US: WE tv HD | USA WE tv HD | WE tv
+WeatherNation	I13.7.113774.gracenote.com	US: WeatherNation | US: WeatherNation HD | USA WeatherNation | WeatherNation HD
+WGN 9 Chicago	I1009.20455.gracenote.com	US: WGN 9 Chicago | US: WGN 9 Chicago HD | USA WGN 9 Chicago | WGN 9 Chicago HD
+WGN 9 Chicago	I192.20455.gracenote.com	US: WGN 9 Chicago | US: WGN 9 Chicago HD | USA WGN 9 Chicago | WGN 9 Chicago HD
+Willow 2	I626.100316.schedulesdirect.org	US: Willow 2 | US: Willow 2 HD | USA Willow 2 | Willow 2 HD
+Willow Cricket HD	I625.80621.schedulesdirect.org	US: Willow Cricket HD | USA Willow Cricket HD | Willow Cricket | US: WILLOW HD | Willow HD
+WINS	I1.91035.schedulesdirect.org	US: WINS | US: WINS HD | USA WINS | WINS HD
+World Fishing Network	I394.63234.gracenote.com	US: World Fishing Network | US: World Fishing Network HD | USA World Fishing Network | World Fishing Network HD
+World Harvest Television	I367.11514.schedulesdirect.org	US: World Harvest Television | US: World Harvest Television HD | USA World Harvest Television | World Harvest Television HD
+Yes Network	I1702.46275.gracenote.com	US: Yes Network | US: Yes Network HD | USA Yes Network | Yes Network HD
+Zona Futbol	I1228.111945.gracenote.com	US: Zona Futbol | US: Zona Futbol HD | USA Zona Futbol | Zona Futbol HD
+Zona Futbol	I3360.111945.gracenote.com	US: Zona Futbol | US: Zona Futbol HD | USA Zona Futbol | Zona Futbol HD
+ZooMoo	I432.97041.schedulesdirect.org	US: ZooMoo | US: ZooMoo HD | USA ZooMoo | ZooMoo HD
