@@ -1,4 +1,6 @@
 5 StarMax	I520.59961.schedulesdirect.org	US: 5 StarMax | US: 5 StarMax HD | USA 5 StarMax | 5 StarMax HD
+88 Films	I2105.78649.schedulesdirect.org	US: 88 Films | US: 88 Films HD | USA 88 Films | 88 Films HD
+88 TV	I2103.78651.schedulesdirect.org	US: 88 TV | US: 88 TV HD | USA 88 TV | 88 TV HD
 A&E	I265.10035.schedulesdirect.org	US: A&E | US: A&E HD | USA A&E | A&E HD
 A&E East HD	I265.51529.schedulesdirect.org	US: A&E East HD | USA A&E East HD | A&E East
 ABC Localish	I1178.35892.gracenote.com	US: ABC Localish | US: ABC Localish HD | USA ABC Localish | ABC Localish HD
@@ -98,7 +100,7 @@ CA - RDI	I125.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | R
 CA - RDI	I1816.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | RDI HD
 CA - RDI	I872.52235.schedulesdirect.org	RDI | US: RDI | US: RDI HD | USA RDI | RDI HD
 CA: RDS	I123.15676.schedulesdirect.org	RDS | US: RDS | US: RDS HD | USA RDS | RDS HD
-CA: RDS 2	I192.73271.schedulesdirect.org	RDS 2 | US: RDS 2 | US: RDS 2 HD | USA RDS 2 | RDS 2 HD
+CA: RDS 2	I192.73271.schedulesdirect.org	US: RDS 2 | US: RDS 2 HD | USA RDS 2 | RDS 2 HD
 CA: RDS 2 HD	I1881.73275.schedulesdirect.org	US: RDS 2 HD | USA RDS 2 HD | RDS 2
 CA: RDS 2 HD	I1899.73275.schedulesdirect.org	US: RDS 2 HD | USA RDS 2 HD | RDS 2
 CA: RDS Info	I124.39080.schedulesdirect.org	RDS Info | US: RDS Info | US: RDS Info HD | USA RDS Info | RDS Info HD
