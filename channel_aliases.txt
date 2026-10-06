@@ -82,10 +82,17 @@ CA - CTV Halifax	I1515.72780.schedulesdirect.org	CTV Halifax | US: CTV Halifax |
 CA - CTV Montreal	I1031.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
 CA - CTV Montreal	I1512.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
 CA - CTV Montreal	I205.65995.schedulesdirect.org	CTV Montreal | US: CTV Montreal | US: CTV Montreal HD | USA CTV Montreal | CTV Montreal HD
+CA - CTV Ottawa	I1041.68025.schedulesdirect.org	CTV Ottawa | US: CTV Ottawa | US: CTV Ottawa HD | USA CTV Ottawa | CTV Ottawa HD
+CA - CTV Ottawa	I1511.68025.schedulesdirect.org	CTV Ottawa | US: CTV Ottawa | US: CTV Ottawa HD | USA CTV Ottawa | CTV Ottawa HD
+CA - CTV Ottawa	I229.68025.schedulesdirect.org	CTV Ottawa | US: CTV Ottawa | US: CTV Ottawa HD | USA CTV Ottawa | CTV Ottawa HD
 CA - CTV Toronto	I1051.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
 CA - CTV Toronto	I1510.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
 CA - CTV Toronto	I212.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
 CA - CTV Toronto	I800.44784.schedulesdirect.org	CTV Toronto | US: CTV Toronto | US: CTV Toronto HD | USA CTV Toronto
+CA - CTV Vancouver	I1151.44786.schedulesdirect.org	CTV Vancouver | US: CTV Vancouver | US: CTV Vancouver HD | USA CTV Vancouver
+CA - CTV Vancouver	I1501.44786.schedulesdirect.org	CTV Vancouver | US: CTV Vancouver | US: CTV Vancouver HD | USA CTV Vancouver
+CA - CTV Vancouver	I250.44786.schedulesdirect.org	CTV Vancouver | US: CTV Vancouver | US: CTV Vancouver HD | USA CTV Vancouver
+CA - CTV Vancouver	I806.44786.schedulesdirect.org	CTV Vancouver | US: CTV Vancouver | US: CTV Vancouver HD | USA CTV Vancouver
 CA - Global News BC	I252.10050.schedulesdirect.org	Global News BC | US: Global News BC | US: Global News BC HD | USA Global News BC | Global News BC HD
 CA - Global News Halifax	I198.17396.schedulesdirect.org	Global News Halifax | US: Global News Halifax | US: Global News Halifax HD | USA Global News Halifax | Global News Halifax HD
 CA - Global News Halifax	I204.17396.schedulesdirect.org	Global News Halifax | US: Global News Halifax | US: Global News Halifax HD | USA Global News Halifax | Global News Halifax HD
@@ -218,11 +225,37 @@ Estrella TV	I442.65064.schedulesdirect.org	US: Estrella TV | US: Estrella TV HD 
 ETBN Enlace USA	I448.33527.schedulesdirect.org	US: ETBN Enlace USA | US: ETBN Enlace USA HD | USA ETBN Enlace USA | ETBN Enlace USA HD
 Eternal Word Television Network	I370.10183.schedulesdirect.org	US: Eternal Word Television Network | US: Eternal Word Television Network HD | USA Eternal Word Television Network | Eternal Word Television Network HD
 Family Movie Classic	I314.122068.schedulesdirect.org	US: Family Movie Classic | US: Family Movie Classic HD | USA Family Movie Classic | Family Movie Classic HD
+Fanduel Sports Network Detroit	I663.71232.gracenote.com	US: Fanduel Sports Network Detroit | US: Fanduel Sports Network Detroit HD | USA Fanduel Sports Network Detroit | Fanduel Sports Network Detroit HD
+Fanduel Sports Network Detroit HD	I663.71234.gracenote.com	US: Fanduel Sports Network Detroit HD | USA Fanduel Sports Network Detroit HD | Fanduel Sports Network Detroit
 Fanduel Sports Network Florida	I1720.50728.gracenote.com	US: Fanduel Sports Network Florida | US: Fanduel Sports Network Florida HD | USA Fanduel Sports Network Florida | Fanduel Sports Network Florida HD
+Fanduel Sports Network Florida	I654.71236.gracenote.com	US: Fanduel Sports Network Florida | US: Fanduel Sports Network Florida HD | USA Fanduel Sports Network Florida | Fanduel Sports Network Florida HD
+Fanduel Sports Network Florida HD	I654.71238.gracenote.com	US: Fanduel Sports Network Florida HD | USA Fanduel Sports Network Florida HD | Fanduel Sports Network Florida
 Fanduel Sports Network Mid West	I1748.50057.gracenote.com	US: Fanduel Sports Network Mid West | US: Fanduel Sports Network Mid West HD | USA Fanduel Sports Network Mid West | Fanduel Sports Network Mid West HD
+Fanduel Sports Network Midwest	I671.71240.gracenote.com	US: Fanduel Sports Network Midwest | US: Fanduel Sports Network Midwest HD | USA Fanduel Sports Network Midwest | Fanduel Sports Network Midwest HD
+Fanduel Sports Network Midwest HD	I671.71244.gracenote.com	US: Fanduel Sports Network Midwest HD | USA Fanduel Sports Network Midwest HD | Fanduel Sports Network Midwest
+Fanduel Sports Network North	I668.71260.gracenote.com	US: Fanduel Sports Network North | US: Fanduel Sports Network North HD | USA Fanduel Sports Network North | Fanduel Sports Network North HD
+Fanduel Sports Network North HD	I668.71264.gracenote.com	US: Fanduel Sports Network North HD | USA Fanduel Sports Network North HD | Fanduel Sports Network North
+Fanduel Sports Network Ohio	I660.101518.gracenote.com	US: Fanduel Sports Network Ohio | US: Fanduel Sports Network Ohio HD | USA Fanduel Sports Network Ohio | Fanduel Sports Network Ohio HD
+Fanduel Sports Network Ohio HD	I660.101522.gracenote.com	US: Fanduel Sports Network Ohio HD | USA Fanduel Sports Network Ohio HD | Fanduel Sports Network Ohio
+Fanduel Sports Network Oklahoma	I675.181304.gracenote.com	US: Fanduel Sports Network Oklahoma | US: Fanduel Sports Network Oklahoma HD | USA Fanduel Sports Network Oklahoma | Fanduel Sports Network Oklahoma HD
+Fanduel Sports Network SoCal	I693.71274.gracenote.com	US: Fanduel Sports Network SoCal | US: Fanduel Sports Network SoCal HD | USA Fanduel Sports Network SoCal | Fanduel Sports Network SoCal HD
+Fanduel Sports Network SoCal HD	I693.71276.gracenote.com	US: Fanduel Sports Network SoCal HD | USA Fanduel Sports Network SoCal HD | Fanduel Sports Network SoCal
 Fanduel Sports Network South	I1724.75970.gracenote.com	US: Fanduel Sports Network South | US: Fanduel Sports Network South HD | USA Fanduel Sports Network South | Fanduel Sports Network South HD
+Fanduel Sports Network South	I646.71286.gracenote.com	US: Fanduel Sports Network South | US: Fanduel Sports Network South HD | USA Fanduel Sports Network South | Fanduel Sports Network South HD
+Fanduel Sports Network South HD	I646.71288.gracenote.com	US: Fanduel Sports Network South HD | USA Fanduel Sports Network South HD | Fanduel Sports Network South
 Fanduel Sports Network South West	I1753.35295.gracenote.com	US: Fanduel Sports Network South West | US: Fanduel Sports Network South West HD | USA Fanduel Sports Network South West | Fanduel Sports Network South West HD
+Fanduel Sports Network Southeast	I649.71268.gracenote.com	US: Fanduel Sports Network Southeast | US: Fanduel Sports Network Southeast HD | USA Fanduel Sports Network Southeast | Fanduel Sports Network Southeast HD
+Fanduel Sports Network Southeast HD	I649.71271.gracenote.com	US: Fanduel Sports Network Southeast HD | USA Fanduel Sports Network Southeast HD | Fanduel Sports Network Southeast
 Fanduel Sports Network Souther California	I1774.59625.gracenote.com	US: Fanduel Sports Network Souther California | US: Fanduel Sports Network Souther California HD | USA Fanduel Sports Network Souther California | Fanduel Sports Network Souther California HD
+Fanduel Sports Network Southwest	I676.71290.gracenote.com	US: Fanduel Sports Network Southwest | US: Fanduel Sports Network Southwest HD | USA Fanduel Sports Network Southwest | Fanduel Sports Network Southwest HD
+Fanduel Sports Network Southwest HD	I676.71292.gracenote.com	US: Fanduel Sports Network Southwest HD | USA Fanduel Sports Network Southwest HD | Fanduel Sports Network Southwest
+Fanduel Sports Network Sun	I653.71262.gracenote.com	US: Fanduel Sports Network Sun | US: Fanduel Sports Network Sun HD | USA Fanduel Sports Network Sun | Fanduel Sports Network Sun HD
+Fanduel Sports Network Sun HD	I653.71266.gracenote.com	US: Fanduel Sports Network Sun HD | USA Fanduel Sports Network Sun HD | Fanduel Sports Network Sun
+Fanduel Sports Network West	I692.71282.gracenote.com	US: Fanduel Sports Network West | US: Fanduel Sports Network West HD | USA Fanduel Sports Network West | Fanduel Sports Network West HD
+Fanduel Sports Network West HD	I692.71284.gracenote.com	US: Fanduel Sports Network West HD | USA Fanduel Sports Network West HD | Fanduel Sports Network West
+Fanduel Sports Network Wisconsin	I669.71253.gracenote.com	US: Fanduel Sports Network Wisconsin | US: Fanduel Sports Network Wisconsin HD | USA Fanduel Sports Network Wisconsin | Fanduel Sports Network Wisconsin HD
+Fanduel Sports Network Wisconsin HD	I669.71258.gracenote.com	US: Fanduel Sports Network Wisconsin HD | USA Fanduel Sports Network Wisconsin HD | Fanduel Sports Network Wisconsin
+Fanduel TV	I602.21345.gracenote.com	US: Fanduel TV | US: Fanduel TV HD | USA Fanduel TV | Fanduel TV HD
 FanDuel TV	I602.21345.schedulesdirect.org	US: FanDuel TV | US: FanDuel TV HD | USA FanDuel TV | FanDuel TV HD
 Fight Network	I388.81448.schedulesdirect.org	US: Fight Network | US: Fight Network HD | USA Fight Network | Fight Network HD
 Film 24h	I2037.105824.schedulesdirect.org	US: Film 24h | US: Film 24h HD | USA Film 24h | Film 24h HD
@@ -279,9 +312,12 @@ Hallmark Movies & Mysteries	I565.46710.schedulesdirect.org	US: Hallmark Movies &
 HBO	I501.10240.schedulesdirect.org	US: HBO | US: HBO HD | USA HBO | HBO HD
 HBO (Pacific)	I504.10244.schedulesdirect.org	US: HBO | US: HBO HD | USA HBO | HBO HD
 HBO Comedy East	I506.59839.schedulesdirect.org	US: HBO Comedy East | US: HBO Comedy East HD | USA HBO Comedy East | HBO Comedy East HD
+HBO Drama	I503.59363.schedulesdirect.org	US: HBO Drama | US: HBO Drama HD | USA HBO Drama | HBO Drama HD
 HBO East	I501.19548.schedulesdirect.org	US: HBO East | US: HBO East HD | USA HBO East | HBO East HD
 HBO East Latino	I511.24553.schedulesdirect.org	US: HBO East Latino | US: HBO East Latino HD | USA HBO East Latino | HBO East Latino HD
 HBO East Latino HD	I511.59837.schedulesdirect.org	US: HBO East Latino HD | USA HBO East Latino HD | HBO East Latino
+HBO Hits	I502.59368.schedulesdirect.org	US: HBO Hits | US: HBO Hits HD | USA HBO Hits | HBO Hits HD
+HBO Movies	I509.59845.schedulesdirect.org	US: HBO Movies | US: HBO Movies HD | USA HBO Movies | HBO Movies HD
 HBO West	I504.19566.schedulesdirect.org	US: HBO West | US: HBO West HD | USA HBO West | HBO West HD
 HDnet Movies	I566.33668.schedulesdirect.org	US: HDnet Movies | US: HDnet Movies HD | USA HDnet Movies | HDnet Movies HD
 Heroes & Icons	I1167.61780.gracenote.com	US: Heroes & Icons | US: Heroes & Icons HD | USA Heroes & Icons | Heroes & Icons HD
@@ -318,6 +354,7 @@ Justice Central	I383.78850.schedulesdirect.org	US: Justice Central | US: Justice
 Kapatid	I2071.75621.schedulesdirect.org	US: Kapatid | US: Kapatid HD | USA Kapatid | Kapatid HD
 KBS World 24	I2085.110950.schedulesdirect.org	US: KBS World 24 | US: KBS World 24 HD | USA KBS World 24 | KBS World 24 HD
 Knowledge Network	I268.14492.schedulesdirect.org	US: Knowledge Network | US: Knowledge Network HD | USA Knowledge Network | Knowledge Network HD
+KTLA 5 Los Angeles	I395.10724.schedulesdirect.org	US: KTLA 5 Los Angeles | US: KTLA 5 Los Angeles HD | USA KTLA 5 Los Angeles | KTLA 5 Los Angeles HD
 Laff	I239.92091.gracenote.com	US: Laff | US: Laff HD | USA Laff | Laff HD
 Life Channel	I335.26768.schedulesdirect.org	US: Life Channel | US: Life Channel HD | USA Life Channel | Life Channel HD
 LifeS	I2086.138912.schedulesdirect.org	US: LifeS | US: LifeS HD | USA LifeS | LifeS HD
@@ -386,6 +423,7 @@ MLS Direct Kick - Direct TV - MLSSO8	I478.60404.schedulesdirect.org	US: MLS Dire
 Monumental Sports Network	I424.32537.gracenote.com	US: Monumental Sports Network | US: Monumental Sports Network HD | USA Monumental Sports Network | Monumental Sports Network HD
 MoreMax	I517.59373.schedulesdirect.org	US: MoreMax | US: MoreMax HD | USA MoreMax | MoreMax HD
 MotorTrend	I281.31046.schedulesdirect.org	US: MotorTrend | US: MotorTrend HD | USA MotorTrend | MotorTrend HD
+MSG Network	I634.80169.gracenote.com	US: MSG Network | US: MSG Network HD | USA MSG Network | MSG Network HD
 MTV	I160.10986.gracenote.com	US: MTV | US: MTV HD | USA MTV | MTV HD
 MTV - Music Television	I331.10986.schedulesdirect.org	US: MTV - Music Television | US: MTV - Music Television HD | USA MTV - Music Television | MTV - Music Television HD
 MTV - Music Television HD	I331.60964.schedulesdirect.org	US: MTV - Music Television HD | USA MTV - Music Television HD | MTV - Music Television
@@ -434,6 +472,7 @@ NBA TV HD	I216.45526.schedulesdirect.org	US: NBA TV HD | USA NBA TV HD | NBA TV 
 NBC East Stream	I9110.109718.schedulesdirect.org	US: NBC East Stream | US: NBC East Stream HD | USA NBC East Stream | NBC East Stream HD
 NBC Sport Network	I619.194412.schedulesdirect.org	US: NBC Sport Network | US: NBC Sport Network HD | USA NBC Sport Network | NBC Sport Network HD
 NBC Sports Bay Area	I419.63138.gracenote.com	US: NBC Sports Bay Area | US: NBC Sports Bay Area HD | USA NBC Sports Bay Area | NBC Sports Bay Area HD
+NBC Sports Boston	I630.71465.gracenote.com	US: NBC Sports Boston | US: NBC Sports Boston HD | USA NBC Sports Boston | NBC Sports Boston HD
 NBC Sports California	I438.73565.gracenote.com	US: NBC Sports California | US: NBC Sports California HD | USA NBC Sports California | NBC Sports California HD
 NBC Universo	I410.14791.schedulesdirect.org	US: NBC Universo | US: NBC Universo HD | USA NBC Universo | NBC Universo HD
 NBC Universo HD	I410.91588.schedulesdirect.org	US: NBC Universo HD | USA NBC Universo HD | NBC Universo
@@ -502,6 +541,7 @@ Paramount+ with Showtime (Pacific)	I546.11117.schedulesdirect.org	US: Paramount+
 Paramount+ with Showtime HD	I545.21868.schedulesdirect.org	US: Paramount+ with Showtime HD | USA Paramount+ with Showtime HD | Paramount+ with Showtime
 Paramount+ with Showtime HD (Pacific)	I546.22532.schedulesdirect.org	US: Paramount+ with Showtime HD | USA Paramount+ with Showtime HD | Paramount+ with Showtime
 Pasiones HD	I444.61776.schedulesdirect.org	US: Pasiones HD | USA Pasiones HD | Pasiones
+PBS Kids	I56.2.45325.gracenote.com	US: PBS Kids | US: PBS Kids HD | USA PBS Kids | PBS Kids HD
 Penthouse TV XX5 Premium	I587.74711.schedulesdirect.org	US: Penthouse TV XX5 Premium | US: Penthouse TV XX5 Premium HD | USA Penthouse TV XX5 Premium | Penthouse TV XX5 Premium HD
 PI KBS World	I2082.53079.schedulesdirect.org	US: PI KBS World | US: PI KBS World HD | USA PI KBS World | PI KBS World HD
 Pixl	I388.70113.gracenote.com	US: Pixl | US: Pixl HD | USA Pixl | Pixl HD
@@ -553,10 +593,14 @@ Showtime Women	I1850.25272.gracenote.com	US: Showtime Women | US: Showtime Women
 Showtime Women	I585.25272.gracenote.com	US: Showtime Women | US: Showtime Women HD | USA Showtime Women | Showtime Women HD
 Slice	I601.15181.schedulesdirect.org	US: Slice | US: Slice HD | USA Slice | Slice HD
 Smithsonian Channel	I570.58532.schedulesdirect.org	US: Smithsonian Channel | US: Smithsonian Channel HD | USA Smithsonian Channel | Smithsonian Channel HD
+SNY SportsNet New York	I639.51654.gracenote.com	US: SNY SportsNet New York | US: SNY SportsNet New York HD | USA SNY SportsNet New York | SNY SportsNet New York HD
 So Yummy	I563.115674.schedulesdirect.org	US: So Yummy | US: So Yummy HD | USA So Yummy | So Yummy HD
 SonLife Broadcasting Network	I344.67676.schedulesdirect.org	US: SonLife Broadcasting Network | US: SonLife Broadcasting Network HD | USA SonLife Broadcasting Network | SonLife Broadcasting Network HD
 SonLife Broadcasting Network HD	I344.91314.schedulesdirect.org	US: SonLife Broadcasting Network HD | USA SonLife Broadcasting Network HD
 Sony Movie Channel HD	I568.69130.schedulesdirect.org	US: Sony Movie Channel HD | USA Sony Movie Channel HD | Sony Movie Channel
+Space City Home Network	I674.178238.gracenote.com	US: Space City Home Network | US: Space City Home Network HD | USA Space City Home Network | Space City Home Network HD
+Spectrum SportsNet	I691.77423.gracenote.com	US: Spectrum SportsNet | US: Spectrum SportsNet HD | USA Spectrum SportsNet | Spectrum SportsNet HD
+Spectrum SportsNet LA	I690.87106.gracenote.com	US: Spectrum SportsNet LA | US: Spectrum SportsNet LA HD | USA Spectrum SportsNet LA | Spectrum SportsNet LA HD
 Sportsman Channel	I605.33930.schedulesdirect.org	US: Sportsman Channel | US: Sportsman Channel HD | USA Sportsman Channel | Sportsman Channel HD
 Sportsnet 360	I1410.49952.schedulesdirect.org	US: Sportsnet 360 | US: Sportsnet 360 HD | USA Sportsnet 360
 Sportsnet 360	I410.49952.schedulesdirect.org	US: Sportsnet 360 | US: Sportsnet 360 HD | USA Sportsnet 360
@@ -606,6 +650,7 @@ TCM US	I256.12852.schedulesdirect.org	US: TCM US | US: TCM US HD | USA TCM US | 
 TCM US HD	I256.64312.schedulesdirect.org	US: TCM US HD | USA TCM US HD | TCM US
 TCT	I377.62881.schedulesdirect.org	US: TCT | US: TCT HD | USA TCT | TCT HD
 Telecentro canal 13	I429.60690.schedulesdirect.org	US: Telecentro canal 13 | US: Telecentro canal 13 HD | USA Telecentro canal 13 | Telecentro canal 13 HD
+Telemundo East	I835.10239.gracenote.com	US: Telemundo East | US: Telemundo East HD | USA Telemundo East | Telemundo East HD
 Telemundo Internacional	I406.77606.schedulesdirect.org	US: Telemundo Internacional | US: Telemundo Internacional HD | USA Telemundo Internacional | Telemundo Internacional HD
 Tennis Channel	I217.33395.schedulesdirect.org	US: Tennis Channel | US: Tennis Channel HD | USA Tennis Channel | Tennis Channel HD | US: Tennis HD
 Tennis Channel HD	I217.60316.schedulesdirect.org	US: Tennis Channel HD | USA Tennis Channel HD | Tennis Channel | US: Tennis HD
