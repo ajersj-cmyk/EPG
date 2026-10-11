@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cave Trivia</title>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/tv.css">
+</head>
+<body>
+<div class="ambient"></div>
+<div class="vignette"></div>
+
+<div class="tv-shell">
+  <header class="tv-top">
+    <div class="wordmark">CAVE TRIVIA<small>THE MAN CAVE LEAGUE</small></div>
+    <div class="tv-meta">
+      <div class="tv-clock" id="clock">--:--</div>
+      <div class="tv-players"><b id="playerCount">0</b> PLAYERS IN</div>
+    </div>
+  </header>
+
+  <main class="tv-stage">
+    <!-- attract / idle -->
+    <section class="phase" id="phase-idle">
+      <div class="attract-inner">
+        <div class="qr-wrap">
+          <div class="eyebrow">Scan to join</div>
+          <div style="height:1.4vmin"></div>
+          <div class="qr-card"><div id="qr"></div></div>
+          <div class="qr-url" id="joinUrl">…</div>
+        </div>
+        <div class="attract-copy">
+          <div class="eyebrow">Always on · All are welcome</div>
+          <h1>The cave's <em>never-ending</em> trivia night.</h1>
+          <div class="fact-box">
+            <div class="fact-kicker">Meanwhile, in the 90s…</div>
+            <div class="fact-text" id="factText"></div>
+          </div>
+          <span class="attract-cta">Grab your phone &amp; play</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- live question -->
+    <section class="phase" id="phase-question">
+      <div class="q-inner">
+        <div class="q-eyebrow">
+          <span class="q-cat" id="qCat">—</span>
+          <span class="q-diff" id="qDiff">—</span>
+          <span class="q-round" id="qRound">—</span>
+        </div>
+        <h2 class="q-text" id="qText"></h2>
+        <div class="q-options" id="qOptions"></div>
+        <div class="q-foot">
+          <div class="q-timerbar"><i id="qTimerFill"></i></div>
+          <div class="q-secs" id="qSecs">20</div>
+          <div class="q-locked"><b id="qLocked">0</b> locked in</div>
+        </div>
+      </div>
+      <div class="corner-join">
+        <div class="qr-card"><div id="qrSmall"></div></div>
+        <span>Scan to join</span>
+      </div>
+    </section>
+
+    <!-- reveal -->
+    <section class="phase" id="phase-reveal">
+      <div class="q-inner">
+        <div class="q-eyebrow">
+          <span class="q-cat" id="rCat">—</span>
+          <span class="q-diff">Answer</span>
+          <span class="q-round" id="rRound">—</span>
+        </div>
+        <h2 class="q-text" id="rText"></h2>
+        <div class="q-options" id="rOptions"></div>
+        <div class="reveal-note" id="rNote"></div>
+        <div class="mini-board" id="rBoard"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="ticker" id="ticker">
+    <div class="ticker-label">Leaderboard</div>
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <footer class="hostbar">
+    <span class="attrib" id="attrib">Questions: Open Trivia DB · the-trivia-api.com · Jeopardy! clues via jservice</span>
+    <span class="spacer"></span>
+    <label class="autopilot" id="apToggle" title="Automatically advance rounds">
+      <span class="pill"></span> Auto-pilot
+    </label>
+    <button class="btn ghost" id="btnReset">Reset</button>
+    <button class="btn ghost" id="btnReveal">Reveal</button>
+    <button class="btn" id="btnNext">Next</button>
+    <button class="btn solid" id="btnStart">Start round</button>
+  </footer>
+</div>
+
+<script src="/lib/qrcode.js"></script>
+<script src="/js/tv.js"></script>
+</body>
+</html>

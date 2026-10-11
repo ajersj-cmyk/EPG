@@ -1,0 +1,175 @@
+/* Cave Trivia — shared design tokens and base.
+   Premium broadcast look: dark refined backdrop, gold/chrome accents,
+   huge readable type. System fonts only (works fully offline on a LAN). */
+
+:root {
+  --bg-0: #07080d;
+  --bg-1: #0d1017;
+  --gold: #d9b45c;
+  --gold-hi: #f2ddab;
+  --gold-deep: #9a7a33;
+  --gold-dim: rgba(217, 180, 92, 0.35);
+  --hairline: rgba(217, 180, 92, 0.18);
+  --ink: #f4efe4;
+  --muted: #9aa0b4;
+  --faint: #5c6172;
+  --card: rgba(255, 255, 255, 0.032);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --serif: Didot, "Bodoni MT", "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-0);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ambient living backdrop: slow-drifting light fields + vignette */
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, #131a28 0%, transparent 60%),
+    radial-gradient(900px 600px at 85% 110%, #101423 0%, transparent 55%),
+    var(--bg-0);
+}
+.ambient::before,
+.ambient::after {
+  content: "";
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+.ambient::before {
+  left: -15vmax;
+  top: -15vmax;
+  background: radial-gradient(circle, #d9b45c 0%, transparent 65%);
+}
+.ambient::after {
+  right: -18vmax;
+  bottom: -18vmax;
+  background: radial-gradient(circle, #3d5a99 0%, transparent 65%);
+  animation-delay: -13s;
+  animation-duration: 32s;
+}
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(6vmax, 4vmax) scale(1.12); }
+}
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* wordmark */
+.wordmark {
+  font-family: var(--serif);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: var(--gold);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.wordmark small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.42em;
+  letter-spacing: 0.5em;
+  color: var(--muted);
+  margin-top: 0.5em;
+  font-weight: 600;
+}
+
+/* eyebrow labels */
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* gold button */
+.btn {
+  appearance: none;
+  border: 1px solid var(--gold-dim);
+  background: linear-gradient(180deg, rgba(217, 180, 92, 0.16), rgba(217, 180, 92, 0.06));
+  color: var(--gold-hi);
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), background 0.18s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(217, 180, 92, 0.22);
+  background: linear-gradient(180deg, rgba(217, 180, 92, 0.24), rgba(217, 180, 92, 0.1));
+}
+.btn:active { transform: translateY(0); }
+.btn.solid {
+  background: linear-gradient(180deg, #e8c877, #c49a45);
+  color: #1a1408;
+  border-color: transparent;
+}
+.btn.ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--muted);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* thin gold rule */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  border: 0;
+}
+
+/* phase transitions */
+.phase {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+.phase.active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient::before, .ambient::after { animation: none; }
+  .phase { transition: opacity 0.2s linear; transform: none; }
+}

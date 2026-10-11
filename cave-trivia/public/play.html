@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join — Cave Trivia</title>
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/play.css">
+</head>
+<body>
+<div class="ambient"></div>
+<div class="vignette"></div>
+
+<div class="play-shell">
+  <header class="play-top">
+    <div class="wordmark">CAVE TRIVIA</div>
+    <div class="play-score" id="scoreBox" hidden>
+      <div class="pts" id="myScore">0</div>
+      <div class="rank" id="myRank">—</div>
+    </div>
+  </header>
+
+  <main class="play-stage">
+    <!-- join -->
+    <section class="phase" id="p-join">
+      <div class="join-hero">
+        <div class="eyebrow">The man cave league</div>
+        <h1>Take your seat<br>in <em>trivia history.</em></h1>
+        <p>Pick a display name. Your record lives on the big board — every point you ever earn counts toward your all-time legend status.</p>
+        <div class="name-field">
+          <input id="nameInput" maxlength="18" placeholder="Your name" autocomplete="nickname" enterkeyhint="go">
+          <button class="btn solid" id="joinBtn">Join the game</button>
+        </div>
+        <div class="join-note">Same name as last time? You'll pick up right where you left off.<br>One device per player keeps it honest.</div>
+      </div>
+    </section>
+
+    <!-- lobby / waiting -->
+    <section class="phase" id="p-lobby">
+      <div class="lobby-card">
+        <div class="eyebrow">You're in</div>
+        <h2>Welcome, <em id="lobbyName">player</em>.</h2>
+        <p id="lobbyMsg">Next question is coming up — keep your eyes on the big screen.</p>
+        <div class="lobby-stats">
+          <div class="stat"><b id="stScore">0</b><span>All-time</span></div>
+          <div class="stat"><b id="stRank">—</b><span>Rank</span></div>
+          <div class="stat"><b id="stCorrect">0</b><span>Correct</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- live question -->
+    <section class="phase" id="p-question">
+      <div class="pq-eyebrow">
+        <span class="pq-cat" id="pqCat">—</span>
+        <span class="pq-diff" id="pqDiff">—</span>
+      </div>
+      <div class="pq-timerbar"><i id="pqTimerFill"></i></div>
+      <h2 class="pq-text" id="pqText"></h2>
+      <div class="pq-options" id="pqOptions"></div>
+    </section>
+
+    <!-- locked in -->
+    <section class="phase" id="p-locked">
+      <div class="status-card">
+        <div class="eyebrow">Answer received</div>
+        <h2>Locked in.</h2>
+        <p>Watch the big screen for the reveal.</p>
+      </div>
+    </section>
+
+    <!-- reveal -->
+    <section class="phase" id="p-reveal">
+      <div class="status-card">
+        <div class="eyebrow" id="rvKicker">The answer</div>
+        <div class="points-pop" id="rvPoints" hidden></div>
+        <h2 id="rvTitle"></h2>
+        <p id="rvSub"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="play-foot">CAVE TRIVIA · THE MAN CAVE LEAGUE</footer>
+</div>
+
+<script src="/js/play.js"></script>
+</body>
+</html>
