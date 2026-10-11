@@ -1,0 +1,73 @@
+name: Cave Trivia tests
+
+on:
+  push:
+    paths:
+      - 'cave-trivia/**'
+      - '.github/workflows/cave-trivia-test.yml'
+  pull_request:
+    paths:
+      - 'cave-trivia/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cave-trivia
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Syntax check all JS
+        run: |
+          for f in server.js server/providers/local.js server/providers/remote.js public/js/tv.js public/js/play.js lib/qrcode.js; do
+            node --check "$f"
+          done
+          echo "syntax OK"
+
+      - name: Validate question banks
+        run: |
+          node --input-type=module -e "
+          import fs from 'fs';
+          const files = ['data/questions.json', 'data/questions-pokemon.json', 'data/questions-disney.json', 'data/questions-parks.json'];
+          const ids = new Set();
+          let total = 0;
+          for (const f of files) {
+            const arr = JSON.parse(fs.readFileSync(f, 'utf8'));
+            for (const q of arr) {
+              if (!q.question || !Array.isArray(q.options) || q.options.length !== 4) throw new Error('bad question in ' + f);
+              if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) throw new Error('bad answer index in ' + f);
+              if (!q.id || ids.has(q.id)) throw new Error('duplicate/missing id in ' + f);
+              ids.add(q.id);
+              total++;
+            }
+          }
+          console.log('banks OK:', total, 'questions');
+          "
+
+      - name: Boot server and smoke test
+        run: |
+          node server.js > /tmp/server.log 2>&1 &
+          SRV=$!
+          trap "kill $SRV 2>/dev/null" EXIT
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:1990/api/state >/dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:1990/ -o /dev/null
+          curl -sf http://127.0.0.1:1990/tv.html -o /dev/null
+          curl -sf http://127.0.0.1:1990/play -o /dev/null
+          echo "pages OK"
+          JOIN=$(curl -sf -X POST http://127.0.0.1:1990/api/join -H 'Content-Type: application/json' -d '{"name":"CI Tester"}')
+          echo "$JOIN" | grep -q '"playerId"' || { echo "join failed"; exit 1; }
+          echo "join OK"
+          START=$(curl -sf -X POST http://127.0.0.1:1990/api/host/start)
+          echo "$START" | grep -q '"text"' || { echo "no question dealt"; exit 1; }
+          echo "live question OK"
+          echo "smoke test OK"
