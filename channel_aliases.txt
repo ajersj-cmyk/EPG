@@ -71,7 +71,7 @@ CA - City TV Montreal	I1033.72895.schedulesdirect.org	City TV Montreal | US: Cit
 CA - CITY TV Toronto	I1053.34200.schedulesdirect.org	CITY TV Toronto | US: CITY TV Toronto | US: CITY TV Toronto HD | USA CITY TV Toronto
 CA - CITY TV Toronto	I803.34200.schedulesdirect.org	CITY TV Toronto | US: CITY TV Toronto | US: CITY TV Toronto HD | USA CITY TV Toronto
 CA - City TV Vancouver	I253.10136.schedulesdirect.org	US: City TV Vancouver | US: City TV Vancouver HD | USA City TV Vancouver | City TV Vancouver HD
-CA - CTV 2	I1054.72705.schedulesdirect.org	US: CTV 2 | US: CTV 2 HD | USA CTV 2 | CTV 2 HD
+CA - CTV 2	I1054.72705.schedulesdirect.org	CTV 2 | US: CTV 2 | US: CTV 2 HD | USA CTV 2 | CTV 2 HD
 CA - CTV 2	I209.10116.schedulesdirect.org	US: CTV 2 | US: CTV 2 HD | USA CTV 2 | CTV 2 HD
 CA - CTV Barrie	I584.10128.schedulesdirect.org	CTV Barrie | US: CTV Barrie | US: CTV Barrie HD | USA CTV Barrie | CTV Barrie HD
 CA - CTV Calgary	I1131.62890.schedulesdirect.org	CTV Calgary | US: CTV Calgary | US: CTV Calgary HD | USA CTV Calgary
@@ -571,7 +571,7 @@ Reality Kings TV	I594.65223.schedulesdirect.org	US: Reality Kings TV | US: Reali
 Reelz Channel	I238.52199.schedulesdirect.org	US: Reelz Channel | US: Reelz Channel HD | USA Reelz Channel | Reelz Channel HD
 Reelz Channel HD	I238.68385.schedulesdirect.org	US: Reelz Channel HD | USA Reelz Channel HD | Reelz Channel
 Revolt HD	I384.83098.schedulesdirect.org	US: Revolt HD | USA Revolt HD | Revolt
-RFD TV HD	I345.63717.schedulesdirect.org	US: RFD TV HD | USA RFD TV HD
+RFD TV HD	I345.63717.schedulesdirect.org	US: RFD TV HD | USA RFD TV HD | RFD TV
 RT International	I722.21063.schedulesdirect.org	US: RT International | US: RT International HD | USA RT International | RT International HD
 Science	I284.16616.schedulesdirect.org	US: Science | US: Science HD | USA Science | Science HD
 Science Channel HD	I284.57390.schedulesdirect.org	US: Science Channel HD | USA Science Channel HD | Science Channel
