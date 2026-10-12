@@ -42,6 +42,8 @@ const BANK = [
   ...loadBank('../../data/questions-pokemon.json'), // Pokémon: games, anime, cards
   ...loadBank('../../data/questions-disney.json'), // Disney animated films (all eras)
   ...loadBank('../../data/questions-parks.json'), // Disney parks: rides, lands, history
+  ...loadBank('../../data/questions-pixar.json'), // Pixar films
+  ...loadBank('../../data/questions-familymovies.json'), // family movies: Disney, DreamWorks, Illumination
   ...loadBank('../../data/questions-video.json'), // video questions (YouTube)
   ...loadBank('../../data/questions-daily.json'), // daily-fresh ingest (quizbowl, pictures, APIs)
 ];
