@@ -37,7 +37,21 @@ function loadBank(rel) {
   }
 }
 
-const BANK = [
+// Drop questions whose local image file is missing (e.g. mashups not yet
+// generated on this host) so the TV never shows a broken image.
+function withValidImages(questions) {
+  const path = require('path');
+  const fs = require('fs');
+  return questions.filter(q => {
+    if (typeof q.image === 'string' && q.image.startsWith('/')) {
+      const full = path.join(__dirname, '..', '..', 'public', q.image.slice(1));
+      if (!fs.existsSync(full)) return false;
+    }
+    return true;
+  });
+}
+
+const BANK = withValidImages([
   ...loadBank('../../data/questions.json'), // core 90s sets: movies, music, tv, sports, games, toys
   ...loadBank('../../data/questions-pokemon.json'), // Pokémon: games, anime, cards
   ...loadBank('../../data/questions-disney.json'), // Disney animated films (all eras)
@@ -47,7 +61,7 @@ const BANK = [
   ...loadBank('../../data/questions-mashups.json'), // celebrity face mashups (Dozen-style)
   ...loadBank('../../data/questions-video.json'), // video questions (YouTube)
   ...loadBank('../../data/questions-daily.json'), // daily-fresh ingest (quizbowl, pictures, APIs)
-];
+]);
 
 function shuffleInPlace(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
