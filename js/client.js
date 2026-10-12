@@ -285,7 +285,18 @@
       } else {
         wb.hidden = true;
       }
-      buildOptions(q.options);
+      var isText = q.answerType === 'text';
+      $('#pqOptions').hidden = isText;
+      $('#pqTextAnswer').hidden = !isText;
+      if (isText) {
+        var ti = $('#pqTextInput');
+        ti.value = '';
+        ti.disabled = false;
+        $('#pqTextSubmit').disabled = false;
+        setTimeout(function () { try { ti.focus(); } catch (e) {} }, 300);
+      } else {
+        buildOptions(q.options);
+      }
     }
     setPhase('question');
   }
@@ -310,6 +321,35 @@
     }).catch(function () {
       toast('Hmm, that didn\u2019t land. Tap again.');
       btns.forEach(function (b) { b.disabled = false; b.classList.remove('picked'); });
+    });
+  }
+
+  function answerText() {
+    if (!playerId || !lastQuestion) return;
+    var qid = lastQuestion.id;
+    if (answeredQid === qid) return;
+    var ti = $('#pqTextInput');
+    var text = ti.value.trim();
+    if (!text) {
+      toast('Type an answer first!');
+      return;
+    }
+    if (serverNow() > (lastQuestion.deadlineTs || 0)) {
+      toast('Too slow \u2014 that question moved on!');
+      return;
+    }
+    ti.disabled = true;
+    $('#pqTextSubmit').disabled = true;
+    refs.player.update({
+      answer: { text: text.slice(0, 120), at: firebase.database.ServerValue.TIMESTAMP },
+      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+    }).then(function () {
+      answeredQid = qid;
+      setPhase('locked');
+    }).catch(function () {
+      toast('Hmm, that didn\u2019t land. Try again.');
+      ti.disabled = false;
+      $('#pqTextSubmit').disabled = false;
     });
   }
 
@@ -499,6 +539,11 @@
     wireJoin();
     $('#wagerSlider').addEventListener('input', updateWagerAmount);
     $('#wagerBtn').addEventListener('click', placeWager);
+    $('#pqTextSubmit').addEventListener('click', answerText);
+    $('#pqTextInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') answerText();
+      e.stopPropagation();
+    });
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
       s.value = Math.floor(Number(s.max) / 2);
