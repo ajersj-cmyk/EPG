@@ -822,3 +822,16 @@ html, body { height: 100%; overflow: hidden; }
   font-size: 0.9rem;
   font-weight: 600;
 }
+
+/* ---- text-input questions ---- */
+.q-text-hint {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: clamp(1.2rem, 3vmin, 2rem);
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  border: 2px dashed var(--gold-dim);
+  border-radius: 1rem;
+  padding: 3vmin;
+  opacity: 0.9;
+}
