@@ -180,7 +180,9 @@
     var doc = {
       id: q.id,
       text: q.question,
-      options: q.options.slice(),
+      options: E.isTextQuestion(q) ? [] : q.options.slice(),
+      answerType: E.isTextQuestion(q) ? 'text' : 'choice',
+      answerText: E.isTextQuestion(q) ? E.answerTextOf(q) : null,
       category: q.category,
       difficulty: q.difficulty,
       image: q.image || null,
@@ -314,7 +316,9 @@
       var p = players[pid];
       var a = p.answer;
       var wager = (cq.wagers && cq.wagers[pid]) || 0;
-      if (!a || typeof a.choice !== 'number') {
+      var isTextQ = E.isTextQuestion(q);
+      var hasAnswer = a && (isTextQ ? (typeof a.text === 'string' && a.text.trim() !== '') : (typeof a.choice === 'number'));
+      if (!hasAnswer) {
         // wagered but never answered: lose the wager
         if (cq.isWager && wager > 0) {
           var ns = E.clampScore((p.score || 0) - wager);
@@ -327,10 +331,18 @@
         return;
       }
       answeredCount += 1;
-      var r = E.scoreAnswer({
-        difficulty: q.difficulty, choice: a.choice, correctIndex: q.answer,
+      var scoreArgs = {
+        difficulty: q.difficulty,
         answeredAt: a.at, deadlineTs: cq.deadlineTs, seconds: cq.seconds, wager: wager,
-      });
+      };
+      if (isTextQ) {
+        var correctText = q.answerText || q.options[q.answer] || '';
+        scoreArgs.textCorrect = E.normText(a.text) === E.normText(correctText);
+      } else {
+        scoreArgs.choice = a.choice;
+        scoreArgs.correctIndex = q.answer;
+      }
+      var r = E.scoreAnswer(scoreArgs);
       var delta = r.points;
       var newScore, newBlock;
       if (r.correct) {
@@ -357,9 +369,11 @@
     results.sort(function (a, b) { return b.delta - a.delta; });
 
     db.ref().update(upd).then(function () {
+      var isTextQ = E.isTextQuestion(q);
       return refs.reveal.set({
-        correctIndex: q.answer,
-        correctText: q.options[q.answer],
+        correctIndex: isTextQ ? -1 : q.answer,
+        correctText: isTextQ ? (q.answerText || q.options[q.answer] || '') : q.options[q.answer],
+        answerType: q.answerType || 'choice',
         ts: firebase.database.ServerValue.TIMESTAMP,
         isWager: cq.isWager,
         answeredCount: answeredCount,
@@ -610,7 +624,12 @@
       $('#qDiff').textContent = q.difficulty || '';
       $('#qWagerBadge').hidden = !q.isWager;
       $('#qText').textContent = q.text;
-      buildOptions($('#qOptions'), q.options, -1, false);
+      if (q.answerType === 'text') {
+        var box = $('#qOptions');
+        box.innerHTML = '<div class="q-text-hint">TYPE YOUR ANSWER ON YOUR PHONE</div>';
+      } else {
+        buildOptions($('#qOptions'), q.options, -1, false);
+      }
       media.classList.remove('bleed');
       img.removeAttribute('src');
       frame.hidden = true;
@@ -630,7 +649,10 @@
     }
     // locked-in count, computed locally from the players mirror
     var locked = Object.keys(players).filter(function (pid) {
-      return players[pid].answer && typeof players[pid].answer.choice === 'number';
+      var a = players[pid].answer;
+      if (!a) return false;
+      if (q.answerType === 'text') return typeof a.text === 'string' && a.text.trim() !== '';
+      return typeof a.choice === 'number';
     }).length;
     $('#qLocked').textContent = locked;
   }
@@ -643,7 +665,11 @@
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
     $('#rText').textContent = qd.text || '';
-    buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
+    if (r.answerType === 'text') {
+      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+    } else {
+      buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
+    }
     $('#rNote').innerHTML = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
       '</b> answered correctly &mdash; ' + E.escapeHtml(r.correctText || '');
     var list = $('#rResults');
