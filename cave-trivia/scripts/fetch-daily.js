@@ -137,48 +137,99 @@ function tossupGiveaway(text) {
   return '⚡ ' + chunk;
 }
 
-async function fetchQuizbowl(n, log) {
+// Shared tossup -> MCQ converter. `catFn` maps a tossup to our category;
+// `poolFn` (optional) picks the distractor pool — defaults to catFn.
+function convertTossups(tossups, n, idPrefix, catFn, log, label, poolFn) {
   const out = [];
+  const poolKey = poolFn || catFn;
+  const clean = tossups.filter((t) => {
+    const a = cleanAnswer(t.answer_sanitized || t.answer);
+    return a && a.length >= 2 && a.length <= 60 && !/[*_<>]/.test(a);
+  });
+  const byCat = {};
+  const allAnswers = [];
+  for (const t of clean) {
+    const a = cleanAnswer(t.answer_sanitized || t.answer);
+    const c = poolKey(t.subcategory, t.category);
+    (byCat[c] = byCat[c] || []).push(a);
+    allAnswers.push(a);
+  }
+  for (const t of clean) {
+    if (out.length >= n) break;
+    const answer = cleanAnswer(t.answer_sanitized || t.answer);
+    const cat = catFn(t.subcategory, t.category);
+    // same-flavor distractors first, then top up from the broader pool
+    const fine = (byCat[poolKey(t.subcategory, t.category)] || []).filter((a) => norm(a) !== norm(answer));
+    shuffleInPlace(fine);
+    const broad = shuffleInPlace(allAnswers.filter((a) => norm(a) !== norm(answer) && !fine.includes(a)));
+    const distract = [...fine, ...broad].slice(0, 3);
+    if (distract.length < 3) continue;
+    const options = shuffleInPlace([answer, ...distract]);
+    out.push({
+      id: idPrefix + hashStr(answer + t.question_sanitized),
+      category: cat,
+      difficulty: t.difficulty <= 2 ? 'easy' : t.difficulty === 3 ? 'medium' : 'hard',
+      question: tossupGiveaway(t.question_sanitized || t.question),
+      options,
+      answer: options.indexOf(answer),
+      kid_safe: true,
+      source: 'quizbowl',
+    });
+  }
+  log('  ' + label + ': ' + out.length + ' converted');
+  return out;
+}
+
+async function fetchQuizbowl(n, log) {
   try {
     const data = await fetchJson(
       'https://www.qbreader.org/api/random-tossup?number=' + Math.min(100, n + 20) + '&difficulties=1,2,3,4'
     );
-    const tossups = (data.tossups || []).filter((t) => {
-      const a = cleanAnswer(t.answer_sanitized || t.answer);
-      return a && a.length >= 2 && a.length <= 60 && !/[*_<>]/.test(a);
-    });
-    // distractor pool: answers grouped loosely by category
-    const byCat = {};
-    for (const t of tossups) {
-      const c = qbCategory(t.subcategory, t.category);
-      (byCat[c] = byCat[c] || []).push(cleanAnswer(t.answer_sanitized || t.answer));
-    }
-    let i = 0;
-    for (const t of tossups) {
-      if (out.length >= n) break;
-      const answer = cleanAnswer(t.answer_sanitized || t.answer);
-      const cat = qbCategory(t.subcategory, t.category);
-      const pool = (byCat[cat] || []).filter((a) => norm(a) !== norm(answer));
-      if (pool.length < 3) continue;
-      shuffleInPlace(pool);
-      const options = shuffleInPlace([answer, ...pool.slice(0, 3)]);
-      out.push({
-        id: 'daily-qb-' + hashStr(answer + t.question_sanitized),
-        category: cat,
-        difficulty: t.difficulty <= 2 ? 'easy' : t.difficulty === 3 ? 'medium' : 'hard',
-        question: tossupGiveaway(t.question_sanitized || t.question),
-        options,
-        answer: options.indexOf(answer),
-        kid_safe: true,
-        source: 'quizbowl',
-      });
-      i++;
-    }
-    log('  quizbowl: ' + out.length + ' converted');
+    return convertTossups(data.tossups || [], n, 'daily-qb-', qbCategory, log, 'quizbowl');
   } catch (e) {
     log('  quizbowl FAILED: ' + e.message);
+    return [];
   }
-  return out;
+}
+
+// Dozen-flavor goldmine: quizbowl's "Pop Culture" category is human-written
+// sports / movies / TV / music / pop-culture questions. We over-fetch and
+// filter client-side since Pop Culture is a small slice of the database.
+const POP_CULTURE_MAP = [
+  [/sport|football|baseball|basketball|hockey|soccer|olympic|wrestling|golf|tennis/i, 'sports'],
+  [/film|movie|cinema/i, 'movies'],
+  [/television|^tv$|sitcom/i, 'tv'],
+  [/music|song|band|album|rapper/i, 'music'],
+  [/video ?game|gaming/i, 'games'],
+  [/comic|superhero/i, 'toons'],
+];
+
+function popCultureCategory(subcat) {
+  const s = subcat || '';
+  for (const [re, slug] of POP_CULTURE_MAP) if (re.test(s)) return slug;
+  return 'mixed';
+}
+
+async function fetchQuizbowlPopCulture(n, log) {
+  try {
+    const all = [];
+    // Pop Culture is ~5-10% of the db; pull 2x100 and filter
+    for (let r = 0; r < 2; r++) {
+      const data = await fetchJson(
+        'https://www.qbreader.org/api/random-tossup?number=100&difficulties=1,2,3'
+      );
+      all.push(...(data.tossups || []));
+      await sleep(800);
+    }
+    const pop = all.filter((t) => t.category === 'Pop Culture');
+    log('  pop-culture: ' + pop.length + ' candidates from ' + all.length + ' tossups');
+    // distractors pooled across all pop culture (same flavor); the question
+    // keeps its fine-grained sports/movies/tv/music category
+    return convertTossups(pop, n, 'daily-qbpop-', popCultureCategory, log, 'quizbowl-pop', () => 'pop');
+  } catch (e) {
+    log('  quizbowl-pop FAILED: ' + e.message);
+    return [];
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -317,12 +368,14 @@ async function main() {
   const fresh = [];
   const seen = new Set();
 
-  const nQb = Math.round(TARGET * 0.5);
-  const nPic = Math.round(TARGET * 0.3);
-  const nOtdb = TARGET - nQb - nPic;
+  const nQb = Math.round(TARGET * 0.35);
+  const nPop = Math.round(TARGET * 0.3);
+  const nPic = Math.round(TARGET * 0.2);
+  const nOtdb = TARGET - nQb - nPop - nPic;
 
   const batches = await Promise.all([
     fetchQuizbowl(nQb, log),
+    fetchQuizbowlPopCulture(nPop, log),
     fetchPictures(nPic, log),
     fetchOTDB(nOtdb, log),
   ]);
