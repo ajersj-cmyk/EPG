@@ -1,1 +1,204 @@
-LyogQ2F2ZSBUcml2aWEgKHdlYikg4oCUIHNoYXJlZCBnYW1lIGVuZ2luZS4KICAgR2FtZSBwYXJhbWV0ZXJzIGFyZSBwb3J0ZWQgMToxIGZyb20gc2VydmVyLmpzLiBObyBGaXJlYmFzZSBoZXJlOwogICBwdXJlIGxvZ2ljIHNvIFRWIGhvc3QgYW5kIHBob25lIGNsaWVudCBzaGFyZSB0aGUgc2FtZSBydWxlcy4gKi8KKGZ1bmN0aW9uICgpIHsKICAndXNlIHN0cmljdCc7CgogIC8vIC0tLS0gZXhhY3QgcGFyYW1ldGVycyBmcm9tIHNlcnZlci5qcyAtLS0tCiAgdmFyIFFVRVNUSU9OX1NFQ09ORFMgPSAyMDsKICB2YXIgVklERU9fUVVFU1RJT05fU0VDT05EUyA9IDMwOwogIHZhciBXQUdFUl9TRUNPTkRTID0gMTU7ICAgICAgIC8vIEZpbmFsLUplb3BhcmR5IHN0eWxlIHdhZ2VyIHdpbmRvdwogIHZhciBXQUdFUl9SRVZFQUxfU0VDT05EUyA9IDEyOwogIHZhciBSRVZFQUxfU0VDT05EUyA9IDg7ICAgICAgIC8vIGF1dG9waWxvdCBwYXVzZSBvbiByZXZlYWwgYmVmb3JlIG5leHQgUQogIHZhciBQT0RJVU1fU0VDT05EUyA9IDg7CiAgdmFyIEJMT0NLX1NJWkUgPSAxMDsgICAgICAgICAgLy8gZXZlcnkgMTB0aCBxdWVzdGlvbiBvZiBhIGJsb2NrIGlzIHRoZSB3YWdlciByb3VuZAogIHZhciBCQVNFX1BPSU5UUyA9IHsgZWFzeTogMTAwLCBtZWRpdW06IDIwMCwgaGFyZDogMzAwIH07CiAgdmFyIFNQRUVEX0JPTlVTX01BWCA9IDEwMDsKICB2YXIgVklERU9fRFJBV19DSEFOQ0UgPSAwLjEyOwoKICB2YXIgQkFOS19XRUlHSFRTID0gewogICAgc3BvcnRzOiAzLCBnYW1lczogMywgcG9rZW1vbjogMywKICAgIGRpc25leTogMi41LCBwaXhhcjogMi41LCBwYXJrczogMiwgamVvcGFyZHk6IDIuNSwKICAgIG1vdmllczogMS41LCB0djogMS41LCBtdXNpYzogMS41LCB0b29uczogMS41LAogICAgdG95czogMSwgbWl4ZWQ6IDEsCiAgfTsKICB2YXIgQUxMX0NBVFMgPSBbJ21vdmllcycsICdtdXNpYycsICd0dicsICdzcG9ydHMnLCAnZ2FtZXMnLCAndG95cycsICdwb2tlbW9uJywKICAgICdkaXNuZXknLCAncGl4YXInLCAncGFya3MnLCAndG9vbnMnLCAnamVvcGFyZHknLCAnbWl4ZWQnXTsKCiAgdmFyIEZBTUlMWV9CTE9DSyA9IC9cYihkYW1ufGJpdGNofGJhc3RhcmR8c2hpdHxmdWNrfHBvcm58bnVkZXxuYWtlZHxjb2NhaW5lfG1hcmlqdWFuYXx3aG9yZXxzbHV0KVxiL2k7CgogIC8vIC0tLS0gaGVscGVycyAtLS0tCgogIGZ1bmN0aW9uIHNodWZmbGVJblBsYWNlKGEpIHsKICAgIGZvciAodmFyIGkgPSBhLmxlbmd0aCAtIDE7IGkgPiAwOyBpLS0pIHsKICAgICAgdmFyIGogPSBNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiAoaSArIDEpKTsKICAgICAgdmFyIHQgPSBhW2ldOyBhW2ldID0gYVtqXTsgYVtqXSA9IHQ7CiAgICB9CiAgICByZXR1cm4gYTsKICB9CgogIGZ1bmN0aW9uIGZhbWlseU9rKHEsIGZhbWlseU1vZGUpIHsKICAgIGlmICghZmFtaWx5TW9kZSkgcmV0dXJuIHRydWU7CiAgICBpZiAocS5raWRfc2FmZSA9PT0gZmFsc2UpIHJldHVybiBmYWxzZTsKICAgIGlmIChGQU1JTFlfQkxPQ0sudGVzdChxLnF1ZXN0aW9uICsgJyAnICsgKHEub3B0aW9ucyB8fCBbXSkuam9pbignICcpKSkgcmV0dXJuIGZhbHNlOwogICAgcmV0dXJuIHRydWU7CiAgfQoKICBmdW5jdGlvbiBsb2FkQmFuaygpIHsKICAgIHZhciBwYXJ0cyA9IFsnZGF0YS9xdWVzdGlvbnMtMS5qc29uJywgJ2RhdGEvcXVlc3Rpb25zLTIuanNvbicsCiAgICAgICAgICAgICAgICAgJ2RhdGEvcXVlc3Rpb25zLTMuanNvbicsICdkYXRhL3F1ZXN0aW9ucy00Lmpzb24nXTsKICAgIHJldHVybiBQcm9taXNlLmFsbChwYXJ0cy5tYXAoZnVuY3Rpb24gKHUpIHsKICAgICAgcmV0dXJuIGZldGNoKHUpLnRoZW4oZnVuY3Rpb24gKHIpIHsKICAgICAgICBpZiAoIXIub2spIHRocm93IG5ldyBFcnJvcigncXVlc3Rpb24gYmFuayBmYWlsZWQgdG8gbG9hZDogJyArIHUpOwogICAgICAgIHJldHVybiByLmpzb24oKTsKICAgICAgfSk7CiAgICB9KSkudGhlbihmdW5jdGlvbiAoY2h1bmtzKSB7CiAgICAgIHJldHVybiBbXS5jb25jYXQuYXBwbHkoW10sIGNodW5rcyk7CiAgICB9KTsKICB9CgogIGZ1bmN0aW9uIGRyYXdCYW5rUXVlc3Rpb24oYmFuaywgYXZvaWRDYXRzLCBhc2tlZElkcywgZGlzYWJsZWQsIGZhbWlseU1vZGUpIHsKICAgIHZhciBkaXMgPSB7fTsKICAgIChkaXNhYmxlZCB8fCBbXSkuZm9yRWFjaChmdW5jdGlvbiAoYykgeyBkaXNbY10gPSB0cnVlOyB9KTsKICAgIC8vIE9ubHkgY29uc2lkZXIgY2F0ZWdvcmllcyB0aGF0IHN0aWxsIGhhdmUgZHJhd2FibGUgcXVlc3Rpb25zLiAoVGhlIE5vZGUKICAgIC8vIHNlcnZlciBjb3VsZCBmYWxsIGJhY2sgdG8gbGl2ZSBBUEkgcHJvdmlkZXJzIHdoZW4gYSBzbWFsbCBjYXRlZ29yeSByYW4KICAgIC8vIGRyeTsgdGhlIHN0YXRpYyB3ZWIgYnVpbGQgaGFzIG5vIHN1Y2ggc2FmZXR5IG5ldCwgc28gd2UgY2hlY2sgZmlyc3QuKQogICAgdmFyIGNhdHMgPSBPYmplY3Qua2V5cyhCQU5LX1dFSUdIVFMpLmZpbHRlcihmdW5jdGlvbiAoYykgewogICAgICBpZiAoYXZvaWRDYXRzW2NdIHx8IGRpc1tjXSkgcmV0dXJuIGZhbHNlOwogICAgICBmb3IgKHZhciBpID0gMDsgaSA8IGJhbmsubGVuZ3RoOyBpKyspIHsKICAgICAgICB2YXIgcSA9IGJhbmtbaV07CiAgICAgICAgaWYgKHEuY2F0ZWdvcnkgPT09IGMgJiYgIWFza2VkSWRzW3EuaWRdICYmIGZhbWlseU9rKHEsIGZhbWlseU1vZGUpKSByZXR1cm4gdHJ1ZTsKICAgICAgfQogICAgICByZXR1cm4gZmFsc2U7CiAgICB9KTsKICAgIGlmICghY2F0cy5sZW5ndGgpIHJldHVybiBudWxsOwogICAgdmFyIHRvdGFsID0gY2F0cy5yZWR1Y2UoZnVuY3Rpb24gKHMsIGMpIHsgcmV0dXJuIHMgKyBCQU5LX1dFSUdIVFNbY107IH0sIDApOwogICAgdmFyIHIgPSBNYXRoLnJhbmRvbSgpICogdG90YWwsIHBpY2sgPSBjYXRzWzBdOwogICAgZm9yICh2YXIgaiA9IDA7IGogPCBjYXRzLmxlbmd0aDsgaisrKSB7CiAgICAgIHIgLT0gQkFOS19XRUlHSFRTW2NhdHNbal1dOwogICAgICBpZiAociA8PSAwKSB7IHBpY2sgPSBjYXRzW2pdOyBicmVhazsgfQogICAgfQogICAgdmFyIHBvb2wgPSBiYW5rLmZpbHRlcihmdW5jdGlvbiAocSkgewogICAgICByZXR1cm4gcS5jYXRlZ29yeSA9PT0gcGljayAmJiAhYXNrZWRJZHNbcS5pZF0gJiYgZmFtaWx5T2socSwgZmFtaWx5TW9kZSk7CiAgICB9KTsKICAgIGlmICghcG9vbC5sZW5ndGgpIHJldHVybiBudWxsOwogICAgcmV0dXJuIHBvb2xbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogcG9vbC5sZW5ndGgpXTsKICB9CgogIC8vIE1pcnJvciBvZiBzZXJ2ZXIuanMgZHJhd1F1ZXN0aW9uKCk6IH4xLWluLTggdmlkZW8gZHJhd3MsIG5vIGNhdGVnb3J5IHJ1bnMsCiAgLy8gd2VpZ2h0ZWQgYmFuayBwaWNrcywgZGlzYWJsZWQtY2F0ZWdvcnkgKyBmYW1pbHkgZmlsdGVycywgYXNrZWQtaWQgdHJhY2tpbmcuCiAgLy8gb3B0czogeyBiYW5rLCBhc2tlZElkcyAob2JqZWN0IG1hcCksIHJlY2VudENhdHMgKGFycmF5KSwgZGlzYWJsZWRDYXRzLCBmYW1pbHlNb2RlIH0KICAvLyBSZXR1cm5zIHsgcSwgYXNrZWRJZHMsIHJlY2VudENhdHMgfSBvciBudWxsLgogIGZ1bmN0aW9uIGRyYXdRdWVzdGlvbihvcHRzKSB7CiAgICB2YXIgYmFuayA9IG9wdHMuYmFuaywgYXNrZWRJZHMgPSBvcHRzLmFza2VkSWRzIHx8IHt9LCByZWNlbnRDYXRzID0gb3B0cy5yZWNlbnRDYXRzIHx8IFtdOwogICAgdmFyIGRpc2FibGVkID0gb3B0cy5kaXNhYmxlZENhdHMgfHwgW10sIGZhbWlseU1vZGUgPSAhIW9wdHMuZmFtaWx5TW9kZTsKCiAgICBmdW5jdGlvbiByZWNlbnRTZXQobikgewogICAgICB2YXIgcyA9IHt9OwogICAgICByZWNlbnRDYXRzLnNsaWNlKC1uKS5mb3JFYWNoKGZ1bmN0aW9uIChjKSB7IHNbY10gPSB0cnVlOyB9KTsKICAgICAgcmV0dXJuIHM7CiAgICB9CgogICAgLy8gaGVhZGxpbmUgdmlkZW8gZHJhd3MgKH4xIGluIDgpCiAgICBpZiAoTWF0aC5yYW5kb20oKSA8IFZJREVPX0RSQVdfQ0hBTkNFICYmICFyZWNlbnRTZXQoMykuZGlzbmV5KSB7CiAgICAgIHZhciB2aWRzID0gYmFuay5maWx0ZXIoZnVuY3Rpb24gKHEpIHsKICAgICAgICByZXR1cm4gcS52aWRlbyAmJiAhYXNrZWRJZHNbcS5pZF0gJiYgZmFtaWx5T2socSwgZmFtaWx5TW9kZSk7CiAgICAgIH0pOwogICAgICBpZiAodmlkcy5sZW5ndGgpIHsKICAgICAgICB2YXIgdiA9IHZpZHNbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogdmlkcy5sZW5ndGgpXTsKICAgICAgICBhc2tlZElkc1t2LmlkXSA9IHRydWU7CiAgICAgICAgcmVjZW50Q2F0cy5wdXNoKHYuY2F0ZWdvcnkpOwogICAgICAgIHJldHVybiB7IHE6IHYsIGFza2VkSWRzOiBhc2tlZElkcywgcmVjZW50Q2F0czogcmVjZW50Q2F0cyB9OwogICAgICB9CiAgICB9CgogICAgZm9yICh2YXIgYXR0ZW1wdCA9IDA7IGF0dGVtcHQgPCAxMjsgYXR0ZW1wdCsrKSB7CiAgICAgIHZhciBhdm9pZCA9IHJlY2VudFNldCgzKTsKICAgICAgdmFyIHEgPSBkcmF3QmFua1F1ZXN0aW9uKGJhbmssIGF2b2lkLCBhc2tlZElkcywgZGlzYWJsZWQsIGZhbWlseU1vZGUpCiAgICAgICAgfHwgZHJhd0JhbmtRdWVzdGlvbihiYW5rLCB7fSwgYXNrZWRJZHMsIGRpc2FibGVkLCBmYW1pbHlNb2RlKTsKICAgICAgaWYgKCFxKSBicmVhazsKICAgICAgaWYgKGZhbWlseU9rKHEsIGZhbWlseU1vZGUpKSB7CiAgICAgICAgYXNrZWRJZHNbcS5pZF0gPSB0cnVlOwogICAgICAgIHJlY2VudENhdHMucHVzaChxLmNhdGVnb3J5KTsKICAgICAgICBpZiAocmVjZW50Q2F0cy5sZW5ndGggPiA4KSByZWNlbnRDYXRzID0gcmVjZW50Q2F0cy5zbGljZSgtOCk7CiAgICAgICAgcmV0dXJuIHsgcTogcSwgYXNrZWRJZHM6IGFza2VkSWRzLCByZWNlbnRDYXRzOiByZWNlbnRDYXRzIH07CiAgICAgIH0KICAgICAgYXNrZWRJZHNbcS5pZF0gPSB0cnVlOyAvLyByZWplY3RlZCDigJQgYnVybiB0aGUgaWQgc28gd2UgZG9uJ3QgbG9vcCBvbiBpdAogICAgfQogICAgcmV0dXJuIG51bGw7CiAgfQoKICAvLyBNaXJyb3Igb2Ygc2VydmVyLmpzIHJldmVhbFF1ZXN0aW9uKCkgc2NvcmluZyBmb3Igb25lIGFuc3dlci4KICAvLyBhcmdzOiB7IGRpZmZpY3VsdHksIGNob2ljZSwgY29ycmVjdEluZGV4LCBhbnN3ZXJlZEF0LCBkZWFkbGluZVRzLCBzZWNvbmRzLCB3YWdlciB9CiAgLy8gcmV0dXJucyB7IGNvcnJlY3QsIHBvaW50cyB9IHdoZXJlIHBvaW50cyBtYXkgYmUgbmVnYXRpdmUgKGxvc3Qgd2FnZXIpLgogIGZ1bmN0aW9uIHNjb3JlQW5zd2VyKGEpIHsKICAgIHZhciB0b3RhbCA9IGEuc2Vjb25kcyAqIDEwMDA7CiAgICB2YXIgd2FnZXIgPSBhLndhZ2VyIHx8IDA7CiAgICBpZiAoYS5jaG9pY2UgPT09IGEuY29ycmVjdEluZGV4KSB7CiAgICAgIHZhciBzcGVlZCA9IE1hdGgubWF4KDAsIE1hdGgubWluKDEsIChhLmRlYWRsaW5lVHMgLSBhLmFuc3dlcmVkQXQpIC8gdG90YWwpKTsKICAgICAgdmFyIHB0cyA9IChCQVNFX1BPSU5UU1thLmRpZmZpY3VsdHldIHx8IDEwMCkgKyBNYXRoLnJvdW5kKFNQRUVEX0JPTlVTX01BWCAqIHNwZWVkKTsKICAgICAgaWYgKHdhZ2VyID4gMCkgcHRzICs9IHdhZ2VyOwogICAgICByZXR1cm4geyBjb3JyZWN0OiB0cnVlLCBwb2ludHM6IHB0cyB9OwogICAgfQogICAgaWYgKHdhZ2VyID4gMCkgcmV0dXJuIHsgY29ycmVjdDogZmFsc2UsIHBvaW50czogLXdhZ2VyIH07CiAgICByZXR1cm4geyBjb3JyZWN0OiBmYWxzZSwgcG9pbnRzOiAwIH07CiAgfQoKICBmdW5jdGlvbiBjbGFtcFNjb3JlKHMpIHsgcmV0dXJuIE1hdGgubWF4KDAsIHMpOyB9CgogIC8vIExlYWRlcmJvYXJkIHJvd3MgZnJvbSBhIHBsYXllcnMgbWFwLiBtb2RlOiAnYWxsJyB8ICdibG9jaycuCiAgZnVuY3Rpb24gbGVhZGVyYm9hcmQocGxheWVycywgbW9kZSkgewogICAgdmFyIHJvd3MgPSBPYmplY3Qua2V5cyhwbGF5ZXJzIHx8IHt9KS5tYXAoZnVuY3Rpb24gKGlkKSB7CiAgICAgIHZhciBwID0gcGxheWVyc1tpZF07CiAgICAgIHJldHVybiB7CiAgICAgICAgaWQ6IGlkLAogICAgICAgIG5hbWU6IHAubmFtZSwKICAgICAgICBzY29yZTogbW9kZSA9PT0gJ2Jsb2NrJyA/IChwLmJsb2NrU2NvcmUgfHwgMCkgOiAocC5zY29yZSB8fCAwKSwKICAgICAgICBjb3JyZWN0OiBwLmNvcnJlY3QgfHwgMCwKICAgICAgfTsKICAgIH0pOwogICAgcm93cy5zb3J0KGZ1bmN0aW9uIChhLCBiKSB7CiAgICAgIHJldHVybiBiLnNjb3JlIC0gYS5zY29yZSB8fCBTdHJpbmcoYS5uYW1lKS5sb2NhbGVDb21wYXJlKFN0cmluZyhiLm5hbWUpKTsKICAgIH0pOwogICAgcmV0dXJuIHJvd3M7CiAgfQoKICBmdW5jdGlvbiBzYW5pdGl6ZU5hbWUobikgewogICAgcmV0dXJuIFN0cmluZyhuIHx8ICcnKS50cmltKCkucmVwbGFjZSgvWzw+JiInXS9nLCAnJykuc2xpY2UoMCwgMTgpOwogIH0KCiAgZnVuY3Rpb24gZm10Q2F0ZWdvcnkoYykgeyByZXR1cm4gU3RyaW5nKGMgfHwgJycpLnJlcGxhY2UoLy0vZywgJyAnKS50b1VwcGVyQ2FzZSgpOyB9CiAgZnVuY3Rpb24gZm10TnVtKG4pIHsgcmV0dXJuIE51bWJlcihuIHx8IDApLnRvTG9jYWxlU3RyaW5nKCdlbi1VUycpOyB9CiAgZnVuY3Rpb24gZm10RGVsdGEoZCkgeyBkID0gTnVtYmVyKGQgfHwgMCk7IHJldHVybiAoZCA+IDAgPyAnKycgOiAnJykgKyBmbXROdW0oZCk7IH0KICBmdW5jdGlvbiBlc2NhcGVIdG1sKHMpIHsKICAgIHJldHVybiBTdHJpbmcocykucmVwbGFjZSgvWyY8PiInXS9nLCBmdW5jdGlvbiAoYykgewogICAgICByZXR1cm4geyAnJic6ICcmYW1wOycsICc8JzogJyZsdDsnLCAnPic6ICcmZ3Q7JywgJyInOiAnJnF1b3Q7JywgIiciOiAnJiMzOTsnIH1bY107CiAgICB9KTsKICB9CgogIHdpbmRvdy5DVCA9IHdpbmRvdy5DVCB8fCB7fTsKICB3aW5kb3cuQ1QuZW5naW5lID0gewogICAgUVVFU1RJT05fU0VDT05EUzogUVVFU1RJT05fU0VDT05EUywKICAgIFZJREVPX1FVRVNUSU9OX1NFQ09ORFM6IFZJREVPX1FVRVNUSU9OX1NFQ09ORFMsCiAgICBXQUdFUl9TRUNPTkRTOiBXQUdFUl9TRUNPTkRTLAogICAgV0FHRVJfUkVWRUFMX1NFQ09ORFM6IFdBR0VSX1JFVkVBTF9TRUNPTkRTLAogICAgUkVWRUFMX1NFQ09ORFM6IFJFVkVBTF9TRUNPTkRTLAogICAgUE9ESVVNX1NFQ09ORFM6IFBPRElVTV9TRUNPTkRTLAogICAgQkxPQ0tfU0laRTogQkxPQ0tfU0laRSwKICAgIEJBU0VfUE9JTlRTOiBCQVNFX1BPSU5UUywKICAgIFNQRUVEX0JPTlVTX01BWDogU1BFRURfQk9OVVNfTUFYLAogICAgQUxMX0NBVFM6IEFMTF9DQVRTLAogICAgc2h1ZmZsZTogc2h1ZmZsZUluUGxhY2UsCiAgICBsb2FkQmFuazogbG9hZEJhbmssCiAgICBmYW1pbHlPazogZmFtaWx5T2ssCiAgICBkcmF3UXVlc3Rpb246IGRyYXdRdWVzdGlvbiwKICAgIHNjb3JlQW5zd2VyOiBzY29yZUFuc3dlciwKICAgIGNsYW1wU2NvcmU6IGNsYW1wU2NvcmUsCiAgICBsZWFkZXJib2FyZDogbGVhZGVyYm9hcmQsCiAgICBzYW5pdGl6ZU5hbWU6IHNhbml0aXplTmFtZSwKICAgIGZtdENhdGVnb3J5OiBmbXRDYXRlZ29yeSwKICAgIGZtdE51bTogZm10TnVtLAogICAgZm10RGVsdGE6IGZtdERlbHRhLAogICAgZXNjYXBlSHRtbDogZXNjYXBlSHRtbCwKICB9Owp9KSgpOwo=
+/* Cave Trivia (web) — shared game engine.
+   Game parameters are ported 1:1 from server.js. No Firebase here;
+   pure logic so TV host and phone client share the same rules. */
+(function () {
+  'use strict';
+
+  // ---- exact parameters from server.js ----
+  var QUESTION_SECONDS = 20;
+  var VIDEO_QUESTION_SECONDS = 30;
+  var WAGER_SECONDS = 15;       // Final-Jeopardy style wager window
+  var WAGER_REVEAL_SECONDS = 12;
+  var REVEAL_SECONDS = 8;       // autopilot pause on reveal before next Q
+  var PODIUM_SECONDS = 8;
+  var BLOCK_SIZE = 10;          // every 10th question of a block is the wager round
+  var BASE_POINTS = { easy: 100, medium: 200, hard: 300 };
+  var SPEED_BONUS_MAX = 100;
+  var VIDEO_DRAW_CHANCE = 0.12;
+
+  var BANK_WEIGHTS = {
+    sports: 3, games: 3, pokemon: 3,
+    disney: 2.5, pixar: 2.5, parks: 2, jeopardy: 2.5,
+    movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
+    toys: 1, mixed: 1,
+  };
+  var ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon',
+    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed'];
+
+  var FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
+
+  // ---- helpers ----
+
+  function shuffleInPlace(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function familyOk(q, familyMode) {
+    if (!familyMode) return true;
+    if (q.kid_safe === false) return false;
+    if (FAMILY_BLOCK.test(q.question + ' ' + (q.options || []).join(' '))) return false;
+    return true;
+  }
+
+  function loadBank() {
+    var parts = ['data/questions-1.json', 'data/questions-2.json',
+                 'data/questions-3.json', 'data/questions-4.json'];
+    return Promise.all(parts.map(function (u) {
+      return fetch(u).then(function (r) {
+        if (!r.ok) throw new Error('question bank failed to load: ' + u);
+        return r.json();
+      });
+    })).then(function (chunks) {
+      return [].concat.apply([], chunks);
+    });
+  }
+
+  function drawBankQuestion(bank, avoidCats, askedIds, disabled, familyMode) {
+    var dis = {};
+    (disabled || []).forEach(function (c) { dis[c] = true; });
+    // Only consider categories that still have drawable questions. (The Node
+    // server could fall back to live API providers when a small category ran
+    // dry; the static web build has no such safety net, so we check first.)
+    var cats = Object.keys(BANK_WEIGHTS).filter(function (c) {
+      if (avoidCats[c] || dis[c]) return false;
+      for (var i = 0; i < bank.length; i++) {
+        var q = bank[i];
+        if (q.category === c && !askedIds[q.id] && familyOk(q, familyMode)) return true;
+      }
+      return false;
+    });
+    if (!cats.length) return null;
+    var total = cats.reduce(function (s, c) { return s + BANK_WEIGHTS[c]; }, 0);
+    var r = Math.random() * total, pick = cats[0];
+    for (var j = 0; j < cats.length; j++) {
+      r -= BANK_WEIGHTS[cats[j]];
+      if (r <= 0) { pick = cats[j]; break; }
+    }
+    var pool = bank.filter(function (q) {
+      return q.category === pick && !askedIds[q.id] && familyOk(q, familyMode);
+    });
+    if (!pool.length) return null;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  // Mirror of server.js drawQuestion(): ~1-in-8 video draws, no category runs,
+  // weighted bank picks, disabled-category + family filters, asked-id tracking.
+  // opts: { bank, askedIds (object map), recentCats (array), disabledCats, familyMode }
+  // Returns { q, askedIds, recentCats } or null.
+  function drawQuestion(opts) {
+    var bank = opts.bank, askedIds = opts.askedIds || {}, recentCats = opts.recentCats || [];
+    var disabled = opts.disabledCats || [], familyMode = !!opts.familyMode;
+
+    function recentSet(n) {
+      var s = {};
+      recentCats.slice(-n).forEach(function (c) { s[c] = true; });
+      return s;
+    }
+
+    // headline video draws (~1 in 8)
+    if (Math.random() < VIDEO_DRAW_CHANCE && !recentSet(3).disney) {
+      var vids = bank.filter(function (q) {
+        return q.video && !askedIds[q.id] && familyOk(q, familyMode);
+      });
+      if (vids.length) {
+        var v = vids[Math.floor(Math.random() * vids.length)];
+        askedIds[v.id] = true;
+        recentCats.push(v.category);
+        return { q: v, askedIds: askedIds, recentCats: recentCats };
+      }
+    }
+
+    for (var attempt = 0; attempt < 12; attempt++) {
+      var avoid = recentSet(3);
+      var q = drawBankQuestion(bank, avoid, askedIds, disabled, familyMode)
+        || drawBankQuestion(bank, {}, askedIds, disabled, familyMode);
+      if (!q) break;
+      if (familyOk(q, familyMode)) {
+        askedIds[q.id] = true;
+        recentCats.push(q.category);
+        if (recentCats.length > 8) recentCats = recentCats.slice(-8);
+        return { q: q, askedIds: askedIds, recentCats: recentCats };
+      }
+      askedIds[q.id] = true; // rejected — burn the id so we don't loop on it
+    }
+    return null;
+  }
+
+  // Mirror of server.js revealQuestion() scoring for one answer.
+  // args: { difficulty, choice, correctIndex, answeredAt, deadlineTs, seconds, wager }
+  // returns { correct, points } where points may be negative (lost wager).
+  function scoreAnswer(a) {
+    var total = a.seconds * 1000;
+    var wager = a.wager || 0;
+    if (a.choice === a.correctIndex) {
+      var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
+      var pts = (BASE_POINTS[a.difficulty] || 100) + Math.round(SPEED_BONUS_MAX * speed);
+      if (wager > 0) pts += wager;
+      return { correct: true, points: pts };
+    }
+    if (wager > 0) return { correct: false, points: -wager };
+    return { correct: false, points: 0 };
+  }
+
+  function clampScore(s) { return Math.max(0, s); }
+
+  // Leaderboard rows from a players map. mode: 'all' | 'block'.
+  function leaderboard(players, mode) {
+    var rows = Object.keys(players || {}).map(function (id) {
+      var p = players[id];
+      return {
+        id: id,
+        name: p.name,
+        score: mode === 'block' ? (p.blockScore || 0) : (p.score || 0),
+        correct: p.correct || 0,
+      };
+    });
+    rows.sort(function (a, b) {
+      return b.score - a.score || String(a.name).localeCompare(String(b.name));
+    });
+    return rows;
+  }
+
+  function sanitizeName(n) {
+    return String(n || '').trim().replace(/[<>&"']/g, '').slice(0, 18);
+  }
+
+  function fmtCategory(c) { return String(c || '').replace(/-/g, ' ').toUpperCase(); }
+  function fmtNum(n) { return Number(n || 0).toLocaleString('en-US'); }
+  function fmtDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtNum(d); }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  window.CT = window.CT || {};
+  window.CT.engine = {
+    QUESTION_SECONDS: QUESTION_SECONDS,
+    VIDEO_QUESTION_SECONDS: VIDEO_QUESTION_SECONDS,
+    WAGER_SECONDS: WAGER_SECONDS,
+    WAGER_REVEAL_SECONDS: WAGER_REVEAL_SECONDS,
+    REVEAL_SECONDS: REVEAL_SECONDS,
+    PODIUM_SECONDS: PODIUM_SECONDS,
+    BLOCK_SIZE: BLOCK_SIZE,
+    BASE_POINTS: BASE_POINTS,
+    SPEED_BONUS_MAX: SPEED_BONUS_MAX,
+    ALL_CATS: ALL_CATS,
+    shuffle: shuffleInPlace,
+    loadBank: loadBank,
+    familyOk: familyOk,
+    drawQuestion: drawQuestion,
+    scoreAnswer: scoreAnswer,
+    clampScore: clampScore,
+    leaderboard: leaderboard,
+    sanitizeName: sanitizeName,
+    fmtCategory: fmtCategory,
+    fmtNum: fmtNum,
+    fmtDelta: fmtDelta,
+    escapeHtml: escapeHtml,
+  };
+})();
