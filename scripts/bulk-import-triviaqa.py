@@ -5,7 +5,7 @@ Runs on GitHub Actions (has the bandwidth/RAM for 7GB of parquet).
 
 Output: web/data/tqa-*.json chunks (200 Qs each), categorized, NSFW-filtered.
 """
-import json, os, re, random, sys
+import json, os, re, random, sys, hashlib
 from collections import Counter
 
 # ---- Config ----
@@ -108,19 +108,16 @@ def process_shard(parquet_path, all_answers_pool):
             continue
 
         cat = classify(q_text, source)
-        distractors = make_distractors(correct, all_answers_pool)
-
-        options = [correct] + distractors
-        random.shuffle(options)
-        answer_idx = options.index(correct)
 
         questions.append({
-            "id": f"tqa-{abs(hash(q_text)) % 10**8}",
+            "id": f"tqa-{hashlib.md5(q_text.encode('utf-8')).hexdigest()[:10]}",
             "category": cat,
             "difficulty": random.choice(["easy", "medium", "hard"]),
             "question": q_text,
-            "options": options,
-            "answer": answer_idx,
+            "answerType": "text",
+            "answerText": correct,
+            "options": [],
+            "answer": 0,
             "source": "triviaqa",
         })
     return questions
@@ -136,7 +133,7 @@ def main():
         sys.exit(1)
     print(f"Found {len(shards)} shards")
 
-    # First pass: collect all answers for distractor pool
+    # First pass: collect all answers for distractor pool (NSFW-filtered)
     print("Building answer pool...")
     import pyarrow.parquet as pq
     all_answers = []
@@ -149,7 +146,9 @@ def main():
             else:
                 v = str(ans)
             v = v.strip()
-            if 1 < len(v) < 60:
+            # NSFW filter applies to distractor pool too — a dirty answer
+            # must never appear even as a wrong option
+            if 1 < len(v) < 60 and is_clean("", v):
                 all_answers.append(v)
     print(f"Answer pool: {len(all_answers)}")
 
