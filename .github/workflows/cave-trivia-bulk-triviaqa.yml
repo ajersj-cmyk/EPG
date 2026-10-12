@@ -1,0 +1,132 @@
+name: Bulk Import TriviaQA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bulk-import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyarrow
+
+      - name: Download TriviaQA shards (train + validation + test)
+        run: |
+          mkdir -p tqa && cd tqa
+          for i in $(seq 0 25); do
+            padded=$(printf "%05d" $i)
+            curl -sL --retry 3 -o "tqa-train-$i.parquet" \
+              "https://huggingface.co/datasets/mandarjoshi/trivia_qa/resolve/main/rc/train-${padded}-of-00026.parquet" \
+              --max-time 600 || echo "FAILED train $i"
+          done
+          for i in $(seq 0 3); do
+            padded=$(printf "%05d" $i)
+            curl -sL --retry 3 -o "tqa-test-$i.parquet" \
+              "https://huggingface.co/datasets/mandarjoshi/trivia_qa/resolve/main/rc/test-${padded}-of-00004.parquet" \
+              --max-time 600 || echo "FAILED test $i"
+          done
+          curl -sL --retry 3 -o "tqa-val.parquet" \
+            "https://huggingface.co/datasets/mandarjoshi/trivia_qa/resolve/main/rc/validation-00000-of-00001.parquet" \
+            --max-time 600 || echo "FAILED validation"
+          echo "Downloaded:"
+          du -sh .
+          ls *.parquet | wc -l
+
+      - name: Run bulk import script
+        run: |
+          cp tqa/*.parquet .
+          python3 scripts/bulk-import-triviaqa.py
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy question chunks to gh-pages
+        run: |
+          cp web/data/tqa-*.json gh-pages/data/
+          echo "TQA chunks: $(ls gh-pages/data/tqa-*.json | wc -l)"
+
+      - name: Patch engine.js (fail loudly if anchors missing)
+        run: |
+          cd gh-pages
+          python3 << 'PYEOF'
+          import glob, sys, re
+
+          with open('js/engine.js') as f:
+              content = f.read()
+          orig = content
+
+          # 1. Chunk loader — match on the distinctive pattern, not exact indentation
+          m = re.search(r"for\s*\(var i = 1; i <= 27; i\+\+\) parts\.push\('data/questions-' \+ i \+ '\.json'\);", content)
+          if not m:
+              print("FATAL: chunk loader anchor not found in engine.js")
+              sys.exit(1)
+          tqa_n = len(glob.glob('data/tqa-*.json'))
+          if tqa_n == 0:
+              print("FATAL: no tqa-*.json chunks found")
+              sys.exit(1)
+          content = content[:m.end()] + f"\n    for (var i = 1; i <= {tqa_n}; i++) parts.push('data/tqa-' + i + '.json');" + content[m.end():]
+          print(f"Added {tqa_n} TQA chunk loaders")
+
+          # 2. ALL_CATS — add new categories
+          m2 = re.search(r"var ALL_CATS = \[[^\]]+\];", content)
+          if not m2:
+              print("FATAL: ALL_CATS anchor not found in engine.js")
+              sys.exit(1)
+          new_cats = ["history", "science", "geography", "literature", "art",
+                      "food", "nature", "tech", "politics", "mythology"]
+          existing = re.findall(r"'([^']+)'", m2.group(0))
+          for c in new_cats:
+              if c not in existing:
+                  existing.append(c)
+          new_block = "var ALL_CATS = ['" + "', '".join(existing) + "'];"
+          content = content[:m2.start()] + new_block + content[m2.end():]
+          print(f"ALL_CATS now: {len(existing)} categories")
+
+          # 3. BANK_WEIGHTS — ensure new categories get weight so they're drawn
+          m3 = re.search(r"var BANK_WEIGHTS = \{[^}]+\};", content)
+          if m3:
+              weights_block = m3.group(0)
+              for c in new_cats:
+                  if f"'{c}'" not in weights_block and f'"{c}"' not in weights_block:
+                      weights_block = weights_block.rstrip("};") + f", '{c}': 1.5}};"
+              content = content[:m3.start()] + weights_block + content[m3.end():]
+              print("BANK_WEIGHTS updated")
+          else:
+              print("WARNING: BANK_WEIGHTS not found — new categories may not be drawn")
+
+          if content == orig:
+              print("FATAL: engine.js unchanged after patching")
+              sys.exit(1)
+
+          with open('js/engine.js', 'w') as f:
+              f.write(content)
+          print("engine.js patched successfully")
+          PYEOF
+
+      - name: Syntax check patched engine.js
+        run: |
+          cd gh-pages
+          node --check js/engine.js && echo "engine.js syntax OK"
+
+      - name: Commit to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "Cave Trivia Bot"
+          git config user.email "bot@cavetrivia.local"
+          git add data/tqa-*.json js/engine.js
+          git commit -m "Bulk import: TriviaQA questions (categorized, NSFW-filtered)" || echo "Nothing to commit"
+          git push origin gh-pages
