@@ -51,11 +51,11 @@ const MAX_ASKED_IDS = 3000;
 // Pokémon, Disney films, parks, then the 90s sets and everything else.
 const BANK_WEIGHTS = {
   sports: 3, games: 3, pokemon: 3,
-  disney: 2.5, pixar: 2.5, parks: 2,
+  disney: 2.5, pixar: 2.5, parks: 2, mashup: 2,
   movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
   toys: 1, mixed: 1,
 };
-const ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon', 'disney', 'pixar', 'parks', 'toons', 'mixed'];
+const ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon', 'disney', 'pixar', 'parks', 'toons', 'mashup', 'mixed'];
 
 const localProvider = require('./server/providers/local');
 const remoteProvider = require('./server/providers/remote');

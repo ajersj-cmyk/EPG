@@ -1,0 +1,122 @@
+[
+  {
+    "id": "mashup-q-00",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Taylor Swift & Travis Kelce",
+      "Dwayne Johnson & Kevin Hart",
+      "Chris Hemsworth & Chris Pratt",
+      "Ryan Reynolds & Hugh Jackman"
+    ],
+    "answer": 1,
+    "image": "/mashups/mashup-00.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-01",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Emma Stone & Ryan Gosling",
+      "Beyonce & Rihanna",
+      "Tom Holland & Zendaya",
+      "Tom Hanks & Tim Allen"
+    ],
+    "answer": 2,
+    "image": "/mashups/mashup-01.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-02",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Tom Hanks & Tim Allen",
+      "Ryan Reynolds & Hugh Jackman",
+      "Emma Stone & Ryan Gosling",
+      "Dwayne Johnson & Kevin Hart"
+    ],
+    "answer": 1,
+    "image": "/mashups/mashup-02.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-03",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Tom Hanks & Tim Allen",
+      "Beyonce & Rihanna",
+      "Dwayne Johnson & Kevin Hart",
+      "Chris Hemsworth & Chris Pratt"
+    ],
+    "answer": 3,
+    "image": "/mashups/mashup-03.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-04",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Emma Stone & Ryan Gosling",
+      "Chris Hemsworth & Chris Pratt",
+      "Dwayne Johnson & Kevin Hart",
+      "Taylor Swift & Travis Kelce"
+    ],
+    "answer": 3,
+    "image": "/mashups/mashup-04.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-06",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Tom Hanks & Tim Allen",
+      "Chris Hemsworth & Chris Pratt",
+      "Emma Stone & Ryan Gosling",
+      "Beyonce & Rihanna"
+    ],
+    "answer": 3,
+    "image": "/mashups/mashup-06.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-08",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Will Smith & Martin Lawrence",
+      "Emma Stone & Ryan Gosling",
+      "Beyonce & Rihanna",
+      "Taylor Swift & Travis Kelce"
+    ],
+    "answer": 1,
+    "image": "/mashups/mashup-08.jpg",
+    "kid_safe": true
+  },
+  {
+    "id": "mashup-q-09",
+    "category": "mashup",
+    "difficulty": "medium",
+    "question": "Which two celebrities are mashed up in this photo?",
+    "options": [
+      "Chris Hemsworth & Chris Pratt",
+      "Emma Stone & Ryan Gosling",
+      "Tom Hanks & Tim Allen",
+      "Ryan Reynolds & Hugh Jackman"
+    ],
+    "answer": 2,
+    "image": "/mashups/mashup-09.jpg",
+    "kid_safe": true
+  }
+]
