@@ -23,7 +23,7 @@
     toys: 1, mixed: 1,
   };
   var ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon',
-    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed'];
+    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel'];
 
   var FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
 
@@ -47,6 +47,7 @@
   function loadBank() {
     var parts = [];
     for (var i = 1; i <= 27; i++) parts.push('data/questions-' + i + '.json');
+    parts.push('data/questions-video.json');
     return Promise.all(parts.map(function (u) {
       return fetch(u).then(function (r) {
         if (!r.ok) throw new Error('question bank failed to load: ' + u);
