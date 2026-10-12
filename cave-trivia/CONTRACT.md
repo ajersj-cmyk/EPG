@@ -47,7 +47,7 @@ or shows the image full-bleed behind the question.
 {
   phase,                       // idle|wager|question|reveal|podium
   block: { number, questionInBlock },  // questionInBlock 1..10
-  wager: null | { category, endsAt, timeLeftMs },
+  wager: null | { category, endsAt, timeLeftMs, wagersPlaced },
   question: null | { ...question object above... },
   reveal: null | {
     correctIndex, correctText, answeredCount, correctCount, isWager,

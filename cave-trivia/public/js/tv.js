@@ -170,6 +170,10 @@
   function renderWager(state) {
     var w = state.wager || {};
     $('#wagerCat').textContent = fmtCategory(w.category) || 'MYSTERY';
+    var n = w.wagersPlaced || 0;
+    var el = $('#wagerCount');
+    el.hidden = n <= 0;
+    el.textContent = n === 1 ? '1 player has wagered' : n + ' players have wagered';
   }
 
   function buildOptions(container, options, correctIndex, revealed) {
