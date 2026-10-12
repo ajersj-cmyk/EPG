@@ -1,0 +1,162 @@
+[
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-frozen-letitgo",
+    "kid_safe": true,
+    "options": [
+      "Elsa",
+      "Anna",
+      "Moana",
+      "Rapunzel"
+    ],
+    "question": "Watch the clip — which character sings this song?",
+    "source_note": "Disney's Frozen — Let It Go sequence",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "moSFlvxnbgk"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-mermaid-undersea",
+    "kid_safe": true,
+    "options": [
+      "Sebastian",
+      "Flounder",
+      "King Triton",
+      "Scuttle"
+    ],
+    "question": "Watch the clip — who sings this song in the movie?",
+    "source_note": "The Little Mermaid — Under the Sea",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "GC_mV1IpjWA"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-aladdin-whole-new-world",
+    "kid_safe": true,
+    "options": [
+      "Aladdin and Jasmine",
+      "Simba and Nala",
+      "Hercules and Meg",
+      "Flynn and Rapunzel"
+    ],
+    "question": "Watch the clip — which two characters sing this duet?",
+    "source_note": "Aladdin (2019) — A Whole New World",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "eitDnP0_83k"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-lionking-circle",
+    "kid_safe": true,
+    "options": [
+      "The Lion King",
+      "The Jungle Book",
+      "Tarzan",
+      "Brother Bear"
+    ],
+    "question": "Watch the clip — which movie opens with this song?",
+    "source_note": "The Lion King — Circle of Life",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "GibiNy4d4gc"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-toystory-friend",
+    "kid_safe": true,
+    "options": [
+      "Toy Story",
+      "Finding Nemo",
+      "Up",
+      "Inside Out"
+    ],
+    "question": "Watch the clip — which Pixar movie is this song from?",
+    "source_note": "Toy Story — You've Got a Friend in Me",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "1MPZRcyTrcU"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "medium",
+    "id": "vid-moana-howfar",
+    "kid_safe": true,
+    "options": [
+      "Moana",
+      "Elsa",
+      "Merida",
+      "Lilo"
+    ],
+    "question": "Watch the clip — which character sings this song?",
+    "source_note": "Moana — How Far I'll Go",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "cPAbx5kgCJo"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "medium",
+    "id": "vid-encanto-bruno",
+    "kid_safe": true,
+    "options": [
+      "Seeing the future",
+      "Super strength",
+      "Healing",
+      "Talking to animals"
+    ],
+    "question": "Watch the clip — what is Bruno's magical gift?",
+    "source_note": "Encanto — We Don't Talk About Bruno",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "bvWRMAU6V-c"
+    }
+  },
+  {
+    "answer": 0,
+    "category": "disney",
+    "difficulty": "easy",
+    "id": "vid-batb-tale",
+    "kid_safe": true,
+    "options": [
+      "Beauty and the Beast",
+      "Cinderella",
+      "Sleeping Beauty",
+      "The Little Mermaid"
+    ],
+    "question": "Watch the clip — which Disney movie features this song?",
+    "source_note": "Beauty and the Beast — Tale as Old as Time",
+    "video": {
+      "end": 30,
+      "start": 0,
+      "youtubeId": "fUZgbC1D2qY"
+    }
+  }
+]

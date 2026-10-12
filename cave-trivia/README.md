@@ -103,21 +103,38 @@ gh repo create cave-trivia --private --source=. --push
 
 ## How the game works
 
-**Flow.** Host presses *Start round* on the TV page (or flips on *Auto-pilot*).
-A question appears on the TV and on every joined phone with a 20-second
-countdown. Players tap an answer — it's locked in. The host reveals (or the
-timer auto-reveals): the TV highlights the correct answer, points land, and
-the leaderboard updates live everywhere. *Next* deals another question.
-Players can join mid-game at any time.
+**The living game.** Autopilot is ON by default — the game runs forever in
+**10-question blocks** with zero host input. Anyone can join mid-game at any
+time by scanning the QR; the TV never shows a dead screen.
+
+**Flow.** A question appears on the TV and on every joined phone with a
+20-second countdown (30 for video questions). Players tap an answer — it's
+locked in. The timer auto-reveals: the TV highlights the correct answer,
+points land, and the leaderboards update live everywhere. Then the next
+question drops, forever.
+
+**⚡ Wager rounds.** Every 10th question is Final-Jeopardy style: the TV
+announces the category first, and players get 15 seconds on their phones to
+wager 0 up to their entire score. Get it right: base + speed points **plus**
+your wager. Get it wrong: you **lose** the wager. After the wager reveal, the
+TV runs an 8-second podium ceremony for the block's top 3, block scores
+reset, and the next block begins.
+
+**Question styles.** Beyond classic multiple-choice: **picture questions**
+("Who is pictured?" with the photo big on the TV), **video questions**
+(Disney-heavy YouTube clips played on the TV — "which character sings
+this?"), and **lightning questions** (⚡, converted from quizbowl tossups).
 
 **Scoring.** Base points by difficulty (easy 100 / medium 200 / hard 300) plus
 a speed bonus up to 100 for fast correct answers. Two boards: **all-time**
-(never resets) and **session** (resets when a round starts or on Reset).
+(never resets) and **block** (resets every 10 questions, feeds the podium).
 
-**Attract mode.** When no round is active the TV is still alive: ambient
-animated backdrop, a pulsing QR join prompt, rotating 90s trivia facts, and a
-scrolling leaderboard ticker. It transitions like a broadcast — idle →
-question → reveal → leaderboard.
+**Family mode.** A host toggle filters the pool to kid-safe questions only,
+with a FAMILY badge on the TV — kids can jump in anytime.
+
+**Venue branding.** Set your bar/cave name via the host controls; it headlines
+the TV broadcast. (Built to be sellable to bars: branding + host dashboard +
+session stats out of the box.)
 
 ## Question pipeline
 
@@ -162,6 +179,23 @@ no-repeat category rule so you never get five sports questions in a row:
 - `data/questions-pokemon.json` — 25 questions: the games, the anime, the cards.
 - `data/questions-disney.json` — 25 questions: Disney animated films, all eras.
 - `data/questions-parks.json` — 20 questions: rides, lands, and park history.
+- `data/questions-video.json` — 8 Disney video questions (YouTube embeds:
+  Frozen, Little Mermaid, Aladdin, Lion King, Toy Story, Moana, Encanto,
+  Beauty and the Beast). The TV plays the clip; phones say "watch the TV".
+- `data/questions-daily.json` — the **daily-fresh bank**, refilled every
+  morning by `scripts/fetch-daily.js` (~100 new questions/day):
+  1. **Quizbowl tossups** via the qbreader API (no key) — converted to
+     4-option multiple choice using the giveaway (final clue) plus
+     same-category distractors. Dozen-adjacent flavor: Trash/pop culture,
+     sports, current events.
+  2. **Picture questions** generated from Wikimedia Commons sports-photo
+     categories (NFL/NBA/MLB) — "Who is pictured?" with openly licensed
+     images. Endless and free.
+  3. **Open Trivia DB top-up** (respecting the 5s/request throttle).
+
+  The script dedupes against every bank, caps the daily bank at 3000
+  (oldest rotate out), and is cron-safe:
+  `0 6 * * * cd /path/to/cave-trivia && node scripts/fetch-daily.js`
 
 Questions never repeat until the combined pool is exhausted, then it reshuffles.
 
@@ -174,9 +208,13 @@ Questions never repeat until the combined pool is exhausted, then it reshuffles.
   the same record (new token).
 - `POST /api/answer` `{playerId, token, choice}` — locks in an answer for the
   live question.
+- `POST /api/wager` `{playerId, token, amount}` — places/updates a wager
+  during the wager phase (clamped 0..score).
 - `POST /api/host/start|next|reveal|reset` — host controls (GET also works,
   handy for Stream Deck / TV remote bookmarks).
-- `POST /api/host/autopilot` `{on: true|false}` — auto-advance rounds.
+- `POST /api/host/autopilot` `{on: true|false}` — auto-advance (default on).
+- `POST /api/host/family` `{on: true|false}` — kids-mode question filter.
+- `POST /api/host/venue` `{name}` — venue display name for the TV.
 
 ## Security note
 
@@ -190,5 +228,6 @@ internet. Player tokens are random per session and checked on every answer.
 - QR generation: vendored `lib/qrcode.js` — *QR Code Generator for
   JavaScript*, © 2009 Kazuhiko Arase, MIT License.
 - Question sources: Open Trivia DB (CC BY-SA 4.0), the-trivia-api.com,
-  Jeopardy! clues via jservice.
+  Jeopardy! clues via jservice, quizbowl tossups via qbreader, images via
+  Wikimedia Commons, video via YouTube embeds.
 - Built for a 90s-themed man cave. Enjoy the league.
