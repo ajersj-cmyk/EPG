@@ -127,6 +127,7 @@
     <span class="attrib" id="attrib"></span>
     <span class="spacer"></span>
     <button class="btn ghost" id="btnSound" title="Toggle sound">Sound on</button>
+    <button class="btn ghost" id="btnSettings" title="Game settings">⚙ Settings</button>
     <label class="autopilot" id="famToggle" title="Family mode: kid-safe questions only">
       <span class="pill"></span> Family
     </label>
@@ -136,6 +137,50 @@
     <button class="btn ghost" id="btnReveal" title="Force reveal (R)">Reveal</button>
     <button class="btn" id="btnNext" title="Next question (N)">Next</button>
   </footer>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay" hidden>
+  <div class="settings-panel">
+    <div class="settings-head">
+      <span class="eyebrow">Game Settings</span>
+      <button class="btn ghost" id="btnSettingsClose">✕</button>
+    </div>
+    <div class="settings-body">
+      <section>
+        <h3>Theme</h3>
+        <div class="theme-grid" id="themeGrid">
+          <button class="theme-swatch" data-theme="midnight-gold">
+            <span class="sw" style="background:linear-gradient(135deg,#07080d 50%,#d9b45c 50%)"></span>
+            Midnight Gold
+          </button>
+          <button class="theme-swatch" data-theme="jeopardy-blue">
+            <span class="sw" style="background:linear-gradient(135deg,#0a1230 50%,#ffd700 50%)"></span>
+            Jeopardy Blue
+          </button>
+          <button class="theme-swatch" data-theme="neon-arcade">
+            <span class="sw" style="background:linear-gradient(135deg,#1a0533 50%,#ff2fb9 50%)"></span>
+            Neon Arcade
+          </button>
+          <button class="theme-swatch" data-theme="emerald">
+            <span class="sw" style="background:linear-gradient(135deg,#0a1f16 50%,#d4af37 50%)"></span>
+            Emerald
+          </button>
+        </div>
+      </section>
+      <section>
+        <h3>Game Title</h3>
+        <div class="title-row">
+          <input type="text" id="gameTitleInput" maxlength="30" placeholder="CAVE TRIVIA">
+          <button class="btn" id="btnTitleSave">Set</button>
+        </div>
+      </section>
+      <section>
+        <h3>Question Categories</h3>
+        <p class="settings-hint">Uncheck to remove a category from the rotation.</p>
+        <div class="cat-grid" id="catGrid"></div>
+      </section>
+    </div>
+  </div>
 </div>
 
 <div class="reconnect" id="reconnect" hidden>Reconnecting&hellip;</div>

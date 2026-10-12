@@ -295,6 +295,7 @@
     if (state.attribution) $('#attrib').textContent = state.attribution;
     $('#apToggle').classList.toggle('on', !!state.autoPilot);
     $('#famToggle').classList.toggle('on', !!state.familyMode);
+    renderSettings(state);
 
     renderQr(state.joinUrl);
     renderProgress(state.block);
@@ -381,6 +382,62 @@
   });
   $('#famToggle').addEventListener('click', function () {
     host('family', { on: !$('#famToggle').classList.contains('on') });
+  });
+
+  /* ---------------- settings panel ---------------- */
+  var CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon', 'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed'];
+  var lastDisabled = [];
+  function renderSettings(state) {
+    // theme
+    var theme = state.theme || 'midnight-gold';
+    if (document.documentElement.dataset.theme !== theme) {
+      document.documentElement.dataset.theme = theme;
+    }
+    document.querySelectorAll('.theme-swatch').forEach(function (el) {
+      el.classList.toggle('active', el.dataset.theme === theme);
+    });
+    // title
+    var ti = $('#gameTitleInput');
+    if (ti && document.activeElement !== ti) ti.value = state.venueName || '';
+    // categories
+    var disabled = state.disabledCats || [];
+    if (JSON.stringify(disabled) !== JSON.stringify(lastDisabled)) {
+      lastDisabled = disabled.slice();
+      var grid = $('#catGrid');
+      grid.innerHTML = '';
+      CATS.forEach(function (cat) {
+        var off = disabled.indexOf(cat) >= 0;
+        var label = document.createElement('label');
+        label.className = 'cat-toggle' + (off ? ' off' : '');
+        var cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = !off;
+        cb.addEventListener('change', function () { host('toggleCat', { cat: cat }); });
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(cat));
+        grid.appendChild(label);
+      });
+    }
+  }
+  $('#btnSettings').addEventListener('click', function () {
+    $('#settingsOverlay').hidden = false;
+  });
+  $('#btnSettingsClose').addEventListener('click', function () {
+    $('#settingsOverlay').hidden = true;
+  });
+  $('#settingsOverlay').addEventListener('click', function (e) {
+    if (e.target === this) this.hidden = true;
+  });
+  document.querySelectorAll('.theme-swatch').forEach(function (el) {
+    el.addEventListener('click', function () { host('theme', { theme: el.dataset.theme }); });
+  });
+  $('#btnTitleSave').addEventListener('click', function () {
+    var v = $('#gameTitleInput').value.trim();
+    if (v) host('venue', { name: v });
+  });
+  $('#gameTitleInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') $('#btnTitleSave').click();
+    e.stopPropagation();
   });
 
   function paintSoundBtn() {

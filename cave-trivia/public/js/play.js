@@ -107,6 +107,10 @@
   function render(state) {
     lastState = state;
     $('#familyBadge').hidden = !state.familyMode;
+    var theme = state.theme || 'midnight-gold';
+    if (document.documentElement.dataset.theme !== theme) {
+      document.documentElement.dataset.theme = theme;
+    }
     if (!session) {
       $('#scoreBox').hidden = true;
       $('#playFoot').hidden = true;

@@ -51,11 +51,11 @@ const MAX_ASKED_IDS = 3000;
 // Pokémon, Disney films, parks, then the 90s sets and everything else.
 const BANK_WEIGHTS = {
   sports: 3, games: 3, pokemon: 3,
-  disney: 2.5, pixar: 2.5, parks: 2,
+  disney: 2.5, pixar: 2.5, parks: 2, jeopardy: 2.5,
   movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
   toys: 1, mixed: 1,
 };
-const ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon', 'disney', 'pixar', 'parks', 'toons', 'mixed'];
+const ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon', 'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed'];
 
 const localProvider = require('./server/providers/local');
 const remoteProvider = require('./server/providers/remote');
@@ -78,6 +78,8 @@ function defaultDb() {
     block: { number: 1, dealt: 0 }, // dealt = normal questions dealt this block (0..9); the 10th is the wager
     familyMode: false,
     venueName: 'CAVE TRIVIA',
+    theme: 'midnight-gold',
+    disabledCats: [],
     stats: { questionsAsked: 0 },
     autoPilot: true,
   };
@@ -95,6 +97,8 @@ function migrateDb() {
   if (!db.venueName) db.venueName = 'CAVE TRIVIA';
   if (db.familyMode === undefined) db.familyMode = false;
   if (db.autoPilot === undefined) db.autoPilot = true;
+  if (!db.theme) db.theme = 'midnight-gold';
+  if (!Array.isArray(db.disabledCats)) db.disabledCats = [];
   db.wager = null;
   db.podium = null;
 }
@@ -183,6 +187,8 @@ function publicState() {
     autoPilot: db.autoPilot,
     familyMode: db.familyMode,
     venueName: db.venueName,
+    theme: db.theme,
+    disabledCats: db.disabledCats,
     stats: { questionsAsked: db.stats.questionsAsked },
     serverTime: now,
     question: null,
@@ -263,7 +269,8 @@ function publicState() {
 // ---------------------------------------------------------------------------
 
 function drawBankQuestion(avoidCats, askedIds) {
-  const cats = Object.keys(BANK_WEIGHTS).filter((c) => BANK_CATS.has(c) && !avoidCats.has(c));
+  const disabled = new Set(db.disabledCats || []);
+  const cats = Object.keys(BANK_WEIGHTS).filter((c) => BANK_CATS.has(c) && !avoidCats.has(c) && !disabled.has(c));
   if (cats.length === 0) return null;
   const total = cats.reduce((s, c) => s + BANK_WEIGHTS[c], 0);
   let r = Math.random() * total;
@@ -306,7 +313,8 @@ function drawQuestion() {
 
     // ~50/50 blend: live buffer first, baked-in bank is a first-class source
     if (Math.random() < 0.5) {
-      const allowed = ALL_CATS.filter((c) => !avoid.has(c));
+      const disabled = new Set(db.disabledCats || []);
+      const allowed = ALL_CATS.filter((c) => !avoid.has(c) && !disabled.has(c));
       const live = remoteProvider.getQuestions({ count: 1, categories: allowed, excludeIds: askedIds });
       q = live[0] || remoteProvider.getQuestions({ count: 1, excludeIds: askedIds })[0] || null;
     }
@@ -739,6 +747,27 @@ async function handleApi(req, res) {
       saveDb();
       broadcast();
       return json(res, 200, { ok: true, venueName: db.venueName });
+    }
+    if (action === 'theme') {
+      const body = method === 'POST' ? await readBody(req) : {};
+      const theme = String((body && body.theme) || '');
+      const valid = ['midnight-gold', 'jeopardy-blue', 'neon-arcade', 'emerald'];
+      if (valid.includes(theme)) db.theme = theme;
+      saveDb();
+      broadcast();
+      return json(res, 200, { ok: true, theme: db.theme });
+    }
+    if (action === 'toggleCat') {
+      const body = method === 'POST' ? await readBody(req) : {};
+      const cat = String((body && body.cat) || '');
+      if (cat) {
+        const i = db.disabledCats.indexOf(cat);
+        if (i >= 0) db.disabledCats.splice(i, 1);
+        else db.disabledCats.push(cat);
+      }
+      saveDb();
+      broadcast();
+      return json(res, 200, { ok: true, disabledCats: db.disabledCats });
     }
     return json(res, 404, { error: 'unknown host action' });
   }

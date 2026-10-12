@@ -58,6 +58,7 @@ const BANK = withValidImages([
   ...loadBank('../../data/questions-parks.json'), // Disney parks: rides, lands, history
   ...loadBank('../../data/questions-pixar.json'), // Pixar films
   ...loadBank('../../data/questions-familymovies.json'), // family movies: Disney, DreamWorks, Illumination
+  ...loadBank('../../data/questions-jeopardy.json'), // real Jeopardy! clues (j-archive)
   ...loadBank('../../data/questions-video.json'), // video questions (YouTube)
   ...loadBank('../../data/questions-daily.json'), // daily-fresh ingest (quizbowl, pictures, APIs)
 ]);
