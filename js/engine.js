@@ -129,13 +129,44 @@
     return null;
   }
 
+  // Normalize text for case-insensitive answer comparison.
+  // Lowercases, trims, strips punctuation, collapses whitespace.
+  function normText(s) {
+    return String(s || '').toLowerCase().trim()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/\s+/g, ' ');
+  }
+
+  // Returns true if this question should use text input instead of multiple choice.
+  // True when: explicitly flagged, OR from a source with invented distractors
+  // (Jeopardy imports, quizbowl tossups, TriviaQA all generate fake wrong answers).
+  function isTextQuestion(q) {
+    if (!q) return false;
+    if (q.answerType === 'text') return true;
+    if (q.answerType === 'choice') return false;
+    if (q.category === 'jeopardy') return true;
+    var src = String(q.source || '').toLowerCase();
+    if (src === 'quizbowl' || src === 'triviaqa') return true;
+    return false;
+  }
+
+  // Returns the correct answer text for a question.
+  function answerTextOf(q) {
+    if (!q) return '';
+    if (q.answerText) return q.answerText;
+    if (q.options && typeof q.answer === 'number') return q.options[q.answer] || '';
+    return '';
+  }
+
   // Mirror of server.js revealQuestion() scoring for one answer.
-  // args: { difficulty, choice, correctIndex, answeredAt, deadlineTs, seconds, wager }
+  // args: { difficulty, choice, correctIndex, textCorrect, answeredAt, deadlineTs, seconds, wager }
+  // For text questions, pass textCorrect (boolean from normText comparison) instead of choice/correctIndex.
   // returns { correct, points } where points may be negative (lost wager).
   function scoreAnswer(a) {
     var total = a.seconds * 1000;
     var wager = a.wager || 0;
-    if (a.choice === a.correctIndex) {
+    var isCorrect = (typeof a.textCorrect === 'boolean') ? a.textCorrect : (a.choice === a.correctIndex);
+    if (isCorrect) {
       var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
       var pts = (BASE_POINTS[a.difficulty] || 100) + Math.round(SPEED_BONUS_MAX * speed);
       if (wager > 0) pts += wager;
@@ -194,6 +225,9 @@
     familyOk: familyOk,
     drawQuestion: drawQuestion,
     scoreAnswer: scoreAnswer,
+    normText: normText,
+    isTextQuestion: isTextQuestion,
+    answerTextOf: answerTextOf,
     clampScore: clampScore,
     leaderboard: leaderboard,
     sanitizeName: sanitizeName,
