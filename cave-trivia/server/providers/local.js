@@ -29,11 +29,21 @@
  * The game engine blends these with live questions every round, weighted
  * toward the household's favorite topics.
  */
+function loadBank(rel) {
+  try {
+    return require(rel);
+  } catch (e) {
+    return []; // e.g. questions-daily.json before the first ingest run
+  }
+}
+
 const BANK = [
-  ...require('../../data/questions.json'), // core 90s sets: movies, music, tv, sports, games, toys
-  ...require('../../data/questions-pokemon.json'), // Pokémon: games, anime, cards
-  ...require('../../data/questions-disney.json'), // Disney animated films (all eras)
-  ...require('../../data/questions-parks.json'), // Disney parks: rides, lands, history
+  ...loadBank('../../data/questions.json'), // core 90s sets: movies, music, tv, sports, games, toys
+  ...loadBank('../../data/questions-pokemon.json'), // Pokémon: games, anime, cards
+  ...loadBank('../../data/questions-disney.json'), // Disney animated films (all eras)
+  ...loadBank('../../data/questions-parks.json'), // Disney parks: rides, lands, history
+  ...loadBank('../../data/questions-video.json'), // video questions (YouTube)
+  ...loadBank('../../data/questions-daily.json'), // daily-fresh ingest (quizbowl, pictures, APIs)
 ];
 
 function shuffleInPlace(arr) {
@@ -44,10 +54,11 @@ function shuffleInPlace(arr) {
   return arr;
 }
 
-function getQuestions({ count = 1, categories = [], difficulty = null, excludeIds = [] } = {}) {
+function getQuestions({ count = 1, categories = [], difficulty = null, excludeIds = [], videoOnly = false } = {}) {
   const excluded = new Set(excludeIds || []);
   const pool = BANK.filter((q) => {
     if (excluded.has(q.id)) return false;
+    if (videoOnly && !q.video) return false;
     if (categories && categories.length > 0 && !categories.includes(q.category)) return false;
     if (difficulty && q.difficulty !== difficulty) return false;
     return true;
@@ -60,6 +71,9 @@ function getQuestions({ count = 1, categories = [], difficulty = null, excludeId
     question: q.question,
     options: q.options.slice(),
     answer: q.answer,
+    image: q.image || null,
+    video: q.video || null,
+    kid_safe: q.kid_safe !== false,
     source: 'local',
   }));
 }

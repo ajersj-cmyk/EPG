@@ -37,7 +37,12 @@ const DATA_DIR = path.join(ROOT, 'data');
 const DB_PATH = path.join(DATA_DIR, 'db.json');
 
 const QUESTION_SECONDS = 20;
+const VIDEO_QUESTION_SECONDS = 30;
+const WAGER_SECONDS = 15; // Final-Jeopardy style wager window
+const WAGER_REVEAL_SECONDS = 12;
+const PODIUM_SECONDS = 8;
 const REVEAL_SECONDS = 8; // autopilot: pause on the reveal screen before next Q
+const BLOCK_SIZE = 10; // every 10th question of a block is the wager round
 const BASE_POINTS = { easy: 100, medium: 200, hard: 300 };
 const SPEED_BONUS_MAX = 100;
 const MAX_ASKED_IDS = 3000;
@@ -62,14 +67,36 @@ const BANK_CATS = new Set(localProvider.info().categories);
 
 function defaultDb() {
   return {
-    players: {}, // id -> {id,name,token,score,sessionScore,correct,answered,joinedAt,lastSeen}
+    players: {}, // id -> {id,name,token,score,blockScore,correct,answered,wagersWon,wagersLost,joinedAt,lastSeen}
     askedIds: [],
     recentCats: [],
     session: { active: false, startedAt: null, round: 0 },
-    phase: 'idle', // idle | question | reveal
-    current: null, // {qid,category,difficulty,text,options,answerIndex,endsAt,answers,revealed}
-    autoPilot: false,
+    phase: 'idle', // idle | wager | question | reveal | podium
+    current: null, // {qid,category,difficulty,text,options,image,video,answerIndex,isWager,seconds,endsAt,answers,wagers,revealed}
+    wager: null, // {category,endsAt,wagers:{pid:amount}} during the wager phase
+    podium: null, // {top:[{name,score,correct}]} during the podium phase
+    block: { number: 1, dealt: 0 }, // dealt = normal questions dealt this block (0..9); the 10th is the wager
+    familyMode: false,
+    venueName: 'CAVE TRIVIA',
+    stats: { questionsAsked: 0 },
+    autoPilot: true,
   };
+}
+
+// Bring databases from older versions up to the current schema.
+function migrateDb() {
+  for (const p of Object.values(db.players)) {
+    if (p.blockScore === undefined) p.blockScore = 0;
+    if (p.wagersWon === undefined) p.wagersWon = 0;
+    if (p.wagersLost === undefined) p.wagersLost = 0;
+  }
+  if (!db.block) db.block = { number: 1, dealt: 0 };
+  if (!db.stats) db.stats = { questionsAsked: 0 };
+  if (!db.venueName) db.venueName = 'CAVE TRIVIA';
+  if (db.familyMode === undefined) db.familyMode = false;
+  if (db.autoPilot === undefined) db.autoPilot = true;
+  db.wager = null;
+  db.podium = null;
 }
 
 let db = defaultDb();
@@ -83,6 +110,7 @@ function loadDb() {
       // a restart always lands in a clean idle state (no dangling timers)
       db.phase = 'idle';
       db.current = null;
+      migrateDb();
     }
   } catch (e) {
     console.error('cave-trivia: could not load db.json, starting fresh (' + e.message + ')');
@@ -136,7 +164,7 @@ function clearTimer() {
 function leaderboard(mode) {
   const rows = Object.values(db.players).map((p) => ({
     name: p.name,
-    score: mode === 'session' ? p.sessionScore : p.score,
+    score: mode === 'block' ? p.blockScore || 0 : p.score,
     correct: p.correct,
   }));
   rows.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
@@ -150,25 +178,43 @@ function publicState() {
     phase: db.phase,
     joinUrl: 'http://' + lanIp() + ':' + PORT + '/play',
     round: db.session.round,
+    block: { number: db.block.number, questionInBlock: (db.phase === 'wager' || db.phase === 'podium' || (c && c.isWager)) ? BLOCK_SIZE : db.block.dealt },
     session: { active: db.session.active },
     autoPilot: db.autoPilot,
+    familyMode: db.familyMode,
+    venueName: db.venueName,
+    stats: { questionsAsked: db.stats.questionsAsked },
     serverTime: now,
     question: null,
+    wager: null,
     reveal: null,
+    podium: db.podium,
     leaderboard: leaderboard('all').slice(0, 10),
-    sessionBoard: leaderboard('session').slice(0, 10),
+    blockBoard: leaderboard('block').slice(0, 10),
     playersTotal: Object.keys(db.players).length,
     playersActive: Object.values(db.players).filter((p) => now - (p.lastSeen || 0) < 5 * 60 * 1000).length,
     providers: { local: localProvider.info(), remote: remoteProvider.info() },
-    attribution: 'Questions: Open Trivia DB · the-trivia-api.com · Jeopardy! clues via jservice',
+    attribution: 'Questions: Open Trivia DB · the-trivia-api.com · Quizbowl via qbreader · images via Wikimedia Commons',
   };
-  if (c) {
+  if (db.phase === 'wager' && db.wager) {
+    st.wager = {
+      category: db.wager.category,
+      endsAt: db.wager.endsAt,
+      timeLeftMs: Math.max(0, db.wager.endsAt - now),
+      wagersPlaced: Object.keys(db.wager.wagers).length,
+    };
+  }
+  if (c && (db.phase === 'question' || db.phase === 'reveal')) {
     st.question = {
       id: c.qid,
       category: c.category,
       difficulty: c.difficulty,
       text: c.text,
       options: c.options.slice(),
+      image: c.image || null,
+      video: c.video || null,
+      isWager: !!c.isWager,
+      seconds: c.seconds,
       endsAt: c.endsAt,
       timeLeftMs: Math.max(0, c.endsAt - now),
       answeredCount: Object.keys(c.answers).length,
@@ -176,11 +222,37 @@ function publicState() {
   }
   if (db.phase === 'reveal' && c) {
     const answers = Object.values(c.answers);
+    const results = [];
+    const seen = new Set();
+    for (const [pid, a] of Object.entries(c.answers)) {
+      const p = db.players[pid];
+      if (!p) continue;
+      seen.add(pid);
+      results.push({
+        name: p.name,
+        delta: a.points || 0,
+        wager: (c.wagers && c.wagers[pid]) || 0,
+        correct: !!a.correct,
+      });
+    }
+    // include players who wagered but never answered
+    if (c.isWager && c.wagers) {
+      for (const [pid, amt] of Object.entries(c.wagers)) {
+        if (seen.has(pid)) continue;
+        const p = db.players[pid];
+        if (!p) continue;
+        results.push({ name: p.name, delta: -amt, wager: amt, correct: false });
+        seen.add(pid);
+      }
+    }
+    results.sort((a, b) => b.delta - a.delta);
     st.reveal = {
       correctIndex: c.answerIndex,
       correctText: c.options[c.answerIndex],
       answeredCount: answers.length,
       correctCount: answers.filter((a) => a.correct).length,
+      isWager: !!c.isWager,
+      results: results.slice(0, 12),
     };
   }
   return st;
@@ -207,53 +279,183 @@ function drawBankQuestion(avoidCats, askedIds) {
   return res[0] || null;
 }
 
+// Family mode: baked-in banks are tagged kid_safe; live API questions get a
+// profanity prefilter as a second line of defense.
+const FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
+function familyOk(q) {
+  if (!db.familyMode) return true;
+  if (q.kid_safe === false) return false;
+  if (q.source !== 'local' && FAMILY_BLOCK.test(q.question + ' ' + (q.options || []).join(' '))) return false;
+  return true;
+}
+
+// Video questions are a headline feature (Disney-heavy) — deal one directly
+// about 1 in 8 draws instead of leaving them to category weighting.
+const VIDEO_DRAW_CHANCE = 0.12;
+
 function drawQuestion() {
   const askedIds = db.askedIds;
-  const avoid = new Set((db.recentCats || []).slice(-3)); // no category runs
-  let q = null;
-
-  // ~50/50 blend: live buffer first, baked-in bank is a first-class source
-  if (Math.random() < 0.5) {
-    const allowed = ALL_CATS.filter((c) => !avoid.has(c));
-    const live = remoteProvider.getQuestions({ count: 1, categories: allowed, excludeIds: askedIds });
-    q = live[0] || remoteProvider.getQuestions({ count: 1, excludeIds: askedIds })[0] || null;
+  const recent = new Set((db.recentCats || []).slice(-3));
+  if (Math.random() < VIDEO_DRAW_CHANCE && !recent.has('disney')) {
+    const vids = localProvider.getQuestions({ count: 1, videoOnly: true, excludeIds: askedIds });
+    if (vids[0] && familyOk(vids[0])) return vids[0];
   }
-  if (!q) q = drawBankQuestion(avoid, askedIds) || drawBankQuestion(new Set(), askedIds);
+  for (let attempt = 0; attempt < 12; attempt++) {
+    const avoid = new Set((db.recentCats || []).slice(-3)); // no category runs
+    let q = null;
 
-  if (!q && askedIds.length > 0) {
+    // ~50/50 blend: live buffer first, baked-in bank is a first-class source
+    if (Math.random() < 0.5) {
+      const allowed = ALL_CATS.filter((c) => !avoid.has(c));
+      const live = remoteProvider.getQuestions({ count: 1, categories: allowed, excludeIds: askedIds });
+      q = live[0] || remoteProvider.getQuestions({ count: 1, excludeIds: askedIds })[0] || null;
+    }
+    if (!q) q = drawBankQuestion(avoid, askedIds) || drawBankQuestion(new Set(), askedIds);
+    if (!q) break;
+    if (familyOk(q)) return q;
+    askedIds.push(q.id); // rejected — burn the id so we don't loop on it
+  }
+
+  if (askedIds.length > 0) {
     // everything exhausted — reshuffle and try once more
     db.askedIds = [];
     db.recentCats = [];
     return drawQuestion();
   }
-  return q;
+  return null;
+}
+
+function trackAsked(q) {
+  db.askedIds.push(q.id);
+  if (db.askedIds.length > MAX_ASKED_IDS) db.askedIds = db.askedIds.slice(-MAX_ASKED_IDS);
+  db.recentCats.push(q.category);
+  if (db.recentCats.length > 8) db.recentCats = db.recentCats.slice(-8);
+  db.session.round += 1;
+  db.stats.questionsAsked += 1;
 }
 
 function dealQuestion() {
   const q = drawQuestion();
   if (!q) return false;
   clearTimer();
+  const secs = q.video ? VIDEO_QUESTION_SECONDS : QUESTION_SECONDS;
   db.current = {
     qid: q.id,
     category: q.category,
     difficulty: q.difficulty,
     text: q.question,
     options: q.options.slice(),
+    image: q.image || null,
+    video: q.video || null,
     answerIndex: q.answer,
-    endsAt: Date.now() + QUESTION_SECONDS * 1000,
+    isWager: false,
+    seconds: secs,
+    endsAt: Date.now() + secs * 1000,
     answers: {},
+    wagers: {},
     revealed: false,
   };
   db.phase = 'question';
-  db.session.round += 1;
-  db.askedIds.push(q.id);
-  if (db.askedIds.length > MAX_ASKED_IDS) db.askedIds = db.askedIds.slice(-MAX_ASKED_IDS);
-  db.recentCats.push(q.category);
-  if (db.recentCats.length > 8) db.recentCats = db.recentCats.slice(-8);
-  questionTimer = setTimeout(() => revealQuestion(), QUESTION_SECONDS * 1000 + 400);
+  db.block.dealt += 1; // 1..9 — the 10th question of the block is the wager round
+  trackAsked(q);
+  questionTimer = setTimeout(() => revealQuestion(), secs * 1000 + 400);
   saveDb();
   broadcast();
   return true;
+}
+
+// Every 10th question is Final-Jeopardy style: the category is announced
+// first, players wager 0..their score, then the question drops.
+function startWager() {
+  const q = drawQuestion();
+  if (!q) return false;
+  clearTimer();
+  db.current = null;
+  db.wager = {
+    category: q.category,
+    pendingQuestion: q, // stashed so the wager round can't redraw/repeat it
+    endsAt: Date.now() + WAGER_SECONDS * 1000,
+    wagers: {},
+  };
+  db.phase = 'wager';
+  questionTimer = setTimeout(() => dealWagerQuestion(), WAGER_SECONDS * 1000 + 400);
+  saveDb();
+  broadcast();
+  return true;
+}
+
+function dealWagerQuestion() {
+  const w = db.wager;
+  if (db.phase !== 'wager' || !w || !w.pendingQuestion) return advanceGame();
+  const q = w.pendingQuestion;
+  clearTimer();
+  const secs = q.video ? VIDEO_QUESTION_SECONDS : QUESTION_SECONDS;
+  db.current = {
+    qid: q.id,
+    category: q.category,
+    difficulty: q.difficulty,
+    text: q.question,
+    options: q.options.slice(),
+    image: q.image || null,
+    video: q.video || null,
+    answerIndex: q.answer,
+    isWager: true,
+    seconds: secs,
+    endsAt: Date.now() + secs * 1000,
+    answers: {},
+    wagers: Object.assign({}, w.wagers),
+    revealed: false,
+  };
+  db.wager = null;
+  db.phase = 'question';
+  db.block.dealt = BLOCK_SIZE; // the wager question closes out the block
+  trackAsked(q);
+  questionTimer = setTimeout(() => revealQuestion(), secs * 1000 + 400);
+  saveDb();
+  broadcast();
+  return true;
+}
+
+function scorePoints(p, pts) {
+  p.score += pts;
+  p.blockScore = (p.blockScore || 0) + pts;
+  if (p.score < 0) p.score = 0;
+  if (p.blockScore < 0) p.blockScore = 0;
+}
+
+// Block-capping ceremony after the wager reveal: top 3 of the block.
+function showPodium() {
+  clearTimer();
+  db.podium = { top: leaderboard('block').slice(0, 3) };
+  db.phase = 'podium';
+  db.current = null;
+  saveDb();
+  broadcast();
+  if (db.autoPilot) {
+    questionTimer = setTimeout(() => {
+      db.podium = null;
+      for (const p of Object.values(db.players)) p.blockScore = 0;
+      db.block.number += 1;
+      db.block.dealt = 0;
+      saveDb();
+      advanceGame();
+    }, PODIUM_SECONDS * 1000);
+  }
+  return true;
+}
+
+// The always-on heartbeat: decide what comes next.
+function advanceGame() {
+  clearTimer();
+  db.current = null;
+  db.wager = null;
+  db.podium = null;
+  if (db.block.dealt >= BLOCK_SIZE) {
+    // wager round was dealt but the host skipped ahead — close the block out
+    return showPodium();
+  }
+  if (db.block.dealt >= BLOCK_SIZE - 1) return startWager();
+  return dealQuestion();
 }
 
 function revealQuestion() {
@@ -261,23 +463,44 @@ function revealQuestion() {
   if (db.phase !== 'question' || !c || c.revealed) return false;
   clearTimer();
   c.revealed = true;
-  const total = QUESTION_SECONDS * 1000;
+  const total = c.seconds * 1000;
   for (const [pid, a] of Object.entries(c.answers)) {
     const p = db.players[pid];
     if (!p) continue;
     p.answered += 1;
     p.lastSeen = Date.now();
+    const wager = (c.wagers && c.wagers[pid]) || 0;
     if (a.choice === c.answerIndex) {
       const speed = Math.max(0, Math.min(1, (c.endsAt - a.at) / total));
-      const pts = (BASE_POINTS[c.difficulty] || 100) + Math.round(SPEED_BONUS_MAX * speed);
+      let pts = (BASE_POINTS[c.difficulty] || 100) + Math.round(SPEED_BONUS_MAX * speed);
+      if (c.isWager && wager > 0) {
+        pts += wager;
+        p.wagersWon = (p.wagersWon || 0) + 1;
+      }
       a.points = pts;
       a.correct = true;
       p.correct += 1;
-      p.score += pts;
-      p.sessionScore += pts;
+      scorePoints(p, pts);
     } else {
-      a.points = 0;
       a.correct = false;
+      if (c.isWager && wager > 0) {
+        a.points = -wager;
+        p.wagersLost = (p.wagersLost || 0) + 1;
+        scorePoints(p, -wager);
+      } else {
+        a.points = 0;
+      }
+    }
+  }
+  // players who wagered but never answered lose their wager
+  if (c.isWager && c.wagers) {
+    for (const [pid, amt] of Object.entries(c.wagers)) {
+      if (c.answers[pid] || amt <= 0) continue;
+      const p = db.players[pid];
+      if (!p) continue;
+      p.wagersLost = (p.wagersLost || 0) + 1;
+      p.lastSeen = Date.now();
+      scorePoints(p, -amt);
     }
   }
   db.phase = 'reveal';
@@ -285,7 +508,8 @@ function revealQuestion() {
   broadcast();
   if (db.autoPilot) {
     clearTimer();
-    questionTimer = setTimeout(() => dealQuestion(), REVEAL_SECONDS * 1000);
+    const pause = c.isWager ? WAGER_REVEAL_SECONDS : REVEAL_SECONDS;
+    questionTimer = setTimeout(() => (c.isWager ? showPodium() : advanceGame()), pause * 1000);
   }
   return true;
 }
@@ -385,7 +609,8 @@ async function handleApi(req, res) {
       player = {
         id, name,
         token: crypto.randomBytes(16).toString('hex'),
-        score: 0, sessionScore: 0, correct: 0, answered: 0,
+        score: 0, blockScore: 0, correct: 0, answered: 0,
+        wagersWon: 0, wagersLost: 0,
         joinedAt: now, lastSeen: now,
       };
       db.players[id] = player;
@@ -413,14 +638,35 @@ async function handleApi(req, res) {
     return json(res, 200, { ok: true, locked: true });
   }
 
+  if (urlPath === '/api/wager' && method === 'POST') {
+    const body = await readBody(req);
+    if (!body) return json(res, 400, { error: 'bad json' });
+    const player = db.players[body.playerId];
+    if (!player || player.token !== body.token) return json(res, 401, { error: 'unknown player' });
+    if (db.phase !== 'wager' || !db.wager) return json(res, 409, { error: 'no wager window' });
+    if (Date.now() > db.wager.endsAt) return json(res, 409, { error: 'wagers closed' });
+    let amount = Math.floor(Number(body.amount));
+    if (!Number.isFinite(amount)) return json(res, 400, { error: 'bad amount' });
+    amount = Math.max(0, Math.min(player.score, amount)); // 0..all-in
+    db.wager.wagers[player.id] = amount; // re-sending overwrites
+    player.lastSeen = Date.now();
+    saveDb();
+    broadcast();
+    return json(res, 200, { ok: true, wager: amount });
+  }
+
   // ---- host controls (no auth: this box is meant for a trusted home LAN) ----
   const isHost = urlPath.startsWith('/api/host/');
   if (isHost && (method === 'POST' || method === 'GET')) {
     const action = urlPath.slice('/api/host/'.length);
     if (action === 'start') {
       clearTimer();
-      for (const p of Object.values(db.players)) p.sessionScore = 0;
+      for (const p of Object.values(db.players)) p.blockScore = 0;
       db.session = { active: true, startedAt: Date.now(), round: 0 };
+      db.block = { number: 1, dealt: 0 };
+      db.current = null;
+      db.wager = null;
+      db.podium = null;
       const ok = dealQuestion();
       saveDb();
       return json(res, 200, { ok, state: publicState() });
@@ -429,9 +675,15 @@ async function handleApi(req, res) {
       clearTimer();
       if (db.phase === 'question' && db.current && !db.current.revealed) {
         revealQuestion();
-        questionTimer = setTimeout(() => dealQuestion(), 4000);
+        // revealQuestion scheduled the autopilot follow-up; supersede it with
+        // a faster advance — without this clearTimer, the orphaned timer
+        // would fire advanceGame() a second time (e.g. wiping a wager round).
+        clearTimer();
+        questionTimer = setTimeout(() => advanceGame(), 4000);
+      } else if (db.phase === 'wager') {
+        dealWagerQuestion();
       } else {
-        dealQuestion();
+        advanceGame();
       }
       saveDb();
       return json(res, 200, { ok: true, state: publicState() });
@@ -445,8 +697,11 @@ async function handleApi(req, res) {
       clearTimer();
       db.phase = 'idle';
       db.current = null;
+      db.wager = null;
+      db.podium = null;
+      db.block = { number: 1, dealt: 0 };
       db.session = { active: false, startedAt: null, round: 0 };
-      for (const p of Object.values(db.players)) p.sessionScore = 0;
+      for (const p of Object.values(db.players)) p.blockScore = 0;
       saveDb();
       broadcast();
       return json(res, 200, { ok: true, state: publicState() });
@@ -454,12 +709,36 @@ async function handleApi(req, res) {
     if (action === 'autopilot') {
       const body = method === 'POST' ? await readBody(req) : {};
       const on = body && typeof body.on === 'boolean' ? body.on : !db.autoPilot;
+      const was = db.autoPilot;
       db.autoPilot = on;
       clearTimer();
-      if (on && db.phase === 'reveal') questionTimer = setTimeout(() => dealQuestion(), REVEAL_SECONDS * 1000);
+      // Just turned on mid-reveal (no timer was running while it was off):
+      // resume the flow, respecting wager reveals.
+      if (on && !was && db.phase === 'reveal') {
+        questionTimer = setTimeout(
+          () => (db.current && db.current.isWager ? showPodium() : advanceGame()),
+          REVEAL_SECONDS * 1000
+        );
+      }
       saveDb();
       broadcast();
       return json(res, 200, { ok: true, autoPilot: db.autoPilot });
+    }
+    if (action === 'family') {
+      const body = method === 'POST' ? await readBody(req) : {};
+      const on = body && typeof body.on === 'boolean' ? body.on : !db.familyMode;
+      db.familyMode = on;
+      saveDb();
+      broadcast();
+      return json(res, 200, { ok: true, familyMode: db.familyMode });
+    }
+    if (action === 'venue') {
+      const body = method === 'POST' ? await readBody(req) : {};
+      const name = String((body && body.name) || '').trim().slice(0, 30);
+      if (name) db.venueName = name;
+      saveDb();
+      broadcast();
+      return json(res, 200, { ok: true, venueName: db.venueName });
     }
     return json(res, 404, { error: 'unknown host action' });
   }
@@ -541,6 +820,13 @@ server.listen(PORT, '0.0.0.0', () => {
   setInterval(() => {
     remoteProvider.refill(log).catch((e) => console.error('cave-trivia: remote refill failed:', e.message));
   }, 10 * 60 * 1000);
+  // Always-on: the living game starts itself. No host input needed.
+  if (db.autoPilot) {
+    console.log('  Autopilot ON — the living game starts in 3s…');
+    console.log('');
+    clearTimer();
+    questionTimer = setTimeout(() => advanceGame(), 3000);
+  }
 });
 
 process.on('SIGINT', () => {
