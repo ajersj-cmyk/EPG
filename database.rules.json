@@ -1,1 +1,13 @@
-ewogICJydWxlcyI6IHsKICAgIC8vIENhdmUgVHJpdmlhIOKAlCBob21lIHBhcnR5IGdhbWUuCiAgICAvLyBPcGVuIHJlYWQvd3JpdGUgdW5kZXIgcm9vbXMvIHNvIGFueSBUViBvciBwaG9uZSBvbiB0aGUgbmlnaHQgY2FuIHBsYXkKICAgIC8vIHdpdGggemVybyBhY2NvdW50cy4gRG8gTk9UIHVzZSB0aGVzZSBydWxlcyBmb3IgYW55dGhpbmcgc2Vuc2l0aXZlOgogICAgLy8gcGxheWVyIG5hbWVzLCBzY29yZXMsIGFuc3dlcnMgYW5kIHdhZ2VycyBhcmUgdmlzaWJsZSB0byBhbnlvbmUgd2l0aAogICAgLy8gdGhlIGRhdGFiYXNlIFVSTC4gRXZlcnl0aGluZyBlbHNlIGRlZmF1bHRzIHRvIGRlbnkuCiAgICAicm9vbXMiOiB7CiAgICAgICIucmVhZCI6IHRydWUsCiAgICAgICIud3JpdGUiOiB0cnVlCiAgICB9CiAgfQp9Cg==
+{
+  "rules": {
+    // Cave Trivia — home party game.
+    // Open read/write under rooms/ so any TV or phone on the night can play
+    // with zero accounts. Do NOT use these rules for anything sensitive:
+    // player names, scores, answers and wagers are visible to anyone with
+    // the database URL. Everything else defaults to deny.
+    "rooms": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
