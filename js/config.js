@@ -1,1 +1,83 @@
-LyogQ2F2ZSBUcml2aWEgKHdlYikg4oCUIEZpcmViYXNlIGNvbmZpZyBsb2FkZXIuCiAgIFRoZSBmaXJlYmFzZUNvbmZpZyBKU09OIGlzIHBhc3RlZCBvbmNlIG9uIHRoZSBUViAoZmlyc3QtcnVuIHNldHVwIHNjcmVlbikKICAgYW5kIHN0b3JlZCBpbiBsb2NhbFN0b3JhZ2UgdW5kZXIgQ1RfQ09ORklHX0tFWS4gUGhvbmVzIHJlY2VpdmUgaXQgdmlhIHRoZQogICBRUiBjb2RlICgjYz08YmFzZTY0dXJsPiBhcHBlbmRlZCB0byB0aGUgcGxheS5odG1sIFVSTCkgc28gdGhleSBuZWVkIG5vIHNldHVwLiAqLwooZnVuY3Rpb24gKCkgewogICd1c2Ugc3RyaWN0JzsKCiAgdmFyIENUX0NPTkZJR19LRVkgPSAnY3QtZmlyZWJhc2UtY29uZmlnJzsKCiAgLy8gQmFrZWQtaW4gZGVmYXVsdDogdGhlIHByb2plY3QncyBvd24gRmlyZWJhc2UgKGZyZWUgU3BhcmsgcGxhbikuCiAgLy8gVGhlIFRWIHNldHVwIHNjcmVlbiBjYW4gc3RpbGwgb3ZlcnJpZGUgdGhpcyAoc2F2ZWQgdG8gbG9jYWxTdG9yYWdlKS4KICAvLyBGaXJlYmFzZSBhcGlLZXlzIGFyZSBwdWJsaWMgYnkgZGVzaWduIOKAlCBhY2Nlc3MgaXMgY29udHJvbGxlZCBieSBkYXRhYmFzZSBydWxlcy4KICB2YXIgREVGQVVMVF9DT05GSUcgPSB7CiAgICAiYXBpS2V5IjogIkFJemFTeUNzT1BqWVE2U3RSWm9DSlpaNlRjM3hVQWhNMk1GYWJfOCIsCiAgICAiYXV0aERvbWFpbiI6ICJjYXZlLXRyaXZpYS5maXJlYmFzZWFwcC5jb20iLAogICAgImRhdGFiYXNlVVJMIjogImh0dHBzOi8vY2F2ZS10cml2aWEtZGVmYXVsdC1ydGRiLmZpcmViYXNlaW8uY29tIiwKICAgICJwcm9qZWN0SWQiOiAiY2F2ZS10cml2aWEiLAogICAgInN0b3JhZ2VCdWNrZXQiOiAiY2F2ZS10cml2aWEuZmlyZWJhc2VzdG9yYWdlLmFwcCIsCiAgICAibWVzc2FnaW5nU2VuZGVySWQiOiAiODMxNjA3NzMyOTAiLAogICAgImFwcElkIjogIjE6ODMxNjA3NzMyOTA6d2ViOjRiYzMzZjg0NDUwZjg3Mzg4NzE2ZDMiCiAgfTsKCiAgZnVuY3Rpb24gcmVhZFN0b3JlZCgpIHsKICAgIHRyeSB7CiAgICAgIHZhciByYXcgPSBsb2NhbFN0b3JhZ2UuZ2V0SXRlbShDVF9DT05GSUdfS0VZKTsKICAgICAgaWYgKHJhdykgewogICAgICAgIHZhciBjZmcgPSBKU09OLnBhcnNlKHJhdyk7CiAgICAgICAgaWYgKGlzVmFsaWQoY2ZnKSkgcmV0dXJuIGNmZzsKICAgICAgfQogICAgfSBjYXRjaCAoZSkgeyAvKiBmYWxsIHRocm91Z2ggdG8gZGVmYXVsdCAqLyB9CiAgICByZXR1cm4gaXNWYWxpZChERUZBVUxUX0NPTkZJRykgPyBERUZBVUxUX0NPTkZJRyA6IG51bGw7CiAgfQoKICBmdW5jdGlvbiBpc1ZhbGlkKGNmZykgewogICAgcmV0dXJuICEhKGNmZyAmJiBjZmcuYXBpS2V5ICYmIGNmZy5wcm9qZWN0SWQgJiYgY2ZnLmRhdGFiYXNlVVJMKTsKICB9CgogIGZ1bmN0aW9uIHNhdmUoY2ZnKSB7CiAgICBsb2NhbFN0b3JhZ2Uuc2V0SXRlbShDVF9DT05GSUdfS0VZLCBKU09OLnN0cmluZ2lmeShjZmcpKTsKICB9CgogIC8vIFB1bGwgY29uZmlnIGZyb20gdGhlIFVSTCBoYXNoICgjYz0uLi4pIOKAlCB3cml0dGVuIGJ5IHRoZSBUVidzIFFSIGNvZGUuCiAgZnVuY3Rpb24gcmVhZEZyb21IYXNoKCkgewogICAgdHJ5IHsKICAgICAgdmFyIG0gPSAobG9jYXRpb24uaGFzaCB8fCAnJykubWF0Y2goLyNjPShbQS1aYS16MC05XC1fXSspLyk7CiAgICAgIGlmICghbSkgcmV0dXJuIG51bGw7CiAgICAgIHZhciBiNjQgPSBtWzFdLnJlcGxhY2UoLy0vZywgJysnKS5yZXBsYWNlKC9fL2csICcvJyk7CiAgICAgIHdoaWxlIChiNjQubGVuZ3RoICUgNCkgYjY0ICs9ICc9JzsKICAgICAgdmFyIGNmZyA9IEpTT04ucGFyc2UoZGVjb2RlVVJJQ29tcG9uZW50KGVzY2FwZShhdG9iKGI2NCkpKSk7CiAgICAgIHJldHVybiBpc1ZhbGlkKGNmZykgPyBjZmcgOiBudWxsOwogICAgfSBjYXRjaCAoZSkgeyByZXR1cm4gbnVsbDsgfQogIH0KCiAgZnVuY3Rpb24gZW5jb2RlRm9yUXIoY2ZnKSB7CiAgICB2YXIgYjY0ID0gYnRvYSh1bmVzY2FwZShlbmNvZGVVUklDb21wb25lbnQoSlNPTi5zdHJpbmdpZnkoY2ZnKSkpKTsKICAgIHJldHVybiBiNjQucmVwbGFjZSgvXCsvZywgJy0nKS5yZXBsYWNlKC9cLy9nLCAnXycpLnJlcGxhY2UoLz0rJC8sICcnKTsKICB9CgogIHZhciBkYiA9IG51bGw7CiAgdmFyIGFwcCA9IG51bGw7CgogIC8vIEluaXRpYWxpemUgdGhlIEZpcmViYXNlIGNvbXBhdCBTREsuIFJldHVybnMgZmlyZWJhc2UuZGF0YWJhc2UoKSBvciB0aHJvd3MuCiAgZnVuY3Rpb24gaW5pdChjZmcpIHsKICAgIGlmIChkYikgcmV0dXJuIGRiOwogICAgaWYgKCF3aW5kb3cuZmlyZWJhc2UpIHRocm93IG5ldyBFcnJvcignRmlyZWJhc2UgU0RLIGZhaWxlZCB0byBsb2FkIChjaGVjayBuZXR3b3JrKS4nKTsKICAgIGlmICghaXNWYWxpZChjZmcpKSB0aHJvdyBuZXcgRXJyb3IoJ0ludmFsaWQgRmlyZWJhc2UgY29uZmlnLicpOwogICAgYXBwID0gZmlyZWJhc2UuaW5pdGlhbGl6ZUFwcChjZmcpOwogICAgZGIgPSBmaXJlYmFzZS5kYXRhYmFzZSgpOwogICAgcmV0dXJuIGRiOwogIH0KCiAgd2luZG93LkNUID0gd2luZG93LkNUIHx8IHt9OwogIHdpbmRvdy5DVC5jb25maWcgPSB7CiAgICBLRVk6IENUX0NPTkZJR19LRVksCiAgICByZWFkU3RvcmVkOiByZWFkU3RvcmVkLAogICAgcmVhZEZyb21IYXNoOiByZWFkRnJvbUhhc2gsCiAgICBzYXZlOiBzYXZlLAogICAgaXNWYWxpZDogaXNWYWxpZCwKICAgIGVuY29kZUZvclFyOiBlbmNvZGVGb3JRciwKICAgIGluaXQ6IGluaXQsCiAgICBkYjogZnVuY3Rpb24gKCkgeyByZXR1cm4gZGI7IH0sCiAgfTsKfSkoKTsK
+/* Cave Trivia (web) — Firebase config loader.
+   The firebaseConfig JSON is pasted once on the TV (first-run setup screen)
+   and stored in localStorage under CT_CONFIG_KEY. Phones receive it via the
+   QR code (#c=<base64url> appended to the play.html URL) so they need no setup. */
+(function () {
+  'use strict';
+
+  var CT_CONFIG_KEY = 'ct-firebase-config';
+
+  // Baked-in default: the project's own Firebase (free Spark plan).
+  // The TV setup screen can still override this (saved to localStorage).
+  // Firebase apiKeys are public by design — access is controlled by database rules.
+  var DEFAULT_CONFIG = {
+    "apiKey": "AIzaSyCsOPjYQ6StRZoCJZZ6Tc3xUAhM2MFab_8",
+    "authDomain": "cave-trivia.firebaseapp.com",
+    "databaseURL": "https://cave-trivia-default-rtdb.firebaseio.com",
+    "projectId": "cave-trivia",
+    "storageBucket": "cave-trivia.firebasestorage.app",
+    "messagingSenderId": "83160773290",
+    "appId": "1:83160773290:web:4bc33f84450f87388716d3"
+  };
+
+  function readStored() {
+    try {
+      var raw = localStorage.getItem(CT_CONFIG_KEY);
+      if (raw) {
+        var cfg = JSON.parse(raw);
+        if (isValid(cfg)) return cfg;
+      }
+    } catch (e) { /* fall through to default */ }
+    return isValid(DEFAULT_CONFIG) ? DEFAULT_CONFIG : null;
+  }
+
+  function isValid(cfg) {
+    return !!(cfg && cfg.apiKey && cfg.projectId && cfg.databaseURL);
+  }
+
+  function save(cfg) {
+    localStorage.setItem(CT_CONFIG_KEY, JSON.stringify(cfg));
+  }
+
+  // Pull config from the URL hash (#c=...) — written by the TV's QR code.
+  function readFromHash() {
+    try {
+      var m = (location.hash || '').match(/#c=([A-Za-z0-9\-_]+)/);
+      if (!m) return null;
+      var b64 = m[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      var cfg = JSON.parse(decodeURIComponent(escape(atob(b64))));
+      return isValid(cfg) ? cfg : null;
+    } catch (e) { return null; }
+  }
+
+  function encodeForQr(cfg) {
+    var b64 = btoa(unescape(encodeURIComponent(JSON.stringify(cfg))));
+    return b64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+
+  var db = null;
+  var app = null;
+
+  // Initialize the Firebase compat SDK. Returns firebase.database() or throws.
+  function init(cfg) {
+    if (db) return db;
+    if (!window.firebase) throw new Error('Firebase SDK failed to load (check network).');
+    if (!isValid(cfg)) throw new Error('Invalid Firebase config.');
+    app = firebase.initializeApp(cfg);
+    db = firebase.database();
+    return db;
+  }
+
+  window.CT = window.CT || {};
+  window.CT.config = {
+    KEY: CT_CONFIG_KEY,
+    readStored: readStored,
+    readFromHash: readFromHash,
+    save: save,
+    isValid: isValid,
+    encodeForQr: encodeForQr,
+    init: init,
+    db: function () { return db; },
+  };
+})();
