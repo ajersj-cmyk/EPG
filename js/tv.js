@@ -765,6 +765,7 @@
       document.documentElement.dataset.theme = theme;
     }
     $('#venueName').textContent = (settings.title || 'CAVE TRIVIA').toUpperCase();
+    $('#venueTagline').textContent = (settings.tagline || 'ALWAYS-ON LEAGUE').toUpperCase();
     $('#familyBadge').hidden = !settings.familyMode;
     $('#famToggle').classList.toggle('on', !!settings.familyMode);
     document.querySelectorAll('.theme-swatch').forEach(function (el) {
@@ -772,6 +773,8 @@
     });
     var ti = $('#gameTitleInput');
     if (ti && document.activeElement !== ti) ti.value = settings.title || '';
+    var gi = $('#gameTaglineInput');
+    if (gi && document.activeElement !== gi) gi.value = settings.tagline || '';
     renderCatGrid();
     renderIdle();
   }
@@ -825,6 +828,14 @@
     });
     $('#gameTitleInput').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') $('#btnTitleSave').click();
+      e.stopPropagation();
+    });
+    $('#btnTaglineSave').addEventListener('click', function () {
+      var v = $('#gameTaglineInput').value.trim().slice(0, 40);
+      refs.settings.update({ tagline: v });
+    });
+    $('#gameTaglineInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') $('#btnTaglineSave').click();
       e.stopPropagation();
     });
     $('#famToggle').addEventListener('click', function () {
