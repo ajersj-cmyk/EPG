@@ -10,93 +10,134 @@
 <body>
 <div class="ambient"></div>
 <div class="vignette"></div>
+<div class="streak" id="streak"></div>
 
 <div class="tv-shell">
   <header class="tv-top">
-    <div class="wordmark">CAVE TRIVIA<small>THE MAN CAVE LEAGUE</small></div>
+    <div class="wordmark"><span id="venueName">CAVE TRIVIA</span><small>ALWAYS-ON LEAGUE</small></div>
     <div class="tv-meta">
+      <span class="family-badge" id="familyBadge" hidden>Family</span>
       <div class="tv-clock" id="clock">--:--</div>
-      <div class="tv-players"><b id="playerCount">0</b> PLAYERS IN</div>
+      <div class="tv-players"><b id="playerCount">0</b> players in</div>
     </div>
   </header>
 
-  <main class="tv-stage">
-    <!-- attract / idle -->
-    <section class="phase" id="phase-idle">
-      <div class="attract-inner">
-        <div class="qr-wrap">
-          <div class="eyebrow">Scan to join</div>
-          <div style="height:1.4vmin"></div>
-          <div class="qr-card"><div id="qr"></div></div>
-          <div class="qr-url" id="joinUrl">…</div>
+  <div class="tv-layout">
+    <main class="tv-stage">
+
+      <!-- attract / idle : the screen is never dead -->
+      <section class="phase" id="phase-idle">
+        <div class="attract">
+          <div class="eyebrow">Always on &middot; jump in anytime</div>
+          <h1 class="attract-title chrome-text pulse">SCAN<br>TO JOIN</h1>
+          <div class="attract-venue" id="attractVenue">CAVE TRIVIA</div>
+          <div class="attract-board" id="attractBoard"></div>
+          <div class="attract-cta">The game never stops &mdash; your phone is the controller</div>
         </div>
-        <div class="attract-copy">
-          <div class="eyebrow">Always on · All are welcome</div>
-          <h1>The cave's <em>never-ending</em> trivia night.</h1>
-          <div class="fact-box">
-            <div class="fact-kicker">Meanwhile, in the 90s…</div>
-            <div class="fact-text" id="factText"></div>
+      </section>
+
+      <!-- wager : full-stage Final-Jeopardy drama -->
+      <section class="phase" id="phase-wager">
+        <div class="wager-inner">
+          <div class="eyebrow">Final wager &middot; question 10 of 10</div>
+          <h1 class="wager-title chrome-text">FINAL<br>WAGER</h1>
+          <div class="wager-cat"><span>Category</span><b id="wagerCat">&mdash;</b></div>
+          <div class="wager-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+              <circle class="ring-fg" id="wagerRingFg" cx="60" cy="60" r="54"></circle>
+            </svg>
+            <div class="wager-secs" id="wagerSecs">15</div>
           </div>
-          <span class="attract-cta">Grab your phone &amp; play</span>
+          <div class="wager-hint">Wager <b>0</b> up to your whole score &mdash; on your phone, now</div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- live question -->
-    <section class="phase" id="phase-question">
-      <div class="q-inner">
-        <div class="q-eyebrow">
-          <span class="q-cat" id="qCat">—</span>
-          <span class="q-diff" id="qDiff">—</span>
-          <span class="q-round" id="qRound">—</span>
+      <!-- question -->
+      <section class="phase" id="phase-question">
+        <div class="q-media" id="qMedia" hidden>
+          <img id="qImg" alt="">
+          <div class="q-video-frame" id="qVideoFrame" hidden>
+            <iframe id="qVideo" title="Video question" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
         </div>
-        <h2 class="q-text" id="qText"></h2>
-        <div class="q-options" id="qOptions"></div>
-        <div class="q-foot">
-          <div class="q-timerbar"><i id="qTimerFill"></i></div>
-          <div class="q-secs" id="qSecs">20</div>
-          <div class="q-locked"><b id="qLocked">0</b> locked in</div>
+        <div class="q-inner">
+          <div class="q-eyebrow">
+            <span class="q-cat" id="qCat">&mdash;</span>
+            <span class="q-diff" id="qDiff">&mdash;</span>
+            <span class="wager-badge" id="qWagerBadge" hidden>Wager</span>
+            <span class="q-round" id="qRound">&mdash;</span>
+          </div>
+          <h2 class="q-text" id="qText"></h2>
+          <div class="q-options" id="qOptions"></div>
+          <div class="q-foot">
+            <div class="q-timerbar"><i id="qTimerFill"></i></div>
+            <div class="q-secs" id="qSecs">&mdash;</div>
+            <div class="q-locked"><b id="qLocked">0</b> locked in</div>
+          </div>
         </div>
-      </div>
-      <div class="corner-join">
-        <div class="qr-card"><div id="qrSmall"></div></div>
-        <span>Scan to join</span>
-      </div>
-    </section>
+      </section>
 
-    <!-- reveal -->
-    <section class="phase" id="phase-reveal">
-      <div class="q-inner">
-        <div class="q-eyebrow">
-          <span class="q-cat" id="rCat">—</span>
-          <span class="q-diff">Answer</span>
-          <span class="q-round" id="rRound">—</span>
+      <!-- reveal -->
+      <section class="phase" id="phase-reveal">
+        <div class="q-inner">
+          <div class="q-eyebrow">
+            <span class="q-cat" id="rCat">&mdash;</span>
+            <span class="q-diff">Answer</span>
+            <span class="wager-badge" id="rWagerBadge" hidden>Wager</span>
+            <span class="q-round" id="rRound">&mdash;</span>
+          </div>
+          <h2 class="q-text" id="rText"></h2>
+          <div class="q-options" id="rOptions"></div>
+          <div class="reveal-note" id="rNote"></div>
+          <ol class="results" id="rResults"></ol>
         </div>
-        <h2 class="q-text" id="rText"></h2>
-        <div class="q-options" id="rOptions"></div>
-        <div class="reveal-note" id="rNote"></div>
-        <div class="mini-board" id="rBoard"></div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <div class="ticker" id="ticker">
-    <div class="ticker-label">Leaderboard</div>
-    <div class="ticker-track" id="tickerTrack"></div>
+      <!-- podium : block top 3 -->
+      <section class="phase" id="phase-podium">
+        <div class="podium-inner">
+          <div class="eyebrow">Block <span id="podiumBlock">&mdash;</span> final &middot; top of the block</div>
+          <h1 class="podium-title chrome-text">CHAMPIONS</h1>
+          <div class="podium-steps" id="podiumSteps"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="tv-rail">
+      <div class="rail-card rail-progress">
+        <div class="rail-progress-label">Question <b id="qibNum">&ndash;</b>/10 &middot; Block <b id="blockNum">&ndash;</b></div>
+        <div class="pips" id="pips"></div>
+      </div>
+      <div class="rail-card rail-board">
+        <h3><span class="live-dot"></span>Live leaderboard</h3>
+        <ol class="board" id="blockBoard"></ol>
+      </div>
+      <div class="rail-card qr-card">
+        <div class="qr-scan">Scan to join</div>
+        <div id="qr"></div>
+        <div class="qr-url" id="joinUrl">&hellip;</div>
+      </div>
+    </aside>
   </div>
 
   <footer class="hostbar">
-    <span class="attrib" id="attrib">Questions: Open Trivia DB · the-trivia-api.com · Jeopardy! clues via jservice</span>
+    <span class="attrib" id="attrib"></span>
     <span class="spacer"></span>
+    <button class="btn ghost" id="btnSound" title="Toggle sound">Sound on</button>
+    <label class="autopilot" id="famToggle" title="Family mode: kid-safe questions only">
+      <span class="pill"></span> Family
+    </label>
     <label class="autopilot" id="apToggle" title="Automatically advance rounds">
       <span class="pill"></span> Auto-pilot
     </label>
-    <button class="btn ghost" id="btnReset">Reset</button>
-    <button class="btn ghost" id="btnReveal">Reveal</button>
-    <button class="btn" id="btnNext">Next</button>
-    <button class="btn solid" id="btnStart">Start round</button>
+    <button class="btn ghost" id="btnReveal" title="Force reveal (R)">Reveal</button>
+    <button class="btn" id="btnNext" title="Next question (N)">Next</button>
   </footer>
 </div>
+
+<div class="reconnect" id="reconnect" hidden>Reconnecting&hellip;</div>
 
 <script src="/lib/qrcode.js"></script>
 <script src="/js/tv.js"></script>

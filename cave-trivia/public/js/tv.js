@@ -1,39 +1,82 @@
-/* Cave Trivia — TV display logic. SSE-driven, broadcast-smooth. */
+/* Cave Trivia — TV display logic. Always-on living game, SSE-driven.
+   Contract: CONTRACT.md v2. Broadcast-smooth, never a dead screen. */
 (function () {
   'use strict';
 
   var $ = function (s) { return document.querySelector(s); };
-
-  var FACTS = [
-    'The World Wide Web opened to the public in 1991.',
-    'The first SMS text ever sent read “Merry Christmas” — in 1992.',
-    'Google was founded in a garage in 1998.',
-    'The DVD launched in the United States in 1997.',
-    'The Nintendo 64 arrived in the US in 1996 with Super Mario 64.',
-    'The first Harry Potter book was published in 1997.',
-    'Titanic became the first film to gross $1 billion in 1997.',
-    'The Macarena craze peaked in the summer of 1996.',
-    'Dolly the sheep, the first cloned mammal, was born in 1996.',
-    'The PlayStation launched in North America in 1995.',
-    'eBay began in 1995 as a site called AuctionWeb.',
-    'Jurassic Park changed blockbuster CGI forever in 1993.',
-    'Seinfeld’s 1998 finale drew 76 million viewers.',
-    'The Channel Tunnel opened in 1994, linking England and France.',
-    'The Tamagotchi digital pet took over playgrounds in 1997.',
-    'Beanie Babies sparked a full-blown collecting frenzy in the late 90s.',
-    'The Game Boy Camera turned heads in 1998.',
-    'The Rachel haircut swept salons after Friends debuted in 1994.',
-    'The first International Space Station module launched in 1998.',
-    'Everyone was nervous about the Y2K bug as 1999 came to a close.'
-  ];
-
   var LETTERS = ['A', 'B', 'C', 'D'];
+  var PHASES = ['idle', 'wager', 'question', 'reveal', 'podium'];
+
   var lastJoinUrl = '';
   var lastState = null;
-  var factIdx = 0;
+  var lastPhase = '';
+  var lastQid = '';
+  var skew = 0; // Date.now() - serverTime at last render
 
-  function fmtCategory(c) {
-    return String(c || '').replace(/-/g, ' ').toUpperCase();
+  /* ---------------- audio : WebAudio oscillators only, zero assets ---------------- */
+  var actx = null, master = null;
+  var soundOn = true;
+  try { soundOn = localStorage.getItem('ctv-sound') !== 'off'; } catch (e) {}
+
+  function ensureAudio() {
+    if (actx) { if (actx.state === 'suspended') { actx.resume().catch(function () {}); } return; }
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+      master = actx.createGain();
+      master.gain.value = soundOn ? 0.16 : 0;
+      master.connect(actx.destination);
+    } catch (e) { actx = null; }
+  }
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    document.addEventListener(ev, ensureAudio, { passive: true });
+  });
+
+  function tone(freq, dur, type, delay, vol, slideTo) {
+    if (!actx || !master || !soundOn) return;
+    try {
+      var t0 = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator();
+      var g = actx.createGain();
+      o.type = type || 'triangle';
+      o.frequency.setValueAtTime(freq, t0);
+      if (slideTo) o.frequency.exponentialRampToValueAtTime(Math.max(20, slideTo), t0 + dur);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(vol || 0.6, t0 + 0.015);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(master);
+      o.start(t0); o.stop(t0 + dur + 0.05);
+    } catch (e) {}
+  }
+  function sTick() { tone(880, 0.07, 'square', 0, 0.35); }
+  function sQuestionSting() { tone(659.25, 0.12, 'triangle', 0, 0.6); tone(880, 0.2, 'triangle', 0.12, 0.6); }
+  function sRevealHit() { tone(160, 0.42, 'sine', 0, 0.9, 52); tone(1244, 0.09, 'triangle', 0, 0.22); }
+  function sWagerSwell() {
+    tone(180, 1.5, 'sawtooth', 0, 0.28, 740);
+    tone(90, 1.5, 'sine', 0, 0.4, 370);
+    tone(880, 0.25, 'triangle', 1.5, 0.55);
+  }
+  function sFanfare() {
+    var seq = [523.25, 659.25, 783.99, 1046.5];
+    seq.forEach(function (f, i) { tone(f, 0.16, 'triangle', i * 0.13, 0.6); });
+    tone(1046.5, 0.6, 'triangle', 0.55, 0.55);
+    tone(1318.5, 0.6, 'sine', 0.55, 0.3);
+  }
+
+  /* ---------------- helpers ---------------- */
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function fmtNum(n) { return Number(n || 0).toLocaleString('en-US'); }
+  function fmtDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtNum(d); }
+  function fmtCategory(c) { return String(c || '').replace(/-/g, ' ').toUpperCase(); }
+
+  function timeLeftMs(obj) {
+    if (!obj || !obj.endsAt) return 0;
+    return Math.max(0, obj.endsAt - (Date.now() - skew));
   }
 
   function renderQr(url) {
@@ -43,19 +86,90 @@
       var qr = qrcode(0, 'M');
       qr.addData(url);
       qr.make();
-      var svg = qr.createSvgTag({ cellSize: 8, margin: 0, scalable: true });
-      $('#qr').innerHTML = svg;
-      $('#qrSmall').innerHTML = svg;
+      $('#qr').innerHTML = qr.createSvgTag({ cellSize: 8, margin: 0, scalable: true });
       $('#joinUrl').textContent = url;
     } catch (e) {
       $('#joinUrl').textContent = url;
     }
   }
 
+  function sweepStreak() {
+    var s = $('#streak');
+    s.classList.remove('sweep');
+    void s.offsetWidth; // restart the animation
+    s.classList.add('sweep');
+  }
+
   function setPhase(name) {
-    ['idle', 'question', 'reveal'].forEach(function (p) {
-      $('#phase-' + p).classList.toggle('active', p === name);
+    PHASES.forEach(function (p) {
+      var el = document.getElementById('phase-' + p);
+      if (el) el.classList.toggle('active', p === name);
     });
+  }
+
+  function onPhaseChange(phase) {
+    sweepStreak();
+    if (phase === 'question') sQuestionSting();
+    else if (phase === 'reveal') sRevealHit();
+    else if (phase === 'wager') sWagerSwell();
+    else if (phase === 'podium') sFanfare();
+  }
+
+  /* ---------------- rail : progress, leaderboard, QR ---------------- */
+  var pipsBuilt = false;
+  function renderProgress(block) {
+    var b = block || {};
+    var num = b.number || 1, qib = b.questionInBlock || 1;
+    $('#qibNum').textContent = qib;
+    $('#blockNum').textContent = num;
+    var pips = $('#pips');
+    if (!pipsBuilt) {
+      for (var i = 0; i < 10; i++) {
+        var p = document.createElement('i');
+        if (i === 9) p.className = 'wager';
+        pips.appendChild(p);
+      }
+      pipsBuilt = true;
+    }
+    Array.prototype.forEach.call(pips.children, function (el, i) {
+      el.classList.toggle('done', i < qib - 1);
+      el.classList.toggle('now', i === qib - 1);
+    });
+  }
+
+  function renderBoard(board) {
+    var el = $('#blockBoard');
+    el.innerHTML = '';
+    if (!board || !board.length) {
+      el.innerHTML = '<div class="board-empty">No scores yet &mdash; be the first legend of the cave.</div>';
+      return;
+    }
+    board.slice(0, 10).forEach(function (r, i) {
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="rank">' + (i + 1) + '</span>' +
+        '<span class="nm">' + escapeHtml(r.name) + '</span>' +
+        '<span class="sc">' + fmtNum(r.score) + '</span>';
+      el.appendChild(li);
+    });
+  }
+
+  /* ---------------- phase renderers ---------------- */
+  function renderIdle(state) {
+    $('#attractVenue').textContent = state.venueName || 'CAVE TRIVIA';
+    var src = (state.blockBoard && state.blockBoard.length ? state.blockBoard : state.leaderboard) || [];
+    var el = $('#attractBoard');
+    el.innerHTML = '';
+    src.slice(0, 5).forEach(function (r, i) {
+      var c = document.createElement('span');
+      c.className = 'attract-chip';
+      c.innerHTML = '<b>' + (i + 1) + '</b>' + escapeHtml(r.name) + ' &middot; ' + fmtNum(r.score);
+      el.appendChild(c);
+    });
+  }
+
+  function renderWager(state) {
+    var w = state.wager || {};
+    $('#wagerCat').textContent = fmtCategory(w.category) || 'MYSTERY';
   }
 
   function buildOptions(container, options, correctIndex, revealed) {
@@ -63,103 +177,179 @@
     options.forEach(function (text, i) {
       var d = document.createElement('div');
       d.className = 'q-opt';
-      if (revealed) {
-        d.classList.add(i === correctIndex ? 'correct' : 'dim');
-      }
+      if (revealed) d.classList.add(i === correctIndex ? 'correct' : 'dim');
       var l = document.createElement('span');
       l.className = 'letter';
       l.textContent = LETTERS[i];
       var t = document.createElement('span');
       t.textContent = text;
-      d.appendChild(l);
-      d.appendChild(t);
+      d.appendChild(l); d.appendChild(t);
       container.appendChild(d);
     });
   }
 
-  function renderTicker(board) {
-    var track = $('#tickerTrack');
-    var empty = !board || board.length === 0;
-    track.classList.toggle('is-empty', empty);
-    if (empty) {
-      track.innerHTML = '<span>No scores yet — be the first legend of the cave.</span>';
-      return;
+  function renderQuestion(state) {
+    var q = state.question;
+    if (!q) return;
+    var media = $('#qMedia'), img = $('#qImg'), frame = $('#qVideoFrame'), vid = $('#qVideo');
+    if (lastQid !== q.id) {
+      lastQid = q.id;
+      var b = state.block || {};
+      $('#qCat').textContent = fmtCategory(q.category);
+      $('#qDiff').textContent = q.difficulty || '';
+      $('#qRound').textContent = 'Q' + (b.questionInBlock || '?') + ' / Block ' + (b.number || '?');
+      $('#qWagerBadge').hidden = !q.isWager;
+      $('#qText').textContent = q.text;
+      buildOptions($('#qOptions'), q.options, -1, false);
+      // media: video wins over image; image goes full-bleed behind the text
+      media.classList.remove('bleed');
+      img.removeAttribute('src');
+      frame.hidden = true;
+      vid.src = 'about:blank';
+      if (q.video && q.video.youtubeId) {
+        media.hidden = false;
+        frame.hidden = false;
+        vid.src = 'https://www.youtube.com/embed/' + encodeURIComponent(q.video.youtubeId) +
+          '?autoplay=1&rel=0&start=' + (q.video.start || 0) + '&end=' + (q.video.end || 0);
+      } else if (q.image) {
+        media.hidden = false;
+        media.classList.add('bleed');
+        img.src = q.image;
+      } else {
+        media.hidden = true;
+      }
     }
-    var html = board.slice(0, 10).map(function (r, i) {
-      return '<span><b>' + (i + 1) + '.</b>' + escapeHtml(r.name.toUpperCase()) +
-        ' — ' + Number(r.score).toLocaleString() + '</span>';
-    }).join('');
-    track.innerHTML = html + html; // duplicated for a seamless loop
+    $('#qLocked').textContent = q.answeredCount || 0;
   }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
+  function renderReveal(state) {
+    var q = state.question, r = state.reveal;
+    if (!q || !r) return;
+    var b = state.block || {};
+    if (lastQid !== 'r' + q.id) {
+      lastQid = 'r' + q.id;
+      $('#rCat').textContent = fmtCategory(q.category);
+      $('#rRound').textContent = 'Q' + (b.questionInBlock || '?') + ' / Block ' + (b.number || '?');
+      $('#rWagerBadge').hidden = !r.isWager;
+      $('#rText').textContent = q.text;
+      buildOptions($('#rOptions'), q.options, r.correctIndex, true);
+      $('#rNote').innerHTML = '<b>' + r.correctCount + '</b> of <b>' + r.answeredCount +
+        '</b> answered correctly &mdash; ' + escapeHtml(r.correctText || '');
+      var list = $('#rResults');
+      list.innerHTML = '';
+      (r.results || []).slice(0, 8).forEach(function (row) {
+        var li = document.createElement('li');
+        var d = Number(row.delta || 0);
+        var wagerNote = (r.isWager && row.wager > 0)
+          ? '<span class="wg">risked ' + fmtNum(row.wager) + '</span>' : '';
+        li.innerHTML = '<span class="nm">' + escapeHtml(row.name) + '</span>' + wagerNote +
+          '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + fmtDelta(d) + '</span>';
+        list.appendChild(li);
+      });
+    }
   }
 
-  function renderMiniBoard(board) {
-    var el = $('#rBoard');
-    el.innerHTML = '';
-    board.slice(0, 5).forEach(function (r, i) {
-      var c = document.createElement('span');
-      c.className = 'mini-chip' + (i === 0 ? ' lead' : '');
-      c.innerHTML = '<b>' + (i + 1) + '</b>' + escapeHtml(r.name) + ' · ' + Number(r.score).toLocaleString();
-      el.appendChild(c);
-    });
+  function renderPodium(state) {
+    var p = state.podium;
+    if (!p || !p.top) return;
+    var b = state.block || {};
+    $('#podiumBlock').textContent = b.number || '';
+    var steps = $('#podiumSteps');
+    if (steps.dataset.n !== String(p.top.length) || !steps.children.length) {
+      steps.innerHTML = '';
+      steps.dataset.n = String(p.top.length);
+      var order = [1, 0, 2]; // silver, gold, bronze
+      var cls = ['second', 'first', 'third'];
+      var medals = ['2', '1', '3'];
+      order.forEach(function (idx, k) {
+        var row = p.top[idx];
+        if (!row) return;
+        var d = document.createElement('div');
+        d.className = 'podium-step ' + cls[k];
+        d.innerHTML = '<div class="p-name">' + escapeHtml(row.name) + '</div>' +
+          '<div class="p-score">' + fmtNum(row.score) + '</div>' +
+          '<div class="p-block">' + medals[k] + '</div>';
+        steps.appendChild(d);
+      });
+    }
   }
 
+  function stopVideo() {
+    var vid = $('#qVideo');
+    if (vid && vid.src && vid.src !== 'about:blank') vid.src = 'about:blank';
+  }
+
+  /* ---------------- master render ---------------- */
   function render(state) {
+    if (!state) return;
     lastState = state;
-    renderQr(state.joinUrl);
-    $('#playerCount').textContent = state.playersActive;
+    skew = Date.now() - (state.serverTime || Date.now());
+
+    $('#venueName').textContent = (state.venueName || 'CAVE TRIVIA').toUpperCase();
+    $('#familyBadge').hidden = !state.familyMode;
+    $('#playerCount').textContent = state.playersActive || 0;
     if (state.attribution) $('#attrib').textContent = state.attribution;
-    renderTicker(state.leaderboard);
     $('#apToggle').classList.toggle('on', !!state.autoPilot);
+    $('#famToggle').classList.toggle('on', !!state.familyMode);
+
+    renderQr(state.joinUrl);
+    renderProgress(state.block);
+    renderBoard(state.blockBoard);
 
     var phase = state.phase || 'idle';
+    if (phase !== lastPhase) {
+      if (lastPhase === 'question') stopVideo();
+      onPhaseChange(phase);
+      lastPhase = phase;
+      if (phase !== 'question' && phase !== 'reveal') lastQid = '';
+    }
     setPhase(phase);
 
-    if (phase === 'question' && state.question) {
-      var q = state.question;
-      $('#qCat').textContent = fmtCategory(q.category);
-      $('#qDiff').textContent = q.difficulty;
-      $('#qRound').textContent = 'Round ' + (state.round || '—');
-      $('#qText').textContent = q.text;
-      if ($('#qOptions').dataset.qid !== q.id) {
-        $('#qOptions').dataset.qid = q.id;
-        buildOptions($('#qOptions'), q.options, -1, false);
-      }
-      $('#qLocked').textContent = q.answeredCount;
-    }
+    if (phase === 'idle') renderIdle(state);
+    else if (phase === 'wager') renderWager(state);
+    else if (phase === 'question') renderQuestion(state);
+    else if (phase === 'reveal') renderReveal(state);
+    else if (phase === 'podium') renderPodium(state);
 
-    if (phase === 'reveal' && state.question && state.reveal) {
-      var r = state.reveal;
-      $('#rCat').textContent = fmtCategory(state.question.category);
-      $('#rRound').textContent = 'Round ' + (state.round || '—');
-      $('#rText').textContent = state.question.text;
-      if ($('#rOptions').dataset.qid !== state.question.id) {
-        $('#rOptions').dataset.qid = state.question.id;
-        buildOptions($('#rOptions'), state.question.options, r.correctIndex, true);
-      }
-      $('#rNote').innerHTML = '<b>' + r.correctCount + '</b> of <b>' + r.answeredCount +
-        '</b> players answered correctly';
-      renderMiniBoard(state.sessionBoard && state.sessionBoard.length ? state.sessionBoard : state.leaderboard);
-    }
-
-    tickTimer();
+    tickTimers(true);
   }
 
-  function tickTimer() {
-    if (!lastState || lastState.phase !== 'question' || !lastState.question) return;
-    var ms = Math.max(0, lastState.question.endsAt - Date.now());
-    var total = 20 * 1000;
-    $('#qTimerFill').style.width = (100 * ms / total) + '%';
-    $('#qSecs').textContent = Math.ceil(ms / 1000);
-  }
-  setInterval(tickTimer, 200);
+  /* ---------------- timers + countdown ticks ---------------- */
+  var RING_C = 2 * Math.PI * 54;
+  var tickKey = '', tickSec = -1;
 
-  // clock
+  function tickTimers(force) {
+    var st = lastState;
+    if (!st) return;
+    var ms = 0, total = 1, key = '';
+    if (st.phase === 'question' && st.question) {
+      ms = timeLeftMs(st.question);
+      total = (st.question.seconds || 20) * 1000;
+      key = 'q:' + st.question.id;
+      var frac = total > 0 ? ms / total : 0;
+      $('#qTimerFill').style.width = (100 * Math.max(0, Math.min(1, frac))) + '%';
+      $('#qTimerFill').parentElement.classList.toggle('low', ms < 5000);
+      $('#qSecs').textContent = Math.ceil(ms / 1000);
+    } else if (st.phase === 'wager' && st.wager) {
+      ms = timeLeftMs(st.wager);
+      total = 15000;
+      key = 'w:' + (st.wager.category || '');
+      var ring = $('#wagerRingFg');
+      ring.style.strokeDasharray = RING_C.toFixed(1);
+      ring.style.strokeDashoffset = (RING_C * (1 - Math.max(0, Math.min(1, ms / total)))).toFixed(1);
+      $('#wagerSecs').textContent = Math.ceil(ms / 1000);
+    }
+    if (!key) { tickKey = ''; tickSec = -1; return; }
+    var secs = Math.ceil(ms / 1000);
+    if (key !== tickKey) { tickKey = key; tickSec = -1; }
+    if (secs >= 1 && secs <= 5 && secs !== tickSec) {
+      tickSec = secs;
+      if (!force) sTick();
+    }
+  }
+  setInterval(function () { tickTimers(false); }, 200);
+
+  /* ---------------- clock ---------------- */
   function tickClock() {
     var d = new Date();
     var h = d.getHours(), m = d.getMinutes();
@@ -170,53 +360,80 @@
   tickClock();
   setInterval(tickClock, 10000);
 
-  // rotating facts
-  var factEl = $('#factText');
-  function showFact() {
-    factEl.classList.add('fading');
-    setTimeout(function () {
-      factEl.textContent = FACTS[factIdx++ % FACTS.length];
-      factEl.classList.remove('fading');
-    }, 600);
-  }
-  showFact();
-  setInterval(showFact, 9000);
-
-  // host controls
+  /* ---------------- host controls ---------------- */
   function host(action, body) {
-    fetch('/api/host/' + action, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body || {}),
-    }).catch(function () {});
+    try {
+      fetch('/api/host/' + action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body || {})
+      }).catch(function () {});
+    } catch (e) {}
   }
-  $('#btnStart').addEventListener('click', function () { host('start'); });
   $('#btnNext').addEventListener('click', function () { host('next'); });
   $('#btnReveal').addEventListener('click', function () { host('reveal'); });
-  $('#btnReset').addEventListener('click', function () {
-    if (confirm('End the session and clear session scores? All-time records are kept.')) host('reset');
-  });
   $('#apToggle').addEventListener('click', function () {
-    var on = !$('#apToggle').classList.contains('on');
-    host('autopilot', { on: on });
+    host('autopilot', { on: !$('#apToggle').classList.contains('on') });
+  });
+  $('#famToggle').addEventListener('click', function () {
+    host('family', { on: !$('#famToggle').classList.contains('on') });
   });
 
-  // SSE with auto-reconnect (EventSource reconnects natively)
+  function paintSoundBtn() {
+    var b = $('#btnSound');
+    b.textContent = soundOn ? 'Sound on' : 'Sound off';
+    b.classList.toggle('off', !soundOn);
+  }
+  $('#btnSound').addEventListener('click', function () {
+    soundOn = !soundOn;
+    try { localStorage.setItem('ctv-sound', soundOn ? 'on' : 'off'); } catch (e) {}
+    if (master) master.gain.value = soundOn ? 0.16 : 0;
+    ensureAudio();
+    paintSoundBtn();
+  });
+  paintSoundBtn();
+
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = String(e.key || '').toLowerCase();
+    if (k === 'n') host('next');
+    else if (k === 'r') host('reveal');
+    else if (k === 'f') host('family', { on: !$('#famToggle').classList.contains('on') });
+    else if (k === 'a') host('autopilot', { on: !$('#apToggle').classList.contains('on') });
+  });
+
+  /* ---------------- SSE with graceful reconnect : never a raw error ---------------- */
+  var es = null;
+  var pill = $('#reconnect');
+  function showPill() { pill.hidden = false; }
+  function hidePill() { pill.hidden = true; }
+
   function connect() {
-    var es = new EventSource('/api/events');
-    es.onmessage = function (e) {
-      try { render(JSON.parse(e.data)); } catch (err) { /* ignore */ }
-    };
-    es.onerror = function () {
-      // EventSource will retry on its own; as a fallback, poll once
-      setTimeout(function () {
-        if (es.readyState === EventSource.CLOSED) {
-          fetch('/api/state').then(function (r) { return r.json(); }).then(render).catch(function () {});
-        }
-      }, 4000);
-    };
+    try { if (es) es.close(); } catch (e) {}
+    try {
+      es = new EventSource('/api/events');
+      es.onopen = function () { hidePill(); };
+      es.onmessage = function (e) {
+        hidePill();
+        try { render(JSON.parse(e.data)); } catch (err) { /* ignore malformed */ }
+      };
+      es.onerror = function () {
+        if (!es || es.readyState !== 1) showPill(); // 1 = OPEN
+      };
+    } catch (e) { showPill(); }
   }
   connect();
+  // watchdog: EventSource retries natively; if it ever fully closes, reconnect + poll once
+  setInterval(function () {
+    if (!es || es.readyState === 2) { // 2 = CLOSED
+      showPill();
+      connect();
+      fetch('/api/state').then(function (r) { return r.json(); })
+        .then(function (s) { hidePill(); render(s); })
+        .catch(function () {});
+    }
+  }, 3000);
+
   // initial paint in case SSE is slow
   fetch('/api/state').then(function (r) { return r.json(); }).then(render).catch(function () {});
 })();
