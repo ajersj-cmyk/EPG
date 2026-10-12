@@ -45,8 +45,8 @@
   }
 
   function loadBank() {
-    var parts = ['data/questions-1.json', 'data/questions-2.json',
-                 'data/questions-3.json', 'data/questions-4.json'];
+    var parts = [];
+    for (var i = 1; i <= 27; i++) parts.push('data/questions-' + i + '.json');
     return Promise.all(parts.map(function (u) {
       return fetch(u).then(function (r) {
         if (!r.ok) throw new Error('question bank failed to load: ' + u);
