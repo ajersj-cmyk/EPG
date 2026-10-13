@@ -1041,3 +1041,77 @@ html, body { height: 100%; overflow: hidden; }
   .tension-veil, .callout-flame, .sflame.t2, .sflame.t3,
   .tv-stage.wagerup-frame::after { animation: none; }
 }
+
+/* ---- high score celebration ---- */
+.celebration-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at center, rgba(20,12,4,0.85) 0%, rgba(10,6,2,0.95) 100%);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.celebration-overlay.show { opacity: 1; }
+.celebration-overlay[hidden] { display: none; }
+.celebration-burst {
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255,215,0,0.15) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg, rgba(255,215,0,0.08) 0deg 10deg, transparent 10deg 20deg);
+  animation: burst-spin 8s linear infinite;
+}
+@keyframes burst-spin { to { transform: rotate(360deg); } }
+.celebration-content {
+  position: relative; text-align: center;
+  animation: celeb-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes celeb-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.celebration-kicker {
+  font-size: clamp(1.5rem, 4vmin, 2.5rem);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--gold); font-weight: 800;
+  text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.4);
+  animation: kicker-glow 1s ease-in-out infinite alternate;
+}
+@keyframes kicker-glow {
+  from { text-shadow: 0 0 20px rgba(255,215,0,0.6); }
+  to { text-shadow: 0 0 40px rgba(255,215,0,1), 0 0 80px rgba(255,215,0,0.5); }
+}
+.celebration-name {
+  font-size: clamp(3rem, 10vmin, 7rem);
+  font-weight: 900; text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, var(--gold) 50%, #b8860b 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 1vmin 0;
+  filter: drop-shadow(0 4px 20px rgba(255,215,0,0.5));
+}
+.celebration-score {
+  font-size: clamp(1.8rem, 5vmin, 3.5rem);
+  letter-spacing: 0.2em; font-weight: 700; color: #fff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* ---- poppy leaderboard ---- */
+.board li {
+  transition: transform 0.3s ease, background 0.3s ease;
+  animation: board-slide-in 0.4s ease;
+}
+@keyframes board-slide-in {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.board li:first-child {
+  background: linear-gradient(90deg, rgba(255,215,0,0.15) 0%, transparent 100%);
+  border-left: 3px solid var(--gold);
+  font-weight: 800;
+}
+.board li:first-child .rank {
+  color: var(--gold); font-size: 1.3em;
+  text-shadow: 0 0 10px rgba(255,215,0,0.6);
+}
+.board li .sc {
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}
