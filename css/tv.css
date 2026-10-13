@@ -846,3 +846,198 @@ html, body { height: 100%; overflow: hidden; }
   opacity: 0.7;
   animation: pulse 2s ease-in-out infinite;
 }
+
+/* ================= SPECTACLE LAYER =================
+   Cinema-quality presentation: staggered entrances, reveal tension,
+   streak callouts, wager-up drama, attract ticker. Transform/opacity
+   only — safe for weak TV hardware. */
+
+/* ---------- staggered cinematic entrances ---------- */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes optIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes titleIn {
+  0%   { opacity: 0; transform: scale(0.92); letter-spacing: 0.3em; }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: scale(1); }
+}
+/* question entrance (re-triggered per question via .q-enter) */
+#phase-question.q-enter .q-eyebrow { animation: riseIn 0.45s var(--ease) both; }
+#phase-question.q-enter .q-text    { animation: riseIn 0.55s var(--ease) 0.08s both; }
+#phase-question.q-enter .q-opt:nth-child(1) { animation: optIn 0.5s var(--ease) 0.18s both; }
+#phase-question.q-enter .q-opt:nth-child(2) { animation: optIn 0.5s var(--ease) 0.26s both; }
+#phase-question.q-enter .q-opt:nth-child(3) { animation: optIn 0.5s var(--ease) 0.34s both; }
+#phase-question.q-enter .q-opt:nth-child(4) { animation: optIn 0.5s var(--ease) 0.42s both; }
+#phase-question.q-enter .q-foot     { animation: riseIn 0.5s var(--ease) 0.5s both; }
+#phase-question.q-enter .q-text-hint { animation: riseIn 0.55s var(--ease) 0.2s both; }
+/* wager title drama */
+#phase-wager .wager-title { animation: titleIn 0.8s var(--ease) both; }
+#phase-wager .wager-cat   { animation: riseIn 0.5s var(--ease) 0.25s both; }
+#phase-wager .wager-ring  { animation: riseIn 0.5s var(--ease) 0.35s both; }
+/* podium entrance */
+#phase-podium .podium-title { animation: titleIn 0.8s var(--ease) both; }
+#phase-podium .podium-step:nth-child(1) { animation: riseIn 0.6s var(--ease) 0.3s both; }
+#phase-podium .podium-step:nth-child(2) { animation: riseIn 0.6s var(--ease) 0.15s both; }
+#phase-podium .podium-step:nth-child(3) { animation: riseIn 0.6s var(--ease) 0.45s both; }
+
+/* ---------- reveal: tension beat before the answer ---------- */
+#phase-reveal.tension .q-options,
+#phase-reveal.tension .reveal-note,
+#phase-reveal.tension .results { opacity: 0.18; filter: blur(1px); }
+#phase-reveal.tension .q-options { transition: opacity 0.4s var(--ease), filter 0.4s var(--ease); }
+#phase-reveal .q-options,
+#phase-reveal .reveal-note,
+#phase-reveal .results { transition: opacity 0.4s var(--ease), filter 0.4s var(--ease); }
+.tension-veil {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3.4vw, 2.8rem);
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  color: var(--gold-hi);
+  margin-top: 3vmin;
+  animation: tensionPulse 0.9s ease-in-out infinite;
+}
+@keyframes tensionPulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.98); }
+  50%      { opacity: 1; transform: scale(1.02); text-shadow: 0 0 30px rgba(217,180,92,0.6); }
+}
+/* reveal final: options resolve with stagger, results cascade */
+#phase-reveal.resolved .q-opt:nth-child(1) { animation: optIn 0.4s var(--ease) 0.05s both; }
+#phase-reveal.resolved .q-opt:nth-child(2) { animation: optIn 0.4s var(--ease) 0.12s both; }
+#phase-reveal.resolved .q-opt:nth-child(3) { animation: optIn 0.4s var(--ease) 0.19s both; }
+#phase-reveal.resolved .q-opt:nth-child(4) { animation: optIn 0.4s var(--ease) 0.26s both; }
+#phase-reveal.resolved .results li:nth-child(1) { animation-delay: 0.35s; }
+#phase-reveal.resolved .results li:nth-child(2) { animation-delay: 0.43s; }
+#phase-reveal.resolved .results li:nth-child(3) { animation-delay: 0.51s; }
+#phase-reveal.resolved .results li:nth-child(4) { animation-delay: 0.59s; }
+#phase-reveal.resolved .results li:nth-child(5) { animation-delay: 0.67s; }
+#phase-reveal.resolved .results li:nth-child(6) { animation-delay: 0.75s; }
+#phase-reveal.resolved .results li:nth-child(7) { animation-delay: 0.83s; }
+#phase-reveal.resolved .results li:nth-child(8) { animation-delay: 0.91s; }
+/* big wager win row */
+.results li.bigwin {
+  border-color: var(--gold-dim);
+  background: linear-gradient(90deg, rgba(217,180,92,0.14), transparent);
+  border-radius: 0.6vmin;
+  padding-left: 1vmin; padding-right: 1vmin;
+}
+.results li.bigwin .delta { text-shadow: 0 0 14px rgba(217,180,92,0.7); }
+
+/* ---------- streak callout overlay ---------- */
+.callout {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(217,180,92,0.22), transparent 72%);
+}
+.callout-inner { text-align: center; animation: calloutIn 0.55s var(--ease) both; }
+@keyframes calloutIn {
+  0%   { opacity: 0; transform: scale(0.7); }
+  60%  { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.callout.out .callout-inner { animation: calloutOut 0.4s var(--ease) both; }
+@keyframes calloutOut { to { opacity: 0; transform: scale(1.12); } }
+.callout-flame { font-size: clamp(3rem, 8vmin, 6rem); animation: flameDance 0.7s ease-in-out infinite; }
+@keyframes flameDance {
+  0%, 100% { transform: scale(1) rotate(-4deg); }
+  50%      { transform: scale(1.15) rotate(4deg); }
+}
+.callout-name {
+  font-size: clamp(1.4rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  color: var(--ink);
+  margin-top: 1vmin;
+}
+.callout-line {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 7vw, 6rem);
+  letter-spacing: 0.1em;
+  margin-top: 0.6vmin;
+  filter: drop-shadow(0 0 34px rgba(217,180,92,0.55));
+}
+
+/* ---------- streak flames on the rail board ---------- */
+.sflame { margin-left: 0.5em; font-size: 0.95em; }
+.sflame.t1 { filter: drop-shadow(0 0 6px rgba(217,180,92,0.8)); }
+.sflame.t2 { filter: drop-shadow(0 0 10px rgba(255,150,60,0.9)); animation: flameDance 1.1s ease-in-out infinite; display: inline-block; }
+.sflame.t3 { filter: drop-shadow(0 0 14px rgba(255,120,40,1)); animation: flameDance 0.7s ease-in-out infinite; display: inline-block; }
+.sflame .n { font-size: 0.8em; font-weight: 800; color: var(--gold-hi); margin-left: 0.15em; }
+
+/* ---------- wager-up drama (Q3/Q6/Q9) ---------- */
+#phase-wager.wager-up::before {
+  background: radial-gradient(closest-side, rgba(217,180,92,0.26), transparent 70%);
+  animation: wagerGlow 1.4s ease-in-out infinite;
+}
+#phase-wager.wager-up .wager-title { animation: titleIn 0.7s var(--ease) both, upPulse 1.4s ease-in-out 0.7s infinite; }
+@keyframes upPulse {
+  0%, 100% { filter: drop-shadow(0 0 18px rgba(217,180,92,0.35)); }
+  50%      { filter: drop-shadow(0 0 44px rgba(217,180,92,0.65)); }
+}
+.wager-up-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  color: #1a1408;
+  background: linear-gradient(180deg, #f2ddab, #d9b45c);
+  border-radius: 999px;
+  padding: 0.6em 1.4em;
+  margin-bottom: 0.6vmin;
+  box-shadow: 0 0 30px rgba(217,180,92,0.6);
+  animation: pipPulse 1.2s ease-in-out infinite;
+}
+/* gold frame around the stage during wager-up questions */
+.tv-stage.wagerup-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--gold);
+  border-radius: 1.6vmin;
+  pointer-events: none;
+  animation: framePulse 1.6s ease-in-out infinite;
+}
+@keyframes framePulse {
+  0%, 100% { opacity: 0.35; box-shadow: inset 0 0 30px rgba(217,180,92,0.12); }
+  50%      { opacity: 1; box-shadow: inset 0 0 60px rgba(217,180,92,0.28), 0 0 40px rgba(217,180,92,0.25); }
+}
+/* pips: wager-up slots get their own marker */
+.pips i.wup { background: rgba(217,180,92,0.3); }
+.pips i.wup.now {
+  background: linear-gradient(90deg, #e8c877, #fffbef);
+  box-shadow: 0 0 16px rgba(242,221,171,0.85);
+  animation: pipPulse 1.1s ease-in-out infinite;
+}
+.pips i.wup.done { background: var(--gold-deep); }
+
+/* ---------- attract ticker ---------- */
+.attract-ticker {
+  min-height: 2.2em;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  letter-spacing: 0.14em;
+  color: var(--gold-hi);
+  transition: opacity 0.5s var(--ease);
+}
+.attract-ticker.fade { opacity: 0; }
+.attract-ticker b { color: var(--gold); }
+.attract-ticker .tk-flame { filter: drop-shadow(0 0 8px rgba(255,150,60,0.9)); }
+
+@media (prefers-reduced-motion: reduce) {
+  #phase-question.q-enter .q-text, #phase-question.q-enter .q-opt,
+  #phase-wager .wager-title, #phase-podium .podium-title,
+  .tension-veil, .callout-flame, .sflame.t2, .sflame.t3,
+  .tv-stage.wagerup-frame::after { animation: none; }
+}
