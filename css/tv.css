@@ -835,3 +835,14 @@ html, body { height: 100%; overflow: hidden; }
   padding: 3vmin;
   opacity: 0.9;
 }
+
+/* ---- video unlock hint ---- */
+.attract-videohint {
+  margin-top: 2vmin;
+  font-size: clamp(0.9rem, 2vmin, 1.2rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  opacity: 0.7;
+  animation: pulse 2s ease-in-out infinite;
+}
