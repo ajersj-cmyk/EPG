@@ -942,6 +942,25 @@
 
   wireSetup();
   var stored = window.CT.config.readStored();
+
+  // One-tap video unlock: browsers block autoplay with sound until user interacts.
+  // Game autoruns regardless — this only unlocks video audio. First tap anywhere hides the hint.
+  // (Browsers require a fresh gesture per page load, so the hint shows on every load until tapped.)
+  var videoUnlocked = false;
+  function paintVideoHint() {
+    var h = document.getElementById('videoUnlockHint');
+    if (h) h.hidden = videoUnlocked;
+  }
+  paintVideoHint();
+  var unlockVideo = function () {
+    videoUnlocked = true;
+    paintVideoHint();
+    document.removeEventListener('click', unlockVideo);
+    document.removeEventListener('touchstart', unlockVideo);
+  };
+  document.addEventListener('click', unlockVideo);
+  document.addEventListener('touchstart', unlockVideo);
+
   if (stored) boot(stored);
   else showSetup();
 })();
