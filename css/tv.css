@@ -1057,6 +1057,87 @@ html, body { height: 100%; overflow: hidden; }
 }
 /* sendoff: soft and warm */
 .moment-inner.sendoff .moment-name { color: var(--gold-hi); }
+/* milestone tiers: escalating visuals */
+.moment-inner.celebration .moment-tier {
+  font-size: clamp(1.4rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0.8vmin 0;
+  filter: drop-shadow(0 0 24px rgba(255,215,0,0.6));
+}
+/* tier 3+: screen shake */
+.moment-inner.celebration.mt3 .moment-inner,
+.moment-inner.celebration.mt4 .moment-inner,
+.moment-inner.celebration.mt5 .moment-inner,
+.moment-inner.celebration.mt6 .moment-inner { animation: shakeHard 0.5s ease-in-out 2; }
+@keyframes shakeHard {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-8px, 4px); }
+  40% { transform: translate(8px, -4px); }
+  60% { transform: translate(-6px, -3px); }
+  80% { transform: translate(6px, 3px); }
+}
+/* tier 6: confetti rain (CSS-only) */
+.confetti-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.confetti-rain::before,
+.confetti-rain::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  width: 8px;
+  height: 14px;
+  background: linear-gradient(180deg, #ffd700, #ff6b35);
+  animation: confettiFall 2.5s ease-in infinite;
+}
+.confetti-rain::before { left: 20%; animation-delay: 0s; }
+.confetti-rain::after { left: 70%; animation-delay: 0.7s; background: linear-gradient(180deg, #4ade80, #ffd700); }
+@keyframes confettiFall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+/* king of the hill: royal gold + purple */
+.moment-inner.king { position: relative; }
+.moment-inner.king::before {
+  content: "";
+  position: absolute;
+  inset: -26vmin;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,215,0,0.18) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg, rgba(147,51,234,0.06) 0deg 15deg, transparent 15deg 30deg);
+  animation: burstSpin 6s linear infinite;
+  pointer-events: none;
+}
+.moment-inner.king .moment-name {
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  background: linear-gradient(180deg, #fff7cc, #ffd700 50%, #b8860b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 40px rgba(255,215,0,0.8));
+}
+.moment-inner.king .moment-line {
+  font-size: clamp(1.4rem, 4.2vw, 3.2rem);
+  color: #e9d5ff;
+  letter-spacing: 0.12em;
+}
+/* dethroned: comedic, muted */
+.moment-inner.dethroned .moment-name { color: #a8a29e; }
+.moment-inner.dethroned .moment-kicker { color: #78716c; }
+/* record chase label on money board */
+.ar-chase {
+  font-size: clamp(0.7rem, 1.4vw, 0.95rem);
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-top: 0.3vmin;
+}
 
 /* ---------- streak flames on the rail board ---------- */
 .sflame { margin-left: 0.5em; font-size: 0.95em; }
@@ -1317,6 +1398,83 @@ html, body { height: 100%; overflow: hidden; }
 }
 .ar-name { flex: 1; text-align: left; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ar-score { color: var(--gold-hi); font-weight: 700; }
+
+/* ---- money board: green/gold money feel ---- */
+.money-eyebrow { color: #4ade80; }
+.ar-tabs {
+  display: flex; gap: 1vmin; justify-content: center;
+  margin: 1.4vmin 0 1.8vmin;
+}
+.ar-tab {
+  padding: 0.7vmin 2.4vmin;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-size: clamp(0.85rem, 1.7vw, 1.2rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+.ar-tab.active {
+  border-color: #4ade80;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  box-shadow: 0 0 18px rgba(74, 222, 128, 0.25);
+  font-weight: 800;
+}
+.money-row { border-color: rgba(74, 222, 128, 0.25); background: rgba(74, 222, 128, 0.05); }
+.money-row.first {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.18);
+}
+.money-row.first .ar-rank { color: #4ade80; }
+.money-score { color: #4ade80; }
+
+/* ---- streak board: fire/orange energy ---- */
+.streak-eyebrow { color: #fb923c; }
+.streak-row { border-color: rgba(251, 146, 60, 0.25); background: rgba(251, 146, 60, 0.05); }
+.streak-row.first {
+  border-color: #fb923c;
+  background: rgba(251, 146, 60, 0.12);
+  box-shadow: 0 0 30px rgba(251, 146, 60, 0.18);
+}
+.streak-row.first .ar-rank { color: #fb923c; }
+.ar-colheads {
+  display: flex; align-items: center; gap: 1.6vmin;
+  padding: 0 2vmin; margin-bottom: 0.4vmin;
+  width: min(70vw, 560px);
+}
+.ar-ch-rank { min-width: 1.6em; }
+.ar-ch-name { flex: 1; }
+.ar-colhead {
+  min-width: 2.4em; text-align: right;
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45); font-weight: 700;
+}
+.ar-streak-now, .ar-streak-best {
+  font-weight: 700; min-width: 2.4em; text-align: right;
+  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+}
+.ar-streak-now { color: #fb923c; }
+.ar-streak-best { color: var(--gold-hi); }
+/* CSS flame indicator (no emoji): pulsing teardrop */
+.streak-fire {
+  display: inline-block;
+  width: 0.62em; height: 0.62em;
+  margin-right: 0.35em;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: radial-gradient(circle at 35% 35%, #fde68a, #f97316 70%);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
+  animation: firePulse 1.2s ease-in-out infinite;
+  vertical-align: baseline;
+}
+@keyframes firePulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.25); }
+}
 .ar-legend { margin-top: 1vmin; }
 .ar-legend-kicker {
   font-size: clamp(0.95rem, 1.9vw, 1.4rem);
@@ -1337,6 +1495,7 @@ html, body { height: 100%; overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ar-card { transition: none; }
+  .streak-fire { animation: none; }
 }
 
 /* ---- customize text (settings) ---- */
