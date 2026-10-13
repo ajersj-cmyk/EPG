@@ -1135,18 +1135,20 @@
     if (arTeaserTimer) { clearTimeout(arTeaserTimer); arTeaserTimer = null; }
     el.classList.add('fade');
     setTimeout(function () {
-      var html = card.html();
+      var html;
+      try { html = card.html(); }
+      catch (e) { html = '<div class="ar-eyebrow">Cave Trivia</div><div class="ar-big chrome-text">SCAN TO PLAY</div>'; }
       el.innerHTML = html;
       el.classList.remove('fade');
       // teaser card flips to the answer after 4s
       if (card.teaser) {
         arTeaserTimer = setTimeout(function () {
-          if (lastPhase !== 'idle') return;
+          if (!arRunning) return;
           var qq = arLastTeaser;
           if (!qq) return;
           el.classList.add('fade');
           setTimeout(function () {
-            el.innerHTML = arTeaserAnswerHtml(qq);
+            try { el.innerHTML = arTeaserAnswerHtml(qq); } catch (e) { /* keep question */ }
             el.classList.remove('fade');
           }, 450);
         }, 4000);
@@ -1154,18 +1156,26 @@
     }, 450);
   }
 
+  // Dedicated liveness flag: the old code gated the interval on
+  // `lastPhase === 'idle'`, but lastPhase starts as '' and is only set when
+  // the Firebase state listener fires cleanly. If that chain hiccups, the
+  // first tick killed the loop forever. arRunning is set/cleared only by
+  // start/stop, so the loop is self-consistent.
+  var arRunning = false;
   function startAttractLoop() {
     if (arTimer) return;
+    arRunning = true;
     arIdx = 0;
     arShow(0);
     arTimer = setInterval(function () {
-      if (lastPhase !== 'idle') { stopAttractLoop(); return; }
+      if (!arRunning) { stopAttractLoop(); return; }
       arIdx = (arIdx + 1) % AR_CARDS.length;
       arShow(arIdx);
     }, 9000);
   }
 
   function stopAttractLoop() {
+    arRunning = false;
     if (arTimer) { clearInterval(arTimer); arTimer = null; }
     if (arTeaserTimer) { clearTimeout(arTeaserTimer); arTeaserTimer = null; }
   }
