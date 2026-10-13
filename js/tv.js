@@ -37,6 +37,7 @@
   var lastBoardJson = '';
   var lastStateDoc = null;
   var lastQuestionDoc = null;
+  var lastHighlight = null;      // {type:'wager'|'streak', name, amount, ts} for attract ticker
 
   function serverNow() { return Date.now() + serverOffset; }
   function clearTimer() {
@@ -92,6 +93,26 @@
     seq.forEach(function (f, i) { tone(f, 0.16, 'triangle', i * 0.13, 0.6); });
     tone(1046.5, 0.6, 'triangle', 0.55, 0.55);
     tone(1318.5, 0.6, 'sine', 0.55, 0.3);
+  }
+  // rising tension sweep before a reveal lands (~1.4s)
+  function sTensionRiser() {
+    tone(140, 1.4, 'sawtooth', 0, 0.22, 880);
+    tone(70, 1.4, 'sine', 0, 0.35, 440);
+    tone(1760, 0.12, 'triangle', 1.4, 0.4);
+  }
+  // streak callout: ascending arp, brighter/longer with streak length
+  function sStreak(n) {
+    var base = [523.25, 659.25, 783.99, 1046.5, 1318.5, 1568];
+    var count = Math.min(6, 3 + Math.floor((n || 3) / 5));
+    for (var i = 0; i < count; i++) tone(base[i], 0.14, 'triangle', i * 0.09, 0.55);
+    tone(base[count - 1] * 2, 0.5, 'sine', count * 0.09, 0.3);
+  }
+  // big wager win: deep hit + gold shimmer
+  function sBigWin() {
+    tone(98, 0.5, 'sine', 0, 0.9, 49);
+    [1046.5, 1318.5, 1568, 2093].forEach(function (f, i) {
+      tone(f, 0.3, 'triangle', 0.15 + i * 0.1, 0.35);
+    });
   }
 
   /* ---------------- setup screen (first run) ---------------- */
@@ -363,6 +384,8 @@
     var q = cq.q;
     var upd = {};
     var results = [];
+    var streakCallouts = [];
+    var streaksLost = [];
     var correctCount = 0, answeredCount = 0;
 
     Object.keys(players).forEach(function (pid) {
@@ -397,6 +420,16 @@
       }
       var r = E.scoreAnswer(scoreArgs);
       var delta = r.points;
+      // spectacle: streak milestones + snapped streaks (from pre-update statsCache)
+      var sKey = statsKey(p.name);
+      var oldStreak = ((statsCache[sKey] || {}).streak || 0);
+      var newStreak = r.correct ? oldStreak + 1 : 0;
+      if (r.correct && p.name && (newStreak === 3 || newStreak === 5 || (newStreak >= 10 && newStreak % 5 === 0))) {
+        streakCallouts.push({ name: p.name, streak: newStreak });
+      }
+      if (!r.correct && p.name && oldStreak >= 3) {
+        streaksLost.push({ name: p.name, streak: oldStreak });
+      }
       var newScore, newBlock;
       if (r.correct) {
         correctCount += 1;
@@ -423,6 +456,19 @@
     });
     results.sort(function (a, b) { return b.delta - a.delta; });
 
+    // attract-mode fuel: remember the biggest wager win + latest streak milestone
+    (function () {
+      var bw = null;
+      results.forEach(function (row) {
+        if (row.wager > 0 && row.correct && row.delta >= 400 && (!bw || row.delta > bw.delta)) bw = row;
+      });
+      if (bw) lastHighlight = { type: 'wager', name: bw.name, amount: bw.delta, ts: Date.now() };
+      else if (streakCallouts.length) {
+        var sc = streakCallouts[streakCallouts.length - 1];
+        lastHighlight = { type: 'streak', name: sc.name, amount: sc.streak, ts: Date.now() };
+      }
+    })();
+
     db.ref().update(upd).then(function () {
       var isTextQ = E.isTextQuestion(q);
       return refs.reveal.set({
@@ -431,9 +477,12 @@
         answerType: q.answerType || 'choice',
         ts: firebase.database.ServerValue.TIMESTAMP,
         isWager: cq.isWager,
+        wagerUp: !!cq.isWagerUp,
         answeredCount: answeredCount,
         correctCount: correctCount,
         results: results.slice(0, 50),
+        streakCallouts: streakCallouts.slice(0, 3),
+        streaksLost: streaksLost.slice(0, 3),
       });
     }).then(function () {
       return writeState({ phase: 'reveal', podium: null });
@@ -554,6 +603,7 @@
       for (var i = 0; i < 10; i++) {
         var p = document.createElement('i');
         if (i === 9) p.className = 'wager';
+        else if (E.isWagerUpSlot(i + 1)) p.className = 'wup';
         pips.appendChild(p);
       }
       pipsBuilt = true;
@@ -570,6 +620,14 @@
     return;
   }
 
+  function streakFlame(name) {
+    var st = statsCache[statsKey(name)] || {};
+    var n = st.streak || 0;
+    if (n < 3) return '';
+    var tier = n >= 10 ? 't3' : n >= 5 ? 't2' : 't1';
+    return '<span class="sflame ' + tier + '">&#128293;<span class="n">' + n + '</span></span>';
+  }
+
   function renderBoard() {
     var board = E.leaderboard(players, 'block').slice(0, 10);
     var el = $('#blockBoard');
@@ -581,7 +639,7 @@
     board.forEach(function (r, i) {
       var li = document.createElement('li');
       li.innerHTML = '<span class="rank">' + (i + 1) + '</span>' +
-        '<span class="nm">' + E.escapeHtml(r.name) + '</span>' +
+        '<span class="nm">' + E.escapeHtml(r.name) + streakFlame(r.name) + '</span>' +
         '<span class="sc">' + E.fmtNum(r.score) + '</span>';
       el.appendChild(li);
     });
@@ -667,10 +725,76 @@
       c.innerHTML = '<b>' + (i + 1) + '</b>' + E.escapeHtml(r.name) + ' &middot; ' + E.fmtNum(r.score);
       el.appendChild(c);
     });
+    pokeAttractTicker();
+  }
+
+  // ---- attract ticker: rotating social-proof highlights ----
+  var tickerIdx = 0, tickerTimer = null;
+  function attractHighlights() {
+    var out = [];
+    var tk = todayKeys();
+    // hottest live streak
+    var hot = null;
+    Object.keys(statsCache).forEach(function (k) {
+      var s = statsCache[k] || {};
+      if ((s.streak || 0) >= 3 && (!hot || s.streak > hot.streak)) hot = s;
+    });
+    if (hot) out.push('<span class="tk-flame">&#128293;</span> <b>' + E.escapeHtml(hot.name) + '</b> is on a <b>' + hot.streak + '-streak</b>');
+    // biggest day total
+    var rich = null;
+    Object.keys(statsCache).forEach(function (k) {
+      var s = statsCache[k] || {};
+      if (s.dayKey === tk.day && (s.day || 0) > 0 && (!rich || s.day > rich.day)) rich = s;
+    });
+    if (rich && (!hot || rich.name !== hot.name)) out.push('&#128176; <b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtNum(rich.day) + '</b> today');
+    // latest big moment (30 min window)
+    if (lastHighlight && Date.now() - lastHighlight.ts < 30 * 60 * 1000) {
+      var h = lastHighlight;
+      out.push(h.type === 'wager'
+        ? '&#9889; <b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
+        : '<span class="tk-flame">&#128293;</span> <b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
+    }
+    // social proof: players in right now
+    var now = serverNow();
+    var active = Object.keys(players).filter(function (pid) {
+      return now - (players[pid].lastSeen || 0) < 5 * 60 * 1000;
+    }).length;
+    if (active > 0) out.push('&#128101; <b>' + active + '</b> playing right now &mdash; jump in');
+    else out.push('&#127919; No one playing &mdash; be the first legend of the cave');
+    return out;
+  }
+  function pokeAttractTicker() {
+    if (tickerTimer) return; // already running
+    var tick = function () {
+      if (lastPhase !== 'idle') return; // only animate on the attract screen
+      var items = attractHighlights();
+      if (!items.length) return;
+      tickerIdx = (tickerIdx + 1) % items.length;
+      var el = $('#attractTicker');
+      if (!el) return;
+      el.classList.add('fade');
+      setTimeout(function () {
+        el.innerHTML = items[tickerIdx % items.length];
+        el.classList.remove('fade');
+      }, 480);
+    };
+    tickerTimer = setInterval(tick, 6000);
+    tick();
   }
 
   var lastWagerKey = '';
   function renderWagerState(st) {
+    var isUp = !!st.wagerUp;
+    var phase = $('#phase-wager');
+    phase.classList.toggle('wager-up', isUp);
+    var qib = st.questionInBlock || 10;
+    $('#wagerEyebrow').innerHTML = isUp
+      ? 'Wager up &middot; question ' + qib + ' of 10 &middot; hard'
+      : 'Final wager &middot; question 10 of 10';
+    $('#wagerTitle').innerHTML = isUp ? 'WAGER<br>UP' : 'FINAL<br>WAGER';
+    $('#wagerHint').innerHTML = isUp
+      ? 'Hard question &mdash; risk it all on your phone, <b>now</b>'
+      : 'Wager <b>0</b> up to your whole score &mdash; on your phone, now';
     $('#wagerCat').textContent = E.fmtCategory(st.wagerCategory) || 'MYSTERY';
     // players who placed any wager (0 = pass counts as placed)
     var n = Object.keys(players).filter(function (pid) { return players[pid].wagerPlaced; }).length;
@@ -683,6 +807,11 @@
     var media = $('#qMedia'), img = $('#qImg'), frame = $('#qVideoFrame'), vid = $('#qVideo');
     if (lastQid !== 'q' + q.id) {
       lastQid = 'q' + q.id;
+      // re-trigger the cinematic entrance on fresh content
+      var qp = $('#phase-question');
+      qp.classList.remove('q-enter');
+      void qp.offsetWidth;
+      qp.classList.add('q-enter');
       $('#qCat').textContent = E.fmtCategory(q.category);
       $('#qDiff').textContent = q.difficulty || '';
       $('#qWagerBadge').hidden = !q.isWager;
@@ -720,10 +849,44 @@
     $('#qLocked').textContent = locked;
   }
 
+  // ---- reveal: 1.7s tension beat, then the answer lands ----
+  var revealToken = 0;
   function renderRevealDoc(r) {
     var key = 'r' + r.ts;
     if (lastQid === key) return;
     lastQid = key;
+    var myToken = ++revealToken;
+    renderRevealTension(r);
+    sTensionRiser();
+    setTimeout(function () {
+      if (myToken !== revealToken) return; // superseded by a newer reveal
+      if (lastPhase !== 'reveal') return;  // phase already moved on
+      renderRevealFinal(r);
+    }, 1700);
+  }
+
+  function renderRevealTension(r) {
+    var phase = $('#phase-reveal');
+    phase.classList.add('tension');
+    phase.classList.remove('resolved');
+    var qd = lastQuestionDoc || {};
+    $('#rCat').textContent = E.fmtCategory(qd.category);
+    $('#rWagerBadge').hidden = !r.isWager;
+    $('#rText').textContent = qd.text || '';
+    // options shown dimmed, correct answer NOT highlighted yet
+    if (r.answerType === 'text') {
+      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+    } else {
+      buildOptions($('#rOptions'), qd.options || [], -1, false);
+    }
+    $('#rNote').innerHTML = '';
+    $('#rResults').innerHTML = '<div class="tension-veil">REVEALING</div>';
+  }
+
+  function renderRevealFinal(r) {
+    var phase = $('#phase-reveal');
+    phase.classList.remove('tension');
+    phase.classList.add('resolved');
     var qd = lastQuestionDoc || {};
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
@@ -733,19 +896,50 @@
     } else {
       buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
     }
-    $('#rNote').innerHTML = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
+    var note = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
       '</b> answered correctly &mdash; ' + E.escapeHtml(r.correctText || '');
+    if (r.streaksLost && r.streaksLost.length) {
+      var sl = r.streaksLost[0];
+      note += ' &nbsp;<span style="color:#ff8f7d">&hearts; ' + E.escapeHtml(sl.name) +
+        '&rsquo;s ' + sl.streak + '-streak snapped</span>';
+    }
+    $('#rNote').innerHTML = note;
     var list = $('#rResults');
     list.innerHTML = '';
+    var hasBigWin = false;
     (r.results || []).slice(0, 8).forEach(function (row) {
       var li = document.createElement('li');
       var d = Number(row.delta || 0);
       var wagerNote = (r.isWager && row.wager > 0)
         ? '<span class="wg">risked ' + E.fmtNum(row.wager) + '</span>' : '';
+      if (r.isWager && row.correct && d >= 800) { li.classList.add('bigwin'); hasBigWin = true; }
       li.innerHTML = '<span class="nm">' + E.escapeHtml(row.name) + '</span>' + wagerNote +
         '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtDelta(d) + '</span>';
       list.appendChild(li);
     });
+    if (hasBigWin) sBigWin();
+    // streak callout overlay: biggest milestone first
+    if (r.streakCallouts && r.streakCallouts.length) {
+      var top = r.streakCallouts.slice().sort(function (a, b) { return b.streak - a.streak; })[0];
+      showStreakCallout(top.name, top.streak);
+    }
+  }
+
+  // ---- full-screen streak callout ----
+  var calloutTimer = null;
+  function showStreakCallout(name, streak) {
+    var el = $('#streakCallout');
+    if (!el) return;
+    $('#calloutName').textContent = String(name || '').toUpperCase().slice(0, 24);
+    $('#calloutLine').textContent = streak + ' IN A ROW';
+    el.classList.remove('out');
+    el.hidden = false;
+    sStreak(streak);
+    if (calloutTimer) clearTimeout(calloutTimer);
+    calloutTimer = setTimeout(function () {
+      el.classList.add('out');
+      setTimeout(function () { el.hidden = true; el.classList.remove('out'); }, 420);
+    }, 2600);
   }
 
   function renderPodiumState(st) {
@@ -786,6 +980,9 @@
       if (phase !== 'question' && phase !== 'reveal') lastQid = '';
     }
     setPhase(phase);
+    // gold frame around the stage during wager-up moments
+    var stage = document.querySelector('.tv-stage');
+    if (stage) stage.classList.toggle('wagerup-frame', !!st.wagerUp && phase !== 'idle' && phase !== 'podium');
     if (phase === 'idle') renderIdle();
     else if (phase === 'wager') renderWagerState(st);
     else if (phase === 'podium') renderPodiumState(st);
@@ -820,7 +1017,7 @@
       if (qd) qd.textContent = 'Q' + (st.questionInBlock || '?') + ' / Block ' + (st.blockNum || '?');
     } else if (st.phase === 'wager' && st.wagerDeadlineTs) {
       ms = timeLeftMs(st.wagerDeadlineTs);
-      total = E.WAGER_SECONDS * 1000;
+      total = (st.wagerUp ? E.WAGER_UP_SECONDS : E.WAGER_SECONDS) * 1000;
       key = 'w:' + (st.wagerCategory || '');
       var ring = $('#wagerRingFg');
       ring.style.strokeDasharray = RING_C.toFixed(1);
