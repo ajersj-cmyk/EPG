@@ -38,6 +38,37 @@
   var lastStateDoc = null;
   var lastQuestionDoc = null;
   var lastHighlight = null;      // {type:'wager'|'streak', name, amount, ts} for attract ticker
+  var lastPhaseChangeTs = Date.now();  // watchdog: when we last saw a phase change
+  var lastPhaseSeen = '';
+
+  // Watchdog: if the game gets stuck in a phase (Firebase write hung, timer lost),
+  // force it forward. Runs every 5s. This is the anti-freeze safety net.
+  setInterval(function () {
+    try {
+      var st = lastStateDoc;
+      if (!st || !st.phase) return;
+      if (st.phase !== lastPhaseSeen) {
+        lastPhaseSeen = st.phase;
+        lastPhaseChangeTs = Date.now();
+        return;
+      }
+      var stuckMs = Date.now() - lastPhaseChangeTs;
+      var now = serverNow();
+      if (st.phase === 'question' && st.deadlineTs && now > st.deadlineTs + 15000 && stuckMs > 20000) {
+        console.warn('[watchdog] question stuck, forcing reveal');
+        revealQuestion();
+      } else if (st.phase === 'wager' && st.wagerDeadlineTs && now > st.wagerDeadlineTs + 15000 && stuckMs > 20000) {
+        console.warn('[watchdog] wager stuck, forcing deal');
+        dealWagerQuestion();
+      } else if (st.phase === 'reveal' && stuckMs > 45000) {
+        console.warn('[watchdog] reveal stuck, forcing advance');
+        advanceGame();
+      } else if (st.phase === 'podium' && stuckMs > 60000) {
+        console.warn('[watchdog] podium stuck, forcing advance');
+        advanceGame();
+      }
+    } catch (e) { /* watchdog never throws */ }
+  }, 5000);
 
   function serverNow() { return Date.now() + serverOffset; }
   function clearTimer() {
@@ -112,6 +143,25 @@
     tone(98, 0.5, 'sine', 0, 0.9, 49);
     [1046.5, 1318.5, 1568, 2093].forEach(function (f, i) {
       tone(f, 0.3, 'triangle', 0.15 + i * 0.1, 0.35);
+    });
+  }
+  // wager-risked beat: low drum + rising tension (drama either way)
+  function sRiskBeat() {
+    tone(82, 0.55, 'sine', 0, 0.9, 41);
+    tone(164, 0.4, 'sawtooth', 0.12, 0.22, 492);
+    tone(82, 0.4, 'sine', 0.65, 0.7, 55);
+    tone(880, 0.22, 'triangle', 1.05, 0.4);
+  }
+  // streak snapped: descending line, cinematic not punishing
+  function sStreakLost() {
+    var seq = [523.25, 415.3, 349.23, 293.66];
+    seq.forEach(function (f, i) { tone(f, 0.24, 'triangle', i * 0.17, 0.5); });
+    tone(146.8, 0.7, 'sine', 0.55, 0.45, 73);
+  }
+  // player sendoff: warm little major arp
+  function sSendoff() {
+    [392, 523.25, 659.25, 783.99].forEach(function (f, i) {
+      tone(f, 0.2, 'sine', i * 0.13, 0.4);
     });
   }
 
@@ -560,15 +610,13 @@
         results: results.slice(0, 50),
         streakCallouts: streakCallouts.slice(0, 3),
         streaksLost: streaksLost.slice(0, 3),
+        highScoreCelebrations: highScoreCelebrations.slice(0, 1),
       });
     }).then(function () {
       return writeState({ phase: 'reveal', podium: null });
     }).then(function () {
-      // Show high score celebrations (if any) — overlay on top of reveal
-      if (highScoreCelebrations.length) {
-        var hc = highScoreCelebrations[highScoreCelebrations.length - 1];
-        showCelebration(hc.name, hc.score);
-      }
+      // High-score celebrations now ride the reveal doc so every screen shows
+      // them in the moment queue (see renderRevealFinal).
       var pause = cq.isWager ? E.WAGER_REVEAL_SECONDS : E.REVEAL_SECONDS;
       questionTimer = setTimeout(function () {
         if (cq.isWager) showPodium(); else advanceGame();
@@ -576,26 +624,112 @@
     });
   }
 
-  // High score celebration overlay: "NEW HIGH SCORE — REESE GETS TO 400"
-  var celebrationTimer = null;
-  function showCelebration(name, score) {
-    var ov = $('#celebrationOverlay');
+  /* ---------------- big-deal moments : one FIFO overlay, never overlapping ----------------
+     Sendoffs, snapped streaks, wager-risked beats, streak milestones and high-score
+     celebrations all queue here so they play back-to-back instead of colliding. */
+  var momentQueue = [];
+  var momentBusy = false;
+
+  function momentIdle() { return !momentBusy && momentQueue.length === 0; }
+
+  function queueMoment(m) {
+    // m: { cls, html, dur, sound }
+    momentQueue.push(m);
+    pumpMoments();
+  }
+
+  function pumpMoments() {
+    if (momentBusy) return;
+    var m = momentQueue.shift();
+    if (!m) return;
+    var ov = $('#momentOverlay');
     if (!ov) return;
-    $('#celebrationKicker').textContent = 'NEW HIGH SCORE';
-    $('#celebrationName').textContent = name;
-    $('#celebrationScore').textContent = 'GETS TO ' + E.fmtNum(score);
+    momentBusy = true;
+    ov.innerHTML = '<div class="moment-inner ' + (m.cls || '') + '">' + m.html + '</div>';
     ov.hidden = false;
-    // re-trigger animation
     ov.classList.remove('show');
     void ov.offsetWidth;
     ov.classList.add('show');
-    if (celebrationTimer) clearTimeout(celebrationTimer);
-    celebrationTimer = setTimeout(function () {
-      ov.hidden = true;
+    if (m.sound) { try { m.sound(); } catch (e) {} }
+    setTimeout(function () {
       ov.classList.remove('show');
-    }, 3500);
-    // fanfare
-    try { sBigWin(); } catch (e) {}
+      setTimeout(function () {
+        ov.hidden = true;
+        ov.innerHTML = '';
+        momentBusy = false;
+        pumpMoments();
+      }, 320);
+    }, m.dur || 2600);
+  }
+
+  function escName(n) { return E.escapeHtml(String(n || 'Player').slice(0, 24)); }
+
+  // warm classy sendoff when a player disconnects
+  function sendoffMoment(name) {
+    return {
+      cls: 'sendoff', dur: 3000, sound: sSendoff,
+      html: '<div class="moment-kicker">Thanks for playing</div>' +
+        '<div class="moment-name">' + escName(name) + '</div>' +
+        '<div class="moment-sub">The cave salutes you &#127866;</div>'
+    };
+  }
+
+  // streak snapped: cinematic, not punishing
+  function snappedMoment(name, n) {
+    return {
+      cls: 'snapped', dur: 2800, sound: sStreakLost,
+      html: '<div class="moment-kicker">Streak snapped</div>' +
+        '<div class="moment-flame">&#128293;</div>' +
+        '<div class="moment-name">' + escName(name) + '</div>' +
+        '<div class="moment-line">' + n + ' in a row</div>' +
+        '<div class="moment-sub">Hell of a run</div>'
+    };
+  }
+
+  // big wager loss: "{name} risked {x}" beat before the result lands
+  function wagerBeatMoment(losses) {
+    var label = losses.length === 1 ? escName(losses[0].name) : losses.length + ' players';
+    var amt = Math.max.apply(null, losses.map(function (x) { return x.wager; }));
+    return {
+      cls: 'wagerbeat', dur: 2400, sound: sRiskBeat,
+      html: '<div class="moment-kicker">Big risk</div>' +
+        '<div class="moment-name">' + label + '</div>' +
+        '<div class="moment-line chrome-text">Risked ' + E.fmtNum(amt) + '</div>'
+    };
+  }
+
+  // streak milestones with escalating treatment: 3/5, 10, 15, 20+
+  function streakMoment(name, n) {
+    var tier = n >= 20 ? 't4' : n >= 15 ? 't3' : n >= 10 ? 't2' : 't1';
+    var kicker = n >= 20 ? 'Legendary' : n >= 15 ? 'Unstoppable' : n >= 10 ? 'Double digits' : 'On fire';
+    return {
+      cls: 'streak ' + tier,
+      dur: n >= 20 ? 3400 : 2600,
+      sound: function () { sStreak(n); if (n >= 20) setTimeout(sBigWin, 700); },
+      html: '<div class="moment-kicker">' + kicker + '</div>' +
+        '<div class="moment-flame">' + (n >= 15 ? '&#128293;&#128293;' : '&#128293;') + '</div>' +
+        '<div class="moment-name">' + escName(name) + '</div>' +
+        '<div class="moment-line chrome-text">' + n + ' in a row</div>'
+    };
+  }
+
+  // "NEW HIGH SCORE — REESE GETS TO 400"
+  function celebrationMoment(name, score) {
+    return {
+      cls: 'celebration', dur: 3500, sound: sBigWin,
+      html: '<div class="moment-kicker glow">New high score</div>' +
+        '<div class="moment-name huge">' + escName(name) + '</div>' +
+        '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>'
+    };
+  }
+
+  // biggest wager losses in a reveal (wager >= 200 and lost) — top 2
+  function topWagerLosses(r) {
+    return (r.results || [])
+      .filter(function (x) { return x.wager >= 200 && x.delta < 0; })
+      .sort(function (a, b) { return b.wager - a.wager; })
+      .slice(0, 2)
+      .map(function (x) { return { name: x.name, wager: x.wager }; });
   }
 
   // Block-capping ceremony after the wager reveal: top 3 of the block.
@@ -966,22 +1100,32 @@
   }
 
   // ---- reveal: 1.7s tension beat, then the answer lands ----
+  // (big wager losses steal the tension window for their own beat first)
   var revealToken = 0;
   function renderRevealDoc(r) {
     var key = 'r' + r.ts;
     if (lastQid === key) return;
     lastQid = key;
     var myToken = ++revealToken;
-    renderRevealTension(r);
-    sTensionRiser();
+    var losses = topWagerLosses(r);
+    var beatMs = 0;
+    if (losses.length && momentIdle()) {
+      // the risked-it beat replaces the REVEALING veil; reveal lands after it
+      beatMs = 2500;
+      renderRevealTension(r, true);
+      queueMoment(wagerBeatMoment(losses));
+    } else {
+      renderRevealTension(r, false);
+      sTensionRiser();
+    }
     setTimeout(function () {
       if (myToken !== revealToken) return; // superseded by a newer reveal
       if (lastPhase !== 'reveal') return;  // phase already moved on
       renderRevealFinal(r);
-    }, 1700);
+    }, 1700 + beatMs);
   }
 
-  function renderRevealTension(r) {
+  function renderRevealTension(r, quiet) {
     var phase = $('#phase-reveal');
     phase.classList.add('tension');
     phase.classList.remove('resolved');
@@ -996,7 +1140,7 @@
       buildOptions($('#rOptions'), qd.options || [], -1, false);
     }
     $('#rNote').innerHTML = '';
-    $('#rResults').innerHTML = '<div class="tension-veil">REVEALING</div>';
+    $('#rResults').innerHTML = quiet ? '' : '<div class="tension-veil">REVEALING</div>';
   }
 
   function renderRevealFinal(r) {
@@ -1048,28 +1192,17 @@
       list.appendChild(li);
     });
     if (hasBigWin) sBigWin();
-    // streak callout overlay: biggest milestone first
-    if (r.streakCallouts && r.streakCallouts.length) {
-      var top = r.streakCallouts.slice().sort(function (a, b) { return b.streak - a.streak; })[0];
-      showStreakCallout(top.name, top.streak);
+    // big-deal moments, queued in broadcast order: celebration, milestones, snaps
+    if (r.highScoreCelebrations && r.highScoreCelebrations.length) {
+      var hc = r.highScoreCelebrations[0];
+      queueMoment(celebrationMoment(hc.name, hc.score));
     }
-  }
-
-  // ---- full-screen streak callout ----
-  var calloutTimer = null;
-  function showStreakCallout(name, streak) {
-    var el = $('#streakCallout');
-    if (!el) return;
-    $('#calloutName').textContent = String(name || '').toUpperCase().slice(0, 24);
-    $('#calloutLine').textContent = streak + ' IN A ROW';
-    el.classList.remove('out');
-    el.hidden = false;
-    sStreak(streak);
-    if (calloutTimer) clearTimeout(calloutTimer);
-    calloutTimer = setTimeout(function () {
-      el.classList.add('out');
-      setTimeout(function () { el.hidden = true; el.classList.remove('out'); }, 420);
-    }, 2600);
+    (r.streakCallouts || []).slice()
+      .sort(function (a, b) { return b.streak - a.streak; })
+      .slice(0, 3)
+      .forEach(function (sc) { queueMoment(streakMoment(sc.name, sc.streak)); });
+    (r.streaksLost || []).slice(0, 3)
+      .forEach(function (sl) { queueMoment(snappedMoment(sl.name, sl.streak)); });
   }
 
   function renderPodiumState(st) {
