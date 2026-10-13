@@ -25,8 +25,11 @@
   var blockDealt = 0;            // normal questions dealt this block (0..9); wager closes it
   var round = 0;
   var pendingWagerQ = null;      // stashed question between wager phase and deal
+  var pendingWagerUp = false;    // true if pending wager is mid-block (not final)
+  var pendingWagerQib = 10;     // question-in-block for pending wager
   var currentQ = null;           // {q, deadlineTs, seconds, isWager, wagers:{pid:amt}}
   var questionTimer = null;
+  var statsCache = {};           // mirror of ROOM/playerStats for lifetime/month/day
   var isHost = false;
   var hostCheckTimer = null;
   var lastPhase = '';
@@ -166,6 +169,38 @@
 
   /* ---------------- game loop (ported from server.js) ---------------- */
 
+  // ---- lifetime / monthly / daily stats ----
+  function statsKey(name) {
+    return String(name || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'anon';
+  }
+  function todayKeys() {
+    var d = new Date();
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    var dd = String(d.getDate()).padStart(2, '0');
+    return { month: d.getFullYear() + '-' + mm, day: d.getFullYear() + '-' + mm + '-' + dd };
+  }
+  // Build Firebase updates for a player's lifetime/month/day stats.
+  // delta: score change (can be negative from lost wagers). correct: 1/0.
+  function statsUpdatesFor(name, delta, correct, upd) {
+    if (!name) return;
+    var key = statsKey(name);
+    var tk = todayKeys();
+    var cur = statsCache[key] || {};
+    var lifetime = (cur.lifetime || 0) + delta;
+    var month = (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta;
+    var day = (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta;
+    var base = ROOM + '/playerStats/' + key;
+    upd[base + '/name'] = String(name).slice(0, 24);
+    upd[base + '/lifetime'] = lifetime;
+    upd[base + '/month'] = month;
+    upd[base + '/monthKey'] = tk.month;
+    upd[base + '/day'] = day;
+    upd[base + '/dayKey'] = tk.day;
+    upd[base + '/correct'] = (cur.correct || 0) + (correct ? 1 : 0);
+    upd[base + '/answered'] = (cur.answered || 0) + 1;
+    upd[base + '/lastSeen'] = firebase.database.ServerValue.TIMESTAMP;
+  }
+
   function writeState(patch) {
     var base = {
       updatedAt: firebase.database.ServerValue.TIMESTAMP,
@@ -244,34 +279,43 @@
 
   // Every 10th question is Final-Jeopardy style: the category is announced
   // first, players wager 0..their score, then the question drops.
-  function startWager() {
+  // Mid-block (Q3/Q6/Q9): "Wager Up" — same flow on a hard question, shorter window.
+  function startWager(isWagerUp, qib) {
     if (!isHost) return;
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
       disabledCats: st.disabledCats, familyMode: st.familyMode,
+      hardOnly: !!isWagerUp,
     });
     if (!drawn) return;
     pendingWagerQ = drawn.q;
+    pendingWagerUp = !!isWagerUp;
+    pendingWagerQib = qib || E.BLOCK_SIZE;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
     clearTimer();
-    var deadlineTs = Date.now() + E.WAGER_SECONDS * 1000;
+    var secs = isWagerUp ? E.WAGER_UP_SECONDS : E.WAGER_SECONDS;
+    var deadlineTs = Date.now() + secs * 1000;
     clearPlayerFields().then(function () {
       return writeState({
-        phase: 'wager', questionInBlock: E.BLOCK_SIZE, blockNum: blockNum,
+        phase: 'wager', questionInBlock: pendingWagerQib, blockNum: blockNum,
         round: round, deadlineTs: null,
         wagerDeadlineTs: deadlineTs, wagerCategory: pendingWagerQ.category,
+        wagerUp: !!isWagerUp,
         podium: null,
       });
     }).then(function () {
-      questionTimer = setTimeout(dealWagerQuestion, E.WAGER_SECONDS * 1000 + 400);
+      questionTimer = setTimeout(dealWagerQuestion, secs * 1000 + 400);
     });
   }
 
   function dealWagerQuestion() {
     if (!isHost || !pendingWagerQ) return advanceGame();
     var q = pendingWagerQ;
+    var isWagerUp = pendingWagerUp;
+    var qib = pendingWagerQib;
     pendingWagerQ = null;
+    pendingWagerUp = false;
     clearTimer();
     var secs = q.video ? E.VIDEO_QUESTION_SECONDS : E.QUESTION_SECONDS;
     var deadlineTs = Date.now() + secs * 1000;
@@ -281,8 +325,12 @@
       var w = players[pid].wager || 0;
       if (w > 0) wagers[pid] = w;
     });
-    currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: true, wagers: wagers };
-    blockDealt = E.BLOCK_SIZE; // the wager question closes out the block
+    currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: true, isWagerUp: isWagerUp, wagers: wagers };
+    if (!isWagerUp) {
+      blockDealt = E.BLOCK_SIZE; // the final wager question closes out the block
+    } else {
+      blockDealt = qib; // wager-up: continue the block
+    }
     round += 1;
     // clear answers but KEEP wagers for the wager question
     var upd = {};
@@ -293,9 +341,9 @@
       return questionDoc(q, secs, deadlineTs, true);
     }).then(function () {
       return writeState({
-        phase: 'question', questionInBlock: E.BLOCK_SIZE, blockNum: blockNum,
+        phase: 'question', questionInBlock: qib, blockNum: blockNum,
         round: round, deadlineTs: deadlineTs,
-        wagerDeadlineTs: null, wagerCategory: null, podium: null,
+        wagerDeadlineTs: null, wagerCategory: null, wagerUp: !!isWagerUp, podium: null,
       });
     }).then(function () {
       questionTimer = setTimeout(revealQuestion, secs * 1000 + 400);
@@ -360,6 +408,8 @@
       upd[ROOM + '/players/' + pid + '/blockScore'] = newBlock;
       upd[ROOM + '/players/' + pid + '/answered'] = (p.answered || 0) + 1;
       upd[ROOM + '/players/' + pid + '/answer'] = null;
+      // lifetime / month / day running totals
+      statsUpdatesFor(p.name, newScore - (p.score || 0), r.correct, upd);
       results.push({
         pid: pid, name: p.name,
         delta: newScore - (p.score || 0),
@@ -421,7 +471,9 @@
     currentQ = null;
     pendingWagerQ = null;
     if (blockDealt >= E.BLOCK_SIZE) return showPodium();
-    if (blockDealt >= E.BLOCK_SIZE - 1) return startWager();
+    if (blockDealt >= E.BLOCK_SIZE - 1) return startWager(false);
+    var nextQib = blockDealt + 1;
+    if (E.isWagerUpSlot(nextQib)) return startWager(true, nextQib);
     return dealQuestion();
   }
 
@@ -505,6 +557,12 @@
       el.classList.toggle('done', i < (qib || 1) - 1);
       el.classList.toggle('now', i === (qib || 1) - 1);
     });
+  }
+
+  function renderStatsBoard() {
+    // Full timeframe leaderboard UI lands in the spectacle pass.
+    // For now, just ensure the function exists and doesn't crash.
+    return;
   }
 
   function renderBoard() {
@@ -893,6 +951,7 @@
     refs.settings = db.ref(ROOM + '/settings');
     refs.reveal = db.ref(ROOM + '/reveal');
     refs.host = db.ref(ROOM + '/host');
+    refs.stats = db.ref(ROOM + '/playerStats');
 
     db.ref('.info/serverTimeOffset').on('value', function (snap) {
       serverOffset = snap.val() || 0;
@@ -903,6 +962,10 @@
     refs.state.on('value', onState);
     refs.question.on('value', onQuestion);
     refs.reveal.on('value', onReveal);
+    refs.stats.on('value', function (snap) {
+      statsCache = snap.val() || {};
+      renderStatsBoard();
+    });
 
     wireHostElection();
     wireSettingsPanel();
