@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cave Trivia</title>
+<link rel="stylesheet" href="css/common.css?v=202610122207">
+<link rel="stylesheet" href="css/tv.css?v=202610122207">
+</head>
+<body>
+<div class="ambient"></div>
+<div class="vignette"></div>
+<div class="streak" id="streak"></div>
+
+<div class="tv-shell">
+  <header class="tv-top">
+    <div class="wordmark"><span id="venueName">CAVE TRIVIA</span><small id="venueTagline">ALWAYS-ON LEAGUE</small></div>
+    <div class="tv-meta">
+      <span class="family-badge" id="familyBadge" hidden>Family</span>
+      <div class="tv-clock" id="clock">--:--</div>
+      <div class="tv-players"><b id="playerCount">0</b> players in</div>
+    </div>
+  </header>
+
+  <div class="tv-layout">
+    <main class="tv-stage">
+
+      <!-- attract / idle : the screen is never dead -->
+      <section class="phase" id="phase-idle">
+        <div class="attract-rotate" id="attractRotate">
+          <div class="ar-card" id="arCard"></div>
+        </div>
+        <div class="attract-ticker" id="attractTicker" aria-live="off"></div>
+        <div class="attract-videohint" id="videoUnlockHint" hidden>Tap anywhere to enable video sound</div>
+      </section>
+
+      <!-- wager : full-stage Final-Jeopardy drama -->
+      <section class="phase" id="phase-wager">
+        <div class="wager-inner">
+          <div class="eyebrow" id="wagerEyebrow">Final wager &middot; question 10 of 10</div>
+          <h1 class="wager-title chrome-text" id="wagerTitle">FINAL<br>WAGER</h1>
+          <div class="wager-cat"><span>Category</span><b id="wagerCat">&mdash;</b></div>
+          <div class="wager-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="54"></circle>
+              <circle class="ring-fg" id="wagerRingFg" cx="60" cy="60" r="54"></circle>
+            </svg>
+            <div class="wager-secs" id="wagerSecs">15</div>
+          </div>
+          <div class="wager-hint" id="wagerHint">Wager <b>0</b> up to your whole score &mdash; on your phone, now</div>
+          <div class="wager-count" id="wagerCount" hidden></div>
+        </div>
+      </section>
+
+      <!-- question -->
+      <section class="phase" id="phase-question">
+        <div class="q-media" id="qMedia" hidden>
+          <img id="qImg" alt="">
+          <div class="q-video-frame" id="qVideoFrame" hidden>
+            <iframe id="qVideo" title="Video question" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="q-inner">
+          <div class="q-eyebrow">
+            <span class="q-cat" id="qCat">&mdash;</span>
+            <span class="q-diff" id="qDiff">&mdash;</span>
+            <span class="wager-badge" id="qWagerBadge" hidden>Wager</span>
+            <span class="lightning-badge-tv" id="qLightningBadge" hidden>&#9889; LIGHTNING</span>
+            <span class="q-round" id="qRound">&mdash;</span>
+          </div>
+          <h2 class="q-text" id="qText"></h2>
+          <div class="q-options" id="qOptions"></div>
+          <div class="q-foot">
+            <div class="q-timerbar"><i id="qTimerFill"></i></div>
+            <div class="q-secs" id="qSecs">&mdash;</div>
+            <div class="q-locked"><b id="qLocked">0</b> locked in</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- reveal -->
+      <section class="phase" id="phase-reveal">
+        <div class="q-inner">
+          <div class="q-eyebrow">
+            <span class="q-cat" id="rCat">&mdash;</span>
+            <span class="q-diff">Answer</span>
+            <span class="wager-badge" id="rWagerBadge" hidden>Wager</span>
+            <span class="q-round" id="rRound">&mdash;</span>
+          </div>
+          <h2 class="q-text" id="rText"></h2>
+          <div class="q-options" id="rOptions"></div>
+          <div class="reveal-note" id="rNote"></div>
+          <ol class="results" id="rResults"></ol>
+        </div>
+      </section>
+
+      <!-- podium : block top 3 -->
+      <section class="phase" id="phase-podium">
+        <div class="podium-inner">
+          <div class="eyebrow">Block <span id="podiumBlock">&mdash;</span> final &middot; top of the block</div>
+          <h1 class="podium-title chrome-text">CHAMPIONS</h1>
+          <div class="podium-steps" id="podiumSteps"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="tv-rail">
+      <div class="rail-card rail-progress">
+        <div class="rail-progress-label">Question <b id="qibNum">&ndash;</b>/10 &middot; Block <b id="blockNum">&ndash;</b></div>
+        <div class="pips" id="pips"></div>
+      </div>
+      <div class="rail-card rail-board">
+        <h3><span class="live-dot"></span>Live leaderboard</h3>
+        <ol class="board" id="blockBoard"></ol>
+      </div>
+      <div class="rail-card qr-card">
+        <div class="qr-scan">Scan to join</div>
+        <div id="qr"></div>
+        <div class="qr-url" id="joinUrl">&hellip;</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="hostbar">
+    <span class="attrib">Cave Trivia &middot; free forever edition</span>
+    <span class="spacer"></span>
+    <button class="btn ghost" id="btnSound" title="Toggle sound">Sound on</button>
+    <button class="btn ghost" id="btnSettings" title="Game settings">&#9881; Settings</button>
+    <label class="autopilot" id="famToggle" title="Family mode: kid-safe questions only">
+      <span class="pill"></span> Family
+    </label>
+  </footer>
+</div>
+
+<div class="settings-overlay" id="settingsOverlay" hidden>
+  <div class="settings-panel">
+    <div class="settings-head">
+      <span class="eyebrow">Game Settings</span>
+      <button class="btn ghost" id="btnSettingsClose">&#10005;</button>
+    </div>
+    <div class="settings-body">
+      <section>
+        <h3>Theme</h3>
+        <div class="theme-grid" id="themeGrid">
+          <button class="theme-swatch" data-theme="midnight-gold">
+            <span class="sw" style="background:linear-gradient(135deg,#07080d 50%,#d9b45c 50%)"></span>
+            Midnight Gold
+          </button>
+          <button class="theme-swatch" data-theme="jeopardy-blue">
+            <span class="sw" style="background:linear-gradient(135deg,#0a1230 50%,#ffd700 50%)"></span>
+            Jeopardy Blue
+          </button>
+          <button class="theme-swatch" data-theme="neon-arcade">
+            <span class="sw" style="background:linear-gradient(135deg,#1a0533 50%,#ff2fb9 50%)"></span>
+            Neon Arcade
+          </button>
+          <button class="theme-swatch" data-theme="emerald">
+            <span class="sw" style="background:linear-gradient(135deg,#0a1f16 50%,#d4af37 50%)"></span>
+            Emerald
+          </button>
+        </div>
+      </section>
+      <section>
+        <h3>Game Title</h3>
+        <div class="title-row">
+          <input type="text" id="gameTitleInput" maxlength="30" placeholder="CAVE TRIVIA">
+          <button class="btn" id="btnTitleSave">Set</button>
+        </div>
+        <div class="title-row" style="margin-top:.5rem">
+          <input type="text" id="gameTaglineInput" maxlength="40" placeholder="ALWAYS-ON LEAGUE">
+          <button class="btn" id="btnTaglineSave">Set</button>
+        </div>
+      </section>
+      <section>
+        <h3>Question Categories</h3>
+        <p class="settings-hint">Uncheck to remove a category from the rotation.</p>
+        <div class="cat-grid" id="catGrid"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- first-run: connect Firebase (free Spark plan) -->
+<div class="settings-overlay" id="setupOverlay" hidden>
+  <div class="settings-panel">
+    <div class="settings-head">
+      <span class="eyebrow">First run &middot; connect Firebase</span>
+    </div>
+    <div class="settings-body">
+      <section>
+        <p class="settings-hint">One-time setup &mdash; about two minutes, free forever:</p>
+        <ol class="setup-steps">
+          <li>Open <b>console.firebase.google.com</b> and create a project (free Spark plan is fine).</li>
+          <li><b>Build &rarr; Realtime Database</b> &rarr; Create database.</li>
+          <li>In the <b>Rules</b> tab, paste the contents of <b>database.rules.json</b> from this folder and Publish.</li>
+          <li><b>Project settings &rarr; Your apps &rarr; Web</b> &mdash; copy the <b>firebaseConfig</b> object.</li>
+          <li>Paste it below and hit Save. This TV becomes the game host.</li>
+        </ol>
+        <textarea id="configInput" class="config-textarea" rows="9" spellcheck="false"
+          placeholder='{"apiKey":"...","authDomain":"...","databaseURL":"https://....firebaseio.com","projectId":"...","storageBucket":"...","messagingSenderId":"...","appId":"..."}'></textarea>
+        <div class="join-error" id="configError" hidden></div>
+        <div class="title-row" style="margin-top:1rem">
+          <span style="flex:1"></span>
+          <button class="btn solid" id="btnSaveConfig">Save &amp; start hosting</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- big-deal moments: sendoffs, streaks, wagers, celebrations — one FIFO overlay -->
+<div class="moment-overlay" id="momentOverlay" hidden></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="lib/qrcode.js"></script>
+<script src="js/config.js?v=202610122207"></script>
+<script src="js/engine.js?v=202610122207"></script>
+<script src="js/tv.js?v=202610122207"></script>
+</body>
+</html>
