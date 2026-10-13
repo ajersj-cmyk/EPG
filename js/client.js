@@ -276,7 +276,12 @@
       $('#pqOptions').dataset.qid = q.id;
       $('#pqCat').textContent = E.fmtCategory(q.category);
       $('#pqDiff').textContent = q.difficulty || '';
-      $('#pqText').textContent = q.text;
+      var pqEl = $('#pqText');
+      pqEl.textContent = q.text;
+      var pqlen = (q.text || '').length;
+      pqEl.classList.remove('pq-long', 'pq-xlong');
+      if (pqlen > 280) pqEl.classList.add('pq-xlong');
+      else if (pqlen > 150) pqEl.classList.add('pq-long');
       $('#watchTv').hidden = !(q.image || q.video);
       var wb = $('#wagerQBadge');
       if (q.isWager) {
