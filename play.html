@@ -69,12 +69,18 @@
       </div>
       <div class="watch-tv" id="watchTv" hidden>&#128064; Watch the TV</div>
       <div class="wager-q-badge" id="wagerQBadge" hidden>Wager question &middot; <b id="wagerQAmount"></b></div>
+      <div class="lightning-badge" id="lightningBadge" hidden>&#9889; LIGHTNING ROUND &middot; 200 pts</div>
       <div class="pq-timerbar"><i id="pqTimerFill"></i></div>
       <h2 class="pq-text" id="pqText"></h2>
       <div class="pq-options" id="pqOptions"></div>
       <div class="pq-text-answer" id="pqTextAnswer" hidden>
         <input type="text" id="pqTextInput" class="pq-text-input" placeholder="Type your answer…" autocomplete="off" autocapitalize="off" maxlength="120">
         <button class="btn solid pq-text-btn" id="pqTextSubmit" type="button">Lock it in</button>
+      </div>
+      <div class="pq-text-answer" id="pqNumAnswer" hidden>
+        <input type="text" id="pqNumInput" class="pq-text-input pq-num-input" placeholder="Enter your number…" inputmode="numeric" autocomplete="off" maxlength="16">
+        <button class="btn solid pq-text-btn" id="pqNumSubmit" type="button">Lock it in</button>
+        <p class="pq-num-hint">Closest guess wins 150 pts</p>
       </div>
     </section>
 
@@ -105,6 +111,36 @@
         <h2 id="boardTitle">Top players</h2>
         <ol class="mini-board" id="miniBoard"></ol>
         <p class="board-msg" id="boardMsg"></p>
+        <button class="btn ghost" id="statsBtn" type="button">My stats</button>
+      </div>
+    </section>
+
+    <!-- player profile / stats -->
+    <section class="phase" id="p-stats">
+      <div class="stats-card">
+        <div class="eyebrow">Your profile</div>
+        <h2 id="statsName">&mdash;</h2>
+        <div class="stats-streak-row">
+          <div class="stats-streak">
+            <span class="stats-big" id="statsStreak">0</span>
+            <span class="stats-label">current streak</span>
+          </div>
+          <div class="stats-streak">
+            <span class="stats-big" id="statsBestStreak">0</span>
+            <span class="stats-label">best streak</span>
+          </div>
+          <div class="stats-streak">
+            <span class="stats-big" id="statsAccuracy">&mdash;</span>
+            <span class="stats-label">accuracy</span>
+          </div>
+        </div>
+        <div class="stats-money">
+          <div class="stats-row"><span>Today</span><b id="statsDay">0</b></div>
+          <div class="stats-row"><span>This month</span><b id="statsMonth">0</b></div>
+          <div class="stats-row"><span>Lifetime</span><b id="statsLifetime">0</b></div>
+          <div class="stats-row dim"><span>Questions answered</span><b id="statsAnswered">0</b></div>
+        </div>
+        <button class="btn ghost" id="statsBackBtn" type="button">Back to game</button>
       </div>
     </section>
   </main>
