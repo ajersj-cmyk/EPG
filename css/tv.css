@@ -1115,3 +1115,13 @@ html, body { height: 100%; overflow: hidden; }
   font-variant-numeric: tabular-nums;
   transition: color 0.3s ease;
 }
+
+/* ---- responsive question text sizing ---- */
+.q-text.q-long {
+  font-size: clamp(1.4rem, 3.2vw, 2.8rem);
+  line-height: 1.25;
+}
+.q-text.q-xlong {
+  font-size: clamp(1.1rem, 2.6vw, 2.2rem);
+  line-height: 1.35;
+}
