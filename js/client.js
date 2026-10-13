@@ -109,7 +109,7 @@
 
   function touchLastSeen() {
     if (!db || !playerId || !refs.player) return;
-    refs.player.update({ lastSeen: firebase.database.ServerValue.TIMESTAMP });
+    refs.player.update({ lastSeen: firebase.database.ServerValue.TIMESTAMP, present: true });
   }
 
   /* ---------------- join ---------------- */
@@ -127,19 +127,21 @@
       var now = firebase.database.ServerValue.TIMESTAMP;
       if (foundId) {
         playerId = foundId;
-        return db.ref(ROOM + '/players/' + foundId).update({ lastSeen: now }).then(function () { return foundId; });
+        return db.ref(ROOM + '/players/' + foundId).update({ lastSeen: now, present: true }).then(function () { return foundId; });
       }
       playerId = newPlayerId();
       var rec = {
         name: name, score: 0, blockScore: 0, correct: 0, answered: 0,
         wagersWon: 0, wagersLost: 0, wager: 0, wagerPlaced: false, answer: null,
-        joinedAt: now, lastSeen: now,
+        joinedAt: now, lastSeen: now, present: true,
       };
       return db.ref(ROOM + '/players/' + playerId).set(rec).then(function () { return playerId; });
     }).then(function () {
       playerName = name;
       saveIdentity();
       refs.player = db.ref(ROOM + '/players/' + playerId);
+      // Presence: TV shows a "thanks for playing" sendoff when this flips false.
+      try { refs.player.onDisconnect().update({ present: false }); } catch (e) {}
       refs.player.on('value', function (snap) {
         myPlayer = snap.val();
         renderScoreBox();
@@ -557,13 +559,6 @@
 
   /* ---------------- host liveness ---------------- */
 
-  function onHost(snap) {
-    var h = snap.val();
-    var fresh = h && h.ts && (serverNow() - h.ts) < 15000;
-    var banner = $('#hostBanner');
-    if (banner) banner.hidden = !!fresh;
-  }
-
   /* ---------------- join form ---------------- */
 
   function showJoinError(msg) {
@@ -608,7 +603,6 @@
     refs.state = db.ref(ROOM + '/state');
     refs.question = db.ref(ROOM + '/question');
     refs.reveal = db.ref(ROOM + '/reveal');
-    refs.host = db.ref(ROOM + '/host');
     refs.settings = db.ref(ROOM + '/settings');
 
     db.ref('.info/serverTimeOffset').on('value', function (snap) {
@@ -637,8 +631,6 @@
       if (wm) wm.textContent = (lastSettings.title || 'CAVE TRIVIA').toUpperCase();
       render();
     });
-    refs.host.on('value', onHost);
-
     // keep-alive: stay "active" on the TV's player count
     setInterval(touchLastSeen, 30000);
     // watchdog: if Firebase goes quiet, show the reconnect pill
