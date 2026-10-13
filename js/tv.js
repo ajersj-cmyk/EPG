@@ -43,9 +43,22 @@
 
   // Watchdog: if the game gets stuck in a phase (Firebase write hung, timer lost),
   // force it forward. Runs every 5s. This is the anti-freeze safety net.
+  // Also kickstarts the game if we're host with no active state (e.g. after a manual clear).
+  var watchdogKickstarted = false;
   setInterval(function () {
     try {
       var st = lastStateDoc;
+      // No state at all + we're host: start the game (one-shot until state appears).
+      if ((!st || !st.phase || st.phase === 'idle') && isHost) {
+        if (!watchdogKickstarted) {
+          watchdogKickstarted = true;
+          console.warn('[watchdog] no active game, kickstarting');
+          clearTimer();
+          questionTimer = setTimeout(advanceGame, 2000);
+        }
+        return;
+      }
+      if (st && st.phase && st.phase !== 'idle') watchdogKickstarted = false;
       if (!st || !st.phase) return;
       if (st.phase !== lastPhaseSeen) {
         lastPhaseSeen = st.phase;
@@ -211,8 +224,18 @@
       }
     }).catch(function () {});
     clearTimer();
-    // living game starts shortly after takeover, like server boot
-    questionTimer = setTimeout(advanceGame, 3000);
+    // If the previous host died mid-game, its state is stale (deadline passed).
+    // Clear it so we never resume a dead question — start fresh instead.
+    var st = lastStateDoc;
+    var stale = st && st.phase && st.phase !== 'idle' && st.deadlineTs && (Date.now() - st.deadlineTs > 10000);
+    var clearP = stale
+      ? Promise.all([refs.state.remove(), refs.question.remove(), refs.reveal.remove()]).catch(function () {})
+      : Promise.resolve();
+    clearP.then(function () {
+      if (stale) lastStateDoc = null;
+      // living game starts shortly after takeover, like server boot
+      questionTimer = setTimeout(advanceGame, 3000);
+    });
   }
 
   function standDown() {
@@ -629,6 +652,7 @@
      celebrations all queue here so they play back-to-back instead of colliding. */
   var momentQueue = [];
   var momentBusy = false;
+  var momentToken = 0; // invalidates pending moment timeouts after a cut
 
   function momentIdle() { return !momentBusy && momentQueue.length === 0; }
 
@@ -645,6 +669,7 @@
     var ov = $('#momentOverlay');
     if (!ov) return;
     momentBusy = true;
+    var tok = ++momentToken;
     ov.innerHTML = '<div class="moment-inner ' + (m.cls || '') + '">' + m.html + '</div>';
     ov.hidden = false;
     ov.classList.remove('show');
@@ -652,14 +677,25 @@
     ov.classList.add('show');
     if (m.sound) { try { m.sound(); } catch (e) {} }
     setTimeout(function () {
+      if (tok !== momentToken) return;
       ov.classList.remove('show');
       setTimeout(function () {
+        if (tok !== momentToken) return;
         ov.hidden = true;
         ov.innerHTML = '';
         momentBusy = false;
         pumpMoments();
       }, 320);
     }, m.dur || 2600);
+  }
+
+  // A new segment cuts big-deal moments short (called when leaving the reveal phase).
+  function cutMoments() {
+    momentToken++;
+    momentQueue.length = 0;
+    momentBusy = false;
+    var ov = $('#momentOverlay');
+    if (ov) { ov.classList.remove('show'); ov.hidden = true; ov.innerHTML = ''; }
   }
 
   function escName(n) { return E.escapeHtml(String(n || 'Player').slice(0, 24)); }
@@ -772,10 +808,26 @@
   /* ---------------- listeners ---------------- */
 
   function onPlayers(snap) {
-    players = snap.val() || {};
+    var next = snap.val() || {};
+    detectLeaves(players, next);
+    players = next;
     renderBoard();
     renderPlayerCount();
     pushBoardToState();
+  }
+
+  // Warm sendoff when a present player disconnects (phone registers
+  // onDisconnect -> present:false; see client.js join()).
+  function detectLeaves(oldP, newP) {
+    oldP = oldP || {};
+    Object.keys(oldP).forEach(function (pid) {
+      var was = oldP[pid].present !== false;
+      var rec = newP[pid];
+      var gone = !rec || rec.present === false;
+      if (was && gone && oldP[pid].name) {
+        queueMoment(sendoffMoment(oldP[pid].name));
+      }
+    });
   }
 
   function onSettings(snap) {
@@ -1192,17 +1244,20 @@
       list.appendChild(li);
     });
     if (hasBigWin) sBigWin();
-    // big-deal moments, queued in broadcast order: celebration, milestones, snaps
+    // big-deal moments, queued in broadcast order (capped so they fit the pause):
+    // celebration, then top streak milestones, then the biggest snapped streak.
     if (r.highScoreCelebrations && r.highScoreCelebrations.length) {
       var hc = r.highScoreCelebrations[0];
       queueMoment(celebrationMoment(hc.name, hc.score));
     }
     (r.streakCallouts || []).slice()
       .sort(function (a, b) { return b.streak - a.streak; })
-      .slice(0, 3)
+      .slice(0, 2)
       .forEach(function (sc) { queueMoment(streakMoment(sc.name, sc.streak)); });
-    (r.streaksLost || []).slice(0, 3)
-      .forEach(function (sl) { queueMoment(snappedMoment(sl.name, sl.streak)); });
+    var snaps = (r.streaksLost || []).slice()
+      .sort(function (a, b) { return b.streak - a.streak; })
+      .slice(0, 1);
+    snaps.forEach(function (sl) { queueMoment(snappedMoment(sl.name, sl.streak)); });
   }
 
   function renderPodiumState(st) {
@@ -1238,6 +1293,7 @@
     renderProgress(st.questionInBlock, st.blockNum);
     if (phase !== lastPhase) {
       if (lastPhase === 'question') stopVideo();
+      if (lastPhase === 'reveal') cutMoments(); // new segment cuts big-deal moments
       onPhaseChange(phase);
       lastPhase = phase;
       if (phase !== 'question' && phase !== 'reveal') lastQid = '';
