@@ -53,12 +53,19 @@
     joinEyebrow: 'Free \u00B7 no app needed \u00B7 jump in anytime',
     joinTitle: 'SCAN<br>TO JOIN',
     joinSub: 'Your phone is the controller',
-    // hall of fame card
-    hofEyebrow: 'The Cave leaderboards',
-    hofTitle: 'HALL<br>OF FAME',
-    hofMoneyTitle: 'All-time money',
-    hofStreakTitle: 'Best streaks',
-    hofEmpty: 'No legends yet \u2014 be the first',
+    // money board card (3 views: today / month / all time)
+    moneyEyebrow: 'Money leaderboard',
+    moneyTitle: 'MONEY<br>BOARD',
+    moneyTabDay: 'Today',
+    moneyTabMonth: 'This month',
+    moneyTabAll: 'All time',
+    moneyEmpty: 'No winnings yet \u2014 be the first',
+    // streak board card
+    streakEyebrow: 'Streak leaderboard',
+    streakTitle: 'HOT<br>STREAKS',
+    streakColNow: 'Now',
+    streakColBest: 'Best',
+    streakEmpty: 'No streaks yet \u2014 start one',
     // legends card
     legendsEyebrow: 'The Cave\u2019s finest',
     legendsTitle: 'LEGENDS',
@@ -786,7 +793,7 @@
     return {
       cls: 'snapped', dur: 2800, sound: sStreakLost,
       html: '<div class="moment-kicker">' + E.escapeHtml(ct('snappedKicker')) + '</div>' +
-        '<div class="moment-flame">&#128293;</div>' +
+        '<div class="moment-flame css"></div>' +
         '<div class="moment-name">' + escName(name) + '</div>' +
         '<div class="moment-line">' + n + ' in a row</div>' +
         '<div class="moment-sub">' + E.escapeHtml(ct('snappedSub')) + '</div>'
@@ -814,7 +821,7 @@
       dur: n >= 20 ? 3400 : 2600,
       sound: function () { sStreak(n); if (n >= 20) setTimeout(sBigWin, 700); },
       html: '<div class="moment-kicker">' + E.escapeHtml(kicker) + '</div>' +
-        '<div class="moment-flame">' + (n >= 15 ? '&#128293;&#128293;' : '&#128293;') + '</div>' +
+        '<div class="moment-flame">' + (n >= 15 ? '<span class="css-flame"></span><span class="css-flame"></span>' : '<span class="css-flame"></span>') + '</div>' +
         '<div class="moment-name">' + escName(name) + '</div>' +
         '<div class="moment-line chrome-text">' + n + ' in a row</div>'
     };
@@ -1025,7 +1032,7 @@
     var n = st.streak || 0;
     if (n < 3) return '';
     var tier = n >= 10 ? 't3' : n >= 5 ? 't2' : 't1';
-    return '<span class="sflame ' + tier + '">&#128293;<span class="n">' + n + '</span></span>';
+    return '<span class="sflame css ' + tier + '"><span class="n">' + n + '</span></span>';
   }
 
   function renderBoard() {
@@ -1280,37 +1287,83 @@
       '</div>';
   }
 
-  function arBoardHtml() {
-    var rows = '';
-    var money = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
-      .filter(function (s) { return (s.lifetime || 0) > 0; })
-      .sort(function (a, b) { return (b.lifetime || 0) - (a.lifetime || 0); })
+  // ---- money board: ranked by winnings, three views (day / month / all time) ----
+  // Each view gets its own card slot in the rotation; the tab strip shows
+  // which view is active.
+
+  function moneyVal(s, view, tk) {
+    if (view === 'day') return (s.dayKey === tk.day) ? (s.day || 0) : 0;
+    if (view === 'month') return (s.monthKey === tk.month) ? (s.month || 0) : 0;
+    return s.lifetime || 0;
+  }
+
+  function arMoneyTabs(activeView) {
+    var tabs = [
+      ['day', ct('moneyTabDay')],
+      ['month', ct('moneyTabMonth')],
+      ['all', ct('moneyTabAll')]
+    ];
+    var html = '<div class="ar-tabs" role="tablist">';
+    tabs.forEach(function (t) {
+      html += '<span class="ar-tab' + (t[0] === activeView ? ' active' : '') + '">' +
+        E.escapeHtml(t[1]) + '</span>';
+    });
+    return html + '</div>';
+  }
+
+  function arMoneyHtml(view) {
+    var tk = todayKeys();
+    var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
+      .filter(function (s) { return moneyVal(s, view, tk) > 0; })
+      .sort(function (a, b) { return moneyVal(b, view, tk) - moneyVal(a, view, tk); })
       .slice(0, 5);
-    if (money.length) {
-      rows += '<div class="ar-board-title">&#128176; ' + E.escapeHtml(ct('hofMoneyTitle')) + '</div><div class="ar-rows">';
-      money.forEach(function (s, i) {
-        rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
+    var rows;
+    if (list.length) {
+      rows = '<div class="ar-rows money-rows">';
+      list.forEach(function (s, i) {
+        rows += '<div class="ar-row money-row' + (i === 0 ? ' first' : '') + '">' +
+          '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
-          '<span class="ar-score">' + E.fmtNum(s.lifetime) + '</span></div>';
+          '<span class="ar-score money-score">$' + E.fmtNum(moneyVal(s, view, tk)) + '</span></div>';
       });
       rows += '</div>';
+    } else {
+      rows = '<div class="ar-sub">' + E.escapeHtml(ct('moneyEmpty')) + '</div>';
     }
-    var streaks = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
+    return '<div class="ar-eyebrow money-eyebrow">' + E.escapeHtml(ct('moneyEyebrow')) + '</div>' +
+      '<div class="ar-big chrome-text">' + ctHtml('moneyTitle') + '</div>' +
+      arMoneyTabs(view) + rows;
+  }
+
+  // ---- streak board: ranked by best streak, shows current + best ----
+
+  function arStreaksHtml() {
+    var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
       .filter(function (s) { return (s.bestStreak || 0) >= 2; })
       .sort(function (a, b) { return (b.bestStreak || 0) - (a.bestStreak || 0); })
-      .slice(0, 3);
-    if (streaks.length) {
-      rows += '<div class="ar-board-title">&#128293; ' + E.escapeHtml(ct('hofStreakTitle')) + '</div><div class="ar-rows">';
-      streaks.forEach(function (s, i) {
-        rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
+      .slice(0, 5);
+    var rows;
+    if (list.length) {
+      rows = '<div class="ar-rows streak-rows">' +
+        '<div class="ar-colheads"><span class="ar-ch-rank"></span>' +
+        '<span class="ar-ch-name"></span>' +
+        '<span class="ar-colhead">' + E.escapeHtml(ct('streakColNow')) + '</span>' +
+        '<span class="ar-colhead">' + E.escapeHtml(ct('streakColBest')) + '</span></div>';
+      list.forEach(function (s, i) {
+        var now = s.streak || 0;
+        var fire = now >= 3 ? '<span class="streak-fire" aria-hidden="true"></span>' : '';
+        rows += '<div class="ar-row streak-row' + (i === 0 ? ' first' : '') + '">' +
+          '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
-          '<span class="ar-score">' + (s.bestStreak || 0) + ' in a row</span></div>';
+          '<span class="ar-streak-now">' + fire + now + '</span>' +
+          '<span class="ar-streak-best">' + (s.bestStreak || 0) + '</span></div>';
       });
       rows += '</div>';
+    } else {
+      rows = '<div class="ar-sub">' + E.escapeHtml(ct('streakEmpty')) + '</div>';
     }
-    if (!rows) rows = '<div class="ar-sub">' + E.escapeHtml(ct('hofEmpty')) + '</div>';
-    return '<div class="ar-eyebrow">' + E.escapeHtml(ct('hofEyebrow')) + '</div>' +
-      '<div class="ar-big chrome-text">' + ctHtml('hofTitle') + '</div>' + rows;
+    return '<div class="ar-eyebrow streak-eyebrow">' + E.escapeHtml(ct('streakEyebrow')) + '</div>' +
+      '<div class="ar-big chrome-text">' + ctHtml('streakTitle') + '</div>' + rows;
   }
 
   function arLegendsHtml() {
@@ -1321,7 +1374,7 @@
       if ((s.lifetime || 0) > 0 && (!rich || s.lifetime > rich.lifetime)) rich = s;
     });
     var bits = '';
-    if (best) bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#128293; Longest streak ever</div>' +
+    if (best) bits += '<div class="ar-legend"><div class="ar-legend-kicker">Longest streak ever</div>' +
       '<div class="ar-legend-name chrome-text">' + E.escapeHtml(best.name) + '</div>' +
       '<div class="ar-legend-line">' + best.bestStreak + ' correct in a row</div></div>';
     if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#128176; Richest player ever</div>' +
@@ -1339,12 +1392,20 @@
       '<div class="ar-cta-line">' + ctHtml('legendsCta') + '</div>';
   }
 
-  // Teasers appear 3x per cycle: Jordan wants TONS of questions on attract.
+  // Teasers appear often: Jordan wants TONS of questions on attract.
+  // Money board gets 3 slots (one per view: day / month / all time), each
+  // with a tab strip showing the active view. Streaks gets its own slot.
   var AR_CARDS = [
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'join', html: arJoinHtml },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
-    { name: 'board', html: arBoardHtml },
+    { name: 'money-day', html: function () { return arMoneyHtml('day'); } },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'money-month', html: function () { return arMoneyHtml('month'); } },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'money-all', html: function () { return arMoneyHtml('all'); } },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'streaks', html: arStreaksHtml },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'legends', html: arLegendsHtml },
   ];
@@ -1417,7 +1478,7 @@
       var s = statsCache[k] || {};
       if ((s.streak || 0) >= 3 && (!hot || s.streak > hot.streak)) hot = s;
     });
-    if (hot) out.push('<span class="tk-flame">&#128293;</span> <b>' + E.escapeHtml(hot.name) + '</b> is on a <b>' + hot.streak + '-streak</b>');
+    if (hot) out.push('<b>' + E.escapeHtml(hot.name) + '</b> is on a <b>' + hot.streak + '-streak</b>');
     // biggest day total
     var rich = null;
     Object.keys(statsCache).forEach(function (k) {
@@ -1430,7 +1491,7 @@
       var h = lastHighlight;
       out.push(h.type === 'wager'
         ? '&#9889; <b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
-        : '<span class="tk-flame">&#128293;</span> <b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
+        : '<b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
     }
     // social proof: players in right now
     var now = serverNow();
@@ -1820,12 +1881,20 @@
       { key: 'joinTitle', label: 'Title' },
       { key: 'joinSub', label: 'Subtitle' }
     ] },
-    { group: 'Hall of Fame card', keys: [
-      { key: 'hofEyebrow', label: 'Eyebrow' },
-      { key: 'hofTitle', label: 'Title' },
-      { key: 'hofMoneyTitle', label: 'Money section title' },
-      { key: 'hofStreakTitle', label: 'Streaks section title' },
-      { key: 'hofEmpty', label: 'Empty state text' }
+    { group: 'Money board', keys: [
+      { key: 'moneyEyebrow', label: 'Eyebrow' },
+      { key: 'moneyTitle', label: 'Title' },
+      { key: 'moneyTabDay', label: 'Today tab' },
+      { key: 'moneyTabMonth', label: 'Month tab' },
+      { key: 'moneyTabAll', label: 'All-time tab' },
+      { key: 'moneyEmpty', label: 'Empty state text' }
+    ] },
+    { group: 'Streak board', keys: [
+      { key: 'streakEyebrow', label: 'Eyebrow' },
+      { key: 'streakTitle', label: 'Title' },
+      { key: 'streakColNow', label: 'Current column header' },
+      { key: 'streakColBest', label: 'Best column header' },
+      { key: 'streakEmpty', label: 'Empty state text' }
     ] },
     { group: 'Legends card', keys: [
       { key: 'legendsEyebrow', label: 'Eyebrow' },
