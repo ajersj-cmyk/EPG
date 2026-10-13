@@ -1125,3 +1125,29 @@ html, body { height: 100%; overflow: hidden; }
   font-size: clamp(1.1rem, 2.6vw, 2.2rem);
   line-height: 1.35;
 }
+
+/* ---- lightning round ---- */
+.lightning-badge-tv {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #1a1000;
+  font-weight: 900;
+  font-size: 0.85em;
+  letter-spacing: 0.12em;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  margin-left: 0.6em;
+  animation: lightning-pulse 0.9s ease-in-out infinite;
+  box-shadow: 0 0 18px rgba(255, 180, 0, 0.7);
+}
+@keyframes lightning-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 14px rgba(255,180,0,0.55); }
+  50% { transform: scale(1.08); box-shadow: 0 0 28px rgba(255,180,0,0.95); }
+}
+#phase-question.lightning .q-text {
+  text-shadow: 0 0 24px rgba(255, 180, 0, 0.35);
+}
+#phase-question.lightning {
+  border: 2px solid rgba(255, 180, 0, 0.45);
+  border-radius: 1.2rem;
+}
