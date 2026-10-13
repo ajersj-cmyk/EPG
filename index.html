@@ -97,8 +97,8 @@
       <!-- podium : block top 3 -->
       <section class="phase" id="phase-podium">
         <div class="podium-inner">
-          <div class="eyebrow">Block <span id="podiumBlock">&mdash;</span> final &middot; top of the block</div>
-          <h1 class="podium-title chrome-text">CHAMPIONS</h1>
+          <div class="eyebrow" id="podiumEyebrow">Block &mdash; final &middot; top of the block</div>
+          <h1 class="podium-title chrome-text" id="podiumTitle">CHAMPIONS</h1>
           <div class="podium-steps" id="podiumSteps"></div>
         </div>
       </section>
@@ -111,11 +111,11 @@
         <div class="pips" id="pips"></div>
       </div>
       <div class="rail-card rail-board">
-        <h3><span class="live-dot"></span>Live leaderboard</h3>
+        <h3 id="railBoardTitle"><span class="live-dot"></span>Live leaderboard</h3>
         <ol class="board" id="blockBoard"></ol>
       </div>
       <div class="rail-card qr-card">
-        <div class="qr-scan">Scan to join</div>
+        <div class="qr-scan" id="railScanText">Scan to join</div>
         <div id="qr"></div>
         <div class="qr-url" id="joinUrl">&hellip;</div>
       </div>
@@ -124,7 +124,7 @@
   </div>
 
   <footer class="hostbar">
-    <span class="attrib">Cave Trivia &middot; free forever edition</span>
+    <span class="attrib" id="footerNote">Cave Trivia &middot; free forever edition</span>
     <span class="spacer"></span>
     <button class="btn ghost" id="btnSound" title="Toggle sound">Sound on</button>
     <button class="btn ghost" id="btnSettings" title="Game settings">&#9881; Settings</button>
@@ -177,6 +177,15 @@
         <h3>Question Categories</h3>
         <p class="settings-hint">Uncheck to remove a category from the rotation.</p>
         <div class="cat-grid" id="catGrid"></div>
+      </section>
+      <section>
+        <h3>Customize Text</h3>
+        <p class="settings-hint">Change any wording on the attract screen, celebrations, and site chrome. Leave blank to use the default. You can use <b>&lt;b&gt;</b>, <b>&lt;i&gt;</b>, and <b>&lt;br&gt;</b> for formatting.</p>
+        <div id="customTextGroups"></div>
+        <div class="title-row" style="margin-top:1rem">
+          <span style="flex:1"></span>
+          <button class="btn ghost" id="btnTextReset">Reset to defaults</button>
+        </div>
       </section>
     </div>
   </div>
