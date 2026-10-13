@@ -22,25 +22,16 @@
     </div>
   </header>
 
-  <div class="takeover-banner" id="takeoverBanner" hidden>
-    <span>Another screen is hosting the game.</span>
-    <button class="btn ghost" id="btnTakeover">Take over as host</button>
-  </div>
-
   <div class="tv-layout">
     <main class="tv-stage">
 
       <!-- attract / idle : the screen is never dead -->
       <section class="phase" id="phase-idle">
-        <div class="attract">
-          <div class="eyebrow">Always on &middot; jump in anytime</div>
-          <h1 class="attract-title chrome-text pulse">SCAN<br>TO JOIN</h1>
-          <div class="attract-venue" id="attractVenue">CAVE TRIVIA</div>
-          <div class="attract-board" id="attractBoard"></div>
-          <div class="attract-cta">The game never stops &mdash; your phone is the controller</div>
-          <div class="attract-ticker" id="attractTicker" aria-live="off"></div>
-          <div class="attract-videohint" id="videoUnlockHint" hidden>Tap anywhere to enable video sound</div>
+        <div class="attract-rotate" id="attractRotate">
+          <div class="ar-card" id="arCard"></div>
         </div>
+        <div class="attract-ticker" id="attractTicker" aria-live="off"></div>
+        <div class="attract-videohint" id="videoUnlockHint" hidden>Tap anywhere to enable video sound</div>
       </section>
 
       <!-- wager : full-stage Final-Jeopardy drama -->
@@ -74,6 +65,7 @@
             <span class="q-cat" id="qCat">&mdash;</span>
             <span class="q-diff" id="qDiff">&mdash;</span>
             <span class="wager-badge" id="qWagerBadge" hidden>Wager</span>
+            <span class="lightning-badge-tv" id="qLightningBadge" hidden>&#9889; LIGHTNING</span>
             <span class="q-round" id="qRound">&mdash;</span>
           </div>
           <h2 class="q-text" id="qText"></h2>
@@ -129,15 +121,6 @@
       </div>
     </aside>
 
-    <!-- high score celebration overlay -->
-    <div class="celebration-overlay" id="celebrationOverlay" hidden>
-      <div class="celebration-burst"></div>
-      <div class="celebration-content">
-        <div class="celebration-kicker" id="celebrationKicker">NEW HIGH SCORE</div>
-        <div class="celebration-name" id="celebrationName"></div>
-        <div class="celebration-score" id="celebrationScore"></div>
-      </div>
-    </div>
   </div>
 
   <footer class="hostbar">
@@ -227,14 +210,8 @@
   </div>
 </div>
 
-<!-- streak / big-moment callout overlay -->
-<div class="callout" id="streakCallout" hidden>
-  <div class="callout-inner">
-    <div class="callout-flame" id="calloutFlame">&#128293;</div>
-    <div class="callout-name" id="calloutName"></div>
-    <div class="callout-line chrome-text" id="calloutLine"></div>
-  </div>
-</div>
+<!-- big-deal moments: sendoffs, streaks, wagers, celebrations — one FIFO overlay -->
+<div class="moment-overlay" id="momentOverlay" hidden></div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
