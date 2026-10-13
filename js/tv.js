@@ -238,17 +238,21 @@
   }
 
   function questionDoc(q, seconds, deadlineTs, isWager) {
+    var isNum = q.answerType === 'number';
+    var isTxt = !isNum && E.isTextQuestion(q);
     var doc = {
       id: q.id,
       text: q.question,
-      options: E.isTextQuestion(q) ? [] : q.options.slice(),
-      answerType: E.isTextQuestion(q) ? 'text' : 'choice',
-      answerText: E.isTextQuestion(q) ? E.answerTextOf(q) : null,
+      options: isTxt ? [] : (isNum ? [] : q.options.slice()),
+      answerType: isNum ? 'number' : (isTxt ? 'text' : 'choice'),
+      answerText: isNum ? null : (isTxt ? E.answerTextOf(q) : null),
+      answerNumber: isNum ? q.answerNumber : null,
       category: q.category,
       difficulty: q.difficulty,
       image: q.image || null,
       video: q.video || null,
       isWager: !!isWager,
+      isLightning: !!q._lightning,
       seconds: seconds,
       deadlineTs: deadlineTs,
     };
@@ -292,12 +296,15 @@
     var q = drawn.q;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
     clearTimer();
-    var secs = q.video ? E.VIDEO_QUESTION_SECONDS : E.QUESTION_SECONDS;
-    var deadlineTs = Date.now() + secs * 1000;
-    currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: false, wagers: {} };
     blockDealt += 1; // 1..9 — the 10th question of the block is the wager round
     round += 1;
     var qib = blockDealt;
+    // Lightning round: every 4th block, Q1-Q5 get 10s timer and double points
+    var isLightning = E.isLightningQuestion(blockNum, qib);
+    if (isLightning) q._lightning = true;
+    var secs = isLightning ? E.LIGHTNING_SECONDS : (q.video ? E.VIDEO_QUESTION_SECONDS : E.QUESTION_SECONDS);
+    var deadlineTs = Date.now() + secs * 1000;
+    currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: false, isLightning: isLightning, wagers: {} };
     clearPlayerFields().then(function () {
       return questionDoc(q, secs, deadlineTs, false);
     }).then(function () {
@@ -404,13 +411,29 @@
     var streaksLost = [];
     var highScoreCelebrations = [];
     var correctCount = 0, answeredCount = 0;
+    var isNumQ = q.answerType === 'number';
+    var numAnswer = isNumQ ? Number(q.answerNumber) : NaN;
+    // Closest-wins pre-pass: find the smallest absolute difference among all guesses
+    var closestDiff = Infinity;
+    var numGuesses = {}; // pid -> {guess, diff}
+    if (isNumQ && !isNaN(numAnswer)) {
+      Object.keys(players).forEach(function (pid) {
+        var a = players[pid].answer;
+        if (a && typeof a.number === 'number' && !isNaN(a.number)) {
+          var diff = Math.abs(a.number - numAnswer);
+          numGuesses[pid] = { guess: a.number, diff: diff };
+          if (diff < closestDiff) closestDiff = diff;
+        }
+      });
+    }
 
     Object.keys(players).forEach(function (pid) {
       var p = players[pid];
       var a = p.answer;
       var wager = (cq.wagers && cq.wagers[pid]) || 0;
-      var isTextQ = E.isTextQuestion(q);
-      var hasAnswer = a && (isTextQ ? (typeof a.text === 'string' && a.text.trim() !== '') : (typeof a.choice === 'number'));
+      var isTextQ = !isNumQ && E.isTextQuestion(q);
+      var hasAnswer = a && (isNumQ ? (typeof a.number === 'number' && !isNaN(a.number))
+        : (isTextQ ? (typeof a.text === 'string' && a.text.trim() !== '') : (typeof a.choice === 'number')));
       if (!hasAnswer) {
         // wagered but never answered: lose the wager
         if (cq.isWager && wager > 0) {
@@ -428,14 +451,29 @@
         difficulty: q.difficulty,
         answeredAt: a.at, deadlineTs: cq.deadlineTs, seconds: cq.seconds, wager: wager,
       };
-      if (isTextQ) {
+      if (cq.isLightning) scoreArgs.basePoints = E.LIGHTNING_POINTS;
+      if (isNumQ) {
+        // Closest wins: tied-for-closest players win 150, everyone else gets 0
+        var myDiff = (numGuesses[pid] || {}).diff;
+        var isWinner = (myDiff !== undefined && myDiff === closestDiff);
+        scoreArgs.textCorrect = false; // bypass normal path
+        scoreArgs._closestWin = isWinner;
+        scoreArgs._closestDiff = myDiff;
+      } else if (isTextQ) {
         var correctText = q.answerText || q.options[q.answer] || '';
         scoreArgs.textCorrect = E.textMatch(a.text, correctText);
       } else {
         scoreArgs.choice = a.choice;
         scoreArgs.correctIndex = q.answer;
       }
-      var r = E.scoreAnswer(scoreArgs);
+      var r;
+      if (isNumQ && scoreArgs._closestWin) {
+        r = { correct: true, points: 150 + (wager > 0 ? wager : 0) };
+      } else if (isNumQ) {
+        r = { correct: false, points: 0 };
+      } else {
+        r = E.scoreAnswer(scoreArgs);
+      }
       var delta = r.points;
       // spectacle: streak milestones + snapped streaks (from pre-update statsCache)
       var sKey = statsKey(p.name);
@@ -479,11 +517,16 @@
         }
       }
       statsUpdatesFor(p.name, deltaScore, r.correct, upd);
-      results.push({
+      var resEntry = {
         pid: pid, name: p.name,
         delta: newScore - (p.score || 0),
         wager: wager, correct: r.correct,
-      });
+      };
+      if (isNumQ && numGuesses[pid]) {
+        resEntry.guess = numGuesses[pid].guess;
+        resEntry.offBy = numGuesses[pid].diff;
+      }
+      results.push(resEntry);
     });
     results.sort(function (a, b) { return b.delta - a.delta; });
 
@@ -506,9 +549,12 @@
         correctIndex: isTextQ ? -1 : q.answer,
         correctText: isTextQ ? (q.answerText || q.options[q.answer] || '') : q.options[q.answer],
         answerType: q.answerType || 'choice',
+        answerNumber: isNumQ ? numAnswer : null,
+        closestDiff: isNumQ ? (closestDiff === Infinity ? null : closestDiff) : null,
         ts: firebase.database.ServerValue.TIMESTAMP,
         isWager: cq.isWager,
         wagerUp: !!cq.isWagerUp,
+        isLightning: !!cq.isLightning,
         answeredCount: answeredCount,
         correctCount: correctCount,
         results: results.slice(0, 50),
@@ -873,6 +919,10 @@
       $('#qCat').textContent = E.fmtCategory(q.category);
       $('#qDiff').textContent = q.difficulty || '';
       $('#qWagerBadge').hidden = !q.isWager;
+      var qlb = $('#qLightningBadge');
+      if (qlb) qlb.hidden = !q.isLightning;
+      var qp2 = $('#phase-question');
+      if (qp2) qp2.classList.toggle('lightning', !!q.isLightning);
       var qTextEl = $('#qText');
       qTextEl.textContent = q.text;
       // Scale font down for long questions so they don't look jumbled
@@ -957,13 +1007,24 @@
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
     $('#rText').textContent = qd.text || '';
-    if (r.answerType === 'text') {
+    var isNumR = r.answerType === 'number';
+    if (isNumR) {
+      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS ' + E.fmtNum(r.answerNumber) + '</div>';
+    } else if (r.answerType === 'text') {
       $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
     } else {
       buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
     }
-    var note = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
-      '</b> answered correctly &mdash; ' + E.escapeHtml(r.correctText || '');
+    var note;
+    if (isNumR) {
+      var winners = (r.results || []).filter(function (x) { return x.correct; });
+      var wnames = winners.slice(0, 3).map(function (x) { return E.escapeHtml(x.name); }).join(', ');
+      note = '<b>Closest wins</b> &mdash; ' + E.fmtNum(r.answerNumber) +
+        (wnames ? ' &nbsp;<span style="color:var(--gold)">&#9733; ' + wnames + '</span>' : '');
+    } else {
+      note = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
+        '</b> answered correctly &mdash; ' + E.escapeHtml(r.correctText || '');
+    }
     if (r.streaksLost && r.streaksLost.length) {
       var sl = r.streaksLost[0];
       note += ' &nbsp;<span style="color:#ff8f7d">&hearts; ' + E.escapeHtml(sl.name) +
@@ -978,6 +1039,9 @@
       var d = Number(row.delta || 0);
       var wagerNote = (r.isWager && row.wager > 0)
         ? '<span class="wg">risked ' + E.fmtNum(row.wager) + '</span>' : '';
+      if (isNumR && row.guess !== undefined) {
+        wagerNote = '<span class="wg">guessed ' + E.fmtNum(row.guess) + '</span>';
+      }
       if (r.isWager && row.correct && d >= 800) { li.classList.add('bigwin'); hasBigWin = true; }
       li.innerHTML = '<span class="nm">' + E.escapeHtml(row.name) + '</span>' + wagerNote +
         '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtDelta(d) + '</span>';
