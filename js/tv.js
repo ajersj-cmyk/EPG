@@ -9,7 +9,6 @@
   var $ = function (s) { return document.querySelector(s); };
   var LETTERS = ['A', 'B', 'C', 'D'];
   var ROOM = 'rooms/cave';
-  var HOST_ID = 'host-' + Math.random().toString(36).slice(2);
 
   var db = null;                 // firebase.database()
   var refs = {};                 // cached refs
@@ -30,36 +29,27 @@
   var currentQ = null;           // {q, deadlineTs, seconds, isWager, wagers:{pid:amt}}
   var questionTimer = null;
   var statsCache = {};           // mirror of ROOM/playerStats for lifetime/month/day
-  var isHost = false;
-  var hostCheckTimer = null;
   var lastPhase = '';
   var lastQid = '';
   var lastBoardJson = '';
   var lastStateDoc = null;
   var lastQuestionDoc = null;
-  var lastHostSnap = null;
   var lastHighlight = null;      // {type:'wager'|'streak', name, amount, ts} for attract ticker
   var lastPhaseChangeTs = Date.now();  // watchdog: when we last saw a phase change
   var lastPhaseSeen = '';
 
   // Watchdog: if the game gets stuck in a phase (Firebase write hung, timer lost),
   // force it forward. Runs every 5s. This is the anti-freeze safety net.
-  // Also kickstarts the game if we're host with no active state (e.g. after a manual clear).
-  var watchdogKickstarted = false;
+  // Also restarts the game if players are waiting but no game is running.
   setInterval(function () {
     try {
       var st = lastStateDoc;
-      // No state at all + we're host: start the game (one-shot until state appears).
-      if ((!st || !st.phase || st.phase === 'idle') && isHost) {
-        if (!watchdogKickstarted) {
-          watchdogKickstarted = true;
-          console.warn('[watchdog] no active game, kickstarting');
-          clearTimer();
-          questionTimer = setTimeout(advanceGame, 2000);
-        }
+      var waiting = activePlayerCount() > 0;
+      // Players waiting but no active game: (re)start it.
+      if (waiting && (!st || !st.phase || st.phase === 'idle')) {
+        kickstartGame(2000);
         return;
       }
-      if (st && st.phase && st.phase !== 'idle') watchdogKickstarted = false;
       if (!st || !st.phase) return;
       if (st.phase !== lastPhaseSeen) {
         lastPhaseSeen = st.phase;
@@ -87,6 +77,27 @@
   function serverNow() { return Date.now() + serverOffset; }
   function clearTimer() {
     if (questionTimer) { clearTimeout(questionTimer); questionTimer = null; }
+  }
+
+  // Players currently in the room: present flag set and seen recently.
+  function activePlayerCount() {
+    var now = serverNow();
+    return Object.keys(players).filter(function (pid) {
+      var p = players[pid];
+      return p && p.present !== false && (now - (p.lastSeen || 0) < 5 * 60 * 1000);
+    }).length;
+  }
+
+  // Start the game loop, de-duplicated: rapid triggers (join + watchdog)
+  // must not double-start and skip a question.
+  var lastKickstartTs = 0;
+  function kickstartGame(delayMs) {
+    var now = Date.now();
+    if (now - lastKickstartTs < 10000) return;
+    lastKickstartTs = now;
+    console.warn('[runner] starting game');
+    clearTimer();
+    questionTimer = setTimeout(advanceGame, delayMs);
   }
 
   /* ---------------- audio : WebAudio oscillators only, zero assets ---------------- */
@@ -203,18 +214,13 @@
     });
   }
 
-  /* ---------------- host election ---------------- */
+  /* ---------------- game runner (no host election) ----------------
+     The TV is always the game runner. Jordan's rule:
+       - 0 players  -> attract mode (phase 'idle', attract loop runs)
+       - 1+ players -> game runs immediately, no waiting, no election
+  */
 
-  function heartbeat() {
-    if (!isHost) return;
-    refs.host.set({ id: HOST_ID, ts: firebase.database.ServerValue.TIMESTAMP });
-  }
-
-  function becomeHost() {
-    if (isHost) return;
-    isHost = true;
-    $('#takeoverBanner').hidden = true;
-    heartbeat();
+  function seedSettingsIfEmpty() {
     // first-ever boot: seed default settings if the node is empty
     refs.settings.once('value').then(function (snap) {
       if (!snap.val()) {
@@ -224,53 +230,19 @@
         });
       }
     }).catch(function () {});
-    clearTimer();
-    // If the previous host died mid-game, its state is stale (deadline passed).
+  }
+
+  function clearStaleStateOnBoot() {
+    // If a previous session died mid-game, its state is stale (deadline passed).
     // Clear it so we never resume a dead question — start fresh instead.
-    var st = lastStateDoc;
-    var stale = st && st.phase && st.phase !== 'idle' && st.deadlineTs && (Date.now() - st.deadlineTs > 10000);
-    var clearP = stale
-      ? Promise.all([refs.state.remove(), refs.question.remove(), refs.reveal.remove()]).catch(function () {})
-      : Promise.resolve();
-    clearP.then(function () {
-      if (stale) lastStateDoc = null;
-      // living game starts shortly after takeover, like server boot
-      questionTimer = setTimeout(advanceGame, 3000);
-    });
-  }
-
-  function standDown() {
-    if (!isHost) return;
-    isHost = false;
-    clearTimer();
-    currentQ = null;
-    pendingWagerQ = null;
-    $('#takeoverBanner').hidden = false;
-  }
-
-  function wireHostElection() {
-    refs.host.on('value', function (snap) {
-      lastHostSnap = snap.val();
-      var h = lastHostSnap;
-      var fresh = h && h.ts && (serverNow() - h.ts) < 15000;
-      if (fresh && h.id !== HOST_ID) standDown();
-      else if (!isHost && !fresh) becomeHost();
-    });
-    // Periodic re-election: if we're not host and the host record goes stale
-    // (old host died without clearing), take over. The 'value' listener above
-    // only fires on changes, so without this a dead host blocks us forever.
-    hostCheckTimer = setInterval(function () {
-      heartbeat();
-      if (!isHost) {
-        var h = lastHostSnap;
-        var fresh = h && h.ts && (serverNow() - h.ts) < 15000;
-        if (!fresh) becomeHost();
+    refs.state.once('value').then(function (snap) {
+      var st = snap.val();
+      var stale = st && st.phase && st.phase !== 'idle' && st.deadlineTs && (Date.now() - st.deadlineTs > 10000);
+      if (stale) {
+        console.warn('[runner] clearing stale state from previous session');
+        return Promise.all([refs.state.remove(), refs.question.remove(), refs.reveal.remove()]).catch(function () {});
       }
-    }, 5000);
-    $('#btnTakeover').addEventListener('click', function () {
-      refs.host.set({ id: HOST_ID, ts: firebase.database.ServerValue.TIMESTAMP });
-      becomeHost();
-    });
+    }).catch(function () {});
   }
 
   /* ---------------- game loop (ported from server.js) ---------------- */
@@ -363,7 +335,6 @@
   }
 
   function dealQuestion() {
-    if (!isHost) return;
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
@@ -407,7 +378,6 @@
   // first, players wager 0..their score, then the question drops.
   // Mid-block (Q3/Q6/Q9): "Wager Up" — same flow on a hard question, shorter window.
   function startWager(isWagerUp, qib) {
-    if (!isHost) return;
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
@@ -444,7 +414,7 @@
   }
 
   function dealWagerQuestion() {
-    if (!isHost || !pendingWagerQ) return advanceGame();
+    if (!pendingWagerQ) return advanceGame();
     var q = pendingWagerQ;
     var isWagerUp = pendingWagerUp;
     var qib = pendingWagerQib;
@@ -485,7 +455,7 @@
   }
 
   function revealQuestion() {
-    if (!isHost || !currentQ) return;
+    if (!currentQ) return;
     clearTimer();
     var cq = currentQ;
     currentQ = null;
@@ -782,7 +752,6 @@
 
   // Block-capping ceremony after the wager reveal: top 3 of the block.
   function showPodium() {
-    if (!isHost) return;
     clearTimer();
     var top = E.leaderboard(players, 'block').slice(0, 3).map(function (r) {
       return { name: r.name, score: r.score };
@@ -790,7 +759,6 @@
     writeState({ phase: 'podium', questionInBlock: E.BLOCK_SIZE, podium: { top: top } })
       .then(function () {
         questionTimer = setTimeout(function () {
-          if (!isHost) return;
           var upd = {};
           Object.keys(players).forEach(function (pid) {
             upd[ROOM + '/players/' + pid + '/blockScore'] = 0;
@@ -804,12 +772,19 @@
       });
   }
 
-  // The always-on heartbeat: decide what comes next.
+  // The always-on runner: decide what comes next.
   function advanceGame() {
-    if (!isHost) return;
     clearTimer();
     currentQ = null;
     pendingWagerQ = null;
+    // Jordan's rule: no players -> attract mode. We only get here between
+    // questions, so the current question always finishes first. Fresh block
+    // for whoever joins next.
+    if (activePlayerCount() === 0) {
+      blockDealt = 0;
+      writeState({ phase: 'idle', questionInBlock: 0, podium: null });
+      return;
+    }
     if (blockDealt >= E.BLOCK_SIZE) return showPodium();
     if (blockDealt >= E.BLOCK_SIZE - 1) return startWager(false);
     var nextQib = blockDealt + 1;
@@ -821,11 +796,20 @@
 
   function onPlayers(snap) {
     var next = snap.val() || {};
+    var wasEmpty = activePlayerCount() === 0;
     detectLeaves(players, next);
     players = next;
+    var nowEmpty = activePlayerCount() === 0;
     renderBoard();
     renderPlayerCount();
     pushBoardToState();
+    // Jordan's rule: the moment someone joins, the game starts immediately.
+    // (If a game is already running, do nothing — kickstartGame dedups anyway.)
+    if (wasEmpty && !nowEmpty) {
+      var st = lastStateDoc;
+      var gameRunning = st && st.phase && st.phase !== 'idle';
+      if (!gameRunning) kickstartGame(500);
+    }
   }
 
   // Warm sendoff when a present player disconnects (phone registers
@@ -849,7 +833,7 @@
     if (!settings.title) { settings.title = 'CAVE TRIVIA'; changed = true; }
     if (!Array.isArray(settings.disabledCats)) { settings.disabledCats = []; changed = true; }
     if (settings.familyMode === undefined) { settings.familyMode = false; changed = true; }
-    if (changed && isHost) refs.settings.update(settings);
+    if (changed) refs.settings.update(settings);
     applySettings();
   }
 
@@ -873,20 +857,15 @@
   // Keep the state's leaderboard copies fresh (phones read them).
   // Writes only when the serialized board actually changed.
   function pushBoardToState() {
-    if (!isHost) return;
     var board = E.leaderboard(players, 'all').slice(0, 10).map(function (r) {
       return { name: r.name, score: r.score };
     });
     var blockBoard = E.leaderboard(players, 'block').slice(0, 10).map(function (r) {
       return { name: r.name, score: r.score };
     });
-    var now = serverNow();
-    var active = Object.keys(players).filter(function (pid) {
-      return now - (players[pid].lastSeen || 0) < 5 * 60 * 1000;
-    }).length;
     var payload = {
       board: board, blockBoard: blockBoard,
-      playersTotal: Object.keys(players).length, playersActive: active,
+      playersTotal: Object.keys(players).length, playersActive: activePlayerCount(),
     };
     var json = JSON.stringify(payload);
     if (json === lastBoardJson) return;
@@ -1652,7 +1631,6 @@
     refs.players = db.ref(ROOM + '/players');
     refs.settings = db.ref(ROOM + '/settings');
     refs.reveal = db.ref(ROOM + '/reveal');
-    refs.host = db.ref(ROOM + '/host');
     refs.stats = db.ref(ROOM + '/playerStats');
 
     db.ref('.info/serverTimeOffset').on('value', function (snap) {
@@ -1669,7 +1647,9 @@
       renderStatsBoard();
     });
 
-    wireHostElection();
+    // The TV is always the game runner — no election, no takeover.
+    seedSettingsIfEmpty();
+    clearStaleStateOnBoot();
     wireSettingsPanel();
 
     $('#btnSound').addEventListener('click', function () {
