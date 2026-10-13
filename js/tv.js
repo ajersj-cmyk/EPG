@@ -189,6 +189,9 @@
     var lifetime = (cur.lifetime || 0) + delta;
     var month = (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta;
     var day = (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta;
+    // streaks: consecutive correct answers. Wrong answer (or no answer) resets.
+    var streak = correct ? ((cur.streak || 0) + 1) : 0;
+    var bestStreak = Math.max(cur.bestStreak || 0, streak);
     var base = ROOM + '/playerStats/' + key;
     upd[base + '/name'] = String(name).slice(0, 24);
     upd[base + '/lifetime'] = lifetime;
@@ -196,6 +199,8 @@
     upd[base + '/monthKey'] = tk.month;
     upd[base + '/day'] = day;
     upd[base + '/dayKey'] = tk.day;
+    upd[base + '/streak'] = streak;
+    upd[base + '/bestStreak'] = bestStreak;
     upd[base + '/correct'] = (cur.correct || 0) + (correct ? 1 : 0);
     upd[base + '/answered'] = (cur.answered || 0) + 1;
     upd[base + '/lastSeen'] = firebase.database.ServerValue.TIMESTAMP;
