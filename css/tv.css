@@ -1039,6 +1039,22 @@ html, body { height: 100%; overflow: hidden; }
   pointer-events: none;
 }
 @keyframes burstSpin { to { transform: rotate(360deg); } }
+/* new challenger: gold burst entrance */
+.moment-inner.challenger { position: relative; }
+.moment-inner.challenger::before {
+  content: "";
+  position: absolute;
+  inset: -26vmin;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,215,0,0.16) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg, rgba(255,215,0,0.08) 0deg 10deg, transparent 10deg 20deg);
+  animation: burstSpin 7s linear infinite;
+  pointer-events: none;
+}
+.moment-inner.challenger .moment-line {
+  font-size: clamp(2rem, 6.4vw, 5rem);
+  color: var(--gold-hi);
+}
 /* sendoff: soft and warm */
 .moment-inner.sendoff .moment-name { color: var(--gold-hi); }
 
@@ -1114,6 +1130,7 @@ html, body { height: 100%; overflow: hidden; }
   .tension-veil, .moment-flame, .sflame.t2, .sflame.t3,
   .moment-inner, .moment-kicker.glow,
   .moment-inner.streak.t4::before, .moment-inner.celebration::before,
+  .moment-inner.challenger::before,
   .moment-inner.wagerbeat .moment-line,
   .tv-stage.wagerup-frame::after { animation: none; }
   .moment-overlay { transition: none; }
