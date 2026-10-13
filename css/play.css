@@ -472,3 +472,7 @@ html, body { min-height: 100%; }
 .pq-text-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
 .pq-text-input:disabled { opacity: 0.55; }
 .pq-text-btn { width: 100%; font-size: 1.1rem; padding: 1rem; }
+
+/* ---- flag button ---- */
+.flag-btn { margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; }
+.flag-btn:disabled { opacity: 0.4; }
