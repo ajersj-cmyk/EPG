@@ -210,6 +210,7 @@
       else renderQuestion(st, lastQuestion);
     } else if (phase === 'reveal' && lastReveal) {
       renderReveal(st, lastReveal);
+      checkPhoneCelebration(lastReveal);
       setPhase('reveal');
     } else {
       renderBoard(st); // idle or podium
@@ -498,6 +499,55 @@
         at: firebase.database.ServerValue.TIMESTAMP,
       }).catch(function () {});
     };
+  }
+
+  /* ---------------- phone-side celebration mirror ----------------
+     When the TV fires a big moment for THIS player, show it on the phone too. */
+  var lastCelebrationKey = '';
+  function checkPhoneCelebration(r) {
+    var pc = $('#phoneCelebration');
+    if (!pc || !playerId || !r) return;
+    var me = null;
+    (r.results || []).forEach(function (x) {
+      if (x.pid === playerId) me = x;
+    });
+    if (!me || !me.name) { pc.hidden = true; return; }
+    var myName = me.name;
+    var shown = false;
+    var key = '';
+    // dethrone: am I the new king?
+    if (r.dethrones && r.dethrones.length) {
+      var dt = r.dethrones[0];
+      key = 'king-' + dt.newKing + '-' + dt.amount;
+      if (dt.newKing === myName && key !== lastCelebrationKey) {
+        $('#pcKicker').textContent = 'NEW KING OF THE HILL';
+        $('#pcTitle').textContent = 'You dethroned ' + dt.oldKing + '!';
+        $('#pcSub').textContent = 'At ' + fmt(dt.amount) + ' — the crown is yours';
+        shown = true;
+      }
+    }
+    // milestone: did I hit one?
+    if (!shown && r.highScoreCelebrations && r.highScoreCelebrations.length) {
+      var hc = r.highScoreCelebrations[0];
+      key = 'ms-' + hc.name + '-' + hc.score;
+      if (hc.name === myName && key !== lastCelebrationKey) {
+        $('#pcKicker').textContent = 'NEW HIGH SCORE';
+        $('#pcTitle').textContent = 'You hit ' + fmt(hc.score) + '!';
+        $('#pcSub').textContent = 'Day total: ' + fmt(hc.dayTotal || hc.score);
+        shown = true;
+      }
+    }
+    if (shown) {
+      lastCelebrationKey = key;
+      pc.hidden = false;
+      pc.classList.remove('show');
+      void pc.offsetWidth;
+      pc.classList.add('show');
+      setTimeout(function () {
+        pc.classList.remove('show');
+        setTimeout(function () { pc.hidden = true; }, 400);
+      }, 3500);
+    }
   }
 
   /* ---------------- idle / podium mini board ---------------- */
