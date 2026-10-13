@@ -692,6 +692,16 @@
     };
   }
 
+  // new player joins: full-screen hype BEFORE the game starts
+  function challengerMoment(name) {
+    return {
+      cls: 'challenger', dur: 2200, sound: sFanfare,
+      html: '<div class="moment-kicker glow">New challenger</div>' +
+        '<div class="moment-name huge">' + escName(name) + '</div>' +
+        '<div class="moment-line">HAS ENTERED THE CAVE</div>'
+    };
+  }
+
   // streak snapped: cinematic, not punishing
   function snappedMoment(name, n) {
     return {
@@ -794,21 +804,51 @@
 
   /* ---------------- listeners ---------------- */
 
+  // First players snapshot is silent: on TV reload, existing players must
+  // not trigger NEW CHALLENGER spam.
+  var playersSnapSeen = false;
+
+  // Names of players who freshly joined in this snapshot (not present before,
+  // or returning after a disconnect). Empty on the first snapshot.
+  function detectJoins(oldP, newP) {
+    var out = [];
+    if (!playersSnapSeen) return out;
+    oldP = oldP || {};
+    Object.keys(newP || {}).forEach(function (pid) {
+      var rec = newP[pid];
+      if (!rec || !rec.name) return;
+      var was = oldP[pid] && oldP[pid].present !== false;
+      var isNow = rec.present !== false;
+      if (isNow && !was) out.push(String(rec.name).slice(0, 24));
+    });
+    return out.slice(0, 3); // cap: never queue a parade
+  }
+
   function onPlayers(snap) {
     var next = snap.val() || {};
     var wasEmpty = activePlayerCount() === 0;
     detectLeaves(players, next);
+    var newJoins = detectJoins(players, next);
     players = next;
+    playersSnapSeen = true;
     var nowEmpty = activePlayerCount() === 0;
     renderBoard();
     renderPlayerCount();
     pushBoardToState();
-    // Jordan's rule: the moment someone joins, the game starts immediately.
-    // (If a game is already running, do nothing — kickstartGame dedups anyway.)
-    if (wasEmpty && !nowEmpty) {
-      var st = lastStateDoc;
-      var gameRunning = st && st.phase && st.phase !== 'idle';
-      if (!gameRunning) kickstartGame(500);
+    var st = lastStateDoc;
+    var gameRunning = st && st.phase && st.phase !== 'idle';
+    if (newJoins.length && !gameRunning) {
+      // Jordan's rule: NEW CHALLENGER celebration plays FIRST, then the game
+      // starts immediately after. Re-arm the timer directly so a second quick
+      // join extends the wait instead of overlapping the question.
+      newJoins.forEach(function (nm) { queueMoment(challengerMoment(nm)); });
+      var delay = 2500 * newJoins.length + 400;
+      lastKickstartTs = Date.now();
+      clearTimer();
+      questionTimer = setTimeout(function () { advanceGame(); }, delay);
+    } else if (wasEmpty && !nowEmpty && !gameRunning) {
+      // fallback: players waiting but no discrete join detected (e.g. TV boot)
+      kickstartGame(500);
     }
   }
 
@@ -1014,20 +1054,119 @@
     } catch (e) { return ''; }
   }
 
-  // Pick a short punchy teaser question, preferring ones with images.
+  // ---- attract teaser pool: REAL questions from the bank ----
+  // Rebuilt lazily when the bank loads/changes. Short (<140 char), kid-safe,
+  // resolvable answer. Image questions preferred on the big screen.
+  var arPool = [];
+  var arPoolImg = [];
+  var arPoolSig = '';
+  var arRecentIds = []; // avoid immediate repeats
+
+  // 50-question hardcoded fallback — used only when the bank hasn't loaded
+  // or fails. No empty states, no "coming soon".
+  var AR_FALLBACK = [
+    { q: "What planet is known as the Red Planet?", a: "Mars", cat: "Science" },
+    { q: "Who painted the Mona Lisa?", a: "Leonardo da Vinci", cat: "Art" },
+    { q: "What is the largest ocean on Earth?", a: "Pacific Ocean", cat: "Geography" },
+    { q: "In what year did the Titanic sink?", a: "1912", cat: "History" },
+    { q: "Who wrote 'Romeo and Juliet'?", a: "William Shakespeare", cat: "Literature" },
+    { q: "What is the capital of Japan?", a: "Tokyo", cat: "Geography" },
+    { q: "How many sides does a hexagon have?", a: "6", cat: "Math" },
+    { q: "What gas do plants absorb from the atmosphere?", a: "Carbon dioxide", cat: "Science" },
+    { q: "Who was the first person to walk on the moon?", a: "Neil Armstrong", cat: "History" },
+    { q: "What is the largest mammal in the world?", a: "Blue whale", cat: "Nature" },
+    { q: "How many players does a baseball team field?", a: "9", cat: "Sports" },
+    { q: "Which cowboy stars in Toy Story?", a: "Woody", cat: "Movies" },
+    { q: "Which band sang 'Yellow Submarine'?", a: "The Beatles", cat: "Music" },
+    { q: "What is H2O commonly known as?", a: "Water", cat: "Science" },
+    { q: "On which continent is the Sahara Desert?", a: "Africa", cat: "Geography" },
+    { q: "Who was the first U.S. president?", a: "George Washington", cat: "History" },
+    { q: "Pizza originated in which country?", a: "Italy", cat: "Food" },
+    { q: "What is the fastest land animal?", a: "Cheetah", cat: "Nature" },
+    { q: "What is the largest planet in our solar system?", a: "Jupiter", cat: "Space" },
+    { q: "How many points is a touchdown worth?", a: "6", cat: "Sports" },
+    { q: "'Let It Go' is from which Disney movie?", a: "Frozen", cat: "Movies" },
+    { q: "Who is known as the King of Pop?", a: "Michael Jackson", cat: "Music" },
+    { q: "Water boils at how many degrees Celsius?", a: "100", cat: "Science" },
+    { q: "What is the capital of France?", a: "Paris", cat: "Geography" },
+    { q: "In what year did the Berlin Wall fall?", a: "1989", cat: "History" },
+    { q: "How many legs does a spider have?", a: "8", cat: "Nature" },
+    { q: "How many rings are on the Olympic flag?", a: "5", cat: "Sports" },
+    { q: "What is the lion's name in The Lion King?", a: "Simba", cat: "Movies" },
+    { q: "Who wrote the Harry Potter books?", a: "J.K. Rowling", cat: "Literature" },
+    { q: "Which planet is famous for its rings?", a: "Saturn", cat: "Space" },
+    { q: "In which country are the ancient pyramids of Giza?", a: "Egypt", cat: "History" },
+    { q: "Hamburgers are named after which German city?", a: "Hamburg", cat: "Food" },
+    { q: "What is the largest bird that cannot fly?", a: "Ostrich", cat: "Nature" },
+    { q: "What galaxy do we live in?", a: "Milky Way", cat: "Space" },
+    { q: "In tennis, what is a zero score called?", a: "Love", cat: "Sports" },
+    { q: "What kind of fish is Nemo?", a: "Clownfish", cat: "Movies" },
+    { q: "How many strings does a standard guitar have?", a: "6", cat: "Music" },
+    { q: "What force pulls objects toward Earth?", a: "Gravity", cat: "Science" },
+    { q: "What is the capital of the United States?", a: "Washington, D.C.", cat: "Geography" },
+    { q: "In what year did humans first land on the moon?", a: "1969", cat: "History" },
+    { q: "What is the tallest land animal?", a: "Giraffe", cat: "Nature" },
+    { q: "How high is a basketball hoop, in feet?", a: "10", cat: "Sports" },
+    { q: "Who is Shrek's wisecracking sidekick?", a: "Donkey", cat: "Movies" },
+    { q: "Moby Dick is what kind of animal?", a: "Whale", cat: "Literature" },
+    { q: "How many bones are in the adult human body?", a: "206", cat: "Science" },
+    { q: "On which continent is Brazil?", a: "South America", cat: "Geography" },
+    { q: "Who is credited with inventing the light bulb?", a: "Thomas Edison", cat: "History" },
+    { q: "What do giant pandas mainly eat?", a: "Bamboo", cat: "Nature" },
+    { q: "How many moons does Earth have?", a: "1", cat: "Space" },
+    { q: "What do you call a group of wolves?", a: "Pack", cat: "Nature" }
+  ];
+  var arTeaserIdx = 0;
   var arLastTeaser = null;
-  function arPickTeaser() {
-    if (!bank || !bank.length) return null;
-    var withImg = [], short = [];
+
+  // Resolve a displayable answer for any bank question shape:
+  // options+answer index, answerText, or numeric (closest-wins).
+  function arAnswerFor(q) {
+    if (!q) return '';
+    if (q.answerType === 'number' && q.answerNumber != null) return String(q.answerNumber);
+    try { var t = E.answerTextOf(q); if (t) return t; } catch (e) {}
+    return '';
+  }
+
+  function arBuildPool() {
+    var sig = (bank ? bank.length : 0) + ':' + (bank && bank.length ? (bank[0].id || '') : '');
+    if (sig === arPoolSig && (arPool.length || arPoolImg.length)) return;
+    arPoolSig = sig;
+    arPool = []; arPoolImg = [];
+    if (!bank || !bank.length) return;
     for (var i = 0; i < bank.length; i++) {
       var q = bank[i];
-      var len = (q.question || q.text || '').length;
-      if (len > 140 || len < 15) continue;
-      if (q.image) withImg.push(q); else short.push(q);
+      if (!q) continue;
+      var text = q.question || q.text || '';
+      if (text.length > 140 || text.length < 15) continue;
+      if (q.kid_safe === false) continue;
+      if (!arAnswerFor(q)) continue;
+      if (q.image) arPoolImg.push(q); else arPool.push(q);
     }
-    var pool = withImg.length ? withImg : short;
-    if (!pool.length) return null;
-    arLastTeaser = pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function arPickTeaser() {
+    arBuildPool();
+    var useImg = arPoolImg.length && (!arPool.length || Math.random() < 0.6);
+    var pool = useImg ? arPoolImg : arPool;
+    if (pool.length) {
+      var picked = null;
+      for (var tries = 0; tries < 12; tries++) {
+        var cand = pool[Math.floor(Math.random() * pool.length)];
+        var cid = cand.id || cand.question;
+        if (arRecentIds.indexOf(cid) < 0 || pool.length <= 10) { picked = cand; break; }
+      }
+      if (!picked) picked = pool[Math.floor(Math.random() * pool.length)];
+      var pid = picked.id || picked.question;
+      arRecentIds.push(pid);
+      if (arRecentIds.length > 10) arRecentIds.shift();
+      arLastTeaser = picked;
+      return picked;
+    }
+    // bank empty/failed: cycle the 50 hardcoded (no repeats within a cycle)
+    var f = AR_FALLBACK[arTeaserIdx % AR_FALLBACK.length];
+    arTeaserIdx++;
+    arLastTeaser = { question: f.q, text: f.q, category: f.cat, answerText: f.a };
     return arLastTeaser;
   }
 
@@ -1044,7 +1183,7 @@
   }
 
   function arTeaserAnswerHtml(q) {
-    var ans = E.answerTextOf(q);
+    var ans = arAnswerFor(q);
     var img = q.image ? '<div class="ar-teaser-img dim" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
     return img +
       '<div class="ar-eyebrow gold">The answer was</div>' +
@@ -1121,10 +1260,13 @@
       '<div class="ar-cta-line">Your name could be here &mdash; <b>scan to play</b></div>';
   }
 
+  // Teasers appear 3x per cycle: Jordan wants TONS of questions on attract.
   var AR_CARDS = [
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'join', html: arJoinHtml },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'board', html: arBoardHtml },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'legends', html: arLegendsHtml },
   ];
 
