@@ -1338,3 +1338,70 @@ html, body { height: 100%; overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .ar-card { transition: none; }
 }
+
+/* ---- customize text (settings) ---- */
+.ct-group {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+.ct-group summary {
+  cursor: pointer;
+  padding: 0.85rem 1.1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ct-group summary::-webkit-details-marker { display: none; }
+.ct-group summary::after {
+  content: '+';
+  color: var(--gold);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.ct-group[open] summary::after { content: '\2013'; }
+.ct-group summary:hover { color: var(--gold); }
+.ct-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.7rem 1.1rem;
+  border-top: 1px solid var(--card-border);
+}
+.ct-row label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.ct-hint {
+  font-weight: 400;
+  opacity: 0.75;
+  font-size: 0.75rem;
+}
+.ct-row input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  padding: 0.6rem 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ct-row input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.ct-row input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
