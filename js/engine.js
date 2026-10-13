@@ -8,11 +8,13 @@
   var QUESTION_SECONDS = 20;
   var VIDEO_QUESTION_SECONDS = 30;
   var WAGER_SECONDS = 15;       // Final-Jeopardy style wager window
+  var WAGER_UP_SECONDS = 10;    // mid-block wager window (Q3, Q6, Q9)
   var WAGER_REVEAL_SECONDS = 12;
   var REVEAL_SECONDS = 8;       // autopilot pause on reveal before next Q
   var PODIUM_SECONDS = 8;
   var BLOCK_SIZE = 10;          // every 10th question of a block is the wager round
-  var BASE_POINTS = { easy: 100, medium: 200, hard: 300 };
+  var WAGER_UP_SLOTS = [3, 6, 9]; // 1-indexed: questions 3, 6, 9 are wager-up rounds
+  var BASE_POINTS = 100;        // flat 100 per question
   var SPEED_BONUS_MAX = 100;
   var VIDEO_DRAW_CHANCE = 0.12;
 
@@ -88,11 +90,16 @@
 
   // Mirror of server.js drawQuestion(): ~1-in-8 video draws, no category runs,
   // weighted bank picks, disabled-category + family filters, asked-id tracking.
-  // opts: { bank, askedIds (object map), recentCats (array), disabledCats, familyMode }
+  // opts: { bank, askedIds (object map), recentCats (array), disabledCats, familyMode, hardOnly }
   // Returns { q, askedIds, recentCats } or null.
   function drawQuestion(opts) {
     var bank = opts.bank, askedIds = opts.askedIds || {}, recentCats = opts.recentCats || [];
     var disabled = opts.disabledCats || [], familyMode = !!opts.familyMode;
+    var hardOnly = !!opts.hardOnly;
+
+    function hardOk(q) {
+      return !hardOnly || q.difficulty === 'hard';
+    }
 
     function recentSet(n) {
       var s = {};
@@ -118,7 +125,7 @@
       var q = drawBankQuestion(bank, avoid, askedIds, disabled, familyMode)
         || drawBankQuestion(bank, {}, askedIds, disabled, familyMode);
       if (!q) break;
-      if (familyOk(q, familyMode)) {
+      if (familyOk(q, familyMode) && hardOk(q)) {
         askedIds[q.id] = true;
         recentCats.push(q.category);
         if (recentCats.length > 8) recentCats = recentCats.slice(-8);
@@ -168,12 +175,17 @@
     var isCorrect = (typeof a.textCorrect === 'boolean') ? a.textCorrect : (a.choice === a.correctIndex);
     if (isCorrect) {
       var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
-      var pts = (BASE_POINTS[a.difficulty] || 100) + Math.round(SPEED_BONUS_MAX * speed);
+      var pts = BASE_POINTS + Math.round(SPEED_BONUS_MAX * speed);
       if (wager > 0) pts += wager;
       return { correct: true, points: pts };
     }
     if (wager > 0) return { correct: false, points: -wager };
     return { correct: false, points: 0 };
+  }
+
+  // True if the given 1-indexed question number in the block is a wager-up slot.
+  function isWagerUpSlot(qib) {
+    return WAGER_UP_SLOTS.indexOf(qib) >= 0;
   }
 
   function clampScore(s) { return Math.max(0, s); }
@@ -213,6 +225,9 @@
     QUESTION_SECONDS: QUESTION_SECONDS,
     VIDEO_QUESTION_SECONDS: VIDEO_QUESTION_SECONDS,
     WAGER_SECONDS: WAGER_SECONDS,
+    WAGER_UP_SECONDS: WAGER_UP_SECONDS,
+    WAGER_UP_SLOTS: WAGER_UP_SLOTS,
+    isWagerUpSlot: isWagerUpSlot,
     WAGER_REVEAL_SECONDS: WAGER_REVEAL_SECONDS,
     REVEAL_SECONDS: REVEAL_SECONDS,
     PODIUM_SECONDS: PODIUM_SECONDS,
