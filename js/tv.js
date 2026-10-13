@@ -280,7 +280,15 @@
       bank: bank, askedIds: askedIds, recentCats: recentCats,
       disabledCats: st.disabledCats, familyMode: st.familyMode,
     });
-    if (!drawn) return; // bank exhausted (shouldn't happen with 914)
+    if (!drawn) {
+      // Bank exhausted — reset asked history and try again (allows repeats after full cycle).
+      askedIds = {};
+      drawn = E.drawQuestion({
+        bank: bank, askedIds: askedIds, recentCats: [],
+        disabledCats: st.disabledCats, familyMode: st.familyMode,
+      });
+      if (!drawn) return; // truly empty bank
+    }
     var q = drawn.q;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
     clearTimer();
@@ -314,7 +322,15 @@
       disabledCats: st.disabledCats, familyMode: st.familyMode,
       hardOnly: !!isWagerUp,
     });
-    if (!drawn) return;
+    if (!drawn) {
+      askedIds = {};
+      drawn = E.drawQuestion({
+        bank: bank, askedIds: askedIds, recentCats: [],
+        disabledCats: st.disabledCats, familyMode: st.familyMode,
+        hardOnly: !!isWagerUp,
+      });
+      if (!drawn) return;
+    }
     pendingWagerQ = drawn.q;
     pendingWagerUp = !!isWagerUp;
     pendingWagerQib = qib || E.BLOCK_SIZE;
@@ -874,15 +890,17 @@
       img.removeAttribute('src');
       frame.hidden = true;
       vid.src = 'about:blank';
-      if (q.video && q.video.youtubeId) {
+      // Prefer still image over video embed: images are reliable, video iframes
+      // cause freezes/hangs on TV browsers and autoplay is blocked anyway.
+      if (q.image) {
+        media.hidden = false;
+        media.classList.add('bleed');
+        img.src = q.image;
+      } else if (q.video && q.video.youtubeId) {
         media.hidden = false;
         frame.hidden = false;
         vid.src = 'https://www.youtube.com/embed/' + encodeURIComponent(q.video.youtubeId) +
           '?autoplay=1&rel=0&start=' + (q.video.start || 0) + '&end=' + (q.video.end || 0);
-      } else if (q.image) {
-        media.hidden = false;
-        media.classList.add('bleed');
-        img.src = q.image;
       } else {
         media.hidden = true;
       }
