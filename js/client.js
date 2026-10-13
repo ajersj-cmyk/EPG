@@ -386,6 +386,21 @@
       $('#rvTitle').textContent = 'You sat this one out.';
       $('#rvSub').textContent = 'Correct answer: ' + (r.correctText || '') + '. Next one\u2019s yours.';
     }
+    // reset flag button
+    var fb = $('#flagBtn');
+    fb.disabled = false;
+    fb.textContent = 'Flag bad question';
+    fb.onclick = function () {
+      if (!lastQuestion || !playerId) return;
+      fb.disabled = true;
+      fb.textContent = 'Flagged. Thanks!';
+      db.ref(ROOM + '/flagged/' + lastQuestion.id).set({
+        qid: lastQuestion.id,
+        text: (lastQuestion.text || '').slice(0, 200),
+        by: playerName || 'anon',
+        at: firebase.database.ServerValue.TIMESTAMP,
+      }).catch(function () {});
+    };
   }
 
   /* ---------------- idle / podium mini board ---------------- */
