@@ -92,6 +92,22 @@
     streakT4: 'Legendary',
     // high score celebration
     celebrationKicker: 'New high score',
+    // milestone tiers (named)
+    milestoneT1: 'Warming up',
+    milestoneT2: 'Heating up',
+    milestoneT3: 'On fire',
+    milestoneT4: 'Unstoppable',
+    milestoneT5: 'Cave legend',
+    milestoneT6: 'Cave royalty',
+    // king of the hill dethroning
+    kingKicker: 'New king of the hill',
+    kingLine: 'DETHRONES {old} AT {amount}',
+    dethronedKicker: 'Knocked off the throne',
+    dethronedSub: 'The crown has a new owner',
+    // record chase (on money board)
+    chaseLabel: '{n} from the record',
+    // reigning champ ticker
+    tickerChamp: 'Reigning champ: {name} \u2014 {amount} lifetime',
     // site chrome
     railLeaderboard: 'Live leaderboard',
     railScan: 'Scan to join',
@@ -551,6 +567,9 @@
     var streakCallouts = [];
     var streaksLost = [];
     var highScoreCelebrations = [];
+    var dethrones = [];
+    // King of the Hill: snapshot the day-board #1 BEFORE scores update
+    var preKing = dayLeader();
     var correctCount = 0, answeredCount = 0;
     var isNumQ = q.answerType === 'number';
     var numAnswer = isNumQ ? Number(q.answerNumber) : NaN;
@@ -644,16 +663,23 @@
       upd[ROOM + '/players/' + pid + '/answer'] = null;
       // lifetime / month / day running totals
       // milestone check: did day score cross a threshold? (for NEW HIGH SCORE celebration)
+      // Named tiers with escalating visuals: 100/500/1000/2500/5000/10000+
       var msKey = statsKey(p.name);
       var msCur = statsCache[msKey] || {};
       var msTk = todayKeys();
       var oldDay = (msCur.dayKey === msTk.day) ? (msCur.day || 0) : 0;
       var deltaScore = newScore - (p.score || 0);
       var newDay = oldDay + deltaScore;
-      var MILESTONES = [100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000];
+      var MILESTONES = [
+        { at: 100, tier: 1 }, { at: 500, tier: 2 }, { at: 1000, tier: 3 },
+        { at: 2500, tier: 4 }, { at: 5000, tier: 5 }, { at: 10000, tier: 6 }
+      ];
       for (var mi = 0; mi < MILESTONES.length; mi++) {
-        if (oldDay < MILESTONES[mi] && newDay >= MILESTONES[mi]) {
-          highScoreCelebrations.push({ name: p.name, score: MILESTONES[mi], dayTotal: newDay });
+        if (oldDay < MILESTONES[mi].at && newDay >= MILESTONES[mi].at) {
+          highScoreCelebrations.push({
+            name: p.name, score: MILESTONES[mi].at,
+            tier: MILESTONES[mi].tier, dayTotal: newDay
+          });
           break;
         }
       }
@@ -670,6 +696,37 @@
       results.push(resEntry);
     });
     results.sort(function (a, b) { return b.delta - a.delta; });
+
+    // King of the Hill: did the day-board #1 change? Compute post-update
+    // day totals from statsCache + this round's deltas.
+    (function () {
+      if (!preKing) return; // no reigning champ, nothing to dethrone
+      var tk = todayKeys();
+      var postBest = null;
+      Object.keys(statsCache).forEach(function (k) {
+        var s = statsCache[k] || {};
+        var v = moneyVal(s, 'day', tk);
+        // add this round's delta for players who scored
+        results.forEach(function (r) {
+          if (r.name && statsKey(r.name) === k) v += r.delta;
+        });
+        if (v > 0 && (!postBest || v > postBest.val)) postBest = { name: s.name || '?', val: v };
+      });
+      // Also account for players not yet in statsCache
+      results.forEach(function (r) {
+        if (!r.name || !r.delta || r.delta <= 0) return;
+        var k = statsKey(r.name);
+        if (statsCache[k]) return; // already counted above
+        var v = r.delta; // brand new player, day total = this delta
+        if (!postBest || v > postBest.val) postBest = { name: r.name, val: v };
+      });
+      if (postBest && postBest.name !== preKing.name && postBest.val > preKing.val) {
+        dethrones.push({
+          newKing: postBest.name, oldKing: preKing.name,
+          amount: postBest.val, oldAmount: preKing.val
+        });
+      }
+    })();
 
     // attract-mode fuel: remember the biggest wager win + latest streak milestone
     (function () {
@@ -702,6 +759,7 @@
         streakCallouts: streakCallouts.slice(0, 3),
         streaksLost: streaksLost.slice(0, 3),
         highScoreCelebrations: highScoreCelebrations.slice(0, 1),
+        dethrones: dethrones.slice(0, 1),
       });
     }).then(function () {
       return writeState({ phase: 'reveal', podium: null });
@@ -827,13 +885,46 @@
     };
   }
 
-  // "NEW HIGH SCORE — REESE GETS TO 400"
-  function celebrationMoment(name, score) {
+  // "NEW HIGH SCORE — REESE GETS TO 400" with named milestone tiers
+  // Tier visuals escalate: t1 gold burst → t3 screen shake → t6 confetti rain
+  function celebrationMoment(name, score, tier) {
+    tier = tier || 1;
+    var tierKey = 'milestoneT' + Math.min(6, Math.max(1, tier));
+    var tierName = ct(tierKey);
+    var cls = 'celebration mt' + tier;
+    var dur = tier >= 5 ? 4000 : tier >= 3 ? 3500 : 3000;
+    var sound = function () {
+      sBigWin();
+      if (tier >= 4) setTimeout(sFanfare, 600);
+    };
     return {
-      cls: 'celebration', dur: 3500, sound: sBigWin,
+      cls: cls, dur: dur, sound: sound,
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('celebrationKicker')) + '</div>' +
+        '<div class="moment-tier">' + E.escapeHtml(tierName) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
-        '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>'
+        '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>' +
+        (tier >= 6 ? '<div class="confetti-rain"></div>' : '')
+    };
+  }
+
+  // KING OF THE HILL: full-screen takeover when #1 is dethroned
+  function kingMoment(d) {
+    var line = fillTokens(ctHtml('kingLine'), { old: d.oldKing, amount: E.fmtNum(d.amount) });
+    return {
+      cls: 'king', dur: 3800, sound: function () { sFanfare(); setTimeout(sBigWin, 500); },
+      html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('kingKicker')) + '</div>' +
+        '<div class="moment-name huge">' + escName(d.newKing) + '</div>' +
+        '<div class="moment-line">' + line + '</div>'
+    };
+  }
+
+  // Dethroned drama: the loser gets a comedic moment too
+  function dethronedMoment(d) {
+    return {
+      cls: 'dethroned', dur: 2800, sound: sStreakLost,
+      html: '<div class="moment-kicker">' + E.escapeHtml(ct('dethronedKicker')) + '</div>' +
+        '<div class="moment-name">' + escName(d.oldKing) + '</div>' +
+        '<div class="moment-sub">' + E.escapeHtml(ct('dethronedSub')) + '</div>'
     };
   }
 
@@ -1297,6 +1388,18 @@
     return s.lifetime || 0;
   }
 
+  // Current #1 on the day money board (for King of the Hill dethrone detection).
+  function dayLeader() {
+    var tk = todayKeys();
+    var best = null;
+    Object.keys(statsCache).forEach(function (k) {
+      var s = statsCache[k] || {};
+      var v = moneyVal(s, 'day', tk);
+      if (v > 0 && (!best || v > best.val)) best = { name: s.name || '?', val: v };
+    });
+    return best;
+  }
+
   function arMoneyTabs(activeView) {
     var tabs = [
       ['day', ct('moneyTabDay')],
@@ -1320,11 +1423,21 @@
     var rows;
     if (list.length) {
       rows = '<div class="ar-rows money-rows">';
+      // Record-chase: #1's score for the "X from the record" labels
+      var topScore = list.length ? moneyVal(list[0], view, tk) : 0;
       list.forEach(function (s, i) {
+        var val = moneyVal(s, view, tk);
+        var chase = '';
+        if (i > 0 && topScore > val) {
+          var behind = topScore - val;
+          chase = '<div class="ar-chase">' + fillTokens(E.escapeHtml(ct('chaseLabel')), {
+            n: E.fmtNum(behind)
+          }) + '</div>';
+        }
         rows += '<div class="ar-row money-row' + (i === 0 ? ' first' : '') + '">' +
           '<span class="ar-rank">' + (i + 1) + '</span>' +
-          '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
-          '<span class="ar-score money-score">$' + E.fmtNum(moneyVal(s, view, tk)) + '</span></div>';
+          '<span class="ar-name">' + E.escapeHtml(s.name || '?') + chase + '</span>' +
+          '<span class="ar-score money-score">$' + E.fmtNum(val) + '</span></div>';
       });
       rows += '</div>';
     } else {
@@ -1377,12 +1490,12 @@
     if (best) bits += '<div class="ar-legend"><div class="ar-legend-kicker">Longest streak ever</div>' +
       '<div class="ar-legend-name chrome-text">' + E.escapeHtml(best.name) + '</div>' +
       '<div class="ar-legend-line">' + best.bestStreak + ' correct in a row</div></div>';
-    if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#128176; Richest player ever</div>' +
+    if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">Richest player ever</div>' +
       '<div class="ar-legend-name chrome-text">' + E.escapeHtml(rich.name) + '</div>' +
       '<div class="ar-legend-line">' + E.fmtNum(rich.lifetime) + ' lifetime</div></div>';
     if (lastHighlight && Date.now() - lastHighlight.ts < 24 * 60 * 60 * 1000) {
       var h = lastHighlight;
-      bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#9889; Latest big moment</div>' +
+      bits += '<div class="ar-legend"><div class="ar-legend-kicker">Latest big moment</div>' +
         '<div class="ar-legend-name">' + E.escapeHtml(h.name) + '</div>' +
         '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtNum(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
     }
@@ -1485,12 +1598,21 @@
       var s = statsCache[k] || {};
       if (s.dayKey === tk.day && (s.day || 0) > 0 && (!rich || s.day > rich.day)) rich = s;
     });
-    if (rich && (!hot || rich.name !== hot.name)) out.push('&#128176; <b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtNum(rich.day) + '</b> today');
+    if (rich && (!hot || rich.name !== hot.name)) out.push('<b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtNum(rich.day) + '</b> today');
+    // reigning champ: all-time #1 (storyline for non-players)
+    var champ = null;
+    Object.keys(statsCache).forEach(function (k) {
+      var s = statsCache[k] || {};
+      if ((s.lifetime || 0) > 0 && (!champ || s.lifetime > champ.lifetime)) champ = s;
+    });
+    if (champ) out.push(fillTokens(ctHtml('tickerChamp'), {
+      name: champ.name || '?', amount: E.fmtNum(champ.lifetime || 0)
+    }));
     // latest big moment (30 min window)
     if (lastHighlight && Date.now() - lastHighlight.ts < 30 * 60 * 1000) {
       var h = lastHighlight;
       out.push(h.type === 'wager'
-        ? '&#9889; <b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
+        ? '<b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
         : '<b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
     }
     // social proof: players in right now
@@ -1694,10 +1816,15 @@
     });
     if (hasBigWin) sBigWin();
     // big-deal moments, queued in broadcast order (capped so they fit the pause):
-    // celebration, then top streak milestones, then the biggest snapped streak.
+    // dethrone first (biggest), then celebration, then top streak milestones,
+    // then the biggest snapped streak, then dethroned drama.
+    if (r.dethrones && r.dethrones.length) {
+      var dt = r.dethrones[0];
+      queueMoment(kingMoment(dt));
+    }
     if (r.highScoreCelebrations && r.highScoreCelebrations.length) {
       var hc = r.highScoreCelebrations[0];
-      queueMoment(celebrationMoment(hc.name, hc.score));
+      queueMoment(celebrationMoment(hc.name, hc.score, hc.tier));
     }
     (r.streakCallouts || []).slice()
       .sort(function (a, b) { return b.streak - a.streak; })
@@ -1707,6 +1834,9 @@
       .sort(function (a, b) { return b.streak - a.streak; })
       .slice(0, 1);
     snaps.forEach(function (sl) { queueMoment(snappedMoment(sl.name, sl.streak)); });
+    if (r.dethrones && r.dethrones.length) {
+      queueMoment(dethronedMoment(r.dethrones[0]));
+    }
   }
 
   function renderPodiumState(st) {
@@ -1921,6 +2051,20 @@
       { key: 'snappedSub', label: 'Streak snapped subline' },
       { key: 'wagerBeatKicker', label: 'Big wager kicker' },
       { key: 'celebrationKicker', label: 'High score kicker' }
+    ] },
+    { group: 'Milestones & crowns', keys: [
+      { key: 'milestoneT1', label: 'Milestone 100' },
+      { key: 'milestoneT2', label: 'Milestone 500' },
+      { key: 'milestoneT3', label: 'Milestone 1,000' },
+      { key: 'milestoneT4', label: 'Milestone 2,500' },
+      { key: 'milestoneT5', label: 'Milestone 5,000' },
+      { key: 'milestoneT6', label: 'Milestone 10,000+' },
+      { key: 'kingKicker', label: 'Dethrone kicker' },
+      { key: 'kingLine', label: 'Dethrone headline', hint: '{old} = dethroned, {amount} = score' },
+      { key: 'dethronedKicker', label: 'Dethroned kicker' },
+      { key: 'dethronedSub', label: 'Dethroned subline' },
+      { key: 'chaseLabel', label: 'Record chase label', hint: '{n} = amount behind' },
+      { key: 'tickerChamp', label: 'Champ ticker', hint: '{name}, {amount}' }
     ] },
     { group: 'Site chrome', keys: [
       { key: 'railLeaderboard', label: 'Leaderboard heading' },
