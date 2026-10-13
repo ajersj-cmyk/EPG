@@ -38,6 +38,7 @@
           <div class="attract-venue" id="attractVenue">CAVE TRIVIA</div>
           <div class="attract-board" id="attractBoard"></div>
           <div class="attract-cta">The game never stops &mdash; your phone is the controller</div>
+          <div class="attract-ticker" id="attractTicker" aria-live="off"></div>
           <div class="attract-videohint" id="videoUnlockHint" hidden>Tap anywhere to enable video sound</div>
         </div>
       </section>
@@ -45,8 +46,8 @@
       <!-- wager : full-stage Final-Jeopardy drama -->
       <section class="phase" id="phase-wager">
         <div class="wager-inner">
-          <div class="eyebrow">Final wager &middot; question 10 of 10</div>
-          <h1 class="wager-title chrome-text">FINAL<br>WAGER</h1>
+          <div class="eyebrow" id="wagerEyebrow">Final wager &middot; question 10 of 10</div>
+          <h1 class="wager-title chrome-text" id="wagerTitle">FINAL<br>WAGER</h1>
           <div class="wager-cat"><span>Category</span><b id="wagerCat">&mdash;</b></div>
           <div class="wager-ring">
             <svg viewBox="0 0 120 120" aria-hidden="true">
@@ -55,7 +56,7 @@
             </svg>
             <div class="wager-secs" id="wagerSecs">15</div>
           </div>
-          <div class="wager-hint">Wager <b>0</b> up to your whole score &mdash; on your phone, now</div>
+          <div class="wager-hint" id="wagerHint">Wager <b>0</b> up to your whole score &mdash; on your phone, now</div>
           <div class="wager-count" id="wagerCount" hidden></div>
         </div>
       </section>
@@ -213,6 +214,15 @@
         </div>
       </section>
     </div>
+  </div>
+</div>
+
+<!-- streak / big-moment callout overlay -->
+<div class="callout" id="streakCallout" hidden>
+  <div class="callout-inner">
+    <div class="callout-flame" id="calloutFlame">&#128293;</div>
+    <div class="callout-name" id="calloutName"></div>
+    <div class="callout-line chrome-text" id="calloutLine"></div>
   </div>
 </div>
 
