@@ -144,6 +144,40 @@
       .replace(/\s+/g, ' ');
   }
 
+  // Levenshtein edit distance between two strings.
+  function levenshtein(a, b) {
+    if (a === b) return 0;
+    var al = a.length, bl = b.length;
+    if (!al) return bl;
+    if (!bl) return al;
+    var prev = [], cur = [];
+    for (var i = 0; i <= bl; i++) prev[i] = i;
+    for (var j = 1; j <= al; j++) {
+      cur[0] = j;
+      for (var k = 1; k <= bl; k++) {
+        cur[k] = Math.min(prev[k] + 1, cur[k - 1] + 1, prev[k - 1] + (a[j - 1] === b[k - 1] ? 0 : 1));
+      }
+      var t = prev; prev = cur; cur = t;
+    }
+    return prev[bl];
+  }
+
+  // Fuzzy text match: exact after normalization, or close spelling.
+  // Allows ~1 typo per 5 chars (min 1, max 4). "Massachusets" matches "Massachusetts".
+  function textMatch(userText, correctText) {
+    var u = normText(userText);
+    var c = normText(correctText);
+    if (!u || !c) return false;
+    if (u === c) return true;
+    // Also accept if user typed a distinctive substring (e.g. last name only)
+    // — but only if it's at least 4 chars to avoid false positives.
+    if (u.length >= 4 && c.indexOf(u) >= 0) return true;
+    if (c.length >= 4 && u.indexOf(c) >= 0) return true;
+    var dist = levenshtein(u, c);
+    var allowed = Math.max(1, Math.min(4, Math.floor(Math.max(u.length, c.length) / 5)));
+    return dist <= allowed;
+  }
+
   // Returns true if this question should use text input instead of multiple choice.
   // True when: explicitly flagged, OR from a source with invented distractors
   // (Jeopardy imports, quizbowl tossups, TriviaQA all generate fake wrong answers).
@@ -241,6 +275,7 @@
     drawQuestion: drawQuestion,
     scoreAnswer: scoreAnswer,
     normText: normText,
+    textMatch: textMatch,
     isTextQuestion: isTextQuestion,
     answerTextOf: answerTextOf,
     clampScore: clampScore,
