@@ -476,3 +476,7 @@ html, body { min-height: 100%; }
 /* ---- flag button ---- */
 .flag-btn { margin-top: 1rem; font-size: 0.85rem; opacity: 0.7; }
 .flag-btn:disabled { opacity: 0.4; }
+
+/* ---- responsive question text sizing ---- */
+.pq-text.pq-long { font-size: 1.15rem; line-height: 1.4; }
+.pq-text.pq-xlong { font-size: 1rem; line-height: 1.45; }
