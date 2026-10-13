@@ -84,7 +84,7 @@
     var now = serverNow();
     return Object.keys(players).filter(function (pid) {
       var p = players[pid];
-      return p && p.present !== false && (now - (p.lastSeen || 0) < 5 * 60 * 1000);
+      return p && p.present !== false && (now - (p.lastSeen || 0) < 15 * 60 * 1000);
     }).length;
   }
 
@@ -929,7 +929,7 @@
   function renderPlayerCount() {
     var now = serverNow();
     var active = Object.keys(players).filter(function (pid) {
-      return now - (players[pid].lastSeen || 0) < 5 * 60 * 1000;
+      return now - (players[pid].lastSeen || 0) < 15 * 60 * 1000;
     }).length;
     $('#playerCount').textContent = active;
   }
@@ -1204,7 +1204,7 @@
     // social proof: players in right now
     var now = serverNow();
     var active = Object.keys(players).filter(function (pid) {
-      return now - (players[pid].lastSeen || 0) < 5 * 60 * 1000;
+      return now - (players[pid].lastSeen || 0) < 15 * 60 * 1000;
     }).length;
     if (active > 0) out.push('&#128101; <b>' + active + '</b> playing right now &mdash; jump in');
     else out.push('&#127919; No one playing &mdash; be the first legend of the cave');
