@@ -38,6 +38,85 @@
   var lastPhaseChangeTs = Date.now();  // watchdog: when we last saw a phase change
   var lastPhaseSeen = '';
 
+  /* ---------------- customizable text ----------------
+     Every user-facing string on the attract screen, ticker, celebrations and
+     site chrome lives here. Overrides persist at rooms/cave/settings/customText.
+     {category} and {n} are placeholders filled at render time. */
+
+  var CUSTOM_TEXT_DEFAULTS = {
+    // question teaser card
+    teaserEyebrow: 'Teaser \u00B7 {category}',
+    teaserCta: 'Think you know it? <b>Scan to play</b>',
+    teaserAnswerEyebrow: 'The answer was',
+    teaserAnswerCta: 'Knew it? <b>Scan to prove it</b>',
+    // join card
+    joinEyebrow: 'Free \u00B7 no app needed \u00B7 jump in anytime',
+    joinTitle: 'SCAN<br>TO JOIN',
+    joinSub: 'Your phone is the controller',
+    // hall of fame card
+    hofEyebrow: 'The Cave leaderboards',
+    hofTitle: 'HALL<br>OF FAME',
+    hofMoneyTitle: 'All-time money',
+    hofStreakTitle: 'Best streaks',
+    hofEmpty: 'No legends yet \u2014 be the first',
+    // legends card
+    legendsEyebrow: 'The Cave\u2019s finest',
+    legendsTitle: 'LEGENDS',
+    legendsEmpty: 'The cave is waiting for its first legend',
+    legendsCta: 'Your name could be here \u2014 <b>scan to play</b>',
+    // attract ticker
+    tickerPlaying: '{n} playing right now \u2014 jump in',
+    tickerEmpty: 'No one playing \u2014 be the first to top the leaderboard',
+    // new challenger celebration
+    challengerKicker: 'New challenger',
+    challengerLine: 'HAS ENTERED THE CAVE',
+    // sendoff when a player leaves
+    sendoffKicker: 'Thanks for playing',
+    sendoffSub: 'The cave salutes you',
+    // streak snapped
+    snappedKicker: 'Streak snapped',
+    snappedSub: 'Hell of a run',
+    // big wager loss beat
+    wagerBeatKicker: 'Big risk',
+    // streak milestone tiers
+    streakT1: 'On fire',
+    streakT2: 'Double digits',
+    streakT3: 'Unstoppable',
+    streakT4: 'Legendary',
+    // high score celebration
+    celebrationKicker: 'New high score',
+    // site chrome
+    railLeaderboard: 'Live leaderboard',
+    railScan: 'Scan to join',
+    videoHint: 'Tap anywhere to enable video sound',
+    podiumTitle: 'CHAMPIONS',
+    podiumEyebrow: 'Block {n} final \u00B7 top of the block',
+    footerNote: 'Cave Trivia \u00B7 free forever edition'
+  };
+
+  // Plain-text value (for textContent).
+  function ct(key) {
+    var custom = settings && settings.customText;
+    if (custom && typeof custom[key] === 'string' && custom[key] !== '') return custom[key];
+    return CUSTOM_TEXT_DEFAULTS[key] || '';
+  }
+
+  // HTML-safe value: escapes everything, then re-allows <b>, <i>, <br>.
+  function ctHtml(key) {
+    var esc = E.escapeHtml(ct(key));
+    return esc
+      .replace(/&lt;(b|i)&gt;/g, '<$1>')
+      .replace(/&lt;\/(b|i)&gt;/g, '</$1>')
+      .replace(/&lt;br\s*\/?&gt;/g, '<br>');
+  }
+
+  // Fill {token} placeholders with escaped values.
+  function fillTokens(html, map) {
+    return String(html).replace(/\{(\w+)\}/g, function (m, name) {
+      return Object.prototype.hasOwnProperty.call(map, name) ? E.escapeHtml(String(map[name])) : m;
+    });
+  }
+
   // Watchdog: if the game gets stuck in a phase (Firebase write hung, timer lost),
   // force it forward. Runs every 5s. This is the anti-freeze safety net.
   // Also restarts the game if players are waiting but no game is running.
@@ -686,9 +765,9 @@
   function sendoffMoment(name) {
     return {
       cls: 'sendoff', dur: 3000, sound: sSendoff,
-      html: '<div class="moment-kicker">Thanks for playing</div>' +
+      html: '<div class="moment-kicker">' + E.escapeHtml(ct('sendoffKicker')) + '</div>' +
         '<div class="moment-name">' + escName(name) + '</div>' +
-        '<div class="moment-sub">The cave salutes you &#127866;</div>'
+        '<div class="moment-sub">' + E.escapeHtml(ct('sendoffSub')) + '</div>'
     };
   }
 
@@ -696,9 +775,9 @@
   function challengerMoment(name) {
     return {
       cls: 'challenger', dur: 2200, sound: sFanfare,
-      html: '<div class="moment-kicker glow">New challenger</div>' +
+      html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('challengerKicker')) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
-        '<div class="moment-line">HAS ENTERED THE CAVE</div>'
+        '<div class="moment-line">' + E.escapeHtml(ct('challengerLine')) + '</div>'
     };
   }
 
@@ -706,11 +785,11 @@
   function snappedMoment(name, n) {
     return {
       cls: 'snapped', dur: 2800, sound: sStreakLost,
-      html: '<div class="moment-kicker">Streak snapped</div>' +
+      html: '<div class="moment-kicker">' + E.escapeHtml(ct('snappedKicker')) + '</div>' +
         '<div class="moment-flame">&#128293;</div>' +
         '<div class="moment-name">' + escName(name) + '</div>' +
         '<div class="moment-line">' + n + ' in a row</div>' +
-        '<div class="moment-sub">Hell of a run</div>'
+        '<div class="moment-sub">' + E.escapeHtml(ct('snappedSub')) + '</div>'
     };
   }
 
@@ -720,7 +799,7 @@
     var amt = Math.max.apply(null, losses.map(function (x) { return x.wager; }));
     return {
       cls: 'wagerbeat', dur: 2400, sound: sRiskBeat,
-      html: '<div class="moment-kicker">Big risk</div>' +
+      html: '<div class="moment-kicker">' + E.escapeHtml(ct('wagerBeatKicker')) + '</div>' +
         '<div class="moment-name">' + label + '</div>' +
         '<div class="moment-line chrome-text">Risked ' + E.fmtNum(amt) + '</div>'
     };
@@ -729,12 +808,12 @@
   // streak milestones with escalating treatment: 3/5, 10, 15, 20+
   function streakMoment(name, n) {
     var tier = n >= 20 ? 't4' : n >= 15 ? 't3' : n >= 10 ? 't2' : 't1';
-    var kicker = n >= 20 ? 'Legendary' : n >= 15 ? 'Unstoppable' : n >= 10 ? 'Double digits' : 'On fire';
+    var kicker = n >= 20 ? ct('streakT4') : n >= 15 ? ct('streakT3') : n >= 10 ? ct('streakT2') : ct('streakT1');
     return {
       cls: 'streak ' + tier,
       dur: n >= 20 ? 3400 : 2600,
       sound: function () { sStreak(n); if (n >= 20) setTimeout(sBigWin, 700); },
-      html: '<div class="moment-kicker">' + kicker + '</div>' +
+      html: '<div class="moment-kicker">' + E.escapeHtml(kicker) + '</div>' +
         '<div class="moment-flame">' + (n >= 15 ? '&#128293;&#128293;' : '&#128293;') + '</div>' +
         '<div class="moment-name">' + escName(name) + '</div>' +
         '<div class="moment-line chrome-text">' + n + ' in a row</div>'
@@ -745,7 +824,7 @@
   function celebrationMoment(name, score) {
     return {
       cls: 'celebration', dur: 3500, sound: sBigWin,
-      html: '<div class="moment-kicker glow">New high score</div>' +
+      html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('celebrationKicker')) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
         '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>'
     };
@@ -1177,27 +1256,27 @@
     var cat = E.fmtCategory(q.category);
     var img = q.image ? '<div class="ar-teaser-img" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
     return img +
-      '<div class="ar-eyebrow">Teaser &middot; ' + E.escapeHtml(cat) + '</div>' +
+      '<div class="ar-eyebrow">' + fillTokens(ctHtml('teaserEyebrow'), { category: cat }) + '</div>' +
       '<div class="ar-question">' + E.escapeHtml(text) + '</div>' +
-      '<div class="ar-cta-line">Think you know it? <b>Scan to play</b></div>';
+      '<div class="ar-cta-line">' + ctHtml('teaserCta') + '</div>';
   }
 
   function arTeaserAnswerHtml(q) {
     var ans = arAnswerFor(q);
     var img = q.image ? '<div class="ar-teaser-img dim" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
     return img +
-      '<div class="ar-eyebrow gold">The answer was</div>' +
+      '<div class="ar-eyebrow gold">' + E.escapeHtml(ct('teaserAnswerEyebrow')) + '</div>' +
       '<div class="ar-answer chrome-text">' + E.escapeHtml(ans) + '</div>' +
-      '<div class="ar-cta-line">Knew it? <b>Scan to prove it</b></div>';
+      '<div class="ar-cta-line">' + ctHtml('teaserAnswerCta') + '</div>';
   }
 
   function arJoinHtml() {
     var svg = arQrSvg();
-    return '<div class="ar-eyebrow">Free &middot; no app needed &middot; jump in anytime</div>' +
+    return '<div class="ar-eyebrow">' + ctHtml('joinEyebrow') + '</div>' +
       '<div class="ar-join-row">' +
       (svg ? '<div class="ar-qr">' + svg + '</div>' : '') +
-      '<div class="ar-join-text"><div class="ar-big chrome-text">SCAN<br>TO JOIN</div>' +
-      '<div class="ar-sub">Your phone is the controller</div></div>' +
+      '<div class="ar-join-text"><div class="ar-big chrome-text">' + ctHtml('joinTitle') + '</div>' +
+      '<div class="ar-sub">' + E.escapeHtml(ct('joinSub')) + '</div></div>' +
       '</div>';
   }
 
@@ -1208,7 +1287,7 @@
       .sort(function (a, b) { return (b.lifetime || 0) - (a.lifetime || 0); })
       .slice(0, 5);
     if (money.length) {
-      rows += '<div class="ar-board-title">&#128176; All-time money</div><div class="ar-rows">';
+      rows += '<div class="ar-board-title">&#128176; ' + E.escapeHtml(ct('hofMoneyTitle')) + '</div><div class="ar-rows">';
       money.forEach(function (s, i) {
         rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
@@ -1221,7 +1300,7 @@
       .sort(function (a, b) { return (b.bestStreak || 0) - (a.bestStreak || 0); })
       .slice(0, 3);
     if (streaks.length) {
-      rows += '<div class="ar-board-title">&#128293; Best streaks</div><div class="ar-rows">';
+      rows += '<div class="ar-board-title">&#128293; ' + E.escapeHtml(ct('hofStreakTitle')) + '</div><div class="ar-rows">';
       streaks.forEach(function (s, i) {
         rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
@@ -1229,9 +1308,9 @@
       });
       rows += '</div>';
     }
-    if (!rows) rows = '<div class="ar-sub">No legends yet &mdash; be the first</div>';
-    return '<div class="ar-eyebrow">The Cave leaderboards</div>' +
-      '<div class="ar-big chrome-text">HALL<br>OF FAME</div>' + rows;
+    if (!rows) rows = '<div class="ar-sub">' + E.escapeHtml(ct('hofEmpty')) + '</div>';
+    return '<div class="ar-eyebrow">' + E.escapeHtml(ct('hofEyebrow')) + '</div>' +
+      '<div class="ar-big chrome-text">' + ctHtml('hofTitle') + '</div>' + rows;
   }
 
   function arLegendsHtml() {
@@ -1254,10 +1333,10 @@
         '<div class="ar-legend-name">' + E.escapeHtml(h.name) + '</div>' +
         '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtNum(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
     }
-    if (!bits) bits = '<div class="ar-sub">The cave is waiting for its first legend</div>';
-    return '<div class="ar-eyebrow gold">The Cave&rsquo;s finest</div>' +
-      '<div class="ar-big chrome-text">LEGENDS</div>' + bits +
-      '<div class="ar-cta-line">Your name could be here &mdash; <b>scan to play</b></div>';
+    if (!bits) bits = '<div class="ar-sub">' + E.escapeHtml(ct('legendsEmpty')) + '</div>';
+    return '<div class="ar-eyebrow gold">' + E.escapeHtml(ct('legendsEyebrow')) + '</div>' +
+      '<div class="ar-big chrome-text">' + ctHtml('legendsTitle') + '</div>' + bits +
+      '<div class="ar-cta-line">' + ctHtml('legendsCta') + '</div>';
   }
 
   // Teasers appear 3x per cycle: Jordan wants TONS of questions on attract.
@@ -1358,8 +1437,8 @@
     var active = Object.keys(players).filter(function (pid) {
       return now - (players[pid].lastSeen || 0) < 15 * 60 * 1000;
     }).length;
-    if (active > 0) out.push('&#128101; <b>' + active + '</b> playing right now &mdash; jump in');
-    else out.push('&#127919; No one playing &mdash; be the first legend of the cave');
+    if (active > 0) out.push(fillTokens(ctHtml('tickerPlaying'), { n: active }));
+    else out.push(E.escapeHtml(ct('tickerEmpty')));
     return out;
   }
   function pokeAttractTicker() {
@@ -1571,7 +1650,8 @@
 
   function renderPodiumState(st) {
     var p = st.podium;
-    $('#podiumBlock').textContent = st.blockNum || '';
+    var pe = $('#podiumEyebrow');
+    if (pe) pe.innerHTML = fillTokens(ctHtml('podiumEyebrow'), { n: st.blockNum || '' });
     var steps = $('#podiumSteps');
     if (!p || !p.top) { steps.innerHTML = ''; return; }
     var sig = JSON.stringify(p.top);
@@ -1693,6 +1773,8 @@
     var gi = $('#gameTaglineInput');
     if (gi && document.activeElement !== gi) gi.value = settings.tagline || '';
     renderCatGrid();
+    syncCustomTextInputs();
+    applyCustomChrome();
     renderIdle();
   }
 
@@ -1722,6 +1804,139 @@
       label.appendChild(document.createTextNode(cat));
       grid.appendChild(label);
     });
+  }
+
+  /* ---------------- customize text ---------------- */
+
+  var CUSTOM_TEXT_SCHEMA = [
+    { group: 'Question teasers', keys: [
+      { key: 'teaserEyebrow', label: 'Teaser eyebrow', hint: '{category} = question category' },
+      { key: 'teaserCta', label: 'Teaser call to action' },
+      { key: 'teaserAnswerEyebrow', label: 'Answer reveal eyebrow' },
+      { key: 'teaserAnswerCta', label: 'Answer reveal call to action' }
+    ] },
+    { group: 'Join card', keys: [
+      { key: 'joinEyebrow', label: 'Eyebrow' },
+      { key: 'joinTitle', label: 'Title' },
+      { key: 'joinSub', label: 'Subtitle' }
+    ] },
+    { group: 'Hall of Fame card', keys: [
+      { key: 'hofEyebrow', label: 'Eyebrow' },
+      { key: 'hofTitle', label: 'Title' },
+      { key: 'hofMoneyTitle', label: 'Money section title' },
+      { key: 'hofStreakTitle', label: 'Streaks section title' },
+      { key: 'hofEmpty', label: 'Empty state text' }
+    ] },
+    { group: 'Legends card', keys: [
+      { key: 'legendsEyebrow', label: 'Eyebrow' },
+      { key: 'legendsTitle', label: 'Title' },
+      { key: 'legendsEmpty', label: 'Empty state text' },
+      { key: 'legendsCta', label: 'Call to action' }
+    ] },
+    { group: 'Ticker', keys: [
+      { key: 'tickerPlaying', label: 'Players active', hint: '{n} = player count' },
+      { key: 'tickerEmpty', label: 'Nobody playing' }
+    ] },
+    { group: 'Arrivals & farewells', keys: [
+      { key: 'challengerKicker', label: 'New player kicker' },
+      { key: 'challengerLine', label: 'New player headline' },
+      { key: 'sendoffKicker', label: 'Leaving kicker' },
+      { key: 'sendoffSub', label: 'Leaving subline' }
+    ] },
+    { group: 'Streaks & big moments', keys: [
+      { key: 'streakT1', label: 'Streak tier 1 (3\u20135)' },
+      { key: 'streakT2', label: 'Streak tier 2 (10+)' },
+      { key: 'streakT3', label: 'Streak tier 3 (15+)' },
+      { key: 'streakT4', label: 'Streak tier 4 (20+)' },
+      { key: 'snappedKicker', label: 'Streak snapped kicker' },
+      { key: 'snappedSub', label: 'Streak snapped subline' },
+      { key: 'wagerBeatKicker', label: 'Big wager kicker' },
+      { key: 'celebrationKicker', label: 'High score kicker' }
+    ] },
+    { group: 'Site chrome', keys: [
+      { key: 'railLeaderboard', label: 'Leaderboard heading' },
+      { key: 'railScan', label: 'Join prompt' },
+      { key: 'videoHint', label: 'Video sound hint' },
+      { key: 'podiumTitle', label: 'Podium title' },
+      { key: 'podiumEyebrow', label: 'Podium eyebrow', hint: '{n} = block number' },
+      { key: 'footerNote', label: 'Footer text' }
+    ] }
+  ];
+
+  function renderCustomText() {
+    var host = $('#customTextGroups');
+    if (!host) return;
+    var custom = (settings && settings.customText) || {};
+    host.innerHTML = '';
+    CUSTOM_TEXT_SCHEMA.forEach(function (sec) {
+      var det = document.createElement('details');
+      det.className = 'ct-group';
+      var sum = document.createElement('summary');
+      sum.textContent = sec.group;
+      det.appendChild(sum);
+      sec.keys.forEach(function (k) {
+        var row = document.createElement('div');
+        row.className = 'ct-row';
+        var lab = document.createElement('label');
+        lab.textContent = k.label;
+        if (k.hint) {
+          var h = document.createElement('span');
+          h.className = 'ct-hint';
+          h.textContent = k.hint;
+          lab.appendChild(document.createTextNode(' '));
+          lab.appendChild(h);
+        }
+        var inp = document.createElement('input');
+        inp.type = 'text';
+        inp.dataset.ctKey = k.key;
+        inp.placeholder = CUSTOM_TEXT_DEFAULTS[k.key] || '';
+        var cur = custom[k.key];
+        if (typeof cur === 'string' && cur !== '') inp.value = cur;
+        inp.addEventListener('change', function () {
+          var v = inp.value;
+          if (v === '') refs.settings.child('customText').child(k.key).remove();
+          else refs.settings.child('customText').child(k.key).set(v.slice(0, 120));
+        });
+        inp.addEventListener('keydown', function (e) { e.stopPropagation(); });
+        row.appendChild(lab);
+        row.appendChild(inp);
+        det.appendChild(row);
+      });
+      host.appendChild(det);
+    });
+  }
+
+  function wireCustomText() {
+    var btn = $('#btnTextReset');
+    if (btn) btn.addEventListener('click', function () {
+      if (window.confirm('Reset all custom text to defaults?')) {
+        refs.settings.child('customText').remove();
+      }
+    });
+  }
+
+  // Sync input values with Firebase when settings change elsewhere (skip focused input).
+  function syncCustomTextInputs() {
+    var custom = (settings && settings.customText) || {};
+    document.querySelectorAll('#customTextGroups input[data-ct-key]').forEach(function (inp) {
+      if (document.activeElement === inp) return;
+      var cur = custom[inp.dataset.ctKey];
+      inp.value = (typeof cur === 'string' && cur !== '') ? cur : '';
+    });
+  }
+
+  // Apply customizable site-chrome strings (rail, footer, podium, video hint).
+  function applyCustomChrome() {
+    var rb = $('#railBoardTitle');
+    if (rb) rb.innerHTML = '<span class="live-dot"></span>' + E.escapeHtml(ct('railLeaderboard'));
+    var rs = $('#railScanText');
+    if (rs) rs.textContent = ct('railScan');
+    var fn = $('#footerNote');
+    if (fn) fn.innerHTML = ctHtml('footerNote');
+    var vh = $('#videoUnlockHint');
+    if (vh) vh.textContent = ct('videoHint');
+    var pt = $('#podiumTitle');
+    if (pt) pt.textContent = ct('podiumTitle');
   }
 
   function wireSettingsPanel() {
@@ -1758,6 +1973,8 @@
     $('#famToggle').addEventListener('click', function () {
       refs.settings.update({ familyMode: !settings.familyMode });
     });
+    renderCustomText();
+    wireCustomText();
   }
 
   function paintSoundBtn() {
