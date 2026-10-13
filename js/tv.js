@@ -37,6 +37,7 @@
   var lastBoardJson = '';
   var lastStateDoc = null;
   var lastQuestionDoc = null;
+  var lastHostSnap = null;
   var lastHighlight = null;      // {type:'wager'|'streak', name, amount, ts} for attract ticker
   var lastPhaseChangeTs = Date.now();  // watchdog: when we last saw a phase change
   var lastPhaseSeen = '';
@@ -249,12 +250,23 @@
 
   function wireHostElection() {
     refs.host.on('value', function (snap) {
-      var h = snap.val();
+      lastHostSnap = snap.val();
+      var h = lastHostSnap;
       var fresh = h && h.ts && (serverNow() - h.ts) < 15000;
       if (fresh && h.id !== HOST_ID) standDown();
       else if (!isHost && !fresh) becomeHost();
     });
-    hostCheckTimer = setInterval(heartbeat, 5000);
+    // Periodic re-election: if we're not host and the host record goes stale
+    // (old host died without clearing), take over. The 'value' listener above
+    // only fires on changes, so without this a dead host blocks us forever.
+    hostCheckTimer = setInterval(function () {
+      heartbeat();
+      if (!isHost) {
+        var h = lastHostSnap;
+        var fresh = h && h.ts && (serverNow() - h.ts) < 15000;
+        if (!fresh) becomeHost();
+      }
+    }, 5000);
     $('#btnTakeover').addEventListener('click', function () {
       refs.host.set({ id: HOST_ID, ts: firebase.database.ServerValue.TIMESTAMP });
       becomeHost();
@@ -1003,18 +1015,184 @@
     });
   }
 
-  function renderIdle() {
-    $('#attractVenue').textContent = (settings && settings.title) || 'CAVE TRIVIA';
-    var src = E.leaderboard(players, 'block').slice(0, 5);
-    if (!src.length) src = E.leaderboard(players, 'all').slice(0, 5);
-    var el = $('#attractBoard');
-    el.innerHTML = '';
-    src.forEach(function (r, i) {
-      var c = document.createElement('span');
-      c.className = 'attract-chip';
-      c.innerHTML = '<b>' + (i + 1) + '</b>' + E.escapeHtml(r.name) + ' &middot; ' + E.fmtNum(r.score);
-      el.appendChild(c);
+  /* ---------------- attract loop : casino-style cycling cards ---------------- */
+  // Rotates every 9s between teaser / join / leaderboard / legends.
+  // Only runs while phase is 'idle'. Killed immediately on phase change.
+  var arTimer = null, arIdx = 0, arTeaserTimer = null;
+
+  function arQrSvg() {
+    var base = location.href.split('#')[0].split('?')[0];
+    var playUrl = /index\.html$/.test(base)
+      ? base.replace(/index\.html$/, 'play.html')
+      : base.replace(/\/?$/, '/') + 'play.html';
+    var cfg = window.CT.config.readStored();
+    if (!cfg) return '';
+    try {
+      var qr = qrcode(0, 'M');
+      qr.addData(playUrl + '#c=' + window.CT.config.encodeForQr(cfg));
+      qr.make();
+      return qr.createSvgTag({ cellSize: 8, margin: 0, scalable: true });
+    } catch (e) { return ''; }
+  }
+
+  // Pick a short punchy teaser question, preferring ones with images.
+  var arLastTeaser = null;
+  function arPickTeaser() {
+    if (!bank || !bank.length) return null;
+    var withImg = [], short = [];
+    for (var i = 0; i < bank.length; i++) {
+      var q = bank[i];
+      var len = (q.question || q.text || '').length;
+      if (len > 140 || len < 15) continue;
+      if (q.image) withImg.push(q); else short.push(q);
+    }
+    var pool = withImg.length ? withImg : short;
+    if (!pool.length) return null;
+    arLastTeaser = pool[Math.floor(Math.random() * pool.length)];
+    return arLastTeaser;
+  }
+
+  function arTeaserHtml() {
+    var q = arPickTeaser();
+    if (!q) return '<div class="ar-eyebrow">Cave Trivia</div><div class="ar-big chrome-text">SCAN TO PLAY</div>';
+    var text = q.question || q.text || '';
+    var cat = E.fmtCategory(q.category);
+    var img = q.image ? '<div class="ar-teaser-img" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
+    return img +
+      '<div class="ar-eyebrow">Teaser &middot; ' + E.escapeHtml(cat) + '</div>' +
+      '<div class="ar-question">' + E.escapeHtml(text) + '</div>' +
+      '<div class="ar-cta-line">Think you know it? <b>Scan to play</b></div>';
+  }
+
+  function arTeaserAnswerHtml(q) {
+    var ans = E.answerTextOf(q);
+    var img = q.image ? '<div class="ar-teaser-img dim" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
+    return img +
+      '<div class="ar-eyebrow gold">The answer was</div>' +
+      '<div class="ar-answer chrome-text">' + E.escapeHtml(ans) + '</div>' +
+      '<div class="ar-cta-line">Knew it? <b>Scan to prove it</b></div>';
+  }
+
+  function arJoinHtml() {
+    var svg = arQrSvg();
+    return '<div class="ar-eyebrow">Free &middot; no app needed &middot; jump in anytime</div>' +
+      '<div class="ar-join-row">' +
+      (svg ? '<div class="ar-qr">' + svg + '</div>' : '') +
+      '<div class="ar-join-text"><div class="ar-big chrome-text">SCAN<br>TO JOIN</div>' +
+      '<div class="ar-sub">Your phone is the controller</div></div>' +
+      '</div>';
+  }
+
+  function arBoardHtml() {
+    var rows = '';
+    var money = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
+      .filter(function (s) { return (s.lifetime || 0) > 0; })
+      .sort(function (a, b) { return (b.lifetime || 0) - (a.lifetime || 0); })
+      .slice(0, 5);
+    if (money.length) {
+      rows += '<div class="ar-board-title">&#128176; All-time money</div><div class="ar-rows">';
+      money.forEach(function (s, i) {
+        rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
+          '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
+          '<span class="ar-score">' + E.fmtNum(s.lifetime) + '</span></div>';
+      });
+      rows += '</div>';
+    }
+    var streaks = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
+      .filter(function (s) { return (s.bestStreak || 0) >= 2; })
+      .sort(function (a, b) { return (b.bestStreak || 0) - (a.bestStreak || 0); })
+      .slice(0, 3);
+    if (streaks.length) {
+      rows += '<div class="ar-board-title">&#128293; Best streaks</div><div class="ar-rows">';
+      streaks.forEach(function (s, i) {
+        rows += '<div class="ar-row' + (i === 0 ? ' first' : '') + '"><span class="ar-rank">' + (i + 1) + '</span>' +
+          '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
+          '<span class="ar-score">' + (s.bestStreak || 0) + ' in a row</span></div>';
+      });
+      rows += '</div>';
+    }
+    if (!rows) rows = '<div class="ar-sub">No legends yet &mdash; be the first</div>';
+    return '<div class="ar-eyebrow">The Cave leaderboards</div>' +
+      '<div class="ar-big chrome-text">HALL<br>OF FAME</div>' + rows;
+  }
+
+  function arLegendsHtml() {
+    var best = null, rich = null;
+    Object.keys(statsCache).forEach(function (k) {
+      var s = statsCache[k] || {};
+      if ((s.bestStreak || 0) >= 3 && (!best || s.bestStreak > best.bestStreak)) best = s;
+      if ((s.lifetime || 0) > 0 && (!rich || s.lifetime > rich.lifetime)) rich = s;
     });
+    var bits = '';
+    if (best) bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#128293; Longest streak ever</div>' +
+      '<div class="ar-legend-name chrome-text">' + E.escapeHtml(best.name) + '</div>' +
+      '<div class="ar-legend-line">' + best.bestStreak + ' correct in a row</div></div>';
+    if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#128176; Richest player ever</div>' +
+      '<div class="ar-legend-name chrome-text">' + E.escapeHtml(rich.name) + '</div>' +
+      '<div class="ar-legend-line">' + E.fmtNum(rich.lifetime) + ' lifetime</div></div>';
+    if (lastHighlight && Date.now() - lastHighlight.ts < 24 * 60 * 60 * 1000) {
+      var h = lastHighlight;
+      bits += '<div class="ar-legend"><div class="ar-legend-kicker">&#9889; Latest big moment</div>' +
+        '<div class="ar-legend-name">' + E.escapeHtml(h.name) + '</div>' +
+        '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtNum(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
+    }
+    if (!bits) bits = '<div class="ar-sub">The cave is waiting for its first legend</div>';
+    return '<div class="ar-eyebrow gold">The Cave&rsquo;s finest</div>' +
+      '<div class="ar-big chrome-text">LEGENDS</div>' + bits +
+      '<div class="ar-cta-line">Your name could be here &mdash; <b>scan to play</b></div>';
+  }
+
+  var AR_CARDS = [
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'join', html: arJoinHtml },
+    { name: 'board', html: arBoardHtml },
+    { name: 'legends', html: arLegendsHtml },
+  ];
+
+  function arShow(idx) {
+    var card = AR_CARDS[idx % AR_CARDS.length];
+    var el = $('#arCard');
+    if (!el) return;
+    if (arTeaserTimer) { clearTimeout(arTeaserTimer); arTeaserTimer = null; }
+    el.classList.add('fade');
+    setTimeout(function () {
+      var html = card.html();
+      el.innerHTML = html;
+      el.classList.remove('fade');
+      // teaser card flips to the answer after 4s
+      if (card.teaser) {
+        arTeaserTimer = setTimeout(function () {
+          if (lastPhase !== 'idle') return;
+          var qq = arLastTeaser;
+          if (!qq) return;
+          el.classList.add('fade');
+          setTimeout(function () {
+            el.innerHTML = arTeaserAnswerHtml(qq);
+            el.classList.remove('fade');
+          }, 450);
+        }, 4000);
+      }
+    }, 450);
+  }
+
+  function startAttractLoop() {
+    if (arTimer) return;
+    arIdx = 0;
+    arShow(0);
+    arTimer = setInterval(function () {
+      if (lastPhase !== 'idle') { stopAttractLoop(); return; }
+      arIdx = (arIdx + 1) % AR_CARDS.length;
+      arShow(arIdx);
+    }, 9000);
+  }
+
+  function stopAttractLoop() {
+    if (arTimer) { clearInterval(arTimer); arTimer = null; }
+    if (arTeaserTimer) { clearTimeout(arTeaserTimer); arTeaserTimer = null; }
+  }
+
+  function renderIdle() {
+    startAttractLoop();
     pokeAttractTicker();
   }
 
@@ -1303,8 +1481,11 @@
     var stage = document.querySelector('.tv-stage');
     if (stage) stage.classList.toggle('wagerup-frame', !!st.wagerUp && phase !== 'idle' && phase !== 'podium');
     if (phase === 'idle') renderIdle();
-    else if (phase === 'wager') renderWagerState(st);
-    else if (phase === 'podium') renderPodiumState(st);
+    else {
+      stopAttractLoop();
+      if (phase === 'wager') renderWagerState(st);
+      else if (phase === 'podium') renderPodiumState(st);
+    }
     tickTimers(true, st);
   }
 
@@ -1520,7 +1701,8 @@
     E.loadBank().then(function (b) {
       bank = b;
     }).catch(function () {
-      $('#attractVenue').textContent = 'QUESTION BANK FAILED TO LOAD';
+      var ac = $('#arCard');
+      if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Error</div><div class="ar-big">QUESTION BANK<br>FAILED TO LOAD</div>';
     });
   }
 
