@@ -17,6 +17,9 @@
   var BASE_POINTS = 100;        // flat 100 per question
   var SPEED_BONUS_MAX = 100;
   var VIDEO_DRAW_CHANCE = 0.12;
+  var LIGHTNING_SECONDS = 10;   // lightning round timer (every 4th block, Q1-Q5)
+  var LIGHTNING_POINTS = 200;   // lightning round base points (double)
+  var LIGHTNING_BLOCK_EVERY = 4;
 
   var BANK_WEIGHTS = {
     sports: 3, games: 3, pokemon: 3,
@@ -50,6 +53,8 @@
     var parts = [];
     for (var i = 1; i <= 27; i++) parts.push('data/questions-' + i + '.json');
     parts.push('data/questions-video.json');
+    parts.push('data/questions-pics.json');
+    parts.push('data/questions-closest.json');
     return Promise.all(parts.map(function (u) {
       return fetch(u).then(function (r) {
         if (!r.ok) throw new Error('question bank failed to load: ' + u);
@@ -200,16 +205,18 @@
   }
 
   // Mirror of server.js revealQuestion() scoring for one answer.
-  // args: { difficulty, choice, correctIndex, textCorrect, answeredAt, deadlineTs, seconds, wager }
+  // args: { difficulty, choice, correctIndex, textCorrect, answeredAt, deadlineTs, seconds, wager, basePoints }
   // For text questions, pass textCorrect (boolean from normText comparison) instead of choice/correctIndex.
+  // basePoints overrides BASE_POINTS (used by lightning rounds).
   // returns { correct, points } where points may be negative (lost wager).
   function scoreAnswer(a) {
     var total = a.seconds * 1000;
     var wager = a.wager || 0;
+    var base = (typeof a.basePoints === 'number') ? a.basePoints : BASE_POINTS;
     var isCorrect = (typeof a.textCorrect === 'boolean') ? a.textCorrect : (a.choice === a.correctIndex);
     if (isCorrect) {
       var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
-      var pts = BASE_POINTS + Math.round(SPEED_BONUS_MAX * speed);
+      var pts = base + Math.round(SPEED_BONUS_MAX * speed);
       if (wager > 0) pts += wager;
       return { correct: true, points: pts };
     }
@@ -220,6 +227,16 @@
   // True if the given 1-indexed question number in the block is a wager-up slot.
   function isWagerUpSlot(qib) {
     return WAGER_UP_SLOTS.indexOf(qib) >= 0;
+  }
+
+  // True if this block number gets a lightning round (every 4th block).
+  function isLightningBlock(blockNum) {
+    return blockNum > 0 && blockNum % LIGHTNING_BLOCK_EVERY === 0;
+  }
+
+  // True if this question-in-block is part of the lightning round (Q1-Q5 of a lightning block).
+  function isLightningQuestion(blockNum, qib) {
+    return isLightningBlock(blockNum) && qib >= 1 && qib <= 5;
   }
 
   function clampScore(s) { return Math.max(0, s); }
@@ -259,6 +276,11 @@
     QUESTION_SECONDS: QUESTION_SECONDS,
     VIDEO_QUESTION_SECONDS: VIDEO_QUESTION_SECONDS,
     WAGER_SECONDS: WAGER_SECONDS,
+    LIGHTNING_SECONDS: LIGHTNING_SECONDS,
+    LIGHTNING_POINTS: LIGHTNING_POINTS,
+    LIGHTNING_BLOCK_EVERY: LIGHTNING_BLOCK_EVERY,
+    isLightningBlock: isLightningBlock,
+    isLightningQuestion: isLightningQuestion,
     WAGER_UP_SECONDS: WAGER_UP_SECONDS,
     WAGER_UP_SLOTS: WAGER_UP_SLOTS,
     isWagerUpSlot: isWagerUpSlot,
