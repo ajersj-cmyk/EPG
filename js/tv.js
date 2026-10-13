@@ -386,6 +386,7 @@
     var results = [];
     var streakCallouts = [];
     var streaksLost = [];
+    var highScoreCelebrations = [];
     var correctCount = 0, answeredCount = 0;
 
     Object.keys(players).forEach(function (pid) {
@@ -447,7 +448,21 @@
       upd[ROOM + '/players/' + pid + '/answered'] = (p.answered || 0) + 1;
       upd[ROOM + '/players/' + pid + '/answer'] = null;
       // lifetime / month / day running totals
-      statsUpdatesFor(p.name, newScore - (p.score || 0), r.correct, upd);
+      // milestone check: did day score cross a threshold? (for NEW HIGH SCORE celebration)
+      var msKey = statsKey(p.name);
+      var msCur = statsCache[msKey] || {};
+      var msTk = todayKeys();
+      var oldDay = (msCur.dayKey === msTk.day) ? (msCur.day || 0) : 0;
+      var deltaScore = newScore - (p.score || 0);
+      var newDay = oldDay + deltaScore;
+      var MILESTONES = [100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000];
+      for (var mi = 0; mi < MILESTONES.length; mi++) {
+        if (oldDay < MILESTONES[mi] && newDay >= MILESTONES[mi]) {
+          highScoreCelebrations.push({ name: p.name, score: MILESTONES[mi], dayTotal: newDay });
+          break;
+        }
+      }
+      statsUpdatesFor(p.name, deltaScore, r.correct, upd);
       results.push({
         pid: pid, name: p.name,
         delta: newScore - (p.score || 0),
@@ -487,11 +502,38 @@
     }).then(function () {
       return writeState({ phase: 'reveal', podium: null });
     }).then(function () {
+      // Show high score celebrations (if any) — overlay on top of reveal
+      if (highScoreCelebrations.length) {
+        var hc = highScoreCelebrations[highScoreCelebrations.length - 1];
+        showCelebration(hc.name, hc.score);
+      }
       var pause = cq.isWager ? E.WAGER_REVEAL_SECONDS : E.REVEAL_SECONDS;
       questionTimer = setTimeout(function () {
         if (cq.isWager) showPodium(); else advanceGame();
       }, pause * 1000);
     });
+  }
+
+  // High score celebration overlay: "NEW HIGH SCORE — REESE GETS TO 400"
+  var celebrationTimer = null;
+  function showCelebration(name, score) {
+    var ov = $('#celebrationOverlay');
+    if (!ov) return;
+    $('#celebrationKicker').textContent = 'NEW HIGH SCORE';
+    $('#celebrationName').textContent = name;
+    $('#celebrationScore').textContent = 'GETS TO ' + E.fmtNum(score);
+    ov.hidden = false;
+    // re-trigger animation
+    ov.classList.remove('show');
+    void ov.offsetWidth;
+    ov.classList.add('show');
+    if (celebrationTimer) clearTimeout(celebrationTimer);
+    celebrationTimer = setTimeout(function () {
+      ov.hidden = true;
+      ov.classList.remove('show');
+    }, 3500);
+    // fanfare
+    try { sBigWin(); } catch (e) {}
   }
 
   // Block-capping ceremony after the wager reveal: top 3 of the block.
