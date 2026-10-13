@@ -31,9 +31,39 @@
   function serverNow() { return Date.now() + serverOffset; }
 
   function setPhase(name) {
-    ['join', 'wager', 'question', 'locked', 'reveal', 'board'].forEach(function (p) {
+    ['join', 'wager', 'question', 'locked', 'reveal', 'board', 'stats'].forEach(function (p) {
       var el = document.getElementById('p-' + p);
       if (el) el.classList.toggle('active', p === name);
+    });
+  }
+
+  /* ---------------- player stats profile ---------------- */
+
+  var lastStatsPhase = 'board'; // where to return after viewing stats
+  function myStatsKey() {
+    return String(playerName || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'anon';
+  }
+  function renderMyStats(s) {
+    s = s || {};
+    $('#statsName').textContent = playerName || '—';
+    $('#statsStreak').textContent = s.streak || 0;
+    $('#statsBestStreak').textContent = s.bestStreak || 0;
+    var acc = (s.answered > 0) ? Math.round(100 * (s.correct || 0) / s.answered) + '%' : '—';
+    $('#statsAccuracy').textContent = acc;
+    $('#statsDay').textContent = fmt(s.day || 0);
+    $('#statsMonth').textContent = fmt(s.month || 0);
+    $('#statsLifetime').textContent = fmt(s.lifetime || 0);
+    $('#statsAnswered').textContent = fmt(s.answered || 0);
+  }
+  function openStats() {
+    lastStatsPhase = 'board';
+    // pull latest snapshot once, then go
+    db.ref(ROOM + '/playerStats/' + myStatsKey()).once('value').then(function (snap) {
+      renderMyStats(snap.val());
+      setPhase('stats');
+    }).catch(function () {
+      renderMyStats(null);
+      setPhase('stats');
     });
   }
 
@@ -291,14 +321,25 @@
         wb.hidden = true;
       }
       var isText = q.answerType === 'text';
-      $('#pqOptions').hidden = isText;
+      var isNum = q.answerType === 'number';
+      $('#pqOptions').hidden = isText || isNum;
       $('#pqTextAnswer').hidden = !isText;
+      $('#pqNumAnswer').hidden = !isNum;
+      // Lightning indicator
+      var lb = $('#lightningBadge');
+      if (lb) lb.hidden = !q.isLightning;
       if (isText) {
         var ti = $('#pqTextInput');
         ti.value = '';
         ti.disabled = false;
         $('#pqTextSubmit').disabled = false;
         setTimeout(function () { try { ti.focus(); } catch (e) {} }, 300);
+      } else if (isNum) {
+        var ni = $('#pqNumInput');
+        ni.value = '';
+        ni.disabled = false;
+        $('#pqNumSubmit').disabled = false;
+        setTimeout(function () { try { ni.focus(); } catch (e) {} }, 300);
       } else {
         buildOptions(q.options);
       }
@@ -358,6 +399,36 @@
     });
   }
 
+  function answerNumber() {
+    if (!playerId || !lastQuestion) return;
+    var qid = lastQuestion.id;
+    if (answeredQid === qid) return;
+    var ni = $('#pqNumInput');
+    var raw = ni.value.trim().replace(/,/g, '');
+    var num = Number(raw);
+    if (raw === '' || isNaN(num)) {
+      toast('Enter a number first!');
+      return;
+    }
+    if (serverNow() > (lastQuestion.deadlineTs || 0)) {
+      toast('Too slow \u2014 that question moved on!');
+      return;
+    }
+    ni.disabled = true;
+    $('#pqNumSubmit').disabled = true;
+    refs.player.update({
+      answer: { number: num, at: firebase.database.ServerValue.TIMESTAMP },
+      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+    }).then(function () {
+      answeredQid = qid;
+      setPhase('locked');
+    }).catch(function () {
+      toast('Hmm, that didn\u2019t land. Try again.');
+      ni.disabled = false;
+      $('#pqNumSubmit').disabled = false;
+    });
+  }
+
   /* ---------------- reveal phase ---------------- */
 
   function renderReveal(st, r) {
@@ -365,9 +436,28 @@
     (r.results || []).forEach(function (x) {
       if (x.pid === playerId) me = x;
     });
+    var isNum = r.answerType === 'number';
     var pts = $('#rvPoints');
     pts.classList.remove('neg');
-    if (me) {
+    if (isNum) {
+      // Closest-wins reveal
+      $('#rvKicker').textContent = 'Closest wins';
+      var myGuess = (me && me.guess !== undefined) ? me.guess : null;
+      if (me && me.correct) {
+        pts.hidden = false;
+        pts.textContent = '+' + fmt(me.delta);
+        $('#rvTitle').textContent = 'CLOSEST! You take it.';
+      } else if (me) {
+        pts.hidden = true;
+        $('#rvTitle').textContent = 'Not the closest this time.';
+      } else {
+        pts.hidden = true;
+        $('#rvTitle').textContent = 'You sat this one out.';
+      }
+      var sub = 'The answer was ' + fmt(r.answerNumber) + '.';
+      if (myGuess !== null) sub += ' You guessed ' + fmt(myGuess) + ' (off by ' + fmt(Math.abs(myGuess - r.answerNumber)) + ').';
+      $('#rvSub').textContent = sub;
+    } else if (me) {
       var correct = !!me.correct;
       $('#rvKicker').textContent = r.isWager ? 'Wager result' : (correct ? 'Correct' : 'The answer');
       if (me.delta > 0) {
@@ -563,6 +653,19 @@
     $('#pqTextInput').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') answerText();
       e.stopPropagation();
+    });
+    $('#pqNumSubmit').addEventListener('click', answerNumber);
+    $('#pqNumInput').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') answerNumber();
+      e.stopPropagation();
+    });
+    $('#statsBtn').addEventListener('click', openStats);
+    $('#statsBackBtn').addEventListener('click', function () { setPhase(lastStatsPhase); });
+    // live-update stats while viewing
+    db.ref(ROOM + '/playerStats/' + myStatsKey()).on('value', function (snap) {
+      if (document.getElementById('p-stats').classList.contains('active')) {
+        renderMyStats(snap.val());
+      }
     });
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
