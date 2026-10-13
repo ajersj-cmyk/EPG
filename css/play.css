@@ -445,21 +445,6 @@ html, body { min-height: 100%; }
   .reconnect, .watch-tv { animation: none; }
 }
 
-/* host liveness banner */
-.host-banner {
-  margin-bottom: 1rem;
-  text-align: center;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gold-hi);
-  border: 1px solid var(--gold-dim);
-  border-radius: 0.9rem;
-  padding: 0.9rem;
-  background: rgba(217, 180, 92, 0.08);
-}
-
 /* ---- text-input questions ---- */
 .pq-text-answer { display: flex; flex-direction: column; gap: 0.75rem; padding-bottom: 0.5rem; }
 .pq-text-input {
@@ -480,3 +465,56 @@ html, body { min-height: 100%; }
 /* ---- responsive question text sizing ---- */
 .pq-text.pq-long { font-size: 1.15rem; line-height: 1.4; }
 .pq-text.pq-xlong { font-size: 1rem; line-height: 1.45; }
+
+/* ---- lightning badge (phone) ---- */
+.lightning-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #1a1000;
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  margin: 0.5rem 0;
+  animation: lightning-pulse 0.9s ease-in-out infinite;
+  box-shadow: 0 0 14px rgba(255, 180, 0, 0.6);
+}
+@keyframes lightning-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* ---- number input ---- */
+.pq-num-input { font-size: 1.6rem; text-align: center; font-variant-numeric: tabular-nums; }
+.pq-num-hint { text-align: center; opacity: 0.65; font-size: 0.85rem; margin: 0.25rem 0 0; }
+
+/* ---- player stats profile ---- */
+.stats-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 1.2rem;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.stats-card h2 { margin: 0.25rem 0 1rem; font-size: 1.6rem; }
+.stats-streak-row {
+  display: flex; justify-content: center; gap: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.stats-streak { display: flex; flex-direction: column; align-items: center; }
+.stats-big {
+  font-size: 2.2rem; font-weight: 900; color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 16px rgba(255,215,0,0.4);
+}
+.stats-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.65; margin-top: 0.15rem; }
+.stats-money { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-bottom: 1.25rem; }
+.stats-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.45rem 0.25rem; font-size: 1rem;
+}
+.stats-row b { font-variant-numeric: tabular-nums; color: #fff; }
+.stats-row.dim { opacity: 0.6; font-size: 0.9rem; }
+.stats-card .btn { margin-top: 0.25rem; }
+#statsBtn { margin-top: 0.9rem; }
