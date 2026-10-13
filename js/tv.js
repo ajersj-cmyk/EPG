@@ -414,7 +414,7 @@
       };
       if (isTextQ) {
         var correctText = q.answerText || q.options[q.answer] || '';
-        scoreArgs.textCorrect = E.normText(a.text) === E.normText(correctText);
+        scoreArgs.textCorrect = E.textMatch(a.text, correctText);
       } else {
         scoreArgs.choice = a.choice;
         scoreArgs.correctIndex = q.answer;
@@ -857,7 +857,13 @@
       $('#qCat').textContent = E.fmtCategory(q.category);
       $('#qDiff').textContent = q.difficulty || '';
       $('#qWagerBadge').hidden = !q.isWager;
-      $('#qText').textContent = q.text;
+      var qTextEl = $('#qText');
+      qTextEl.textContent = q.text;
+      // Scale font down for long questions so they don't look jumbled
+      var qlen = (q.text || '').length;
+      qTextEl.classList.remove('q-long', 'q-xlong');
+      if (qlen > 280) qTextEl.classList.add('q-xlong');
+      else if (qlen > 150) qTextEl.classList.add('q-long');
       if (q.answerType === 'text') {
         var box = $('#qOptions');
         box.innerHTML = '<div class="q-text-hint">TYPE YOUR ANSWER ON YOUR PHONE</div>';
