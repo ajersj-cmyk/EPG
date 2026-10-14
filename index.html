@@ -187,6 +187,46 @@
           <button class="btn ghost" id="btnTextReset">Reset to defaults</button>
         </div>
       </section>
+      <section>
+        <h3>Custom Questions</h3>
+        <p class="settings-hint">Add your own questions — inside jokes, family trivia, bar-specific stuff. They mix into the game rotation and attract teasers.</p>
+        <div class="cq-form">
+          <input type="text" id="cqQuestion" maxlength="280" placeholder="Question text">
+          <input type="text" id="cqAnswer" maxlength="120" placeholder="Correct answer">
+          <div class="title-row">
+            <select id="cqCategory">
+              <option value="mixed">Mixed</option>
+              <option value="sports">Sports</option>
+              <option value="movies">Movies</option>
+              <option value="music">Music</option>
+              <option value="tv">TV</option>
+              <option value="games">Games</option>
+              <option value="disney">Disney</option>
+              <option value="pixar">Pixar</option>
+              <option value="history">History</option>
+              <option value="science">Science</option>
+              <option value="geography">Geography</option>
+            </select>
+            <select id="cqType">
+              <option value="text">Text answer</option>
+              <option value="choice">Multiple choice</option>
+            </select>
+          </div>
+          <div id="cqOptions" hidden>
+            <input type="text" class="cq-opt" maxlength="80" placeholder="Option A (correct)" data-opt="0">
+            <input type="text" class="cq-opt" maxlength="80" placeholder="Option B" data-opt="1">
+            <input type="text" class="cq-opt" maxlength="80" placeholder="Option C" data-opt="2">
+            <input type="text" class="cq-opt" maxlength="80" placeholder="Option D" data-opt="3">
+            <p class="settings-hint">First option is the correct answer — options shuffle automatically.</p>
+          </div>
+          <div class="title-row" style="margin-top:.5rem">
+            <span style="flex:1"></span>
+            <button class="btn solid" id="btnCqAdd">Add question</button>
+          </div>
+          <div class="join-error" id="cqError" hidden></div>
+        </div>
+        <div id="cqList" style="margin-top:1rem"></div>
+      </section>
     </div>
   </div>
 </div>
