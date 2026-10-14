@@ -436,11 +436,25 @@
     };
   }
 
+  // Difficulty curve: questions get harder through the 10-question block.
+  // Q1-Q2: easy warmup · Q3: hard (wager-up) · Q4-Q5: medium · Q6: hard (wager-up)
+  // Q7: medium · Q8-Q9: hard (Q9 wager-up) · Q10: Final Wager (own draw)
+  function difficultyForQib(qib) {
+    if (qib <= 2) return 'easy';
+    if (qib === 3) return 'hard'; // wager-up
+    if (qib <= 5) return 'medium';
+    if (qib === 6) return 'hard'; // wager-up
+    if (qib === 7) return 'medium';
+    return 'hard'; // Q8-Q9
+  }
+
   function dealQuestion() {
     var st = drawSettings();
+    var qibPreview = blockDealt + 1; // what the next question-in-block will be
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
       disabledCats: st.disabledCats, familyMode: st.familyMode,
+      difficulty: difficultyForQib(qibPreview),
     });
     if (!drawn) {
       // Bank exhausted — reset asked history and try again (allows repeats after full cycle).
@@ -448,6 +462,7 @@
       drawn = E.drawQuestion({
         bank: bank, askedIds: askedIds, recentCats: [],
         disabledCats: st.disabledCats, familyMode: st.familyMode,
+        difficulty: difficultyForQib(qibPreview),
       });
       if (!drawn) return; // truly empty bank
     }
@@ -1052,6 +1067,8 @@
     if (settings.familyMode === undefined) { settings.familyMode = false; changed = true; }
     if (changed) refs.settings.update(settings);
     applySettings();
+    onCustomQuestionsChanged();
+    renderCustomQuestions();
   }
 
   function onState(snap) {
@@ -1318,6 +1335,10 @@
       if (text.length > 140 || text.length < 15) continue;
       if (q.kid_safe === false) continue;
       if (!arAnswerFor(q)) continue;
+      // Attract teasers favor easy/medium (enticing, not intimidating).
+      // Hard questions appear at ~15% rate for variety.
+      var diff = q.difficulty || 'medium';
+      if (diff === 'hard' && Math.random() > 0.15) continue;
       if (q.image) arPoolImg.push(q); else arPool.push(q);
     }
   }
@@ -1776,7 +1797,8 @@
     $('#rText').textContent = qd.text || '';
     var isNumR = r.answerType === 'number';
     if (isNumR) {
-      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS ' + E.fmtNum(r.answerNumber) + '</div>';
+      $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">The answer was</span>' +
+        '<span class="answer-hero">' + E.fmtNum(r.answerNumber) + '</span></div>';
     } else if (r.answerType === 'text') {
       $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
     } else {
@@ -1789,8 +1811,9 @@
       note = '<b>Closest wins</b> &mdash; ' + E.fmtNum(r.answerNumber) +
         (wnames ? ' &nbsp;<span style="color:var(--gold)">&#9733; ' + wnames + '</span>' : '');
     } else {
-      note = '<b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
-        '</b> answered correctly &mdash; ' + E.escapeHtml(r.correctText || '');
+      note = '<span class="answer-hero">' + E.escapeHtml(r.correctText || '') + '</span>' +
+        '<span class="answer-meta"><b>' + (r.correctCount || 0) + '</b> of <b>' + (r.answeredCount || 0) +
+        '</b> answered correctly</span>';
     }
     if (r.streaksLost && r.streaksLost.length) {
       var sl = r.streaksLost[0];
@@ -2188,6 +2211,184 @@
     });
     renderCustomText();
     wireCustomText();
+    wireCustomQuestions();
+    renderCustomQuestions();
+  }
+
+  // ---- custom questions: Jordan's own questions via Settings ----
+  // Stored at rooms/cave/settings/customQuestions (array of question objects).
+  // Mixed into game rotation and attract teasers.
+
+  function getCustomQuestions() {
+    var cq = (settings && settings.customQuestions) || [];
+    return Array.isArray(cq) ? cq : [];
+  }
+
+  // ---- custom questions merged into bank ----
+  // Custom questions live in settings.customQuestions; they're merged into
+  // the working bank so they flow through game rotation, teasers, etc.
+  var customMerged = false;
+
+  function mergeCustomIntoBank() {
+    if (!bank || !bank.length) return;
+    // Remove previously merged custom questions (avoid duplicates on re-merge)
+    bank = bank.filter(function (q) { return !q.custom; });
+    var cq = getCustomQuestions();
+    if (cq.length) {
+      // Tag with ids if missing (for askedIds tracking)
+      cq.forEach(function (q) {
+        if (!q.id) q.id = 'custom-' + Math.random().toString(36).slice(2);
+      });
+      bank = bank.concat(cq);
+    }
+    customMerged = true;
+    // Force teaser pool rebuild to include/exclude customs
+    arPoolSig = '';
+  }
+
+  // Called when settings.customQuestions changes via Firebase
+  function onCustomQuestionsChanged() {
+    if (!bank || !bank.length) return;
+    mergeCustomIntoBank();
+  }
+
+  function wireCustomQuestions() {
+    var typeSel = $('#cqType');
+    if (typeSel) typeSel.addEventListener('change', function () {
+      $('#cqOptions').hidden = (typeSel.value !== 'choice');
+    });
+    var addBtn = $('#btnCqAdd');
+    if (addBtn) addBtn.addEventListener('click', addCustomQuestion);
+    // Enter key on inputs adds the question
+    ['cqQuestion', 'cqAnswer'].forEach(function (id) {
+      var el = $('#' + id);
+      if (el) el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); addCustomQuestion(); }
+        e.stopPropagation();
+      });
+    });
+  }
+
+  function cqShowError(msg) {
+    var el = $('#cqError');
+    if (!el) return;
+    if (msg) { el.textContent = msg; el.hidden = false; }
+    else el.hidden = true;
+  }
+
+  function addCustomQuestion() {
+    cqShowError(null);
+    var qText = ($('#cqQuestion') || {}).value || '';
+    qText = qText.trim();
+    var aText = ($('#cqAnswer') || {}).value || '';
+    aText = aText.trim();
+    var cat = ($('#cqCategory') || {}).value || 'mixed';
+    var type = ($('#cqType') || {}).value || 'text';
+
+    if (!qText) { cqShowError('Enter a question.'); return; }
+    if (!aText) { cqShowError('Enter the correct answer.'); return; }
+
+    var existing = getCustomQuestions();
+    // duplicate check (case-insensitive question match)
+    var dup = existing.some(function (q) {
+      return String(q.question || '').toLowerCase().trim() === qText.toLowerCase();
+    });
+    if (dup) { cqShowError('That question is already added.'); return; }
+
+    var qObj = {
+      id: 'custom-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 1e6).toString(36),
+      question: qText.slice(0, 280),
+      category: cat,
+      difficulty: 'medium',
+      kid_safe: true,
+      source: 'custom',
+      custom: true,
+    };
+    if (type === 'choice') {
+      var opts = [];
+      var optEls = document.querySelectorAll('.cq-opt');
+      for (var i = 0; i < optEls.length; i++) {
+        var v = (optEls[i].value || '').trim().slice(0, 80);
+        if (!v) { cqShowError('Fill in all 4 options for multiple choice.'); return; }
+        opts.push(v);
+      }
+      // Shuffle options so the correct answer isn't always first.
+      // Track the correct index after shuffling.
+      var correctText = opts[0]; // Option A is the correct answer as entered
+      for (var s = opts.length - 1; s > 0; s--) {
+        var r = Math.floor(Math.random() * (s + 1));
+        var tmp = opts[s]; opts[s] = opts[r]; opts[r] = tmp;
+      }
+      var correctIdx = opts.indexOf(correctText);
+      qObj.options = opts;
+      qObj.answer = correctIdx;
+      qObj.answerType = 'choice';
+      qObj.answerText = correctText;
+    } else {
+      qObj.answerText = aText.slice(0, 120);
+      qObj.answerType = 'text';
+    }
+
+    existing.push(qObj);
+    refs.settings.child('customQuestions').set(existing).then(function () {
+      // clear form
+      $('#cqQuestion').value = '';
+      $('#cqAnswer').value = '';
+      document.querySelectorAll('.cq-opt').forEach(function (el) { el.value = ''; });
+      renderCustomQuestions();
+      arPoolSig = ""; // include in attract teasers immediately
+    }).catch(function (err) {
+      cqShowError('Could not save: ' + (err && err.message || 'unknown error'));
+    });
+  }
+
+  function deleteCustomQuestion(id) {
+    var existing = getCustomQuestions();
+    var filtered = existing.filter(function (q) { return q.id !== id; });
+    refs.settings.child('customQuestions').set(filtered.length ? filtered : null).then(function () {
+      renderCustomQuestions();
+      arPoolSig = "";
+    });
+  }
+
+  function renderCustomQuestions() {
+    var host = $('#cqList');
+    if (!host) return;
+    var list = getCustomQuestions();
+    host.innerHTML = '';
+    if (!list.length) {
+      host.innerHTML = '<p class="settings-hint">No custom questions yet. Add your first above.</p>';
+      return;
+    }
+    list.forEach(function (q) {
+      var row = document.createElement('div');
+      row.className = 'ct-row';
+      row.style.alignItems = 'flex-start';
+      var txt = document.createElement('div');
+      txt.style.flex = '1';
+      var qt = document.createElement('div');
+      qt.style.fontWeight = '700';
+      qt.textContent = q.question;
+      var meta = document.createElement('div');
+      meta.className = 'settings-hint';
+      meta.style.margin = '0.2rem 0 0';
+      var ansPreview = q.answerText || (q.options && q.options[q.answer]) || '';
+      meta.textContent = (q.category || 'mixed').toUpperCase() + ' · ' +
+        (q.answerType === 'choice' ? 'Multiple choice' : 'Text') +
+        (ansPreview ? ' · Answer: ' + ansPreview.slice(0, 40) : '');
+      txt.appendChild(qt);
+      txt.appendChild(meta);
+      var del = document.createElement('button');
+      del.className = 'btn ghost';
+      del.textContent = 'Delete';
+      del.style.flexShrink = '0';
+      del.addEventListener('click', function () {
+        if (window.confirm('Delete this custom question?')) deleteCustomQuestion(q.id);
+      });
+      row.appendChild(txt);
+      row.appendChild(del);
+      host.appendChild(row);
+    });
   }
 
   function paintSoundBtn() {
@@ -2262,6 +2463,7 @@
 
     E.loadBank().then(function (b) {
       bank = b;
+      mergeCustomIntoBank();
     }).catch(function () {
       var ac = $('#arCard');
       if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Error</div><div class="ar-big">QUESTION BANK<br>FAILED TO LOAD</div>';
