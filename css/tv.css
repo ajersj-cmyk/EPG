@@ -1565,6 +1565,55 @@ html, body { height: 100%; overflow: hidden; }
   opacity: 0.6;
 }
 
+/* ---- custom questions form ---- */
+.cq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.8rem 1.1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+.cq-form input[type="text"],
+.cq-form select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  padding: 0.65rem 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.cq-form input:focus,
+.cq-form select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.cq-form select option {
+  background: #1a1d28;
+  color: var(--ink);
+}
+.cq-form .title-row {
+  display: flex;
+  gap: 0.6rem;
+}
+.cq-form .title-row select { flex: 1; }
+#cqOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#cqOptions[hidden] { display: none; }
+.cq-opt { margin: 0; }
+#cqList .ct-row {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 /* ============================================================
    PREMIUM BROADCAST QUESTION TREATMENT
    Embossed, minted, gold — no more flat powerpoint text.
