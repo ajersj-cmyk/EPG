@@ -65,7 +65,7 @@
     });
   }
 
-  function drawBankQuestion(bank, avoidCats, askedIds, disabled, familyMode) {
+  function drawBankQuestion(bank, avoidCats, askedIds, disabled, familyMode, wantDiff) {
     var dis = {};
     (disabled || []).forEach(function (c) { dis[c] = true; });
     // Only consider categories that still have drawable questions. (The Node
@@ -75,7 +75,8 @@
       if (avoidCats[c] || dis[c]) return false;
       for (var i = 0; i < bank.length; i++) {
         var q = bank[i];
-        if (q.category === c && !askedIds[q.id] && familyOk(q, familyMode)) return true;
+        if (q.category === c && !askedIds[q.id] && familyOk(q, familyMode) &&
+            (!wantDiff || q.difficulty === wantDiff)) return true;
       }
       return false;
     });
@@ -87,7 +88,8 @@
       if (r <= 0) { pick = cats[j]; break; }
     }
     var pool = bank.filter(function (q) {
-      return q.category === pick && !askedIds[q.id] && familyOk(q, familyMode);
+      return q.category === pick && !askedIds[q.id] && familyOk(q, familyMode) &&
+        (!wantDiff || q.difficulty === wantDiff);
     });
     if (!pool.length) return null;
     return pool[Math.floor(Math.random() * pool.length)];
@@ -95,15 +97,19 @@
 
   // Mirror of server.js drawQuestion(): ~1-in-8 video draws, no category runs,
   // weighted bank picks, disabled-category + family filters, asked-id tracking.
-  // opts: { bank, askedIds (object map), recentCats (array), disabledCats, familyMode, hardOnly }
+  // opts: { bank, askedIds (object map), recentCats (array), disabledCats, familyMode, hardOnly, difficulty }
+  // difficulty: 'easy' | 'medium' | 'hard' — prefers questions of that difficulty tier.
   // Returns { q, askedIds, recentCats } or null.
   function drawQuestion(opts) {
     var bank = opts.bank, askedIds = opts.askedIds || {}, recentCats = opts.recentCats || [];
     var disabled = opts.disabledCats || [], familyMode = !!opts.familyMode;
     var hardOnly = !!opts.hardOnly;
+    var wantDiff = opts.difficulty || null; // difficulty curve preference
 
-    function hardOk(q) {
-      return !hardOnly || q.difficulty === 'hard';
+    function diffOk(q) {
+      if (hardOnly) return q.difficulty === 'hard';
+      if (!wantDiff) return true;
+      return q.difficulty === wantDiff;
     }
 
     function recentSet(n) {
@@ -127,16 +133,23 @@
 
     for (var attempt = 0; attempt < 12; attempt++) {
       var avoid = recentSet(3);
-      var q = drawBankQuestion(bank, avoid, askedIds, disabled, familyMode)
-        || drawBankQuestion(bank, {}, askedIds, disabled, familyMode);
+      var q = drawBankQuestion(bank, avoid, askedIds, disabled, familyMode, wantDiff)
+        || drawBankQuestion(bank, {}, askedIds, disabled, familyMode, wantDiff);
       if (!q) break;
-      if (familyOk(q, familyMode) && hardOk(q)) {
+      if (familyOk(q, familyMode) && diffOk(q)) {
         askedIds[q.id] = true;
         recentCats.push(q.category);
         if (recentCats.length > 8) recentCats = recentCats.slice(-8);
         return { q: q, askedIds: askedIds, recentCats: recentCats };
       }
       askedIds[q.id] = true; // rejected — burn the id so we don't loop on it
+    }
+    // Fallback: if no question matched the difficulty tier, try without the filter
+    if (wantDiff && !hardOnly) {
+      return drawQuestion({
+        bank: bank, askedIds: askedIds, recentCats: recentCats,
+        disabledCats: disabled, familyMode: familyMode,
+      });
     }
     return null;
   }
