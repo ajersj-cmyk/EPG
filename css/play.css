@@ -519,7 +519,197 @@ html, body { min-height: 100%; }
 .stats-card .btn { margin-top: 0.25rem; }
 #statsBtn { margin-top: 0.9rem; }
 
-/* ---- phone-side celebration mirror ---- */
+/* ============================================================
+   PREMIUM BROADCAST TREATMENT — phone client parity with TV
+   Embossed, minted, gold — no more flat text.
+   ============================================================ */
+
+/* ---- embossed question text: carved metal ---- */
+.pq-text {
+  color: #f4efe4;
+  font-weight: 900;
+  text-shadow:
+    0 -2px 2px rgba(255, 255, 255, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.12),
+    0 3px 0 rgba(0, 0, 0, 0.85),
+    0 6px 3px rgba(0, 0, 0, 0.6),
+    0 12px 28px rgba(0, 0, 0, 0.65);
+}
+
+/* ---- premium header: venue name in minted gold ---- */
+.play-top .wordmark {
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  background: linear-gradient(180deg,
+    #fffdf5 0%, #fdf3d8 20%, #f2ddab 38%,
+    #d9b45c 55%, #9a7a33 75%, #d9b45c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.7))
+          drop-shadow(0 0 18px rgba(217, 180, 92, 0.3));
+}
+
+/* ---- gold chrome answer buttons with embossed letter badges ---- */
+.pq-opt {
+  background: linear-gradient(180deg, rgba(26, 30, 44, 0.92), rgba(10, 12, 18, 0.92));
+  border: 1px solid rgba(217, 180, 92, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.pq-opt > span:last-child {
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.7),
+    0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.pq-opt .letter {
+  background: linear-gradient(180deg, #f2ddab, #d9b45c 55%, #9a7a33);
+  color: #1a1408;
+  border: 0;
+  font-weight: 900;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3),
+    0 3px 12px rgba(217, 180, 92, 0.45);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.pq-opt.picked {
+  border-color: #d9b45c;
+  background: linear-gradient(180deg, rgba(217, 180, 92, 0.25), rgba(217, 180, 92, 0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 24px rgba(217, 180, 92, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* ---- wager slider: broadcast graphic treatment ---- */
+.wager-slider::-webkit-slider-runnable-track {
+  height: 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #9a7a33, #d9b45c 50%, #f2ddab);
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(217, 180, 92, 0.25);
+}
+.wager-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 64px;
+  height: 64px;
+  margin-top: -25px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffdf5, #f2ddab 35%, #d9b45c 65%, #9a7a33);
+  border: 2px solid #f2ddab;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4),
+    0 6px 28px rgba(217, 180, 92, 0.55);
+}
+.wager-slider::-moz-range-track {
+  height: 14px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #9a7a33, #d9b45c 50%, #f2ddab);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.wager-slider::-moz-range-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffdf5, #f2ddab 35%, #d9b45c 65%, #9a7a33);
+  border: 2px solid #f2ddab;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    0 6px 28px rgba(217, 180, 92, 0.55);
+}
+.wager-amount {
+  background: linear-gradient(180deg,
+    #fffdf5 0%, #f2ddab 35%, #d9b45c 60%, #9a7a33 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.7))
+          drop-shadow(0 0 34px rgba(217, 180, 92, 0.35));
+  text-shadow: none;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- score/streak displays: weighty gold embossed numerals ---- */
+.play-score .pts,
+.stats-big,
+#footScore,
+.mini-board .mb-score {
+  font-variant-numeric: tabular-nums;
+  font-weight: 900;
+  text-shadow:
+    0 -1px 1px rgba(255, 255, 255, 0.2),
+    0 2px 0 rgba(0, 0, 0, 0.7),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.play-score .pts {
+  background: linear-gradient(180deg, #fffdf5 0%, #f2ddab 40%, #d9b45c 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.points-pop {
+  font-weight: 900;
+  text-shadow:
+    0 -1px 1px rgba(255, 255, 255, 0.25),
+    0 3px 0 rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(217, 180, 92, 0.4);
+}
+
+/* ---- category chyron on phone ---- */
+.pq-cat {
+  position: relative;
+  padding-left: 0.9rem;
+  color: #d9b45c;
+  font-weight: 800;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(217, 180, 92, 0.35);
+}
+.pq-cat::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #f2ddab, #9a7a33);
+  box-shadow: 0 0 10px rgba(217, 180, 92, 0.6);
+}
+
+/* ---- join hero premium ---- */
+.join-hero h1 {
+  font-weight: 900;
+  color: #f4efe4;
+  text-shadow:
+    0 -2px 2px rgba(255, 255, 255, 0.22),
+    0 3px 0 rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+.join-hero h1 em {
+  background: linear-gradient(180deg, #fffdf5 0%, #f2ddab 35%, #d9b45c 65%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-celebration { transition: none; }
+  .points-pop { animation: none; }
+  .lightning-badge { animation: none; }
+}
 .phone-celebration {
   position: fixed;
   inset: 0;
