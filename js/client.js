@@ -31,12 +31,9 @@
 
   function serverNow() { return Date.now() + serverOffset; }
 
-  // Realtime read with REST-polling fallback (js/poll.js): some networks
-  // block Firebase's websocket while the REST API still works.
+  // Pure REST polling reads (js/poll.js): no websockets, no Firebase SDK.
   function liveListen(path, cb, pollMs) {
-    if (window.CT && CT.poll) return CT.poll.listen(db, path, cb, { databaseURL: dbUrl, pollMs: pollMs });
-    db.ref(path).on('value', cb); // no fallback available; realtime only
-    return { stop: function () {} };
+    return CT.poll.listen(path, cb, { databaseURL: dbUrl, pollMs: pollMs });
   }
 
   function setPhase(name) {
@@ -118,7 +115,7 @@
 
   function touchLastSeen() {
     if (!db || !playerId || !refs.player) return;
-    refs.player.update({ lastSeen: firebase.database.ServerValue.TIMESTAMP, present: true });
+    refs.player.update({ lastSeen: CT.rest.ts(), present: true });
   }
 
   /* ---------------- join ---------------- */
@@ -133,7 +130,7 @@
       Object.keys(all).forEach(function (pid) {
         if (String(all[pid].name || '').toLowerCase() === name.toLowerCase()) foundId = pid;
       });
-      var now = firebase.database.ServerValue.TIMESTAMP;
+      var now = CT.rest.ts();
       if (foundId) {
         playerId = foundId;
         return db.ref(ROOM + '/players/' + foundId).update({ lastSeen: now, present: true }).then(function () { return foundId; });
@@ -149,8 +146,8 @@
       playerName = name;
       saveIdentity();
       refs.player = db.ref(ROOM + '/players/' + playerId);
-      // Presence: TV shows a "thanks for playing" sendoff when this flips false.
-      try { refs.player.onDisconnect().update({ present: false }); } catch (e) {}
+      // No onDisconnect in REST mode: the 30s heartbeat keeps lastSeen fresh
+      // while the app is open; the TV counts players out after 3 min idle.
       liveListen(ROOM + '/players/' + playerId, function (snap) {
         myPlayer = snap.val();
         renderScoreBox();
@@ -276,7 +273,7 @@
     refs.player.update({
       wager: amount,
       wagerPlaced: true,
-      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+      lastSeen: CT.rest.ts(),
     }).then(function () {
       myWager = amount;
       btn.disabled = false;
@@ -371,8 +368,8 @@
     btns.forEach(function (b) { b.disabled = true; });
     if (btns[choice]) btns[choice].classList.add('picked');
     refs.player.update({
-      answer: { choice: choice, at: firebase.database.ServerValue.TIMESTAMP },
-      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+      answer: { choice: choice, at: CT.rest.ts() },
+      lastSeen: CT.rest.ts(),
     }).then(function () {
       answeredQid = qid;
       setPhase('locked');
@@ -399,8 +396,8 @@
     ti.disabled = true;
     $('#pqTextSubmit').disabled = true;
     refs.player.update({
-      answer: { text: text.slice(0, 120), at: firebase.database.ServerValue.TIMESTAMP },
-      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+      answer: { text: text.slice(0, 120), at: CT.rest.ts() },
+      lastSeen: CT.rest.ts(),
     }).then(function () {
       answeredQid = qid;
       setPhase('locked');
@@ -429,8 +426,8 @@
     ni.disabled = true;
     $('#pqNumSubmit').disabled = true;
     refs.player.update({
-      answer: { number: num, at: firebase.database.ServerValue.TIMESTAMP },
-      lastSeen: firebase.database.ServerValue.TIMESTAMP,
+      answer: { number: num, at: CT.rest.ts() },
+      lastSeen: CT.rest.ts(),
     }).then(function () {
       answeredQid = qid;
       setPhase('locked');
@@ -505,7 +502,7 @@
         qid: lastQuestion.id,
         text: (lastQuestion.text || '').slice(0, 200),
         by: playerName || 'anon',
-        at: firebase.database.ServerValue.TIMESTAMP,
+        at: CT.rest.ts(),
       }).catch(function () {});
     };
   }
@@ -665,8 +662,7 @@
     refs.reveal = db.ref(ROOM + '/reveal');
     refs.settings = db.ref(ROOM + '/settings');
 
-    // .info/serverTimeOffset has no REST equivalent; keep it realtime-only.
-    try { db.ref('.info/serverTimeOffset').on('value', function (snap) { serverOffset = snap.val() || 0; }); } catch (e) {}
+    // No server clock in REST mode — serverNow() uses the local clock.
 
     liveListen(ROOM + '/state', function (snap) {
       lastState = snap.val() || { phase: 'idle' };
@@ -689,12 +685,11 @@
       var wm = document.querySelector('.play-top .wordmark');
       if (wm) wm.textContent = (lastSettings.title || 'CAVE TRIVIA').toUpperCase();
       render();
-    }, 2500);
+    }, 5000);
     // keep-alive: stay "active" on the TV's player count
     setInterval(touchLastSeen, 30000);
-    // watchdog: if Firebase goes quiet, show the reconnect pill.
-    // CT.poll.lastOkAt() tracks every successful receipt (realtime OR poll),
-    // so the pill stays hidden while polling is working.
+    // watchdog: if polls stop succeeding, show the reconnect pill.
+    // CT.poll.lastOkAt() tracks every successful poll receipt.
     setInterval(function () {
       if (!playerId) return;
       var lastOk = (window.CT && CT.poll && typeof CT.poll.lastOkAt === 'function' && CT.poll.lastOkAt()) || lastMsgAt;
