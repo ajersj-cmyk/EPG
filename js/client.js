@@ -13,6 +13,7 @@
   var WAGER_SECONDS = 15;
 
   var db = null;
+  var dbUrl = ''; // Firebase databaseURL (for the REST polling fallback)
   var refs = {};
   var playerId = null;
   var playerName = '';
@@ -29,6 +30,14 @@
   var lastMsgAt = 0;
 
   function serverNow() { return Date.now() + serverOffset; }
+
+  // Realtime read with REST-polling fallback (js/poll.js): some networks
+  // block Firebase's websocket while the REST API still works.
+  function liveListen(path, cb, pollMs) {
+    if (window.CT && CT.poll) return CT.poll.listen(db, path, cb, { databaseURL: dbUrl, pollMs: pollMs });
+    db.ref(path).on('value', cb); // no fallback available; realtime only
+    return { stop: function () {} };
+  }
 
   function setPhase(name) {
     ['join', 'wager', 'question', 'locked', 'reveal', 'board', 'stats'].forEach(function (p) {
@@ -142,11 +151,11 @@
       refs.player = db.ref(ROOM + '/players/' + playerId);
       // Presence: TV shows a "thanks for playing" sendoff when this flips false.
       try { refs.player.onDisconnect().update({ present: false }); } catch (e) {}
-      refs.player.on('value', function (snap) {
+      liveListen(ROOM + '/players/' + playerId, function (snap) {
         myPlayer = snap.val();
         renderScoreBox();
         renderFoot();
-      });
+      }, 1500);
       touchLastSeen();
     });
   }
@@ -649,29 +658,29 @@
       showJoinError('Couldn\u2019t connect to the game: ' + e.message);
       return;
     }
+    dbUrl = cfg.databaseURL || '';
     refs.players = db.ref(ROOM + '/players');
     refs.state = db.ref(ROOM + '/state');
     refs.question = db.ref(ROOM + '/question');
     refs.reveal = db.ref(ROOM + '/reveal');
     refs.settings = db.ref(ROOM + '/settings');
 
-    db.ref('.info/serverTimeOffset').on('value', function (snap) {
-      serverOffset = snap.val() || 0;
-    });
+    // .info/serverTimeOffset has no REST equivalent; keep it realtime-only.
+    try { db.ref('.info/serverTimeOffset').on('value', function (snap) { serverOffset = snap.val() || 0; }); } catch (e) {}
 
-    refs.state.on('value', function (snap) {
+    liveListen(ROOM + '/state', function (snap) {
       lastState = snap.val() || { phase: 'idle' };
       render();
-    });
-    refs.question.on('value', function (snap) {
+    }, 1500);
+    liveListen(ROOM + '/question', function (snap) {
       lastQuestion = snap.val();
       render();
-    });
-    refs.reveal.on('value', function (snap) {
+    }, 1500);
+    liveListen(ROOM + '/reveal', function (snap) {
       lastReveal = snap.val();
       render();
-    });
-    refs.settings.on('value', function (snap) {
+    }, 1500);
+    liveListen(ROOM + '/settings', function (snap) {
       lastSettings = snap.val() || {};
       var theme = lastSettings.theme || 'midnight-gold';
       if (document.documentElement.dataset.theme !== theme) {
@@ -680,12 +689,16 @@
       var wm = document.querySelector('.play-top .wordmark');
       if (wm) wm.textContent = (lastSettings.title || 'CAVE TRIVIA').toUpperCase();
       render();
-    });
+    }, 2500);
     // keep-alive: stay "active" on the TV's player count
     setInterval(touchLastSeen, 30000);
-    // watchdog: if Firebase goes quiet, show the reconnect pill
+    // watchdog: if Firebase goes quiet, show the reconnect pill.
+    // CT.poll.lastOkAt() tracks every successful receipt (realtime OR poll),
+    // so the pill stays hidden while polling is working.
     setInterval(function () {
-      if (playerId && Date.now() - lastMsgAt > 8000) $('#reconnect').hidden = false;
+      if (!playerId) return;
+      var lastOk = (window.CT && CT.poll && typeof CT.poll.lastOkAt === 'function' && CT.poll.lastOkAt()) || lastMsgAt;
+      $('#reconnect').hidden = (Date.now() - lastOk <= 8000);
     }, 2000);
 
     wireJoin();
@@ -704,11 +717,11 @@
     $('#statsBtn').addEventListener('click', openStats);
     $('#statsBackBtn').addEventListener('click', function () { setPhase(lastStatsPhase); });
     // live-update stats while viewing
-    db.ref(ROOM + '/playerStats/' + myStatsKey()).on('value', function (snap) {
+    liveListen(ROOM + '/playerStats/' + myStatsKey(), function (snap) {
       if (document.getElementById('p-stats').classList.contains('active')) {
         renderMyStats(snap.val());
       }
-    });
+    }, 3000);
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
       s.value = Math.floor(Number(s.max) / 2);
