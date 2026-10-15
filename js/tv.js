@@ -2425,19 +2425,27 @@
     refs.reveal = db.ref(ROOM + '/reveal');
     refs.stats = db.ref(ROOM + '/playerStats');
 
-    db.ref('.info/serverTimeOffset').on('value', function (snap) {
-      serverOffset = snap.val() || 0;
-    });
+    // Realtime reads with REST-polling fallback (js/poll.js): some networks
+    // block Firebase's websocket while the REST API still works.
+    var DBURL = cfg.databaseURL;
+    function liveListen(path, cb, pollMs) {
+      if (window.CT && CT.poll) return CT.poll.listen(db, path, cb, { databaseURL: DBURL, pollMs: pollMs });
+      db.ref(path).on('value', cb); // no fallback available; realtime only
+      return { stop: function () {} };
+    }
+    // .info/serverTimeOffset has no REST equivalent; keep it realtime-only.
+    // In polling mode serverOffset stays 0 and the local clock is used.
+    try { db.ref('.info/serverTimeOffset').on('value', function (snap) { serverOffset = snap.val() || 0; }); } catch (e) {}
 
-    refs.players.on('value', onPlayers);
-    refs.settings.on('value', onSettings);
-    refs.state.on('value', onState);
-    refs.question.on('value', onQuestion);
-    refs.reveal.on('value', onReveal);
-    refs.stats.on('value', function (snap) {
+    liveListen(ROOM + '/players', onPlayers, 1500);
+    liveListen(ROOM + '/settings', onSettings, 2500);
+    liveListen(ROOM + '/state', onState, 1000);
+    liveListen(ROOM + '/question', onQuestion, 1000);
+    liveListen(ROOM + '/reveal', onReveal, 1000);
+    liveListen(ROOM + '/playerStats', function (snap) {
       statsCache = snap.val() || {};
       renderStatsBoard();
-    });
+    }, 3000);
 
     // The TV is always the game runner — no election, no takeover.
     seedSettingsIfEmpty();
