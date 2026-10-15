@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """
 Bulk import TriviaQA into Cave Trivia format.
-Runs on GitHub Actions (has the bandwidth/RAM for 7GB of parquet).
+Runs on GitHub Actions.
 
 Output: web/data/tqa-*.json chunks (200 Qs each), categorized, NSFW-filtered.
+
+Memory-safe design: processes ONE shard at a time, writes chunks incrementally,
+and frees each shard's table before loading the next. A single bad shard is
+logged and skipped instead of killing the whole import.
 """
-import json, os, re, random, sys, hashlib
+import json, os, re, random, sys, hashlib, glob, gc
 from collections import Counter
 
 # ---- Config ----
@@ -65,117 +69,137 @@ def is_clean(question, answer):
     text = f"{question} {answer}"
     return not NSFW.search(text)
 
-def make_distractors(correct_answer, all_answers, n=3):
-    """Pick n wrong answers from the pool of all answers."""
-    pool = [a for a in all_answers if a.lower() != correct_answer.lower()
-            and len(a) < 60 and len(a) > 1]
-    random.shuffle(pool)
-    picked = []
-    seen = {correct_answer.lower()}
-    for a in pool:
-        if a.lower() not in seen:
-            picked.append(a)
-            seen.add(a.lower())
-        if len(picked) >= n:
-            break
-    # Pad if needed
-    while len(picked) < n:
-        picked.append(f"Option {len(picked)+1}")
-    return picked[:n]
+def extract_answer(ans):
+    """Pull the correct answer string out of TriviaQA's answer dict."""
+    if isinstance(ans, dict):
+        v = ans.get("normalized_value") or ans.get("value") or ""
+    else:
+        v = str(ans)
+    return v.strip()
 
-def process_shard(parquet_path, all_answers_pool):
-    """Process one parquet shard into question dicts."""
+def process_shard(parquet_path):
+    """Process one parquet shard into question dicts.
+
+    Reads only the columns we need, converts to plain dicts immediately,
+    and returns them. Caller is responsible for freeing memory.
+    """
     import pyarrow.parquet as pq
     table = pq.read_table(parquet_path, columns=["question", "answer", "question_source"])
     questions = []
-    for row in table.to_pylist():
-        q_text = row["question"].strip()
-        ans = row["answer"]
-        # answer is a dict with 'value' or normalized aliases
-        if isinstance(ans, dict):
-            correct = ans.get("normalized_value") or ans.get("value") or ""
-        else:
-            correct = str(ans)
-        correct = correct.strip()
-        source = row.get("question_source") or ""
+    try:
+        for row in table.to_pylist():
+            q_text = (row.get("question") or "").strip()
+            correct = extract_answer(row.get("answer"))
+            source = row.get("question_source") or ""
 
-        # Filters
-        if len(q_text) < 10 or len(q_text) > 300:
-            continue
-        if len(correct) < 1 or len(correct) > 80:
-            continue
-        if not is_clean(q_text, correct):
-            continue
+            # Filters
+            if len(q_text) < 10 or len(q_text) > 300:
+                continue
+            if len(correct) < 1 or len(correct) > 80:
+                continue
+            if not is_clean(q_text, correct):
+                continue
 
-        cat = classify(q_text, source)
+            cat = classify(q_text, source)
 
-        questions.append({
-            "id": f"tqa-{hashlib.md5(q_text.encode('utf-8')).hexdigest()[:10]}",
-            "category": cat,
-            "difficulty": random.choice(["easy", "medium", "hard"]),
-            "question": q_text,
-            "answerType": "text",
-            "answerText": correct,
-            "options": [],
-            "answer": 0,
-            "source": "triviaqa",
-        })
+            questions.append({
+                "id": f"tqa-{hashlib.md5(q_text.encode('utf-8')).hexdigest()[:10]}",
+                "category": cat,
+                "difficulty": random.choice(["easy", "medium", "hard"]),
+                "question": q_text,
+                "answerType": "text",
+                "answerText": correct,
+                "options": [],
+                "answer": 0,
+                "source": "triviaqa",
+            })
+    finally:
+        # Free the arrow table before returning; the caller holds only dicts.
+        del table
     return questions
 
+
+class ChunkWriter:
+    """Writes tqa-N.json chunks incrementally as questions arrive."""
+
+    def __init__(self, out_dir, chunk_size=CHUNK_SIZE):
+        self.out_dir = out_dir
+        self.chunk_size = chunk_size
+        self.buf = []
+        self.chunk_n = 0
+        self.total = 0
+        os.makedirs(out_dir, exist_ok=True)
+
+    def add(self, q):
+        self.buf.append(q)
+        self.total += 1
+        if len(self.buf) >= self.chunk_size:
+            self.flush()
+
+    def flush(self):
+        if not self.buf:
+            return
+        self.chunk_n += 1
+        fp = os.path.join(self.out_dir, f"tqa-{self.chunk_n}.json")
+        with open(fp, "w", encoding="utf-8") as f:
+            json.dump(self.buf, f, separators=(",", ":"))
+        print(f"  wrote {fp} ({len(self.buf)} Qs)", flush=True)
+        self.buf = []
+
+
 def main():
-    import glob
     random.seed(SEED)
-    os.makedirs(OUT_DIR, exist_ok=True)
 
     shards = sorted(glob.glob("tqa-*.parquet"))
     if not shards:
-        print("No parquet shards found!")
+        print("FATAL: no parquet shards found in cwd!", flush=True)
         sys.exit(1)
-    print(f"Found {len(shards)} shards")
+    print(f"Found {len(shards)} shards", flush=True)
 
-    # First pass: collect all answers for distractor pool (NSFW-filtered)
-    print("Building answer pool...")
-    import pyarrow.parquet as pq
-    all_answers = []
-    for sp in shards:
-        t = pq.read_table(sp, columns=["answer"])
-        for row in t.to_pylist():
-            ans = row["answer"]
-            if isinstance(ans, dict):
-                v = ans.get("normalized_value") or ans.get("value") or ""
-            else:
-                v = str(ans)
-            v = v.strip()
-            # NSFW filter applies to distractor pool too — a dirty answer
-            # must never appear even as a wrong option
-            if 1 < len(v) < 60 and is_clean("", v):
-                all_answers.append(v)
-    print(f"Answer pool: {len(all_answers)}")
+    writer = ChunkWriter(OUT_DIR)
+    seen = set()          # dedup keys (question text hashes) — small vs full dicts
+    cats = Counter()
+    failed_shards = []
 
-    # Second pass: process questions
-    all_qs = []
-    seen = set()
-    for sp in shards:
-        qs = process_shard(sp, all_answers)
+    for i, sp in enumerate(shards, 1):
+        try:
+            qs = process_shard(sp)
+        except Exception as e:
+            print(f"[{i}/{len(shards)}] {sp}: FAILED ({type(e).__name__}: {e}) — skipping shard",
+                  flush=True)
+            failed_shards.append(sp)
+            gc.collect()
+            continue
+
+        kept = 0
         for q in qs:
-            key = q["question"].lower().strip()
-            if key not in seen:
-                seen.add(key)
-                all_qs.append(q)
-        print(f"  {sp}: {len(qs)} -> total {len(all_qs)}")
+            # Dedup on md5 id (derived from question text) — cheaper than full text
+            if q["id"] in seen:
+                continue
+            seen.add(q["id"])
+            writer.add(q)
+            cats[q["category"]] += 1
+            kept += 1
 
-    # Write chunks
-    n_chunks = (len(all_qs) + CHUNK_SIZE - 1) // CHUNK_SIZE
-    for i in range(n_chunks):
-        chunk = all_qs[i*CHUNK_SIZE:(i+1)*CHUNK_SIZE]
-        fp = os.path.join(OUT_DIR, f"tqa-{i+1}.json")
-        with open(fp, "w") as f:
-            json.dump(chunk, f, separators=(",", ":"))
-    
-    # Category stats
-    cats = Counter(q["category"] for q in all_qs)
-    print(f"\nDone: {len(all_qs)} questions in {n_chunks} chunks")
-    print("Categories:", dict(cats.most_common()))
+        # Free shard dicts now; only `seen` ids and written chunks persist
+        del qs
+        gc.collect()
+        print(f"[{i}/{len(shards)}] {sp}: {kept} kept, {writer.total} total so far",
+              flush=True)
+
+    writer.flush()
+
+    print(f"\nDone: {writer.total} questions in {writer.chunk_n} chunks", flush=True)
+    print("Categories:", dict(cats.most_common()), flush=True)
+    if failed_shards:
+        print(f"WARNING: {len(failed_shards)} shard(s) failed and were skipped:",
+              flush=True)
+        for sp in failed_shards:
+            print(f"  - {sp}", flush=True)
+    if writer.total == 0:
+        print("FATAL: no questions written!", flush=True)
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
