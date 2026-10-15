@@ -111,7 +111,6 @@
     // site chrome
     railLeaderboard: 'Live leaderboard',
     railScan: 'Scan to join',
-    videoHint: 'Tap anywhere to enable video sound',
     podiumTitle: 'CHAMPIONS',
     podiumEyebrow: 'Block {n} final \u00B7 top of the block',
     footerNote: 'Cave Trivia \u00B7 free forever edition'
@@ -799,6 +798,9 @@
 
   function queueMoment(m) {
     // m: { cls, html, dur, sound }
+    // Jordan's rule: ANY popup/moment immediately stops attract mode.
+    // The moment REPLACES the attract card, never overlays it.
+    stopAttractLoop();
     momentQueue.push(m);
     pumpMoments();
   }
@@ -982,7 +984,17 @@
     // Jordan's rule: no players -> attract mode. We only get here between
     // questions, so the current question always finishes first. Fresh block
     // for whoever joins next.
-    if (activePlayerCount() === 0) {
+    // Fallback: if activePlayerCount is 0 but player records exist with names,
+    // treat as players present (handles lastSeen clock-skew issues).
+    var pCount = activePlayerCount();
+    if (pCount === 0) {
+      var hasNames = Object.keys(players).some(function (pid) {
+        var p = players[pid];
+        return p && p.name && p.present !== false;
+      });
+      if (hasNames) pCount = 1;
+    }
+    if (pCount === 0) {
       blockDealt = 0;
       writeState({ phase: 'idle', questionInBlock: 0, podium: null });
       return;
@@ -1556,7 +1568,7 @@
       catch (e) { html = '<div class="ar-eyebrow">Cave Trivia</div><div class="ar-big chrome-text">SCAN TO PLAY</div>'; }
       el.innerHTML = html;
       el.classList.remove('fade');
-      // teaser card flips to the answer after 4s
+      // teaser card flips to the answer after 6s (readable pace)
       if (card.teaser) {
         arTeaserTimer = setTimeout(function () {
           if (!arRunning) return;
@@ -1567,7 +1579,7 @@
             try { el.innerHTML = arTeaserAnswerHtml(qq); } catch (e) { /* keep question */ }
             el.classList.remove('fade');
           }, 450);
-        }, 4000);
+        }, 6000);
       }
     }, 450);
   }
@@ -1587,7 +1599,7 @@
       if (!arRunning) { stopAttractLoop(); return; }
       arIdx = (arIdx + 1) % AR_CARDS.length;
       arShow(arIdx);
-    }, 9000);
+    }, 12000);
   }
 
   function stopAttractLoop() {
@@ -2092,7 +2104,6 @@
     { group: 'Site chrome', keys: [
       { key: 'railLeaderboard', label: 'Leaderboard heading' },
       { key: 'railScan', label: 'Join prompt' },
-      { key: 'videoHint', label: 'Video sound hint' },
       { key: 'podiumTitle', label: 'Podium title' },
       { key: 'podiumEyebrow', label: 'Podium eyebrow', hint: '{n} = block number' },
       { key: 'footerNote', label: 'Footer text' }
@@ -2169,8 +2180,6 @@
     if (rs) rs.textContent = ct('railScan');
     var fn = $('#footerNote');
     if (fn) fn.innerHTML = ctHtml('footerNote');
-    var vh = $('#videoUnlockHint');
-    if (vh) vh.textContent = ct('videoHint');
     var pt = $('#podiumTitle');
     if (pt) pt.textContent = ct('podiumTitle');
   }
@@ -2455,6 +2464,22 @@
       if (lastStateDoc) tickTimers(false, lastStateDoc);
     }, 200);
 
+    // GAME START WATCHDOG (Jordan's rule: one person in, game is LIVE).
+    // If players are present but phase is stuck at 'idle', force the game
+    // to start. This catches the case where onPlayers fired but the
+    // kickstart timer was lost, or state is stale.
+    setInterval(function () {
+      try {
+        var st = lastStateDoc;
+        var phase = (st && st.phase) || 'idle';
+        if (phase === 'idle' && activePlayerCount() > 0 && momentIdle()) {
+          console.warn('[watchdog] players waiting in idle, forcing game start');
+          clearTimer();
+          advanceGame();
+        }
+      } catch (e) {}
+    }, 5000);
+
     tickClock();
     setInterval(tickClock, 10000);
     renderQr();
@@ -2476,21 +2501,6 @@
   // One-tap video unlock: browsers block autoplay with sound until user interacts.
   // Game autoruns regardless — this only unlocks video audio. First tap anywhere hides the hint.
   // (Browsers require a fresh gesture per page load, so the hint shows on every load until tapped.)
-  var videoUnlocked = false;
-  function paintVideoHint() {
-    var h = document.getElementById('videoUnlockHint');
-    if (h) h.hidden = videoUnlocked;
-  }
-  paintVideoHint();
-  var unlockVideo = function () {
-    videoUnlocked = true;
-    paintVideoHint();
-    document.removeEventListener('click', unlockVideo);
-    document.removeEventListener('touchstart', unlockVideo);
-  };
-  document.addEventListener('click', unlockVideo);
-  document.addEventListener('touchstart', unlockVideo);
-
   if (stored) boot(stored);
   else showSetup();
 })();
