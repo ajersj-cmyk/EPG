@@ -10,7 +10,7 @@
   var LETTERS = ['A', 'B', 'C', 'D'];
   var ROOM = 'rooms/cave';
 
-  var db = null;                 // firebase.database()
+  var db = null;                 // CT.rest.db() shim (pure REST, no SDK)
   var refs = {};                 // cached refs
   var bank = [];                 // question bank
   var players = {};              // local mirror of players node
@@ -382,12 +382,12 @@
     upd[base + '/bestStreak'] = bestStreak;
     upd[base + '/correct'] = (cur.correct || 0) + (correct ? 1 : 0);
     upd[base + '/answered'] = (cur.answered || 0) + 1;
-    upd[base + '/lastSeen'] = firebase.database.ServerValue.TIMESTAMP;
+    upd[base + '/lastSeen'] = CT.rest.ts();
   }
 
   function writeState(patch) {
     var base = {
-      updatedAt: firebase.database.ServerValue.TIMESTAMP,
+      updatedAt: CT.rest.ts(),
     };
     var full = {};
     Object.keys(base).forEach(function (k) { full[k] = base[k]; });
@@ -763,7 +763,7 @@
         answerType: q.answerType || 'choice',
         answerNumber: isNumQ ? numAnswer : null,
         closestDiff: isNumQ ? (closestDiff === Infinity ? null : closestDiff) : null,
-        ts: firebase.database.ServerValue.TIMESTAMP,
+        ts: CT.rest.ts(),
         isWager: cq.isWager,
         wagerUp: !!cq.isWagerUp,
         isLightning: !!cq.isLightning,
@@ -2425,20 +2425,16 @@
     refs.reveal = db.ref(ROOM + '/reveal');
     refs.stats = db.ref(ROOM + '/playerStats');
 
-    // Realtime reads with REST-polling fallback (js/poll.js): some networks
-    // block Firebase's websocket while the REST API still works.
+    // Pure REST polling reads (js/poll.js): no websockets, no Firebase SDK.
+    // Works on any network that can fetch https URLs.
     var DBURL = cfg.databaseURL;
     function liveListen(path, cb, pollMs) {
-      if (window.CT && CT.poll) return CT.poll.listen(db, path, cb, { databaseURL: DBURL, pollMs: pollMs });
-      db.ref(path).on('value', cb); // no fallback available; realtime only
-      return { stop: function () {} };
+      return CT.poll.listen(path, cb, { databaseURL: DBURL, pollMs: pollMs });
     }
-    // .info/serverTimeOffset has no REST equivalent; keep it realtime-only.
-    // In polling mode serverOffset stays 0 and the local clock is used.
-    try { db.ref('.info/serverTimeOffset').on('value', function (snap) { serverOffset = snap.val() || 0; }); } catch (e) {}
+    // No server clock in REST mode — serverNow() uses the local clock (serverOffset stays 0).
 
     liveListen(ROOM + '/players', onPlayers, 1500);
-    liveListen(ROOM + '/settings', onSettings, 2500);
+    liveListen(ROOM + '/settings', onSettings, 5000);
     liveListen(ROOM + '/state', onState, 1000);
     liveListen(ROOM + '/question', onQuestion, 1000);
     liveListen(ROOM + '/reveal', onReveal, 1000);
