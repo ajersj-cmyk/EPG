@@ -185,7 +185,7 @@
     var now = serverNow();
     return Object.keys(players).filter(function (pid) {
       var p = players[pid];
-      return p && p.present !== false && (now - (p.lastSeen || 0) < 3 * 60 * 1000);
+      return p && (now - (p.lastSeen || 0) < 3 * 60 * 1000);
     }).length;
   }
 
