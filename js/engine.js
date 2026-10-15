@@ -56,12 +56,20 @@
     parts.push('data/questions-pics.json');
     parts.push('data/questions-closest.json');
     return Promise.all(parts.map(function (u) {
+      // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {
-        if (!r.ok) throw new Error('question bank failed to load: ' + u);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
+      }).then(function (arr) {
+        return Array.isArray(arr) ? arr : [];
+      }).catch(function (e) {
+        console.warn('[bank] skipped ' + u + ': ' + (e && e.message));
+        return [];
       });
     })).then(function (chunks) {
-      return [].concat.apply([], chunks);
+      var all = [].concat.apply([], chunks);
+      if (!all.length) throw new Error('question bank is empty');
+      return all;
     });
   }
 

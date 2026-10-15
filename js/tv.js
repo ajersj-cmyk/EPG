@@ -147,7 +147,7 @@
       var st = lastStateDoc;
       var waiting = activePlayerCount() > 0;
       // Players waiting but no active game: (re)start it.
-      if (waiting && (!st || !st.phase || st.phase === 'idle')) {
+      if (waiting && (!st || !st.phase || st.phase === 'idle') && !currentQ && !pendingWagerQ && !imgChecking) {
         kickstartGame(2000);
         return;
       }
@@ -447,14 +447,70 @@
     return 'hard'; // Q8-Q9
   }
 
+  /* ---- bank readiness: retry the load instead of silently stalling ---- */
+  var bankLoading = null;
+  function bankReady() { return bank && bank.length > 0; }
+  function ensureBank() {
+    if (bankReady()) return Promise.resolve(bank);
+    if (bankLoading) return bankLoading;
+    bankLoading = E.loadBank().then(function (b) {
+      bank = b;
+      mergeCustomIntoBank();
+      return bank;
+    }).catch(function (e) {
+      console.warn('[bank] load failed, will retry: ' + (e && e.message));
+      return null;
+    }).then(function (b) { bankLoading = null; return b; });
+    return bankLoading;
+  }
+  // Shown in the attract card slot (never on top of it) while the bank loads.
+  function showLoadingCard() {
+    stopAttractLoop();
+    var ac = $('#arCard');
+    if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Get ready</div><div class="ar-big chrome-text">LOADING<br>QUESTIONS</div>';
+  }
+  var bankRetryTimer = null;
+  function waitForBankThenAdvance() {
+    showLoadingCard();
+    if (bankRetryTimer) return;
+    ensureBank().then(function () {
+      bankRetryTimer = setTimeout(function () {
+        bankRetryTimer = null;
+        if (bankReady()) advanceGame(); else waitForBankThenAdvance();
+      }, bankReady() ? 50 : 5000);
+    });
+  }
+
+  /* ---- picture questions: preload the image; a broken image = skip it ---- */
+  var imgOk = {};
+  var imgChecking = false;
+  var pendingImgQ = null;
+  function preloadImage(url, timeoutMs) {
+    return new Promise(function (resolve) {
+      var done = false;
+      var im = new Image();
+      var t = setTimeout(function () { finish(false); }, timeoutMs || 5000);
+      function finish(ok) { if (done) return; done = true; clearTimeout(t); im.onload = im.onerror = null; resolve(ok); }
+      im.onload = function () { finish(im.naturalWidth > 0); };
+      im.onerror = function () { finish(false); };
+      im.src = url;
+    });
+  }
+  function dropImageQuestions(url) {
+    bank = bank.filter(function (x) { return x.image !== url; });
+  }
+
   function dealQuestion() {
+    if (!bankReady()) return waitForBankThenAdvance();
+    if (imgChecking) return;
     var st = drawSettings();
     var qibPreview = blockDealt + 1; // what the next question-in-block will be
-    var drawn = E.drawQuestion({
+    var drawn = pendingImgQ ? { q: pendingImgQ, askedIds: askedIds, recentCats: recentCats } : E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
       disabledCats: st.disabledCats, familyMode: st.familyMode,
       difficulty: difficultyForQib(qibPreview),
     });
+    pendingImgQ = null;
     if (!drawn) {
       // Bank exhausted — reset asked history and try again (allows repeats after full cycle).
       askedIds = {};
@@ -467,6 +523,16 @@
     }
     var q = drawn.q;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
+    if (q.image && !imgOk[q.image]) {
+      imgChecking = true;
+      preloadImage(q.image, 5000).then(function (ok) {
+        imgChecking = false;
+        if (ok) { imgOk[q.image] = true; pendingImgQ = q; }
+        else { console.warn('[bank] skipping picture question, image failed: ' + q.image); dropImageQuestions(q.image); }
+        dealQuestion();
+      });
+      return;
+    }
     clearTimer();
     blockDealt += 1; // 1..9 — the 10th question of the block is the wager round
     round += 1;
@@ -494,6 +560,7 @@
   // first, players wager 0..their score, then the question drops.
   // Mid-block (Q3/Q6/Q9): "Wager Up" — same flow on a hard question, shorter window.
   function startWager(isWagerUp, qib) {
+    if (!bankReady()) return waitForBankThenAdvance();
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
@@ -794,6 +861,11 @@
   var momentBusy = false;
   var momentToken = 0; // invalidates pending moment timeouts after a cut
 
+  // After a pop-up clears, bring attract back only if nothing started meanwhile.
+  function resumeAttractIfIdle() {
+    var phase = (lastStateDoc && lastStateDoc.phase) || 'idle';
+    if (phase === 'idle' && !questionTimer && !arRunning) startAttractLoop();
+  }
   function momentIdle() { return !momentBusy && momentQueue.length === 0; }
 
   function queueMoment(m) {
@@ -814,6 +886,8 @@
     momentBusy = true;
     var tok = ++momentToken;
     ov.innerHTML = '<div class="moment-inner ' + (m.cls || '') + '">' + m.html + '</div>';
+    document.body.classList.add('moment-on');
+    stopAttractLoop();
     ov.hidden = false;
     ov.classList.remove('show');
     void ov.offsetWidth;
@@ -827,6 +901,7 @@
         ov.hidden = true;
         ov.innerHTML = '';
         momentBusy = false;
+        if (!momentQueue.length) { document.body.classList.remove('moment-on'); resumeAttractIfIdle(); }
         pumpMoments();
       }, 320);
     }, m.dur || 2600);
@@ -839,6 +914,7 @@
     momentBusy = false;
     var ov = $('#momentOverlay');
     if (ov) { ov.classList.remove('show'); ov.hidden = true; ov.innerHTML = ''; }
+    document.body.classList.remove('moment-on');
   }
 
   function escName(n) { return E.escapeHtml(String(n || 'Player').slice(0, 24)); }
@@ -1207,6 +1283,7 @@
       var el = document.getElementById('phase-' + p);
       if (el) el.classList.toggle('active', p === name);
     });
+    document.body.classList.toggle('in-attract', name === 'idle');
   }
 
   function sweepStreak() {
@@ -1735,6 +1812,7 @@
       if (q.image) {
         media.hidden = false;
         media.classList.add('bleed');
+        img.onerror = function () { img.removeAttribute('src'); media.hidden = true; media.classList.remove('bleed'); };
         img.src = q.image;
       } else if (q.video && q.video.youtubeId) {
         media.hidden = false;
@@ -2476,7 +2554,7 @@
       try {
         var st = lastStateDoc;
         var phase = (st && st.phase) || 'idle';
-        if (phase === 'idle' && activePlayerCount() > 0 && momentIdle()) {
+        if (phase === 'idle' && activePlayerCount() > 0 && momentIdle() && !currentQ && !pendingWagerQ && !imgChecking && !questionTimer) {
           console.warn('[watchdog] players waiting in idle, forcing game start');
           clearTimer();
           advanceGame();
@@ -2490,9 +2568,8 @@
     setPhase('idle');
     renderIdle();
 
-    E.loadBank().then(function (b) {
-      bank = b;
-      mergeCustomIntoBank();
+    ensureBank().then(function (b) {
+      if (!b) throw new Error('empty');
     }).catch(function () {
       var ac = $('#arCard');
       if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Error</div><div class="ar-big">QUESTION BANK<br>FAILED TO LOAD</div>';
