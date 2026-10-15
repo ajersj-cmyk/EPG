@@ -57,15 +57,15 @@
   }
 
   var db = null;
-  var app = null;
 
-  // Initialize the Firebase compat SDK. Returns firebase.database() or throws.
+  // Validate the config and return a REST database handle (js/poll.js).
+  // No Firebase SDK is used — all data access goes through the Firebase
+  // REST API via fetch, which works on networks that block websockets.
   function init(cfg) {
     if (db) return db;
-    if (!window.firebase) throw new Error('Firebase SDK failed to load (check network).');
     if (!isValid(cfg)) throw new Error('Invalid Firebase config.');
-    app = firebase.initializeApp(cfg);
-    db = firebase.database();
+    if (!window.CT || !CT.rest) throw new Error('REST layer (js/poll.js) failed to load.');
+    db = CT.rest.db(cfg.databaseURL);
     return db;
   }
 
