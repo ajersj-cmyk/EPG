@@ -17,7 +17,7 @@
   var BASE_POINTS = 100;        // flat 100 per question
   var SPEED_BONUS_MAX = 100;
   var VIDEO_DRAW_CHANCE = 0.12;
-  var PIC_DRAW_CHANCE = 0.30;   // picture questions (q.pic): ~1 in 3-4 overall
+  var PIC_DRAW_CHANCE = 0.26;   // picture questions (q.pic): ~1 in 3-4 overall
   var LIGHTNING_SECONDS = 10;   // lightning round timer (every 4th block, Q1-Q5)
   var LIGHTNING_POINTS = 200;   // lightning round base points (double)
   var LIGHTNING_BLOCK_EVERY = 4;
