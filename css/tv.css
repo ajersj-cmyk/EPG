@@ -1906,3 +1906,8 @@ body.in-attract .moment-overlay { background: rgba(6, 5, 3, 0.94); }
 #phase-question .q-media.bleed ~ .q-inner .q-options { grid-template-columns: 1fr; }
 /* connection badge sits in the empty middle of the header, clear of the footer controls */
 .connmode{right:auto;bottom:auto;top:6px;left:50%;transform:translateX(-50%)}
+
+/* long game names: shrink to fit the header, never overflow */
+.tv-top .wordmark span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 52vw; display: inline-block; vertical-align: bottom; }
+.tv-top .wordmark span.t-long { letter-spacing: 0.24em; text-indent: 0; font-size: 0.9em; }
+.tv-top .wordmark span.t-xlong { letter-spacing: 0.12em; font-size: 0.78em; }

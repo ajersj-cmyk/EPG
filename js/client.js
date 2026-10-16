@@ -684,7 +684,9 @@
         document.documentElement.dataset.theme = theme;
       }
       var wm = document.querySelector('.play-top .wordmark');
-      if (wm) wm.textContent = (lastSettings.title || 'CAVE TRIVIA').toUpperCase();
+      var gt = lastSettings.title && lastSettings.title.toUpperCase() !== 'CAVE TRIVIA' ? lastSettings.title : 'AHLERS ARCADE TRIVIA';
+      if (wm) wm.textContent = gt.toUpperCase();
+      document.title = 'Play — ' + gt.toUpperCase();
       render();
     }, 5000);
     // keep-alive: stay "active" on the TV's player count

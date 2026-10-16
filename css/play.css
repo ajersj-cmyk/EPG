@@ -754,3 +754,5 @@ html, body { min-height: 100%; }
 /* hard cut between phone screens: no two screens stacked mid-fade */
 .play-stage .phase{transition:none}
 .play-stage .phase:not(.active){visibility:hidden}
+
+.play-top .wordmark { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 70vw; letter-spacing: .12em; }
