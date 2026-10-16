@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Starting window on Android 7-11 (12+ uses the system splash with the adaptive icon). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+    <item android:drawable="@color/arcade_splash" />
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/logo_wordmark" />
+    </item>
+</layer-list>
