@@ -191,3 +191,4 @@ body.look-blue .look-row .settings-label { color: #dfe6f3; }
 /* Hard cut between phases: no two full panels stacked mid-fade (cheaper on the onn boxes too). */
 body[class*="look-"] .phase { transition: none; transform: none; }
 body[class*="look-"] .phase:not(.active) { visibility: hidden; }
+.q-round:empty { display: none; }

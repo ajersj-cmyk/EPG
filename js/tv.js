@@ -1861,8 +1861,8 @@
       : 'Final wager &middot; question 10 of 10';
     $('#wagerTitle').innerHTML = isUp ? 'WAGER<br>UP' : 'FINAL<br>WAGER';
     $('#wagerHint').innerHTML = isUp
-      ? 'Hard question &mdash; risk it all on your phone, <b>now</b>'
-      : 'Wager <b>0</b> up to your whole score &mdash; on your phone, now';
+      ? 'Hard one. Bet it on your phone.'
+      : 'Bet up to your score. On your phone.';
     $('#wagerCat').textContent = E.fmtCategory(st.wagerCategory) || 'MYSTERY';
     // players who placed any wager (0 = pass counts as placed)
     var n = Object.keys(players).filter(function (pid) { return players[pid].wagerPlaced; }).length;
@@ -2001,7 +2001,7 @@
     if (isNumR) {
       var winners = (r.results || []).filter(function (x) { return x.correct; });
       var wnames = winners.slice(0, 3).map(function (x) { return E.escapeHtml(x.name); }).join(', ');
-      note = '<b>Closest wins</b> &mdash; ' + E.fmtNum(r.answerNumber) +
+      note = '<b>Closest wins</b> &middot; ' + E.fmtNum(r.answerNumber) +
         (wnames ? ' &nbsp;<span style="color:var(--gold)">&#9733; ' + wnames + '</span>' : '');
     } else {
       note = '<span class="answer-hero">' + E.escapeHtml(r.correctText || '') + '</span>' +
