@@ -158,7 +158,7 @@
         return;
       }
       var stuckMs = Date.now() - lastPhaseChangeTs;
-      var now = serverNow();
+      var now = Date.now() // deadlines are stamped with this TV's clock;
       if (st.phase === 'question' && st.deadlineTs && now > st.deadlineTs + 15000 && stuckMs > 20000) {
         console.warn('[watchdog] question stuck, forcing reveal');
         revealQuestion();
@@ -338,7 +338,9 @@
     // Clear it so we never resume a dead question — start fresh instead.
     refs.state.once('value').then(function (snap) {
       var st = snap.val();
-      var stale = st && st.phase && st.phase !== 'idle' && st.deadlineTs && (Date.now() - st.deadlineTs > 10000);
+      // Covers question/reveal (deadlineTs), wager (wagerDeadlineTs) and podium (no deadline).
+      var dl = st ? (st.deadlineTs || st.wagerDeadlineTs || 0) : 0;
+      var stale = st && st.phase && st.phase !== 'idle' && (Date.now() - dl > 10000);
       if (stale) {
         console.warn('[runner] clearing stale state from previous session');
         return Promise.all([refs.state.remove(), refs.question.remove(), refs.reveal.remove()]).catch(function () {});
@@ -2111,7 +2113,7 @@
 
   function timeLeftMs(deadlineTs) {
     if (!deadlineTs) return 0;
-    return Math.max(0, deadlineTs - serverNow());
+    return Math.max(0, deadlineTs - Date.now());
   }
 
   function tickTimers(force, st) {
@@ -2610,7 +2612,21 @@
     function liveListen(path, cb, pollMs) {
       return CT.poll.listen(path, cb, { databaseURL: DBURL, pollMs: pollMs });
     }
-    // No server clock in REST mode — serverNow() uses the local clock (serverOffset stays 0).
+    // REST has no .info/serverTimeOffset, so measure it: write a server timestamp and read it back.
+    // Phones stamp lastSeen with server time, so a TV clock that is minutes off would
+    // otherwise count everyone as gone.
+    function syncServerClock() {
+      var t0 = Date.now();
+      fetch(DBURL.replace(/\/$/, '') + '/' + ROOM + '/tvClock.json', {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: '{".sv":"timestamp"}'
+      }).then(function (r) { return r.ok ? r.json() : null; }).then(function (ts) {
+        if (typeof ts !== 'number') return;
+        var t1 = Date.now();
+        if (t1 - t0 < 5000) serverOffset = ts - (t0 + t1) / 2;
+      }).catch(function () {});
+    }
+    syncServerClock();
+    setInterval(syncServerClock, 10 * 60 * 1000);
 
     liveListen(ROOM + '/players', onPlayers, 1500);
     liveListen(ROOM + '/settings', onSettings, 5000);
