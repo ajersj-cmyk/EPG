@@ -1302,6 +1302,57 @@
     else if (phase === 'podium') sFanfare();
   }
 
+  // Pick a size class by length so short questions read big and long ones never overflow.
+  function fitText(el) {
+    if (!el) return;
+    var n = (el.textContent || '').length;
+    el.classList.remove('fit-s', 'fit-m', 'fit-l', 'fit-xl');
+    el.classList.add(n <= 50 ? 'fit-s' : n <= 95 ? 'fit-m' : n <= 170 ? 'fit-l' : 'fit-xl');
+  }
+
+  // ---- Look (Arcade Cyan default / Millionaire Blue), saved on this TV ----
+  var LOOKS = ['look-cyan', 'look-blue'];
+  function applyLook(look) {
+    if (LOOKS.indexOf(look) < 0) look = 'look-cyan';
+    LOOKS.forEach(function (c) { document.body.classList.toggle(c, c === look); });
+    try { localStorage.setItem('ct-look', look); } catch (e) {}
+    var bs = document.querySelectorAll('.look-btn');
+    for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('active', bs[i].getAttribute('data-look') === look);
+  }
+  (function initLook() {
+    var saved = null;
+    try { saved = localStorage.getItem('ct-look'); } catch (e) {}
+    applyLook(saved || 'look-cyan');
+    var bs = document.querySelectorAll('.look-btn');
+    for (var i = 0; i < bs.length; i++) bs[i].addEventListener('click', function () { applyLook(this.getAttribute('data-look')); });
+  })();
+
+  // ---- D-pad navigation: arrows move focus to the nearest button in that direction ----
+  document.addEventListener('keydown', function (e) {
+    var dir = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[e.key];
+    if (!dir) return;
+    var t = document.activeElement;
+    if (t && (t.tagName === 'INPUT' && t.type !== 'checkbox' && t.type !== 'radio' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+    var ov = document.getElementById('settingsOverlay');
+    var scope = (ov && !ov.hidden) ? ov : document;
+    var els = Array.prototype.filter.call(scope.querySelectorAll('button, input, select, [tabindex]:not([tabindex="-1"])'), function (el) {
+      return !el.disabled && el.offsetParent !== null;
+    });
+    if (!els.length) return;
+    e.preventDefault();
+    if (!t || els.indexOf(t) < 0) { (scope === document ? (document.getElementById('btnSettings') || els[0]) : els[0]).focus(); return; }
+    var a = t.getBoundingClientRect(), ax = a.left + a.width / 2, ay = a.top + a.height / 2, best = null, bestD = 1e9;
+    els.forEach(function (el) {
+      if (el === t) return;
+      var b = el.getBoundingClientRect(), dx = b.left + b.width / 2 - ax, dy = b.top + b.height / 2 - ay;
+      var along = dx * dir[0] + dy * dir[1];
+      if (along <= 4) return;
+      var d = along + 2.5 * Math.abs(dx * dir[1] + dy * dir[0]);
+      if (d < bestD) { bestD = d; best = el; }
+    });
+    if (best) { best.focus(); if (best.scrollIntoView) best.scrollIntoView({ block: 'nearest' }); }
+  });
+
   function buildOptions(container, options, correctIndex, revealed) {
     container.innerHTML = '';
     options.forEach(function (text, i) {
@@ -1833,6 +1884,7 @@
       qTextEl.classList.remove('q-long', 'q-xlong');
       if (qlen > 280) qTextEl.classList.add('q-xlong');
       else if (qlen > 150) qTextEl.classList.add('q-long');
+      fitText(qTextEl);
       if (q.answerType === 'text') {
         var box = $('#qOptions');
         box.innerHTML = '<div class="q-text-hint">TYPE YOUR ANSWER ON YOUR PHONE</div>';
@@ -1902,7 +1954,7 @@
     var qd = lastQuestionDoc || {};
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
-    $('#rText').textContent = qd.text || '';
+    $('#rText').textContent = qd.text || ''; fitText($('#rText'));
     // options shown dimmed, correct answer NOT highlighted yet
     if (r.answerType === 'text') {
       $('#rOptions').innerHTML = '<div class="q-text-hint">ANSWER</div>';
@@ -1920,7 +1972,7 @@
     var qd = lastQuestionDoc || {};
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
-    $('#rText').textContent = qd.text || '';
+    $('#rText').textContent = qd.text || ''; fitText($('#rText'));
     var isNumR = r.answerType === 'number';
     if (isNumR) {
       $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">ANSWER</span>' +

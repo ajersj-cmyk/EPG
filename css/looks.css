@@ -1,0 +1,173 @@
+/* ==================================================================
+   LOOKS: centered, embossed broadcast style across the whole TV.
+   body.look-cyan (default, "Arcade Cyan") | body.look-blue ("Millionaire Blue")
+   Static only: layered text-shadows, borders and gradients. No filters, no animation.
+   ================================================================== */
+body.look-cyan {
+  --lk-frame: #29e6ff; --lk-frame-dark: #04343d;
+  --lk-fill: linear-gradient(180deg, #0d1018 0%, #06070c 100%);
+  --lk-panel-shadow: 0 0 0 2px #04343d, 0 0 18px rgba(41,230,255,0.45), inset 0 0 30px rgba(41,230,255,0.16);
+  --lk-accent: #29e6ff; --lk-accent-ink: #04161a;
+  --lk-hot: #ff2fb9; --lk-hot-ink: #fff;
+  --lk-stroke: 0.08em; --lk-stroke-sm: 0.05em; --lk-stroke-color: #29e6ff;
+  --lk-emboss: 0 -1px 0 rgba(255,255,255,0.7), 0 3px 0 #0a5560, 0 5px 0 #063038, 0 0 12px rgba(41,230,255,0.5);
+  --lk-emboss-sm: 0 -1px 0 rgba(255,255,255,0.5), 0 2px 0 #0a5560, 0 3px 3px rgba(0,0,0,0.7);
+  --lk-tile-edge: #29e6ff; --lk-tile-fill: linear-gradient(180deg, #171c2b, #0a0d16);
+  --lk-letter-bg: #29e6ff; --lk-letter-fg: #04161a;
+  --lk-bar: #29e6ff; --lk-bar-bg: #0b1a1f; --lk-secs: #29e6ff;
+  --lk-correct-fill: linear-gradient(180deg, #0f5a3a, #08321f); --lk-correct-edge: #3dff9e;
+}
+body.look-blue {
+  --lk-frame: #c9d3e6; --lk-frame-dark: #4a5873;
+  --lk-fill: radial-gradient(120% 80% at 50% 30%, #13306e 0%, #0a1a40 55%, #050c22 100%);
+  --lk-panel-shadow: 0 0 0 2px #c9d3e6, 0 0 0 5px #4a5873, 0 0 0 7px #e9eef7, inset 0 0 40px rgba(110,170,255,0.25), inset 0 2px 0 rgba(255,255,255,0.18);
+  --lk-accent: #dfe6f3; --lk-accent-ink: #0a1a40;
+  --lk-hot: #e8b84a; --lk-hot-ink: #2a1a00;
+  --lk-stroke: 0; --lk-stroke-sm: 0; --lk-stroke-color: transparent;
+  --lk-emboss: 0 -1px 0 rgba(255,255,255,0.55), 0 1px 0 #9fb3d9, 0 2px 0 #6f83ad, 0 3px 0 #4b5d86, 0 4px 0 #2c3a5e, 0 7px 10px rgba(0,0,0,0.7);
+  --lk-emboss-sm: 0 -1px 0 rgba(255,255,255,0.4), 0 2px 0 #23345c, 0 3px 4px rgba(0,0,0,0.6);
+  --lk-tile-edge: linear-gradient(180deg, #e9eef7, #9aa7bf); --lk-tile-fill: linear-gradient(180deg, #183a80 0%, #0b1d48 55%, #08163a 100%);
+  --lk-letter-bg: transparent; --lk-letter-fg: #f6c544;
+  --lk-bar: linear-gradient(180deg, #9fd0ff, #3a7be0); --lk-bar-bg: #081433; --lk-secs: #fff;
+  --lk-correct-fill: linear-gradient(180deg, #1f8a4c, #0e4d2a); --lk-correct-edge: #e9eef7;
+}
+
+/* ---------- framed panels ---------- */
+body[class*="look-"] #phase-question .q-inner,
+body[class*="look-"] #phase-reveal .q-inner,
+body[class*="look-"] .ar-card,
+body[class*="look-"] .wager-inner,
+body[class*="look-"] .podium-inner {
+  background: var(--lk-fill);
+  border: 3px solid var(--lk-frame);
+  border-radius: 1.4vmin;
+  box-shadow: var(--lk-panel-shadow);
+  text-align: center;
+}
+body.look-blue #phase-question .q-inner, body.look-blue #phase-reveal .q-inner,
+body.look-blue .ar-card, body.look-blue .wager-inner, body.look-blue .podium-inner { border-color: transparent; background-clip: padding-box; }
+body[class*="look-"] .rail-card { background: var(--lk-fill); border: 2px solid var(--lk-frame-dark); box-shadow: none; }
+
+/* ---------- centered layout ---------- */
+body[class*="look-"] #phase-question .q-inner,
+body[class*="look-"] #phase-reveal .q-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+body[class*="look-"] .q-eyebrow { justify-content: center; width: 100%; gap: 1.4vmin; }
+body[class*="look-"] .q-eyebrow::after { display: none; }
+body[class*="look-"] .q-options, body[class*="look-"] .q-foot, body[class*="look-"] .results,
+body[class*="look-"] .reveal-note { width: 100%; }
+body[class*="look-"] .reveal-note { text-align: center; }
+
+/* ---------- embossed display text ---------- */
+body[class*="look-"] .q-text,
+body[class*="look-"] .ar-big, body[class*="look-"] .ar-question,
+body[class*="look-"] .moment-name, body[class*="look-"] .moment-line,
+body[class*="look-"] .wager-title, body[class*="look-"] .podium-title,
+body[class*="look-"] .answer-hero, body[class*="look-"] .chrome-text {
+  font-family: "Archivo Black", var(--sans); font-weight: 400;
+  color: #fff; -webkit-text-fill-color: #fff; background: none;
+  -webkit-text-stroke: var(--lk-stroke) var(--lk-stroke-color); paint-order: stroke fill;
+  text-shadow: var(--lk-emboss);
+  text-align: center; text-wrap: balance; letter-spacing: 0.01em; line-height: 1.1;
+}
+body[class*="look-"] .moment-name, body[class*="look-"] .wager-title,
+body[class*="look-"] .podium-title { -webkit-text-stroke-width: var(--lk-stroke); }
+body[class*="look-"] .ar-question, body[class*="look-"] .moment-line,
+body[class*="look-"] .answer-hero { -webkit-text-stroke-width: var(--lk-stroke-sm); }
+
+/* small labels: condensed, tracked, no stroke */
+body[class*="look-"] .q-cat, body[class*="look-"] .q-diff,
+body[class*="look-"] .ar-eyebrow, body[class*="look-"] .moment-kicker,
+body[class*="look-"] .eyebrow, body[class*="look-"] .rail-board h3, body[class*="look-"] .qr-scan,
+body[class*="look-"] .wager-badge, body[class*="look-"] .lightning-badge-tv,
+body[class*="look-"] .ar-cta-line, body[class*="look-"] .wager-cat span, body[class*="look-"] .hint-kicker {
+  font-family: "Oswald", var(--sans); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+}
+body[class*="look-"] .moment-kicker, body[class*="look-"] .ar-eyebrow, body[class*="look-"] .eyebrow,
+body[class*="look-"] .rail-board h3, body[class*="look-"] .qr-scan { color: var(--lk-accent); text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .q-cat { color: var(--lk-accent); border: 2px solid var(--lk-accent); padding: 0.3em 1em; border-radius: 0.3em; background: transparent; }
+body.look-blue .q-cat { background: linear-gradient(180deg, #e9eef7, #9aa7bf); color: #0a1a40; border-color: #e9eef7; }
+body[class*="look-"] .q-cat::before { display: none; }
+body[class*="look-"] .q-diff, body[class*="look-"] .wager-badge, body[class*="look-"] .lightning-badge-tv {
+  background: var(--lk-hot); color: var(--lk-hot-ink); border: 0; padding: 0.3em 0.9em; border-radius: 0.3em; box-shadow: none;
+}
+body[class*="look-"] .wager-cat b { font-family: "Archivo Black", var(--sans); font-weight: 400; color: #fff; text-shadow: var(--lk-emboss-sm); }
+
+/* question text sizes, picked by length when each question loads */
+body[class*="look-"] .q-text { max-width: 30ch; margin: 1.2vmin auto 2.4vmin; }
+body[class*="look-"] .q-text.fit-s  { font-size: 6.2vmin; }
+body[class*="look-"] .q-text.fit-m  { font-size: 5.1vmin; }
+body[class*="look-"] .q-text.fit-l  { font-size: 4.2vmin; }
+body[class*="look-"] .q-text.fit-xl { font-size: 3.5vmin; max-width: 38ch; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text { max-width: 22ch; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.fit-s { font-size: 5.2vmin; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.fit-m { font-size: 4.4vmin; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.fit-l,
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.fit-xl { font-size: 3.6vmin; }
+body[class*="look-"] #phase-question .q-media.bleed { border: 3px solid var(--lk-frame); }
+
+/* ---------- Millionaire lozenge answer tiles ---------- */
+body[class*="look-"] .q-options { gap: 1.6vmin 3vmin; }
+body[class*="look-"] .q-opt {
+  position: relative; display: flex; align-items: center; justify-content: flex-start;
+  min-height: 7.4vmin; padding: 3px 5vmin 3px 5.4vmin; border: 0; border-radius: 0; box-shadow: none;
+  background: var(--lk-tile-edge);
+  clip-path: polygon(3.2vmin 0, calc(100% - 3.2vmin) 0, 100% 50%, calc(100% - 3.2vmin) 100%, 3.2vmin 100%, 0 50%);
+}
+body[class*="look-"] .q-opt::before {
+  content: ""; position: absolute; inset: 3px; z-index: 0; background: var(--lk-tile-fill);
+  clip-path: polygon(3vmin 0, calc(100% - 3vmin) 0, 100% 50%, calc(100% - 3vmin) 100%, 3vmin 100%, 0 50%);
+}
+body[class*="look-"] .q-opt > * { position: relative; z-index: 1; }
+body[class*="look-"] .q-opt > span:last-child {
+  font-family: "Archivo Black", var(--sans); font-weight: 400; font-size: 2.8vmin; color: #fff; text-shadow: var(--lk-emboss-sm); text-align: left;
+}
+/* badge sits fully inside the straight part of the tile (no clipping on the slant) */
+body[class*="look-"] .q-opt .letter {
+  flex: 0 0 auto; width: 4.6vmin; height: 4.6vmin; margin-right: 1.8vmin; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: "Oswald", var(--sans); font-weight: 700; font-size: 2.6vmin;
+  background: var(--lk-letter-bg); color: var(--lk-letter-fg); border: 0; box-shadow: none; text-shadow: none;
+}
+body.look-blue .q-opt .letter { font-size: 3.2vmin; text-shadow: 0 2px 0 #6a4a00; }
+body[class*="look-"] .q-opt.correct { background: var(--lk-correct-edge); }
+body[class*="look-"] .q-opt.correct::before { background: var(--lk-correct-fill); }
+body[class*="look-"] .q-opt.dim { opacity: 0.25; }
+
+/* ---------- timer + scores ---------- */
+body[class*="look-"] .q-timerbar { height: 1.6vmin; background: var(--lk-bar-bg); border: 2px solid var(--lk-frame); border-radius: 1vmin; }
+body[class*="look-"] .q-timerbar i { background: var(--lk-bar); box-shadow: none; }
+body.look-cyan .q-timerbar.low i { background: #ff2fb9; }
+body.look-blue .q-timerbar.low i { background: linear-gradient(180deg, #ff9a7a, #d8432a); }
+body[class*="look-"] .q-secs, body[class*="look-"] .wager-secs { font-family: "Oswald", var(--sans); font-weight: 700; color: var(--lk-secs); text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .board .nm, body[class*="look-"] .results .nm { font-family: "Archivo Black", var(--sans); font-weight: 400; color: #fff; text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .board .sc, body[class*="look-"] .board .rank,
+body[class*="look-"] .p-score, body[class*="look-"] .p-block { font-family: "Oswald", var(--sans); font-weight: 700; color: var(--lk-accent); text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .p-name { font-family: "Archivo Black", var(--sans); font-weight: 400; color: #fff; text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .podium-step { border-color: var(--lk-frame); }
+
+/* ---------- pop-ups ---------- */
+body[class*="look-"] .moment-inner { text-align: center; }
+body.in-attract[class*="look-"] .moment-overlay { background: rgba(4, 6, 10, 0.94); }
+
+/* ---------- theme picker in Settings ---------- */
+.look-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+.look-btn { font: 700 1rem "Oswald", var(--sans); letter-spacing: 0.12em; text-transform: uppercase; padding: 0.9rem 1.4rem; border-radius: 0.5rem; cursor: pointer; color: #fff; border: 3px solid #29e6ff; background: #0a0d16; }
+.look-btn[data-look="look-blue"] { border-color: #c9d3e6; background: linear-gradient(180deg, #13306e, #0a1a40); }
+.look-btn.active { outline: 3px solid #fff; outline-offset: 3px; }
+/* visible D-pad focus everywhere on the TV */
+body[class*="look-"] button:focus-visible, body[class*="look-"] .look-btn:focus, body[class*="look-"] .btn:focus,
+body[class*="look-"] [tabindex]:focus { outline: 3px solid #fff; outline-offset: 3px; }
+
+/* ---------- chrome follows the look ---------- */
+body[class*="look-"] .wordmark > span {
+  font-family: "Archivo Black", var(--sans); font-weight: 400; color: #fff; -webkit-text-fill-color: #fff; background: none;
+  -webkit-text-stroke: var(--lk-stroke-sm) var(--lk-stroke-color); paint-order: stroke fill; text-shadow: var(--lk-emboss-sm);
+}
+body[class*="look-"] .pips i.done { background: var(--lk-frame-dark); }
+body[class*="look-"] .pips i.now { background: var(--lk-accent); box-shadow: none; }
+body[class*="look-"] .board li:nth-child(1) { background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); border-left-color: var(--lk-accent); }
+body[class*="look-"] .board li:nth-child(1) .rank { color: var(--lk-accent); }
+body[class*="look-"] .tv-clock, body[class*="look-"] .tv-players b { color: #fff; }
+body.look-blue .pips i.now, body.look-blue .board li:nth-child(1) .rank { color: #f6c544; }
+body.look-blue .pips i.now { background: #f6c544; }
+body[class*="look-"] .wordmark small { color: var(--lk-accent); }

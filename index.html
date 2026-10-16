@@ -6,9 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cave Trivia</title>
 <link rel="stylesheet" href="css/common.css?v=202610151340">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tv.css?v=202610151340">
+<link rel="stylesheet" href="css/looks.css">
 </head>
-<body>
+<body class="look-cyan">
 <div class="connmode" id="connMode" hidden>LIVE</div>
 <div class="ambient"></div>
 <div class="vignette"></div>
@@ -140,6 +142,13 @@
     <div class="settings-head">
       <span class="eyebrow">Game Settings</span>
       <button class="btn ghost" id="btnSettingsClose">&#10005;</button>
+    </div>
+    <div class="settings-row look-row">
+      <div class="settings-label">Look (this TV)</div>
+      <div class="look-grid">
+        <button class="look-btn" data-look="look-cyan">Arcade Cyan</button>
+        <button class="look-btn" data-look="look-blue">Millionaire Blue</button>
+      </div>
     </div>
     <div class="settings-body">
       <section>

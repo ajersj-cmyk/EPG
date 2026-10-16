@@ -1,0 +1,3 @@
+/* Bundled locally (latin subsets, SIL Open Font License): no network font loads on the TV. */
+@font-face { font-family: "Oswald"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/oswald-latin.woff2") format("woff2"); }
+@font-face { font-family: "Archivo Black"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/archivo-black-latin.woff2") format("woff2"); }
