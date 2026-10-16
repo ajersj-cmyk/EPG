@@ -626,8 +626,7 @@
     var wagers = {};
     Object.keys(players).forEach(function (pid) {
       // optional wager, capped at the player's current score (never forced, never negative)
-      var w = Math.floor(Number(players[pid].wager) || 0);
-      w = Math.max(0, Math.min(w, Math.floor(players[pid].score || 0)));
+      var w = E.roundWager(players[pid].wager, players[pid].score);
       if (w > 0) wagers[pid] = w;
     });
     currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: true, isWagerUp: isWagerUp, wagers: wagers };
@@ -727,7 +726,7 @@
       }
       var r;
       if (isNumQ && scoreArgs._closestWin) {
-        r = { correct: true, points: 150 + (wager > 0 ? wager : 0) };
+        r = { correct: true, points: E.CLOSEST_CASH + (wager > 0 ? wager : 0), speed: 0 };
       } else if (isNumQ) {
         r = { correct: false, points: 0 };
       } else {
@@ -786,7 +785,7 @@
       var resEntry = {
         pid: pid, name: p.name,
         delta: newScore - (p.score || 0),
-        wager: wager, correct: r.correct,
+        wager: wager, correct: r.correct, speed: r.speed || 0,
       };
       if (isNumQ && numGuesses[pid]) {
         resEntry.guess = numGuesses[pid].guess;
@@ -977,7 +976,7 @@
       cls: 'wagerbeat', dur: 2400, sound: sRiskBeat,
       html: '<div class="moment-kicker">' + E.escapeHtml(ct('wagerBeatKicker')) + '</div>' +
         '<div class="moment-name">' + label + '</div>' +
-        '<div class="moment-line chrome-text">Risked ' + E.fmtNum(amt) + '</div>'
+        '<div class="moment-line chrome-text">Risked ' + E.fmtCash(amt) + '</div>'
     };
   }
 
@@ -1013,14 +1012,14 @@
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('celebrationKicker')) + '</div>' +
         '<div class="moment-tier">' + E.escapeHtml(tierName) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
-        '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>' +
+        '<div class="moment-line">Gets to ' + E.fmtCash(score) + '</div>' +
         (tier >= 6 ? '<div class="confetti-rain"></div>' : '')
     };
   }
 
   // KING OF THE HILL: full-screen takeover when #1 is dethroned
   function kingMoment(d) {
-    var line = fillTokens(ctHtml('kingLine'), { old: d.oldKing, amount: E.fmtNum(d.amount) });
+    var line = fillTokens(ctHtml('kingLine'), { old: d.oldKing, amount: E.fmtCash(d.amount) });
     return {
       cls: 'king', dur: 3800, sound: function () { sFanfare(); setTimeout(sBigWin, 500); },
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('kingKicker')) + '</div>' +
@@ -1261,7 +1260,7 @@
       var li = document.createElement('li');
       li.innerHTML = '<span class="rank">' + (i + 1) + '</span>' +
         '<span class="nm">' + E.escapeHtml(r.name) + streakFlame(r.name) + '</span>' +
-        '<span class="sc">' + E.fmtNum(r.score) + '</span>';
+        '<span class="sc">' + E.fmtCash(r.score) + '</span>';
       el.appendChild(li);
     });
   }
@@ -1640,7 +1639,7 @@
         if (i > 0 && topScore > val) {
           var behind = topScore - val;
           chase = '<div class="ar-chase">' + fillTokens(E.escapeHtml(ct('chaseLabel')), {
-            n: E.fmtNum(behind)
+            n: E.fmtCash(behind)
           }) + '</div>';
         }
         rows += '<div class="ar-row money-row' + (i === 0 ? ' first' : '') + '">' +
@@ -1701,12 +1700,12 @@
       '<div class="ar-legend-line">' + best.bestStreak + ' correct in a row</div></div>';
     if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">Richest player ever</div>' +
       '<div class="ar-legend-name chrome-text">' + E.escapeHtml(rich.name) + '</div>' +
-      '<div class="ar-legend-line">' + E.fmtNum(rich.lifetime) + ' lifetime</div></div>';
+      '<div class="ar-legend-line">' + E.fmtCash(rich.lifetime) + ' lifetime</div></div>';
     if (lastHighlight && Date.now() - lastHighlight.ts < 24 * 60 * 60 * 1000) {
       var h = lastHighlight;
       bits += '<div class="ar-legend"><div class="ar-legend-kicker">Latest big moment</div>' +
         '<div class="ar-legend-name">' + E.escapeHtml(h.name) + '</div>' +
-        '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtNum(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
+        '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtCash(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
     }
     if (!bits) bits = '<div class="ar-sub">' + E.escapeHtml(ct('legendsEmpty')) + '</div>';
     return '<div class="ar-eyebrow gold">' + E.escapeHtml(ct('legendsEyebrow')) + '</div>' +
@@ -1807,7 +1806,7 @@
       var s = statsCache[k] || {};
       if (s.dayKey === tk.day && (s.day || 0) > 0 && (!rich || s.day > rich.day)) rich = s;
     });
-    if (rich && (!hot || rich.name !== hot.name)) out.push('<b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtNum(rich.day) + '</b> today');
+    if (rich && (!hot || rich.name !== hot.name)) out.push('<b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtCash(rich.day) + '</b> today');
     // reigning champ: all-time #1 (storyline for non-players)
     var champ = null;
     Object.keys(statsCache).forEach(function (k) {
@@ -1815,13 +1814,13 @@
       if ((s.lifetime || 0) > 0 && (!champ || s.lifetime > champ.lifetime)) champ = s;
     });
     if (champ) out.push(fillTokens(ctHtml('tickerChamp'), {
-      name: champ.name || '?', amount: E.fmtNum(champ.lifetime || 0)
+      name: champ.name || '?', amount: E.fmtCash(champ.lifetime || 0)
     }));
     // latest big moment (30 min window)
     if (lastHighlight && Date.now() - lastHighlight.ts < 30 * 60 * 1000) {
       var h = lastHighlight;
       out.push(h.type === 'wager'
-        ? '<b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
+        ? '<b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtCash(h.amount) + '</b> on a wager'
         : '<b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
     }
     // social proof: players in right now
@@ -1886,9 +1885,9 @@
       // Millionaire questions show the money-ladder rung for this slot.
       var LADDER = ['$100', '$500', '$1,000', '$5,000', '$10,000', '$50,000', '$100,000', '$250,000', '$500,000', '$1 MILLION'];
       var qibNow = (lastStateDoc && lastStateDoc.questionInBlock) || 1;
-      $('#qDiff').textContent = q.category === 'millionaire'
-        ? LADDER[Math.max(0, Math.min(9, qibNow - 1))]
-        : (q.isLightning ? E.LIGHTNING_POINTS : E.BASE_POINTS) + ' PTS';
+      $('#qDiff').textContent = E.fmtCash(q.isLightning ? E.LIGHTNING_POINTS : (q.answerType === 'number' ? E.CLOSEST_CASH : E.cashFor(q.difficulty)));
+      // Ladder rung is a label only; the cash paid follows the normal rules.
+      if (q.category === 'millionaire') $('#qCat').textContent = 'MILLIONAIRE \u00B7 ' + LADDER[Math.max(0, Math.min(9, qibNow - 1))];
       $('#qWagerBadge').hidden = !q.isWager;
       var qlb = $('#qLightningBadge');
       if (qlb) qlb.hidden = !q.isLightning;
@@ -2023,13 +2022,14 @@
       var li = document.createElement('li');
       var d = Number(row.delta || 0);
       var wagerNote = (r.isWager && row.wager > 0)
-        ? '<span class="wg">risked ' + E.fmtNum(row.wager) + '</span>' : '';
+        ? '<span class="wg">risked ' + E.fmtCash(row.wager) + '</span>' : '';
+      if (row.correct && row.speed > 0) wagerNote += '<span class="wg spd">SPEED +' + E.fmtCash(row.speed) + '</span>';
       if (isNumR && row.guess !== undefined) {
         wagerNote = '<span class="wg">guessed ' + E.fmtNum(row.guess) + '</span>';
       }
       if (r.isWager && row.correct && d >= 800) { li.classList.add('bigwin'); hasBigWin = true; }
       li.innerHTML = '<span class="nm">' + E.escapeHtml(row.name) + '</span>' + wagerNote +
-        '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtDelta(d) + '</span>';
+        '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtCashDelta(d) + '</span>';
       list.appendChild(li);
     });
     if (hasBigWin) sBigWin();
@@ -2074,7 +2074,7 @@
       var d = document.createElement('div');
       d.className = 'podium-step ' + cls[k];
       d.innerHTML = '<div class="p-name">' + E.escapeHtml(row.name) + '</div>' +
-        '<div class="p-score">' + E.fmtNum(row.score) + '</div>' +
+        '<div class="p-score">' + E.fmtCash(row.score) + '</div>' +
         '<div class="p-block">' + medals[k] + '</div>';
       steps.appendChild(d);
     });

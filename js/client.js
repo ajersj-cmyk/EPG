@@ -59,7 +59,7 @@
     $('#statsDay').textContent = fmt(s.day || 0);
     $('#statsMonth').textContent = fmt(s.month || 0);
     $('#statsLifetime').textContent = fmt(s.lifetime || 0);
-    $('#statsAnswered').textContent = fmt(s.answered || 0);
+    $('#statsAnswered').textContent = E.fmtNum(s.answered || 0);
   }
   function openStats() {
     lastStatsPhase = 'board';
@@ -81,7 +81,7 @@
     t._h = setTimeout(function () { t.hidden = true; }, 2600);
   }
 
-  function fmt(n) { return E.fmtNum(n); }
+  function fmt(n) { return E.fmtCash(n); }
 
   /* ---------------- config ---------------- */
 
@@ -190,7 +190,7 @@
     if (!playerId) { $('#playFoot').hidden = true; return; }
     $('#playFoot').hidden = false;
     $('#footName').textContent = playerName;
-    $('#footScore').textContent = fmt(myScore()) + ' pts';
+    $('#footScore').textContent = fmt(myScore());
     var bp = myBlockPos();
     var bnum = (lastState && lastState.blockNum) || 1;
     $('#footBlock').textContent = bp > 0 ? 'Block #' + bp : 'Block ' + bnum;
@@ -226,7 +226,7 @@
 
   /* ---------------- wager phase ---------------- */
 
-  function wagerMax() { return Math.max(0, Math.floor(myScore())); }
+  function wagerMax() { return E.roundWager(myScore(), myScore()); }
 
   function updateWagerAmount() {
     var s = $('#wagerSlider');
@@ -267,7 +267,7 @@
       toast('TIME');
       return;
     }
-    var amount = skip === true ? 0 : Math.max(0, Math.min(parseInt($('#wagerSlider').value, 10) || 0, wagerMax()));
+    var amount = skip === true ? 0 : E.roundWager(parseInt($('#wagerSlider').value, 10) || 0, wagerMax());
     var btn = $('#wagerBtn');
     btn.disabled = true;
     btn.textContent = '\u2026';
@@ -464,8 +464,8 @@
         pts.hidden = true;
         $('#rvTitle').textContent = 'NO ANSWER';
       }
-      var sub = 'The answer was ' + fmt(r.answerNumber) + '.';
-      if (myGuess !== null) sub += ' You guessed ' + fmt(myGuess) + ' (off by ' + fmt(Math.abs(myGuess - r.answerNumber)) + ').';
+      var sub = 'The answer was ' + E.fmtNum(r.answerNumber) + '.';
+      if (myGuess !== null) sub += ' You guessed ' + E.fmtNum(myGuess) + ' (off by ' + E.fmtNum(Math.abs(myGuess - r.answerNumber)) + ').';
       $('#rvSub').textContent = sub;
     } else if (me) {
       var correct = !!me.correct;
@@ -724,7 +724,7 @@
     $('#wagerSkip').addEventListener('click', function () { placeWager(true); });
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
-      s.value = Math.floor(Number(s.max) / 2);
+      s.value = E.roundWager(Number(s.max) / 2, s.max);
       updateWagerAmount();
     });
     $('#wagerFull').addEventListener('click', function () {

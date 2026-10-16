@@ -239,13 +239,15 @@
   function scoreAnswer(a) {
     var total = a.seconds * 1000;
     var wager = a.wager || 0;
-    var base = (typeof a.basePoints === 'number') ? a.basePoints : BASE_POINTS;
+    var base = (typeof a.basePoints === 'number') ? a.basePoints : cashFor(a.difficulty);
     var isCorrect = (typeof a.textCorrect === 'boolean') ? a.textCorrect : (a.choice === a.correctIndex);
     if (isCorrect) {
-      var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
-      var pts = base + Math.round(SPEED_BONUS_MAX * speed);
+      // Flat cash plus a round speed tier: first third of the clock +$50, middle third +$25.
+      var left = (a.deadlineTs - a.answeredAt) / total;
+      var speedCash = left >= 2 / 3 ? 50 : (left >= 1 / 3 ? 25 : 0);
+      var pts = base + speedCash;
       if (wager > 0) pts += wager;
-      return { correct: true, points: pts };
+      return { correct: true, points: pts, speed: speedCash };
     }
     if (wager > 0) return { correct: false, points: -wager };
     return { correct: false, points: 0 };
@@ -267,6 +269,17 @@
   }
 
   function clampScore(s) { return Math.max(0, s); }
+  // Cash per question: easy $100, medium/hard $200 (lightning and closest-number use $200 too).
+  var CASH_EASY = 100, CASH_HARD = 200, CASH_STEP = 25;
+  function cashFor(difficulty) { return difficulty === 'easy' ? CASH_EASY : CASH_HARD; }
+  // Wagers are whole $25s, never more than the player's cash.
+  function roundWager(w, score) {
+    var cap = Math.max(0, Math.floor(Number(score) || 0));
+    var n = Math.max(0, Math.min(Math.floor(Number(w) || 0), cap));
+    return Math.floor(n / CASH_STEP) * CASH_STEP;
+  }
+  function fmtCash(n) { n = Number(n || 0); return (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString('en-US'); }
+  function fmtCashDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtCash(d); }
 
   // Leaderboard rows from a players map. mode: 'all' | 'block'.
   function leaderboard(players, mode) {
@@ -334,6 +347,12 @@
     sanitizeName: sanitizeName,
     fmtCategory: fmtCategory,
     fmtNum: fmtNum,
+    fmtCash: fmtCash,
+    fmtCashDelta: fmtCashDelta,
+    cashFor: cashFor,
+    roundWager: roundWager,
+    CASH_STEP: 25,
+    CLOSEST_CASH: 200,
     fmtDelta: fmtDelta,
     escapeHtml: escapeHtml,
   };
