@@ -113,10 +113,25 @@
     railScan: 'Scan to play',
     podiumTitle: 'CHAMPIONS',
     podiumEyebrow: 'Block {n} final',
-    footerNote: 'Cave Trivia'
+    footerNote: ''
   };
 
   // Plain-text value (for textContent).
+  var DEFAULT_TITLE = 'AHLERS ARCADE TRIVIA';
+  function gameTitle() {
+    var t = (settings && settings.title) || '';
+    if (!t || t.toUpperCase() === 'CAVE TRIVIA') { try { t = localStorage.getItem('ct-title') || ''; } catch (e) {} }
+    return (t || DEFAULT_TITLE).toUpperCase();
+  }
+  function applyTitle() {
+    var t = gameTitle();
+    var vn = $('#venueName');
+    if (vn) { vn.textContent = t; vn.classList.toggle('t-long', t.length > 14); vn.classList.toggle('t-xlong', t.length > 22); }
+    document.title = t;
+    var fn = $('#footerNote');
+    if (fn && !ct('footerNote')) fn.textContent = t;
+    document.querySelectorAll('.ar-eyebrow.game-name').forEach(function (el) { el.textContent = t; });
+  }
   function ct(key) {
     var custom = settings && settings.customText;
     if (custom && typeof custom[key] === 'string' && custom[key] !== '') return custom[key];
@@ -326,7 +341,7 @@
     refs.settings.once('value').then(function (snap) {
       if (!snap.val()) {
         refs.settings.set({
-          theme: 'midnight-gold', title: 'CAVE TRIVIA',
+          theme: 'midnight-gold', title: 'AHLERS ARCADE TRIVIA',
           disabledCats: [], familyMode: false,
         });
       }
@@ -1190,7 +1205,7 @@
     settings = snap.val() || {};
     var changed = false;
     if (!settings.theme) { settings.theme = 'midnight-gold'; changed = true; }
-    if (!settings.title) { settings.title = 'CAVE TRIVIA'; changed = true; }
+    if (!settings.title || settings.title.toUpperCase() === 'CAVE TRIVIA') { settings.title = gameTitle(); changed = true; }
     if (!Array.isArray(settings.disabledCats)) { settings.disabledCats = []; changed = true; }
     if (settings.familyMode === undefined) { settings.familyMode = false; changed = true; }
     if (changed) refs.settings.update(settings);
@@ -1593,7 +1608,7 @@
 
   function arTeaserHtml() {
     var q = arPickTeaser();
-    if (!q) return '<div class="ar-eyebrow">Cave Trivia</div><div class="ar-big chrome-text">SCAN TO PLAY</div>';
+    if (!q) return '<div class="ar-eyebrow game-name">' + E.escapeHtml(gameTitle()) + '</div><div class="ar-big chrome-text">SCAN TO PLAY</div>';
     var text = q.question || q.text || '';
     var cat = E.fmtCategory(q.category);
     var img = q.image ? '<div class="ar-teaser-img" style="background-image:url(' + E.escapeHtml(q.image) + ')"></div>' : '';
@@ -1782,7 +1797,7 @@
     setTimeout(function () {
       var html;
       try { html = card.html(); }
-      catch (e) { html = '<div class="ar-eyebrow">Cave Trivia</div><div class="ar-big chrome-text">SCAN TO PLAY</div>'; }
+      catch (e) { html = '<div class="ar-eyebrow game-name">' + E.escapeHtml(gameTitle()) + '</div><div class="ar-big chrome-text">SCAN TO PLAY</div>'; }
       el.innerHTML = html;
       el.classList.remove('fade');
       // teaser card flips to the answer after 6s (readable pace)
@@ -2245,7 +2260,7 @@
     if (document.documentElement.dataset.theme !== theme) {
       document.documentElement.dataset.theme = theme;
     }
-    $('#venueName').textContent = (settings.title || 'CAVE TRIVIA').toUpperCase();
+    applyTitle();
     $('#venueTagline').textContent = (settings.tagline || 'ALWAYS-ON LEAGUE').toUpperCase();
     $('#familyBadge').hidden = !settings.familyMode;
     $('#famToggle').classList.toggle('on', !!settings.familyMode);
@@ -2437,7 +2452,7 @@
     var rs = $('#railScanText');
     if (rs) rs.textContent = ct('railScan');
     var fn = $('#footerNote');
-    if (fn) fn.innerHTML = ctHtml('footerNote');
+    if (fn) { if (ct('footerNote')) fn.innerHTML = ctHtml('footerNote'); else fn.textContent = gameTitle(); }
     var pt = $('#podiumTitle');
     if (pt) pt.textContent = ct('podiumTitle');
   }
@@ -2459,7 +2474,7 @@
     });
     $('#btnTitleSave').addEventListener('click', function () {
       var v = $('#gameTitleInput').value.trim().slice(0, 30);
-      if (v) refs.settings.update({ title: v });
+      if (v) { try { localStorage.setItem('ct-title', v); } catch (e) {} settings.title = v; applyTitle(); refs.settings.update({ title: v }); }
     });
     $('#gameTitleInput').addEventListener('keydown', function (e) {
       if (e.key === 'Enter') $('#btnTitleSave').click();
