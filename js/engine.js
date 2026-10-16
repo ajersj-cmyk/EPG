@@ -26,9 +26,11 @@
     disney: 2.5, pixar: 2.5, parks: 2, jeopardy: 2.5,
     movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
     toys: 1, mixed: 1,
+    dozen: 3, millionaire: 2.5,
   };
   var ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon',
-    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel'];
+    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel',
+    'dozen', 'millionaire'];
 
   var FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
 
@@ -55,6 +57,9 @@
     parts.push('data/questions-video.json');
     parts.push('data/questions-pics.json');
     parts.push('data/questions-closest.json');
+    parts.push('data/questions-dozen.json');
+    parts.push('data/questions-millionaire.json');
+    parts.push('data/questions-jeopardy-style.json');
     return Promise.all(parts.map(function (u) {
       // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {

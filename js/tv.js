@@ -45,44 +45,44 @@
 
   var CUSTOM_TEXT_DEFAULTS = {
     // question teaser card
-    teaserEyebrow: 'Teaser \u00B7 {category}',
-    teaserCta: 'Think you know it? <b>Scan to play</b>',
-    teaserAnswerEyebrow: 'The answer was',
-    teaserAnswerCta: 'Knew it? <b>Scan to prove it</b>',
+    teaserEyebrow: '{category}',
+    teaserCta: '<b>SCAN TO PLAY</b>',
+    teaserAnswerEyebrow: 'ANSWER',
+    teaserAnswerCta: '<b>SCAN TO PLAY</b>',
     // join card
-    joinEyebrow: 'Free \u00B7 no app needed \u00B7 jump in anytime',
-    joinTitle: 'SCAN<br>TO JOIN',
-    joinSub: 'Your phone is the controller',
+    joinEyebrow: 'No app needed',
+    joinTitle: 'SCAN<br>TO PLAY',
+    joinSub: 'Play on your phone',
     // money board card (3 views: today / month / all time)
-    moneyEyebrow: 'Money leaderboard',
+    moneyEyebrow: 'Leaderboard',
     moneyTitle: 'MONEY<br>BOARD',
     moneyTabDay: 'Today',
     moneyTabMonth: 'This month',
     moneyTabAll: 'All time',
-    moneyEmpty: 'No winnings yet \u2014 be the first',
+    moneyEmpty: 'No scores yet',
     // streak board card
-    streakEyebrow: 'Streak leaderboard',
+    streakEyebrow: 'Streaks',
     streakTitle: 'HOT<br>STREAKS',
     streakColNow: 'Now',
     streakColBest: 'Best',
-    streakEmpty: 'No streaks yet \u2014 start one',
+    streakEmpty: 'No streaks yet',
     // legends card
-    legendsEyebrow: 'The Cave\u2019s finest',
+    legendsEyebrow: 'Hall of fame',
     legendsTitle: 'LEGENDS',
-    legendsEmpty: 'The cave is waiting for its first legend',
-    legendsCta: 'Your name could be here \u2014 <b>scan to play</b>',
+    legendsEmpty: 'No legends yet',
+    legendsCta: '<b>SCAN TO PLAY</b>',
     // attract ticker
-    tickerPlaying: '{n} playing right now \u2014 jump in',
-    tickerEmpty: 'No one playing \u2014 be the first to top the leaderboard',
+    tickerPlaying: '{n} PLAYING',
+    tickerEmpty: 'SCAN TO PLAY',
     // new challenger celebration
-    challengerKicker: 'New challenger',
-    challengerLine: 'HAS ENTERED THE CAVE',
+    challengerKicker: 'NEW CHALLENGER',
+    challengerLine: '',
     // sendoff when a player leaves
-    sendoffKicker: 'Thanks for playing',
-    sendoffSub: 'The cave salutes you',
+    sendoffKicker: 'GAME OVER',
+    sendoffSub: '',
     // streak snapped
-    snappedKicker: 'Streak snapped',
-    snappedSub: 'Hell of a run',
+    snappedKicker: 'STREAK OVER',
+    snappedSub: '',
     // big wager loss beat
     wagerBeatKicker: 'Big risk',
     // streak milestone tiers
@@ -102,18 +102,18 @@
     // king of the hill dethroning
     kingKicker: 'New king of the hill',
     kingLine: 'DETHRONES {old} AT {amount}',
-    dethronedKicker: 'Knocked off the throne',
-    dethronedSub: 'The crown has a new owner',
+    dethronedKicker: 'DETHRONED',
+    dethronedSub: '',
     // record chase (on money board)
     chaseLabel: '{n} from the record',
     // reigning champ ticker
-    tickerChamp: 'Reigning champ: {name} \u2014 {amount} lifetime',
+    tickerChamp: 'CHAMP: {name} \u00B7 {amount}',
     // site chrome
     railLeaderboard: 'Live leaderboard',
-    railScan: 'Scan to join',
+    railScan: 'Scan to play',
     podiumTitle: 'CHAMPIONS',
-    podiumEyebrow: 'Block {n} final \u00B7 top of the block',
-    footerNote: 'Cave Trivia \u00B7 free forever edition'
+    podiumEyebrow: 'Block {n} final',
+    footerNote: 'Cave Trivia'
   };
 
   // Plain-text value (for textContent).
@@ -409,6 +409,7 @@
       difficulty: q.difficulty,
       image: q.image || null,
       video: q.video || null,
+      tag: q.tag || null,
       isWager: !!isWager,
       isLightning: !!q._lightning,
       seconds: seconds,
@@ -701,7 +702,7 @@
         scoreArgs._closestWin = isWinner;
         scoreArgs._closestDiff = myDiff;
       } else if (isTextQ) {
-        var correctText = q.answerText || q.options[q.answer] || '';
+        var correctText = q.answerText || (q.options || [])[q.answer] || '';
         scoreArgs.textCorrect = E.textMatch(a.text, correctText);
       } else {
         scoreArgs.choice = a.choice;
@@ -826,7 +827,7 @@
       var isTextQ = E.isTextQuestion(q);
       return refs.reveal.set({
         correctIndex: isTextQ ? -1 : q.answer,
-        correctText: isTextQ ? (q.answerText || q.options[q.answer] || '') : q.options[q.answer],
+        correctText: isTextQ ? (q.answerText || (q.options || [])[q.answer] || '') : ((q.options || [])[q.answer] || (isNumQ ? String(numAnswer) : "")),
         answerType: q.answerType || 'choice',
         answerNumber: isNumQ ? numAnswer : null,
         closestDiff: isNumQ ? (closestDiff === Infinity ? null : closestDiff) : null,
@@ -849,7 +850,7 @@
       // them in the moment queue (see renderRevealFinal).
       var pause = cq.isWager ? E.WAGER_REVEAL_SECONDS : E.REVEAL_SECONDS;
       questionTimer = setTimeout(function () {
-        if (cq.isWager) showPodium(); else advanceGame();
+        if (cq.isWager && !cq.isWagerUp) showPodium(); else advanceGame();
       }, pause * 1000);
     });
   }
@@ -1236,7 +1237,7 @@
     var el = $('#blockBoard');
     el.innerHTML = '';
     if (!board.length) {
-      el.innerHTML = '<div class="board-empty">No scores yet &mdash; be the first legend of the cave.</div>';
+      el.innerHTML = '<div class="board-empty">No scores yet</div>';
       return;
     }
     board.forEach(function (r, i) {
@@ -1400,6 +1401,7 @@
     { q: "What do you call a group of wolves?", a: "Pack", cat: "Nature" }
   ];
   var arTeaserIdx = 0;
+  var bankFailed = false;
   var arLastTeaser = null;
 
   // Resolve a displayable answer for any bank question shape:
@@ -1411,11 +1413,38 @@
     return '';
   }
 
+  // Attract teasers: ONE shuffled no-repeat queue over the whole eligible
+  // bank. Order is a seeded shuffle; {seed, cursor} persists in localStorage
+  // so a reload picks up where it left off instead of replaying the same few.
+  var AR_Q_KEY = 'ct-attract-queue';
+  var arOrder = [];
+  var arQ = { seed: 0, idx: 0, sig: '' };
+  function arHash(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function arRng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function arSaveQ() { try { localStorage.setItem(AR_Q_KEY, JSON.stringify(arQ)); } catch (e) {} }
+  function arShuffle() {
+    var r = arRng(arQ.seed);
+    for (var i = arOrder.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1));
+      var t = arOrder[i]; arOrder[i] = arOrder[j]; arOrder[j] = t;
+    }
+  }
   function arBuildPool() {
     var sig = (bank ? bank.length : 0) + ':' + (bank && bank.length ? (bank[0].id || '') : '');
-    if (sig === arPoolSig && (arPool.length || arPoolImg.length)) return;
+    if (sig === arPoolSig && arOrder.length) return;
     arPoolSig = sig;
-    arPool = []; arPoolImg = [];
+    arPool = []; arPoolImg = []; arOrder = [];
     if (!bank || !bank.length) return;
     for (var i = 0; i < bank.length; i++) {
       var q = bank[i];
@@ -1424,33 +1453,35 @@
       if (text.length > 140 || text.length < 15) continue;
       if (q.kid_safe === false) continue;
       if (!arAnswerFor(q)) continue;
-      // Attract teasers favor easy/medium (enticing, not intimidating).
-      // Hard questions appear at ~15% rate for variety.
+      // Favor easy/medium; keep ~15% of hard ones (deterministic per id).
       var diff = q.difficulty || 'medium';
-      if (diff === 'hard' && Math.random() > 0.15) continue;
-      if (q.image) arPoolImg.push(q); else arPool.push(q);
+      if (diff === 'hard' && (arHash(String(q.id || text)) % 100) >= 15) continue;
+      arOrder.push(q);
     }
+    arOrder.sort(function (x, y) { return String(x.id || x.question) < String(y.id || y.question) ? -1 : 1; });
+    try { var saved = JSON.parse(localStorage.getItem(AR_Q_KEY) || 'null'); if (saved) arQ = saved; } catch (e) {}
+    var poolSig = arOrder.length + ':' + String(arOrder[0] && (arOrder[0].id || ''));
+    if (arQ.sig !== poolSig || !arQ.seed) { arQ = { seed: (Math.random() * 4294967296) >>> 0, idx: 0, sig: poolSig }; }
+    arShuffle();
+    arSaveQ();
   }
 
   function arPickTeaser() {
     arBuildPool();
-    var useImg = arPoolImg.length && (!arPool.length || Math.random() < 0.6);
-    var pool = useImg ? arPoolImg : arPool;
-    if (pool.length) {
-      var picked = null;
-      for (var tries = 0; tries < 12; tries++) {
-        var cand = pool[Math.floor(Math.random() * pool.length)];
-        var cid = cand.id || cand.question;
-        if (arRecentIds.indexOf(cid) < 0 || pool.length <= 10) { picked = cand; break; }
+    if (arOrder.length) {
+      if (arQ.idx >= arOrder.length) {          // full pass done: reshuffle
+        arQ.seed = (arQ.seed * 1103515245 + 12345) >>> 0 || 1;
+        arQ.idx = 0;
+        arShuffle();
       }
-      if (!picked) picked = pool[Math.floor(Math.random() * pool.length)];
-      var pid = picked.id || picked.question;
-      arRecentIds.push(pid);
-      if (arRecentIds.length > 10) arRecentIds.shift();
+      var picked = arOrder[arQ.idx++];
+      arSaveQ();
       arLastTeaser = picked;
       return picked;
     }
-    // bank empty/failed: cycle the 50 hardcoded (no repeats within a cycle)
+    // bank still loading: don't burn a fallback teaser (it would repeat on every boot)
+    if (!bankFailed) return null;
+    // bank failed: cycle the 50 hardcoded (no repeats within a cycle)
     var f = AR_FALLBACK[arTeaserIdx % AR_FALLBACK.length];
     arTeaserIdx++;
     arLastTeaser = { question: f.q, text: f.q, category: f.cat, answerText: f.a };
@@ -1783,8 +1814,13 @@
       qp.classList.remove('q-enter');
       void qp.offsetWidth;
       qp.classList.add('q-enter');
-      $('#qCat').textContent = E.fmtCategory(q.category);
-      $('#qDiff').textContent = q.difficulty || '';
+      $('#qCat').textContent = E.fmtCategory(q.category) + (q.tag ? ' \u00B7 ' + String(q.tag).toUpperCase() : '');
+      // Millionaire questions show the money-ladder rung for this slot.
+      var LADDER = ['$100', '$500', '$1,000', '$5,000', '$10,000', '$50,000', '$100,000', '$250,000', '$500,000', '$1 MILLION'];
+      var qibNow = (lastStateDoc && lastStateDoc.questionInBlock) || 1;
+      $('#qDiff').textContent = q.category === 'millionaire'
+        ? LADDER[Math.max(0, Math.min(9, qibNow - 1))]
+        : (q.isLightning ? E.LIGHTNING_POINTS : E.BASE_POINTS) + ' PTS';
       $('#qWagerBadge').hidden = !q.isWager;
       var qlb = $('#qLightningBadge');
       if (qlb) qlb.hidden = !q.isLightning;
@@ -1869,7 +1905,7 @@
     $('#rText').textContent = qd.text || '';
     // options shown dimmed, correct answer NOT highlighted yet
     if (r.answerType === 'text') {
-      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+      $('#rOptions').innerHTML = '<div class="q-text-hint">ANSWER</div>';
     } else {
       buildOptions($('#rOptions'), qd.options || [], -1, false);
     }
@@ -1887,10 +1923,10 @@
     $('#rText').textContent = qd.text || '';
     var isNumR = r.answerType === 'number';
     if (isNumR) {
-      $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">The answer was</span>' +
+      $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">ANSWER</span>' +
         '<span class="answer-hero">' + E.fmtNum(r.answerNumber) + '</span></div>';
     } else if (r.answerType === 'text') {
-      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+      $('#rOptions').innerHTML = '<div class="q-text-hint">ANSWER</div>';
     } else {
       buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
     }
@@ -1907,8 +1943,8 @@
     }
     if (r.streaksLost && r.streaksLost.length) {
       var sl = r.streaksLost[0];
-      note += ' &nbsp;<span style="color:#ff8f7d">&hearts; ' + E.escapeHtml(sl.name) +
-        '&rsquo;s ' + sl.streak + '-streak snapped</span>';
+      note += ' &nbsp;<span style="color:#ff8f7d">' + E.escapeHtml(sl.name) +
+        ' streak over (' + sl.streak + ')</span>';
     }
     $('#rNote').innerHTML = note;
     var list = $('#rResults');
@@ -2571,6 +2607,7 @@
     ensureBank().then(function (b) {
       if (!b) throw new Error('empty');
     }).catch(function () {
+      bankFailed = true;
       var ac = $('#arCard');
       if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Error</div><div class="ar-big">QUESTION BANK<br>FAILED TO LOAD</div>';
     });
