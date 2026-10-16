@@ -560,8 +560,12 @@
   // Every 10th question is Final-Jeopardy style: the category is announced
   // first, players wager 0..their score, then the question drops.
   // Mid-block (Q3/Q6/Q9): "Wager Up" — same flow on a hard question, shorter window.
+  var wagerToken = 0;
   function startWager(isWagerUp, qib) {
     if (!bankReady()) return waitForBankThenAdvance();
+    // Guard: a wager window is already open (double advance or watchdog re-entry).
+    // Re-entering would draw a new question and restart the countdown.
+    if (pendingWagerQ) { console.warn('[wager] startWager ignored: wager already pending'); return; }
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
@@ -582,6 +586,7 @@
     pendingWagerQib = qib || E.BLOCK_SIZE;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
     clearTimer();
+    var myToken = ++wagerToken;
     var secs = isWagerUp ? E.WAGER_UP_SECONDS : E.WAGER_SECONDS;
     var deadlineTs = Date.now() + secs * 1000;
     clearPlayerFields().then(function () {
@@ -593,12 +598,20 @@
         podium: null,
       });
     }).then(function () {
+      if (myToken !== wagerToken || !pendingWagerQ) return; // superseded
+      clearTimer();
       questionTimer = setTimeout(dealWagerQuestion, secs * 1000 + 400);
     });
   }
 
   function dealWagerQuestion() {
-    if (!pendingWagerQ) return advanceGame();
+    if (!pendingWagerQ) {
+      // Nothing pending (already dealt). If the screen still says wager, close the slot
+      // instead of letting advanceGame open a fresh wager window.
+      var ls = lastStateDoc;
+      if (ls && ls.phase === 'wager') blockDealt = Math.max(blockDealt, ls.questionInBlock || 0);
+      return advanceGame();
+    }
     var q = pendingWagerQ;
     var isWagerUp = pendingWagerUp;
     var qib = pendingWagerQib;
