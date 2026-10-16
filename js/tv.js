@@ -708,6 +708,7 @@
         }
         // a no-answer from someone in the room breaks their streak (a skipped wager does not)
         if (p.name && Date.now() - (p.lastSeen || 0) < 3 * 60 * 1000) {
+          var nb = bStat(pid); nb.n += 1; nb.s = 0;
           statsUpdatesFor(p.name, (cq.isWager && wager > 0) ? (E.clampScore((p.score || 0) - wager) - (p.score || 0)) : 0, false, upd, true);
         }
         return;
@@ -799,6 +800,10 @@
         resEntry.guess = numGuesses[pid].guess;
         resEntry.offBy = numGuesses[pid].diff;
       }
+      var bs = bStat(pid);
+      bs.n += 1;
+      if (r.correct) { bs.c += 1; bs.s += 1; bs.best = Math.max(bs.best, bs.s); if (wager > 0) bs.w = Math.max(bs.w, wager); }
+      else bs.s = 0;
       results.push(resEntry);
     });
     results.sort(function (a, b) { return b.delta - a.delta; });
@@ -1057,10 +1062,15 @@
   }
 
   // Block-capping ceremony after the wager reveal: top 3 of the block.
+  // Per-block stats for the champion screen (TV memory; reset each block).
+  var blockStats = {};
+  function bStat(pid) { return blockStats[pid] || (blockStats[pid] = { s: 0, best: 0, c: 0, n: 0, w: 0 }); }
+
   function showPodium() {
     clearTimer();
     var top = E.leaderboard(players, 'block').slice(0, 3).map(function (r) {
-      return { name: r.name, score: r.score };
+      var b = blockStats[r.id || r.pid] || {};
+      return { name: r.name, score: r.score, best: b.best || 0, correct: b.c || 0, asked: E.BLOCK_SIZE, bigWager: b.w || 0 };
     });
     writeState({ phase: 'podium', questionInBlock: E.BLOCK_SIZE, podium: { top: top } })
       .then(function () {
@@ -1071,6 +1081,7 @@
           });
           blockNum += 1;
           blockDealt = 0;
+          blockStats = {};
           db.ref().update(upd).then(function () {
             return writeState({ podium: null });
           }).then(advanceGame);
@@ -2076,23 +2087,50 @@
     var p = st.podium;
     var pe = $('#podiumEyebrow');
     if (pe) pe.innerHTML = fillTokens(ctHtml('podiumEyebrow'), { n: st.blockNum || '' });
-    var steps = $('#podiumSteps');
-    if (!p || !p.top) { steps.innerHTML = ''; return; }
+    var champ = $('#champ');
+    if (!champ) return;
+    if (!p || !p.top || !p.top.length) { champ.innerHTML = ''; champ.dataset.sig = ''; return; }
     var sig = JSON.stringify(p.top);
-    if (steps.dataset.sig === sig) return;
-    steps.dataset.sig = sig;
-    steps.innerHTML = '';
-    var order = [1, 0, 2], cls = ['second', 'first', 'third'], medals = ['2', '1', '3'];
-    order.forEach(function (idx, k) {
-      var row = p.top[idx];
-      if (!row) return;
-      var d = document.createElement('div');
-      d.className = 'podium-step ' + cls[k];
-      d.innerHTML = '<div class="p-name">' + E.escapeHtml(row.name) + '</div>' +
-        '<div class="p-score">' + E.fmtCash(row.score) + '</div>' +
-        '<div class="p-block">' + medals[k] + '</div>';
-      steps.appendChild(d);
+    if (champ.dataset.sig === sig) return;
+    champ.dataset.sig = sig;
+    champ.innerHTML = champHtml(p.top, st.blockNum);
+  }
+
+  var TROPHY_SVG = '<svg class="ch-trophy" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="chg" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="#fff3b0"/><stop offset=".45" stop-color="#f2c14e"/><stop offset="1" stop-color="#9a6a12"/></linearGradient></defs>' +
+    '<path d="M30 14h60v22c0 20-12 34-30 36-18-2-30-16-30-36z" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<path d="M30 22H14c0 18 8 26 18 28M90 22h16c0 18-8 26-18 28" fill="none" stroke="#e0ac36" stroke-width="7" stroke-linecap="round"/>' +
+    '<rect x="52" y="72" width="16" height="16" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<rect x="34" y="88" width="52" height="16" rx="3" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<path d="M60 26l5 10 11 1-8 7 2 11-10-5-10 5 2-11-8-7 11-1z" fill="#fff8d6"/></svg>';
+
+  function champHtml(top, blockN) {
+    var w = top[0];
+    var nm = E.escapeHtml(String(w.name || '?').toUpperCase());
+    var wmLine = '';
+    for (var i = 0; i < 8; i++) wmLine += 'CHAMPION \u2605 ' + nm + '\u2003';
+    var wm = '';
+    for (var k = 0; k < 14; k++) wm += '<div>' + wmLine + '</div>';
+    var chips = '<div class="ch-chip">BEST STREAK<b>' + (w.best || 0) + '</b></div>' +
+      '<div class="ch-chip">CORRECT<b>' + (w.correct || 0) + '/' + (w.asked || E.BLOCK_SIZE) + '</b></div>' +
+      (w.bigWager > 0 ? '<div class="ch-chip">BIGGEST WAGER<b>+' + E.fmtCash(w.bigWager) + '</b></div>' : '');
+    var nameLen = String(w.name || '').length;
+    var plates = '';
+    [[1, 'silver', '2ND'], [2, 'bronze', '3RD']].forEach(function (x) {
+      var r = top[x[0]];
+      plates += r
+        ? '<div class="ch-plate ' + x[1] + '"><div class="rk">' + x[2] + '</div><div class="nm">' + E.escapeHtml(r.name || '?') +
+          '</div><div class="sc">' + E.fmtCash(r.score) + '</div></div>'
+        : '<div class="ch-plate ' + x[1] + ' empty"></div>';
     });
+    return '<div class="ch-rays"></div><div class="ch-wm" aria-hidden="true">' + wm + '</div>' +
+      '<div class="ch-beams"></div><div class="ch-bokeh"></div><div class="ch-grain"></div><div class="ch-vig"></div>' +
+      '<div class="ch-wrap"><div class="ch-kick">BLOCK ' + (blockN || '') + ' FINAL</div>' +
+      '<div class="ch-title">CHAMPION</div>' +
+      '<div class="ch-hero"><div class="ch-halo"></div>' + TROPHY_SVG +
+      '<div class="ch-name' + (nameLen > 14 ? ' long' : '') + (nameLen > 22 ? ' xlong' : '') + '">' + nm + '</div>' +
+      '<div class="ch-cash">' + E.fmtCash(w.score) + '</div><div class="ch-chips">' + chips + '</div></div></div>' +
+      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">UNDEFEATED</div>');
   }
 
   function stopVideo() {
