@@ -183,3 +183,4 @@ body[class*="look-"] .wager-hint b { color: var(--lk-hot); }
 body[class*="look-"] #phase-wager .wager-title { font-size: min(13vmin, 9rem); }
 body[class*="look-"] .attract-ticker { font-family: "Oswald", var(--sans); font-weight: 700; letter-spacing: 0.18em; color: var(--lk-accent); text-shadow: var(--lk-emboss-sm); }
 body[class*="look-"] .attract-ticker b { color: #fff; }
+body[class*="look-"] .q-text-hint { font-family: "Oswald", var(--sans); font-weight: 700; color: var(--lk-accent); border-color: var(--lk-frame); text-shadow: var(--lk-emboss-sm); }
