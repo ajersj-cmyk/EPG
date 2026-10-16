@@ -1,0 +1,2782 @@
+[
+{
+"id": "toons-x-c76e8cee",
+"category": "toons",
+"difficulty": "medium",
+"question": "What's the name of the Simpsons' town?",
+"options": [
+"Ogdenville",
+"Springfield",
+"Quahog",
+"Shelbyville"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Simpsons",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-c30839cb",
+"category": "pixar",
+"difficulty": "hard",
+"question": "Which emotion is blue in Inside Out?",
+"options": [
+"Sadness",
+"Joy",
+"Disgust",
+"Fear"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Inside Out (2015 film)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-e6420b02",
+"category": "disney",
+"difficulty": "easy",
+"question": "In The Lion King, what's the name of Simba's dad?",
+"options": [
+"Scar",
+"Rafiki",
+"Zazu",
+"Mufasa"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Lion King",
+"answerType": "choice"
+},
+{
+"id": "mario-x-fc800c34",
+"category": "mario",
+"difficulty": "medium",
+"question": "What was Mario called in his first game, Donkey Kong (1981)?",
+"options": [
+"Mr. Video",
+"Plumber Pete",
+"Hammer Man",
+"Jumpman"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mario",
+"answerType": "choice",
+"format": "jeopardy"
+},
+{
+"id": "disney-x-00f089e4",
+"category": "disney",
+"difficulty": "medium",
+"question": "In Moana, what's the name of the demigod voiced by Dwayne Johnson?",
+"options": [
+"Maui",
+"Kakamora",
+"Tamatoa",
+"Te Ka"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Moana (2016 film)",
+"answerType": "choice"
+},
+{
+"id": "parks-x-2478a5ed",
+"category": "parks",
+"difficulty": "medium",
+"question": "Which park has the giant geodesic sphere called Spaceship Earth?",
+"options": [
+"Disneyland",
+"EPCOT",
+"Animal Kingdom",
+"Magic Kingdom"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Spaceship Earth (Epcot)",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-cb158666",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Which Pixar film follows two elf brothers on a quest?",
+"options": [
+"Luca",
+"Soul",
+"Brave",
+"Onward"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Onward (film)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-95fa4f31",
+"category": "toys",
+"difficulty": "medium",
+"question": "What's the most expensive property on a standard U.S. Monopoly board?",
+"options": [
+"Pennsylvania Avenue",
+"Boardwalk",
+"Park Place",
+"Marvin Gardens"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Monopoly (game)",
+"answerType": "choice",
+"format": "jeopardy"
+},
+{
+"id": "disney-x-e93cf72f",
+"category": "disney",
+"difficulty": "easy",
+"question": "What color are Mickey Mouse's shorts?",
+"options": [
+"Yellow",
+"Green",
+"Blue",
+"Red"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mickey Mouse",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-0cb189cd",
+"category": "disney",
+"difficulty": "medium",
+"question": "What's the name of Ariel's crab friend?",
+"options": [
+"Scuttle",
+"Triton",
+"Sebastian",
+"Flounder"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Little Mermaid (1989 film)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-b8974971",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In How to Train Your Dragon, what's the name of Hiccup's dragon?",
+"options": [
+"Toothless",
+"Hookfang",
+"Stormfly",
+"Meatlug"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: How to Train Your Dragon (2010 film)",
+"answerType": "choice"
+},
+{
+"id": "disney-x-6ad2b628",
+"category": "disney",
+"difficulty": "medium",
+"question": "Who voiced the Genie in Disney's 1992 Aladdin?",
+"options": [
+"Eddie Murphy",
+"Robin Williams",
+"Jim Carrey",
+"Will Smith"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Aladdin (1992 Disney film)",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-e757d9ac",
+"category": "pixar",
+"difficulty": "easy",
+"question": "What's the name of the pizza place in Toy Story?",
+"options": [
+"Rocket Pizza",
+"Pizza Planet",
+"Planet Pie",
+"Pizza Galaxy"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Toy Story",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "mario-x-7d28e291",
+"category": "mario",
+"difficulty": "medium",
+"question": "Who voices Donkey Kong in The Super Mario Bros. Movie?",
+"options": [
+"Seth Rogen",
+"Kevin Michael Richardson",
+"Jack Black",
+"Charlie Day"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-d6cb8324",
+"category": "pixar",
+"difficulty": "medium",
+"question": "What's Lightning McQueen's race number?",
+"options": [
+"86",
+"95",
+"43",
+"20"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Cars (film)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "kidsmovies-x-ddb408f3",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "In Shrek, what kind of animal is Donkey's love interest?",
+"options": [
+"Ogre",
+"Dragon",
+"Unicorn",
+"Cat"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Shrek",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-e7b1c90f",
+"category": "pixar",
+"difficulty": "medium",
+"question": "What was Pixar's first feature film?",
+"options": [
+"A Bug's Life",
+"Monsters, Inc.",
+"Toy Story",
+"Cars"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pixar",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "toons-x-7650d70e",
+"category": "toons",
+"difficulty": "medium",
+"question": "What's the name of Scooby-Doo's van?",
+"options": [
+"The Snack Wagon",
+"The Clue Cruiser",
+"The Mystery Machine",
+"The Ghost Mobile"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Scooby-Doo",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-129d1636",
+"category": "kidsmovies",
+"difficulty": "hard",
+"question": "Who directed E.T. the Extra-Terrestrial?",
+"options": [
+"Robert Zemeckis",
+"Steven Spielberg",
+"Ron Howard",
+"George Lucas"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: E.T. the Extra-Terrestrial",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "disney-x-3e8c1a78",
+"category": "disney",
+"difficulty": "medium",
+"question": "Which Disney movie features the song 'We Don't Talk About Bruno'?",
+"options": [
+"Moana",
+"Wish",
+"Frozen II",
+"Encanto"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Encanto (film)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "pixar-x-957da3f9",
+"category": "pixar",
+"difficulty": "easy",
+"question": "What kind of fish is Nemo?",
+"options": [
+"Angelfish",
+"Clownfish",
+"Pufferfish",
+"Blue tang"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Finding Nemo",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-c2c506bf",
+"category": "disney",
+"difficulty": "hard",
+"question": "What was Walt Disney's first full-length animated feature?",
+"options": [
+"Fantasia",
+"Snow White and the Seven Dwarfs",
+"Bambi",
+"Pinocchio"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Snow White and the Seven Dwarfs (1937 film)",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "mario-x-74e0e0e0",
+"category": "mario",
+"difficulty": "medium",
+"question": "In the Mario movie, which city do Mario and Luigi run their plumbing business in?",
+"options": [
+"Queens",
+"Jersey City",
+"Boston",
+"Brooklyn"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "parks-x-5019769b",
+"category": "parks",
+"difficulty": "medium",
+"question": "In what year did Walt Disney World's Magic Kingdom open?",
+"options": [
+"1955",
+"1982",
+"1965",
+"1971"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Magic Kingdom",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "pixar-x-c9a7f521",
+"category": "pixar",
+"difficulty": "medium",
+"question": "What's the name of the rat who cooks in Ratatouille?",
+"options": [
+"Gusteau",
+"Emile",
+"Remy",
+"Linguini"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ratatouille (film)",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-33165f61",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Which Pixar film is set in the Land of the Dead?",
+"options": [
+"Elemental",
+"Onward",
+"Coco",
+"Soul"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Coco (2017 film)",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-b1e0e16b",
+"category": "pixar",
+"difficulty": "medium",
+"question": "What's the name of Mike Wazowski's best friend in Monsters, Inc.?",
+"options": [
+"Waternoose",
+"Boo",
+"Sulley",
+"Randall"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Monsters, Inc.",
+"answerType": "choice"
+},
+{
+"id": "mario-x-b5d1eee9",
+"category": "mario",
+"difficulty": "medium",
+"question": "Bowser's big song in the 2023 Mario movie is called what?",
+"options": [
+"Peaches",
+"Princess",
+"Lava Love",
+"Koopa Crush"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Peaches (Jack Black song)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "kidsmovies-x-1d06aaa4",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "What do the Minions love more than anything?",
+"options": [
+"Apples",
+"Cookies",
+"Bananas",
+"Pizza"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Minions (Despicable Me)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "kidsmovies-x-5b240bfd",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In The Lego Movie, what's the hit song everyone sings?",
+"options": [
+"Happy",
+"Let It Go",
+"Can't Stop the Feeling!",
+"Everything Is Awesome"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Lego Movie",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-57e8eb5f",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Paddington Bear is from which country?",
+"options": [
+"Chile",
+"Peru",
+"Bolivia",
+"Mexico"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Paddington Bear",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-e7587674",
+"category": "disney",
+"difficulty": "medium",
+"question": "What's Stitch's experiment number?",
+"options": [
+"221",
+"626",
+"324",
+"505"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Lilo & Stitch",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "mario-x-f80ba4d9",
+"category": "mario",
+"difficulty": "easy",
+"question": "Who voices Bowser in The Super Mario Bros. Movie?",
+"options": [
+"Seth Rogen",
+"Jack Black",
+"Fred Armisen",
+"Keegan-Michael Key"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-54798449",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In Back to the Future, what speed does the DeLorean need to time travel?",
+"options": [
+"88 mph",
+"100 mph",
+"55 mph",
+"121 mph"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Back to the Future",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "pixar-x-7ad4897a",
+"category": "pixar",
+"difficulty": "medium",
+"question": "In The Incredibles, who designs the family's super suits?",
+"options": [
+"Frozone",
+"Edna Mode",
+"Mirage",
+"Evelyn Deavor"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Incredibles",
+"answerType": "choice"
+},
+{
+"id": "mario-x-d818f5c6",
+"category": "mario",
+"difficulty": "easy",
+"question": "What color is Luigi's hat?",
+"options": [
+"Red",
+"Purple",
+"Green",
+"Blue"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Luigi",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "parks-x-30d1c1a1",
+"category": "parks",
+"difficulty": "hard",
+"question": "How many Haunted Mansion ghosts famously 'hitchhike' at the end of the ride?",
+"options": [
+"2",
+"3",
+"4",
+"5"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Haunted Mansion",
+"answerType": "choice",
+"format": "jeopardy"
+},
+{
+"id": "mario-x-086107cb",
+"category": "mario",
+"difficulty": "medium",
+"question": "Who voices Princess Peach in The Super Mario Bros. Movie?",
+"options": [
+"Anya Taylor-Joy",
+"Zendaya",
+"Florence Pugh",
+"Emma Stone"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "toys-x-40576161",
+"category": "toys",
+"difficulty": "medium",
+"question": "How many colors are on a classic Rubik's Cube?",
+"options": [
+"4",
+"6",
+"9",
+"8"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Rubik's Cube",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-22d91dc1",
+"category": "disney",
+"difficulty": "medium",
+"question": "Which animal is Zootopia's Judy Hopps?",
+"options": [
+"Fox",
+"Mouse",
+"Rabbit",
+"Sheep"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Zootopia",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "pixar-x-e81145d1",
+"category": "pixar",
+"difficulty": "easy",
+"question": "In Up, what holds Carl's house in the sky?",
+"options": [
+"Kites",
+"Balloons",
+"Umbrellas",
+"A blimp"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Up (2009 film)",
+"answerType": "choice"
+},
+{
+"id": "disney-x-06de9ae2",
+"category": "disney",
+"difficulty": "medium",
+"question": "Which Disney princess has a tiger named Rajah?",
+"options": [
+"Belle",
+"Pocahontas",
+"Mulan",
+"Jasmine"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Princess Jasmine",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-cb96c2c9",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "What's the name of the sloth in Ice Age?",
+"options": [
+"Scrat",
+"Manny",
+"Sid",
+"Diego"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ice Age (2002 film)",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-0a94b9ad",
+"category": "pixar",
+"difficulty": "medium",
+"question": "In WALL-E, what's the name of the sleek robot WALL-E falls for?",
+"options": [
+"EVE",
+"AUTO",
+"HAL",
+"M-O"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: WALL-E",
+"answerType": "choice"
+},
+{
+"id": "parks-x-d70968b0",
+"category": "parks",
+"difficulty": "medium",
+"question": "Which Florida city is closest to Walt Disney World?",
+"options": [
+"Tampa",
+"Miami",
+"Jacksonville",
+"Orlando"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Walt Disney World",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "toons-x-06d87ac0",
+"category": "toons",
+"difficulty": "easy",
+"question": "What does SpongeBob do at the Krusty Krab?",
+"options": [
+"Manager",
+"Janitor",
+"Fry cook",
+"Cashier"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: SpongeBob SquarePants (character)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "kidsmovies-x-78b89736",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Which studio made Kung Fu Panda?",
+"options": [
+"Illumination",
+"Pixar",
+"DreamWorks Animation",
+"Blue Sky"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Kung Fu Panda",
+"answerType": "choice"
+},
+{
+"id": "parks-x-ad48a807",
+"category": "parks",
+"difficulty": "medium",
+"question": "In what year did Disneyland open?",
+"options": [
+"1955",
+"1971",
+"1962",
+"1948"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Disneyland",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "toons-x-0f3d993e",
+"category": "toons",
+"difficulty": "medium",
+"question": "Which Ninja Turtle wears orange?",
+"options": [
+"Michelangelo",
+"Donatello",
+"Leonardo",
+"Raphael"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Michelangelo (Teenage Mutant Ninja Turtles)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "toys-x-0c21224f",
+"category": "toys",
+"difficulty": "medium",
+"question": "Which toy company makes Barbie?",
+"options": [
+"Kenner",
+"Mattel",
+"Fisher-Price",
+"Hasbro"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Barbie",
+"answerType": "choice"
+},
+{
+"id": "parks-x-d4926c35",
+"category": "parks",
+"difficulty": "medium",
+"question": "What land in Disneyland is home to Star Wars: Galaxy's Edge's Millennium Falcon ride?",
+"options": [
+"Galaxy's Edge",
+"Frontierland",
+"Tomorrowland",
+"Adventureland"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Star Wars: Galaxy's Edge",
+"answerType": "choice"
+},
+{
+"id": "mario-x-057b0b14",
+"category": "mario",
+"difficulty": "medium",
+"question": "Which studio animated The Super Mario Bros. Movie?",
+"options": [
+"Sony Pictures Animation",
+"DreamWorks",
+"Illumination",
+"Pixar"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "toys-x-3d546782",
+"category": "toys",
+"difficulty": "medium",
+"question": "What year was the Nintendo Entertainment System released in North America?",
+"options": [
+"1988",
+"1985",
+"1990",
+"1983"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Nintendo Entertainment System",
+"answerType": "choice",
+"format": "millionaire"
+},
+{
+"id": "parks-x-9dce4446",
+"category": "parks",
+"difficulty": "medium",
+"question": "Which Walt Disney World park is home to the Tree of Life?",
+"options": [
+"EPCOT",
+"Animal Kingdom",
+"Magic Kingdom",
+"Hollywood Studios"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Disney's Animal Kingdom",
+"answerType": "choice"
+},
+{
+"id": "parks-x-94dcd882",
+"category": "parks",
+"difficulty": "easy",
+"question": "Which castle sits at the center of Disneyland in California?",
+"options": [
+"Belle's Castle",
+"Elsa's Ice Palace",
+"Cinderella Castle",
+"Sleeping Beauty Castle"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Sleeping Beauty Castle",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "disney-x-69f29799",
+"category": "disney",
+"difficulty": "easy",
+"question": "What's the name of the snowman in Frozen?",
+"options": [
+"Kristoff",
+"Marshmallow",
+"Olaf",
+"Sven"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Frozen (2013 film)",
+"answerType": "choice",
+"format": "dozen"
+},
+{
+"id": "mario-x-0fc3d120",
+"category": "mario",
+"difficulty": "easy",
+"question": "In The Super Mario Bros. Movie (2023), who voices Mario?",
+"options": [
+"Jack Black",
+"Charlie Day",
+"Chris Pratt",
+"Seth Rogen"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"answerType": "choice"
+},
+{
+"id": "disney-x-0c43ce78",
+"category": "disney",
+"difficulty": "medium",
+"question": "In Tangled, what's the name of Rapunzel's chameleon?",
+"options": [
+"Flynn",
+"Pascal",
+"Maximus",
+"Louis"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Tangled",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-f1a32044",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In Home Alone, what city do the McCallisters fly to?",
+"options": [
+"New York",
+"Rome",
+"Paris",
+"London"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Home Alone",
+"answerType": "choice"
+},
+{
+"id": "sports-x-1175dda5",
+"category": "sports",
+"difficulty": "medium",
+"question": "How many referees work a soccer game?",
+"options": [
+"Four",
+"Two",
+"One",
+"Three"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-92fe9496",
+"category": "toons",
+"difficulty": "medium",
+"question": "Who composed the theme song for The Simpsons?",
+"options": [
+"Hans Zimmer",
+"Ennio Morricone",
+"John Williams",
+"Danny Elfman"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-709082cb",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which classic scary movie features the line 'They're Here'?",
+"options": [
+"The Exorcist",
+"The Shining",
+"Poltergeist",
+"Halloween"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-2e426db1",
+"category": "music",
+"difficulty": "easy",
+"question": "Which band released songs suchs as \"Rio\", \"Girls on Film\", and \"The Reflex\"?",
+"options": [
+"Depeche Mode",
+"Duran Duran",
+"New Order",
+"The Cure"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-288a74ee",
+"category": "movies",
+"difficulty": "medium",
+"question": "What is the name of the character Nicolas Cage plays in the movie \"National Treasure?\"?",
+"options": [
+"John Quincy Beckett",
+"Thomas Jefferson Walker",
+"George Washington Swanson",
+"Benjamin Franklin Gates"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "tv-x-ab9a3462",
+"category": "tv",
+"difficulty": "easy",
+"question": "In DuckTales, what is the name of the city where all the main characters live?",
+"options": [
+"Duckwing",
+"Tailspin",
+"Wingford",
+"Duckburg"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-268d41f1",
+"category": "toys",
+"difficulty": "easy",
+"question": "When was the board game Twister, released to the public?",
+"options": [
+"January 1969",
+"February 1966",
+"April 1966",
+"September 1965"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "disney-x-415e31b4",
+"category": "disney",
+"difficulty": "easy",
+"question": "Which tale features a girl who lives with seven dwarfs?",
+"options": [
+"Goldilocks",
+"Little Red Riding Hood",
+"Cinderella",
+"Snow White"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-478f67e2",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "In Star Wars, what color is Darth Vader's lightsaber?",
+"options": [
+"Purple",
+"Green",
+"Red",
+"Blue"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-80250c82",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which former Star Trek actor directed Three Men and a Baby (1987)?",
+"options": [
+"William Shatner",
+"James Doohan",
+"George Takei",
+"Leonard Nimoy"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-dc5748e3",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In Harry Potter, what is the name of the magical sport that is played on broomsticks?",
+"options": [
+"Rumple Grump",
+"Nimbrod",
+"Quidditch",
+"Twizzlesticks"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "sports-x-51122eec",
+"category": "sports",
+"difficulty": "easy",
+"question": "In the 2014 FIFA World Cup, what was the final score in the match Brazil - Germany?",
+"options": [
+"1-6",
+"1-5",
+"2-6",
+"1-7"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-d0a57ffb",
+"category": "toys",
+"difficulty": "easy",
+"question": "How many pieces are there on the board at the start of a game of chess?",
+"options": [
+"16",
+"20",
+"36",
+"32"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "pokemon-x-0a2714f9",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "Who is the first gym leader you fight in 'Pokémon' for the Game Boy?",
+"options": [
+"Vince",
+"Commander Cole",
+"Erika",
+"Brock"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-467ed2d9",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which director directed The Lord of the Rings: The Fellowship of the Ring?",
+"options": [
+"Martin Scorsese",
+"Steven Spielberg",
+"Woody Allen",
+"Peter Jackson"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "pokemon-x-b0a8fdc7",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "Which water-type Pokémon starter was introduced in the 4th generation of the series?",
+"options": [
+"Mudkip",
+"Oshawott",
+"Totodile",
+"Piplup"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "marvel-x-57a34563",
+"category": "marvel",
+"difficulty": "medium",
+"question": "Paul Rudd plays the role of which character in the Marvel Cinematic Universe?",
+"options": [
+"Karl Mordo",
+"The Grandmaster",
+"Quentin Beck",
+"Ant Man"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-d372c6b4",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which actor and martial artist starred as Colonel Guile in the 1994 action film adaptation of Street Fighter?",
+"options": [
+"Steven Seagal",
+"Jean-Claude Van Damme",
+"Scott Adkins",
+"Chuck Norris"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-40166c3e",
+"category": "music",
+"difficulty": "medium",
+"question": "Who found a hit with Calvin Harris with the song 'We Found Love'?",
+"options": [
+"Adele",
+"Rihanna",
+"Lady Gaga",
+"Beyonce"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-77cae23d",
+"category": "movies",
+"difficulty": "easy",
+"question": "Who played the role of James Bond in Casino Royale?",
+"options": [
+"Roger Moore",
+"Sean Connery",
+"George Lazenby",
+"Daniel Craig"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "games-x-57da79bd",
+"category": "games",
+"difficulty": "easy",
+"question": "In the Street Fighter franchise, what's Ken's surname?",
+"options": [
+"Morrison",
+"Masters",
+"Mitchell",
+"Michaels"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-e6e5d702",
+"category": "sports",
+"difficulty": "medium",
+"question": "With which team did Michael Schumacher make his Formula One debut at the 1991 Belgian Grand Prix?",
+"options": [
+"Mercedes",
+"Benetton",
+"Jordan",
+"Ferrari"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-1b6646a1",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "What is the orange and white bot's name in \"Star Wars: The Force Awakens\"?",
+"options": [
+"R2-D2",
+"BB-8",
+"BB-3",
+"AA-A"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toons-x-f4f7f491",
+"category": "toons",
+"difficulty": "medium",
+"question": "What breed of dog is \"Scooby Doo\"?",
+"options": [
+"Great Dane",
+"Doberman Pinscher",
+"Pit bull",
+"Boxer"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "tv-x-7cb7619c",
+"category": "tv",
+"difficulty": "easy",
+"question": "Who played Agent Fox Mulder in the TV sci-fi drama \"The X-Files\"?",
+"options": [
+"Gillian Anderson",
+"David Duchovny",
+"Robert Patrick",
+"Mitch Pileggi"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-b70071f6",
+"category": "sports",
+"difficulty": "easy",
+"question": "With which sport is Lionel Messi associated?",
+"options": [
+"Boxing",
+"Badminton",
+"Track and field",
+"Football"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "sports-x-ffbd0438",
+"category": "sports",
+"difficulty": "medium",
+"question": "Which portuguese island is soccer player Cristiano Ronaldo from?",
+"options": [
+"Santa Maria",
+"Porto Santo",
+"Terceira",
+"Madeira"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-12e98620",
+"category": "music",
+"difficulty": "easy",
+"question": "What is Will Smith's Rapper Alter Ego?",
+"options": [
+"DJ Jazzy Jeff",
+"Jay Z",
+"The Fresh Prince",
+"Eminem"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-a197d895",
+"category": "movies",
+"difficulty": "medium",
+"question": "What was the name of David Hasslehoff's Talking car in the show 'Knight Rider'?",
+"options": [
+"KITT",
+"MORN",
+"HAL",
+"JARVIS"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "tv-x-e2023566",
+"category": "tv",
+"difficulty": "medium",
+"question": "Who was the star of the TV series \"24\"?",
+"options": [
+"Kevin Bacon",
+"Kiefer Sutherland",
+"Hugh Laurie",
+"Rob Lowe"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "tv-x-c9f8e436",
+"category": "tv",
+"difficulty": "medium",
+"question": "In the show \"The Office\" who does Michael Scott eventually end up with?",
+"options": [
+"Angela Martin",
+"Pam Beesly",
+"Jan Levinson",
+"Holly Flax"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-dab6a400",
+"category": "music",
+"difficulty": "medium",
+"question": "Which band was Diana Ross a member of?",
+"options": [
+"The Vandellas",
+"The Supremes",
+"The Four Tops",
+"The Attractions"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-e7bea709",
+"category": "toons",
+"difficulty": "medium",
+"question": "Who was the original voice actor of Shaggy Rogers in Scooby-Doo?",
+"options": [
+"Billy West",
+"Casey Kasem",
+"Frank Welker",
+"Dante Basco"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-42f744e6",
+"category": "sports",
+"difficulty": "easy",
+"question": "What Colour Is The 8 Ball In A Game Of Pool?",
+"options": [
+"Black",
+"White",
+"Brown",
+"Red"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-c26c1224",
+"category": "music",
+"difficulty": "easy",
+"question": "What type of instrument is a cowbell?",
+"options": [
+"Brass",
+"Woodwind",
+"Percussion",
+"Stringed"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-8a4017a8",
+"category": "music",
+"difficulty": "easy",
+"question": "What is the one-word title of a 2014 Pharrell Williams hit?",
+"options": [
+"Joyful",
+"Satisfied",
+"Happy",
+"Excited"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "tv-x-3897fa7a",
+"category": "tv",
+"difficulty": "easy",
+"question": "In the TV show \"Cheers\", Sam Malone was a former relief pitcher for which baseball team?",
+"options": [
+"Boston Red Sox",
+"Baltimore Orioles",
+"New York Mets",
+"Milwaukee Brewers"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-3b1353b1",
+"category": "music",
+"difficulty": "medium",
+"question": "What type of instrument is a harmonica?",
+"options": [
+"Keyboard",
+"String",
+"Percussion",
+"Wind"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "pixar-x-7242d8a1",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Which \"Toy Story\" character was voiced by Don Rickles?",
+"options": [
+"Hamm",
+"Slinky Dog",
+"Mr. Potato Head",
+"Rex"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-c4a99d07",
+"category": "movies",
+"difficulty": "medium",
+"question": "What Was The Gang Name Of John Travolta And His Cohorts In The Movie Grease?",
+"options": [
+"The Heavy Quarters",
+"The Pink Ladies",
+"The Wild Dogs",
+"The T-Birds"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-08c9d98c",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "How many Harry Potter books are there?",
+"options": [
+"8",
+"6",
+"7",
+"5"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-1e167651",
+"category": "music",
+"difficulty": "medium",
+"question": "Rick Astley's hit song \"Never Gonna Give You Up\" was released in what year?",
+"options": [
+"1986",
+"1987",
+"1988",
+"1985"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-510bae40",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Which one of these actors is said to be cut from the film 'E.T. the Extra-Terrestrial'?",
+"options": [
+"Michael J. Fox",
+"Harrison Ford",
+"Arnold Schwarzenegger",
+"Andy Kaufman"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-b6f88150",
+"category": "sports",
+"difficulty": "easy",
+"question": "The 100-meter butterfly and 100-meter freestyle are both events in what Olympic sport?",
+"options": [
+"Track and Field",
+"Gymnastics",
+"Figure Skating",
+"Swimming"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-9eb5c353",
+"category": "toons",
+"difficulty": "medium",
+"question": "Adam West was the mayor of which cartoon town?",
+"options": [
+"Quahog",
+"South Park",
+"Langley Falls",
+"Springfield"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toons-x-278744a9",
+"category": "toons",
+"difficulty": "easy",
+"question": "7-Eleven stores were temporarily converted into Kwik E-marts to promote the release of what movie?",
+"options": [
+"Ratatouille",
+"Shrek the Third",
+"Spider-Man 3",
+"The Simpsons Movie"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "marvel-x-32ce36ee",
+"category": "marvel",
+"difficulty": "easy",
+"question": "Which actor played the role of Iron Man in the Marvel Cinematic Universe?",
+"options": [
+"Chris Hemsworth",
+"Chris Evans",
+"Robert Downey Jr.",
+"Tom Holland"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-ba8100d0",
+"category": "toons",
+"difficulty": "medium",
+"question": "What was the number on Gerald's shirt in \"Hey Arnold!\"?",
+"options": [
+"38",
+"33",
+"83",
+"88"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-b0b4ad17",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In the 'Harry Potter' series, which character has a ginger cat named Crookshanks?",
+"options": [
+"Luna Lovegood",
+"Hermione Granger",
+"Ron Weasley",
+"Harry Potter"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "sports-x-10c161e5",
+"category": "sports",
+"difficulty": "easy",
+"question": "With which sport is Serena Williams associated?",
+"options": [
+"Football",
+"Table tennis",
+"Motor Racing",
+"Tennis"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "games-x-5723c3b9",
+"category": "games",
+"difficulty": "medium",
+"question": "What was the game \"Galaga\" was a sequel to?",
+"options": [
+"Galactica",
+"Galaxian",
+"Space Invaders",
+"Galactic Wars"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-482a2987",
+"category": "movies",
+"difficulty": "easy",
+"question": "Which Batman villain is Mark Hamill known for having voiced?",
+"options": [
+"Hush",
+"Bane",
+"Two-Face",
+"The Joker"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-618378b6",
+"category": "toys",
+"difficulty": "easy",
+"question": "On a standard Monopoly board, which square is diagonally opposite 'Go'?",
+"options": [
+"The Electric Company",
+"Jail",
+"Go to Jail",
+"Free Parking"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-20fa11f3",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "What is the name of the first \"Star Wars\" film by release order?",
+"options": [
+"A New Hope",
+"Revenge of the Sith",
+"The Force Awakens",
+"The Phantom Menace"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-8f57c9b4",
+"category": "sports",
+"difficulty": "easy",
+"question": "With which sport is Michael Schumacher associated?",
+"options": [
+"Track and field",
+"Hockey",
+"Table tennis",
+"Motor racing"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-15759e95",
+"category": "movies",
+"difficulty": "medium",
+"question": "What was the name of Norm's wife on Cheers?",
+"options": [
+"Vera",
+"Shea",
+"Daphne",
+"Mary"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "disney-x-4a9a604a",
+"category": "disney",
+"difficulty": "easy",
+"question": "What was the first Disney movie to use CGI?",
+"options": [
+"Toy Story",
+"Tron",
+"The Black Cauldron",
+"Fantasia"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-306d96eb",
+"category": "music",
+"difficulty": "easy",
+"question": "What was Elvis Presley's wife's name?",
+"options": [
+"Lisa Marie",
+"Francesca",
+"Glady",
+"Priscilla"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-99d54d43",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which 1991 Steven Spielberg film included 350 pirate outfits for the extras alone?",
+"options": [
+"Schindler's List",
+"Hook",
+"Indiana Jones and the Last Crusade",
+"Jurassic Park"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-7e203630",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which actor played the role of Saruman in The Lord of the Rings?",
+"options": [
+"Patrick Stewart",
+"Ian McKellen",
+"Anthony Hopkins",
+"Christopher Lee"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "movies-x-7b714979",
+"category": "movies",
+"difficulty": "medium",
+"question": "What year did the movie \"Napoleon Dynamite\" come out?",
+"options": [
+"2005",
+"2004",
+"2002",
+"2003"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-a369e4ca",
+"category": "music",
+"difficulty": "easy",
+"question": "With Which Instrument Is Les Paul Associated?",
+"options": [
+"Saxophone",
+"Piano",
+"Guitar",
+"Drums"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toys-x-85d52773",
+"category": "toys",
+"difficulty": "easy",
+"question": "In a standard game of Monopoly, what colour are the two cheapest properties?",
+"options": [
+"Brown",
+"Yellow",
+"Green",
+"Blue"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-91df27cd",
+"category": "music",
+"difficulty": "medium",
+"question": "The 2010 song \"Eenie Meenie\" was a collaboration between which two popular artists?",
+"options": [
+"Usher & Pitbull",
+"Lady Gaga & Beyoncé",
+"Eminem & Rihanna",
+"Sean Kingston & Justin Bieber"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-05da5049",
+"category": "sports",
+"difficulty": "easy",
+"question": "With which sport is Pelé associated?",
+"options": [
+"Basketball",
+"Volleyball",
+"Soccer",
+"Rugby"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-5761bbbb",
+"category": "music",
+"difficulty": "medium",
+"question": "What is Brian May's guitar called?",
+"options": [
+"Red Special",
+"Green Special",
+"Blue Special",
+"Yellow Special"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-17719ac5",
+"category": "sports",
+"difficulty": "easy",
+"question": "In Baseball, how many times does the ball have to be pitched outside of the strike zone before the batter is walked?",
+"options": [
+"3",
+"1",
+"4",
+"2"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-b6f31909",
+"category": "toys",
+"difficulty": "medium",
+"question": "How many points is the Z tile worth in Scrabble?",
+"options": [
+"10",
+"5",
+"8",
+"6"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-c63cc552",
+"category": "movies",
+"difficulty": "medium",
+"question": "Which film contains the character 'Sandy Olsson'?",
+"options": [
+"The Good, the Bad, and the Ugly",
+"Gangs of New York",
+"Terms of Endearment",
+"Grease"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-1fade317",
+"category": "toons",
+"difficulty": "medium",
+"question": "In \"The Simpsons\", where did Homer and Marge first meet?",
+"options": [
+"At 742 Evergreen Terrace",
+"At Church",
+"At High School",
+"At Summer Camp"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-da9510a7",
+"category": "toys",
+"difficulty": "easy",
+"question": "How many dice are used in the game of Yahtzee?",
+"options": [
+"Eight",
+"Six",
+"Five",
+"Four"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-fbb1a8ec",
+"category": "toys",
+"difficulty": "medium",
+"question": "What happens when you roll 3 doubles in a row in Monopoly?",
+"options": [
+"Pay $200",
+"Go to jail",
+"Move to Free Parking",
+"Get paid $200"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-19e41d03",
+"category": "toys",
+"difficulty": "easy",
+"question": "Transformers are ___________ in disguise.",
+"options": [
+"Gods",
+"Aliens",
+"Wizards",
+"Robots"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "marvel-x-ef0e37e3",
+"category": "marvel",
+"difficulty": "medium",
+"question": "Who plays the role of Star Lord in the Marvel Cinematic Universe?",
+"options": [
+"Tom Hiddleston",
+"Chris Pratt",
+"Tom Holland",
+"Anthony Hopkins"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-be6ab24e",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "Who is the main protagonist in, the 1985 film, Back to the Future?",
+"options": [
+"Emmett \"Doc\" Brown",
+"Biff Tannen",
+"George McFly",
+"Marty McFly"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-7de8b67f",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In which year was the first Harry Potter book released?",
+"options": [
+"1989",
+"2001",
+"1997",
+"1993"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-75562146",
+"category": "music",
+"difficulty": "medium",
+"question": "What type of instrument is a double bass?",
+"options": [
+"Brass",
+"Woodwind",
+"Stringed",
+"Percussion"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "sports-x-7ad22fe5",
+"category": "sports",
+"difficulty": "medium",
+"question": "Which team was the 2015-2016 NBA Champions?",
+"options": [
+"Oklahoma City Thunders",
+"Toronto Raptors",
+"Golden State Warriors",
+"Cleveland Cavaliers"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-830bbd11",
+"category": "sports",
+"difficulty": "easy",
+"question": "What sport features the terms love, deuce, match and volley?",
+"options": [
+"Curling",
+"Basketball",
+"Tennis",
+"Cricket"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "pokemon-x-1d0fc8bc",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "Pokémon Go is a location-based augmented reality game developed and published by which company?",
+"options": [
+"Supercell",
+"Zynga",
+"Niantic",
+"Rovio"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-48a33774",
+"category": "music",
+"difficulty": "medium",
+"question": "Which American rock band released the song 'Come as You Are'?",
+"options": [
+"Soundgarden",
+"Nirvana",
+"Stone Temple Pilots",
+"Pearl Jam"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "disney-x-d7e716c5",
+"category": "disney",
+"difficulty": "medium",
+"question": "In Rudyard Kipling's \"The Jungle Book\", what type of snake was Kaa?",
+"options": [
+"Cobra",
+"Viper",
+"Anaconda",
+"Python"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-361d5aab",
+"category": "music",
+"difficulty": "easy",
+"question": "Who had a hit in 1964 with the song 'I Get Around'?",
+"options": [
+"The Beach Boys",
+"The Four Tops",
+"The Rolling Stones",
+"The Beatles"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "sports-x-1297389d",
+"category": "sports",
+"difficulty": "easy",
+"question": "Which NFL team plays for New England?",
+"options": [
+"Dolphins",
+"49ers",
+"Chiefs",
+"Patriots"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-daca1efb",
+"category": "music",
+"difficulty": "medium",
+"question": "The Proclaimers - I'm Gonna Be (500 Miles) reached what position on the US Hot 100 Charts in 1993?",
+"options": [
+"1st",
+"5th",
+"8th",
+"3rd"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-109f9f85",
+"category": "music",
+"difficulty": "medium",
+"question": "Who had a hit in 1988 with Don't Worry Be Happy?",
+"options": [
+"Bobby McFerrin",
+"Falco",
+"David Naughton",
+"Gary Numan"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-93232c62",
+"category": "toons",
+"difficulty": "easy",
+"question": "Which Teenage Mutant Ninja Turtle traditionally wears an orange bandana?",
+"options": [
+"Donatello",
+"Michelangelo",
+"Leonardo",
+"Raphael"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "tv-x-741b9484",
+"category": "tv",
+"difficulty": "easy",
+"question": "In the show Stranger Things, what is Eleven's favorite breakfast food?",
+"options": [
+"Toast",
+"Captain Crunch",
+"Bacon and Eggs",
+"Eggo Waffles"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toons-x-74906a59",
+"category": "toons",
+"difficulty": "easy",
+"question": "Which cartoon family lives in 742 Evergreen Terrace, Springfield USA?",
+"options": [
+"The Hills",
+"The Flintstones",
+"The Simpsons",
+"The Griffins"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "movies-x-575f3d9c",
+"category": "movies",
+"difficulty": "medium",
+"question": "In which year was The Lord of the Rings: The Fellowship of the Ring first released in the cinema?",
+"options": [
+"1998",
+"2001",
+"1992",
+"1995"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "tv-x-50667b59",
+"category": "tv",
+"difficulty": "easy",
+"question": "In the TV show 'M*A*S*H', what was the nickname of Corporal Walter O'Reilly?",
+"options": [
+"Hot Lips",
+"Hawkeye",
+"Radar",
+"Trapper"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "tv-x-df8f6b27",
+"category": "tv",
+"difficulty": "easy",
+"question": "What is the name of the main character in \"The Flash\" TV series?",
+"options": [
+"Bart Allen",
+"Barry Allen",
+"Bruce Wayne",
+"Oliver Queen"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-37bd3d9d",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Who played the character Qui-Gon Jinn in the Star Wars movie \"The Phantom Menace\"?",
+"options": [
+"Liam Neeson",
+"Harrison Ford",
+"Mark Hamill",
+"Ewan McGregor"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "tv-x-39458091",
+"category": "tv",
+"difficulty": "medium",
+"question": "What year was Netflix founded?",
+"options": [
+"2001",
+"2004",
+"1997",
+"1999"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-c6396e72",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "In \"Jurassic World\", what is the name of the dinosaur that is a genetic hybrid?",
+"options": [
+"Indominus Rex",
+"Pteranodon",
+"Tyrannosaurus Rex ",
+"Mosasaurus"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-5ee72030",
+"category": "sports",
+"difficulty": "easy",
+"question": "What is the most common type of pitch thrown by pitchers in baseball?",
+"options": [
+"Screwball",
+"Fastball",
+"Palmball",
+"Slowball"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-6da465a2",
+"category": "sports",
+"difficulty": "easy",
+"question": "The Los Angeles Dodgers were originally from what U.S. city?",
+"options": [
+"Las Vegas",
+"Seattle",
+"Boston",
+"Brooklyn"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toons-x-d8b3781e",
+"category": "toons",
+"difficulty": "easy",
+"question": "In the show \"Futurama\" what is Fry's full name?",
+"options": [
+"Fry J. Philip",
+"Philip J. Fry",
+"Fry Philip",
+"Fry Rodríguez"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-9c05f9ba",
+"category": "music",
+"difficulty": "medium",
+"question": "In what year was the smash hit song \"Scatman's World\" released?",
+"options": [
+"1994",
+"1996",
+"1993",
+"1995"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-987e1d1b",
+"category": "sports",
+"difficulty": "easy",
+"question": "What event occurs in soccer when a defender commits a foul in their own penalty area?",
+"options": [
+"A red card",
+"An own goal",
+"A penalty kick",
+"A free kick"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-0ad92d20",
+"category": "music",
+"difficulty": "medium",
+"question": "In The Bangles' 'Manic Monday', what time is it already?",
+"options": [
+"Seven o'clock",
+"Four o'clock",
+"Six o'clock",
+"Five o'clock"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toys-x-92a6ea44",
+"category": "toys",
+"difficulty": "medium",
+"question": "About how many Slinkys were sold in their first 60 years (from 1945 to 2005)?",
+"options": [
+"1 Billion",
+"450 Million",
+"100 Million",
+"300 Million"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-6fe881c7",
+"category": "music",
+"difficulty": "easy",
+"question": "From which country did the song \"Gangnam Style\" originate from?",
+"options": [
+"Japan",
+"China",
+"North Korea",
+"South Korea"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-0f7bce42",
+"category": "sports",
+"difficulty": "medium",
+"question": "With which sport is Andy Murray associated?",
+"options": [
+"Surfing",
+"Tennis",
+"Badminton",
+"Motor racing"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-2e6248d1",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "Which author wrote 'Harry Potter and the Chamber of Secrets'?",
+"options": [
+"C. S. Lewis",
+"Philip Pullman",
+"J. K. Rowling",
+"Christopher Tolkien"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "music-x-fd70035e",
+"category": "music",
+"difficulty": "easy",
+"question": "Kanye West's \"Gold Digger\" featured which Oscar-winning actor?",
+"options": [
+"Jamie Foxx",
+" Bruce Willis",
+"Alec Baldwin",
+"Dwayne Johnson"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "kidsmovies-x-235c6932",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "In Back to the Future Part II, Marty and Dr. Emmett Brown go to which future date?",
+"options": [
+"January 25, 2015",
+"August 28, 2015",
+"October 21, 2015",
+"July 20, 2015"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-9a49c164",
+"category": "sports",
+"difficulty": "medium",
+"question": "What city did the Lakers represent before relocating to Los Angeles?",
+"options": [
+"Philadelphia",
+"Chicago",
+"Minneapolis",
+"San Francisco"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "music-x-83d3a9c3",
+"category": "music",
+"difficulty": "easy",
+"question": "Where does the Mac part of the name Fleetwood Mac come from?",
+"options": [
+"Mac McAnally",
+"Christine McVie",
+"John McVie",
+"David Tennant"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "toons-x-65c20c0b",
+"category": "toons",
+"difficulty": "medium",
+"question": "What does Bart sell his soul for in The Simpsons episode 'Bart Sells His Soul'?",
+"options": [
+"$100",
+"A Copy of Bonestorm 2",
+"$5",
+"A Giant Gobstopper"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "sports-x-976329c8",
+"category": "sports",
+"difficulty": "medium",
+"question": "What sport would you associate with The Indianapolis 500?",
+"options": [
+"Golf",
+"Cycling",
+"Athletics",
+"Motorsports"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+},
+{
+"id": "toons-x-94c1ece7",
+"category": "toons",
+"difficulty": "medium",
+"question": "What was Nickelodeon's original name?",
+"options": [
+"KidsTV",
+"MTVKids",
+"Splat!",
+"Pinwheel"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "opentdb.com (CC BY-SA 4.0)",
+"answerType": "choice"
+},
+{
+"id": "marvel-x-d6a67a3b",
+"category": "marvel",
+"difficulty": "medium",
+"question": "The role of Falcon in the Marvel Cinematic Universe is played by which actor?",
+"options": [
+"Anthony Mackie",
+"Michael Douglas",
+"Benedict Cumberbatch",
+"Mark Ruffalo"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "the-trivia-api.com",
+"answerType": "choice"
+}
+]

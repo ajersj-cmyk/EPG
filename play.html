@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Play — Cave Trivia</title>
 <link rel="stylesheet" href="css/common.css?v=202610151340">
@@ -34,33 +35,35 @@
     <!-- join -->
     <section class="phase" id="p-join">
       <div class="join-hero">
-        <div class="eyebrow">The man cave league</div>
-        <h1>Pick your fighter<br><em>name.</em></h1>
-        <p>Jump in any time &mdash; the game never stops. Your record lives on the big board: every point you ever earn counts toward all-time legend status.</p>
+        <div class="eyebrow"></div>
+        <h1>ENTER YOUR NAME</h1>
+
         <div class="name-field">
           <input id="nameInput" maxlength="18" placeholder="Your name" autocomplete="nickname" enterkeyhint="go">
-          <button class="btn solid" id="joinBtn">Let's go</button>
+          <button class="btn solid" id="joinBtn">PLAY</button>
         </div>
         <div class="join-error" id="joinError" hidden></div>
-        <div class="join-note">Same name as last time? You'll pick up right where you left off.<br>One device per player keeps it honest.</div>
+        <div class="join-note">Same name keeps your score.<br></div>
       </div>
     </section>
 
     <!-- wager -->
     <section class="phase" id="p-wager">
       <div class="wager-hero">
-        <div class="eyebrow">Final wager</div>
+        <div class="eyebrow">WAGER</div>
         <div class="wager-cat" id="wagerCat">&mdash;</div>
         <div class="pq-timerbar"><i id="wagerTimerFill"></i></div>
         <div class="wager-amount" id="wagerAmount">0</div>
-        <div class="wager-sub" id="wagerSub">How much of your stack are you risking?</div>
-        <input type="range" id="wagerSlider" class="wager-slider" min="0" max="0" step="10" value="0" aria-label="Wager amount">
+        <div class="wager-sub" id="wagerSub">Bet it or skip.</div>
+        <input type="range" id="wagerSlider" class="wager-slider" min="0" max="0" step="25" value="0" aria-label="Wager amount">
         <div class="wager-scale"><span>0</span><span id="wagerMax">0</span></div>
         <div class="wager-quick">
-          <button class="btn ghost" id="wagerHalf" type="button">Half</button>
-          <button class="btn ghost" id="wagerFull" type="button">Max</button>
+          <button class="btn ghost" id="wagerZero" type="button">0</button>
+          <button class="btn ghost" id="wagerHalf" type="button">HALF</button>
+          <button class="btn ghost" id="wagerFull" type="button">ALL</button>
         </div>
-        <button class="btn solid wager-btn" id="wagerBtn">Place wager</button>
+        <button class="btn solid wager-btn" id="wagerBtn">LOCK IT</button>
+        <button class="btn ghost wager-skip" id="wagerSkip" type="button">SKIP</button>
         <div class="wager-note" id="wagerNote" hidden></div>
       </div>
     </section>
@@ -71,7 +74,7 @@
         <span class="pq-cat" id="pqCat">&mdash;</span>
         <span class="pq-diff" id="pqDiff">&mdash;</span>
       </div>
-      <div class="watch-tv" id="watchTv" hidden>&#128064; Watch the TV</div>
+      <div class="watch-tv" id="watchTv" hidden>Watch the TV</div>
       <div class="wager-q-badge" id="wagerQBadge" hidden>Wager question &middot; <b id="wagerQAmount"></b></div>
       <div class="lightning-badge" id="lightningBadge" hidden>&#9889; LIGHTNING ROUND &middot; 200 pts</div>
       <div class="pq-timerbar"><i id="pqTimerFill"></i></div>
@@ -93,7 +96,7 @@
       <div class="status-card">
         <div class="eyebrow">Answer received</div>
         <h2>Locked in.</h2>
-        <p>Eyes on the big screen for the reveal.</p>
+        <p>Watch the TV.</p>
       </div>
     </section>
 

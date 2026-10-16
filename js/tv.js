@@ -45,44 +45,44 @@
 
   var CUSTOM_TEXT_DEFAULTS = {
     // question teaser card
-    teaserEyebrow: 'Teaser \u00B7 {category}',
-    teaserCta: 'Think you know it? <b>Scan to play</b>',
-    teaserAnswerEyebrow: 'The answer was',
-    teaserAnswerCta: 'Knew it? <b>Scan to prove it</b>',
+    teaserEyebrow: '{category}',
+    teaserCta: '<b>SCAN TO PLAY</b>',
+    teaserAnswerEyebrow: 'ANSWER',
+    teaserAnswerCta: '<b>SCAN TO PLAY</b>',
     // join card
-    joinEyebrow: 'Free \u00B7 no app needed \u00B7 jump in anytime',
-    joinTitle: 'SCAN<br>TO JOIN',
-    joinSub: 'Your phone is the controller',
+    joinEyebrow: 'No app needed',
+    joinTitle: 'SCAN<br>TO PLAY',
+    joinSub: 'Play on your phone',
     // money board card (3 views: today / month / all time)
-    moneyEyebrow: 'Money leaderboard',
+    moneyEyebrow: 'Leaderboard',
     moneyTitle: 'MONEY<br>BOARD',
     moneyTabDay: 'Today',
     moneyTabMonth: 'This month',
     moneyTabAll: 'All time',
-    moneyEmpty: 'No winnings yet \u2014 be the first',
+    moneyEmpty: 'No scores yet',
     // streak board card
-    streakEyebrow: 'Streak leaderboard',
+    streakEyebrow: 'Streaks',
     streakTitle: 'HOT<br>STREAKS',
     streakColNow: 'Now',
     streakColBest: 'Best',
-    streakEmpty: 'No streaks yet \u2014 start one',
+    streakEmpty: 'No streaks yet',
     // legends card
-    legendsEyebrow: 'The Cave\u2019s finest',
+    legendsEyebrow: 'Hall of fame',
     legendsTitle: 'LEGENDS',
-    legendsEmpty: 'The cave is waiting for its first legend',
-    legendsCta: 'Your name could be here \u2014 <b>scan to play</b>',
+    legendsEmpty: 'No legends yet',
+    legendsCta: '<b>SCAN TO PLAY</b>',
     // attract ticker
-    tickerPlaying: '{n} playing right now \u2014 jump in',
-    tickerEmpty: 'No one playing \u2014 be the first to top the leaderboard',
+    tickerPlaying: '{n} PLAYING',
+    tickerEmpty: 'SCAN TO PLAY',
     // new challenger celebration
-    challengerKicker: 'New challenger',
-    challengerLine: 'HAS ENTERED THE CAVE',
+    challengerKicker: 'NEW CHALLENGER',
+    challengerLine: '',
     // sendoff when a player leaves
-    sendoffKicker: 'Thanks for playing',
-    sendoffSub: 'The cave salutes you',
+    sendoffKicker: 'GAME OVER',
+    sendoffSub: '',
     // streak snapped
-    snappedKicker: 'Streak snapped',
-    snappedSub: 'Hell of a run',
+    snappedKicker: 'STREAK OVER',
+    snappedSub: '',
     // big wager loss beat
     wagerBeatKicker: 'Big risk',
     // streak milestone tiers
@@ -102,18 +102,18 @@
     // king of the hill dethroning
     kingKicker: 'New king of the hill',
     kingLine: 'DETHRONES {old} AT {amount}',
-    dethronedKicker: 'Knocked off the throne',
-    dethronedSub: 'The crown has a new owner',
+    dethronedKicker: 'DETHRONED',
+    dethronedSub: '',
     // record chase (on money board)
     chaseLabel: '{n} from the record',
     // reigning champ ticker
-    tickerChamp: 'Reigning champ: {name} \u2014 {amount} lifetime',
+    tickerChamp: 'CHAMP: {name} \u00B7 {amount}',
     // site chrome
     railLeaderboard: 'Live leaderboard',
-    railScan: 'Scan to join',
+    railScan: 'Scan to play',
     podiumTitle: 'CHAMPIONS',
-    podiumEyebrow: 'Block {n} final \u00B7 top of the block',
-    footerNote: 'Cave Trivia \u00B7 free forever edition'
+    podiumEyebrow: 'Block {n} final',
+    footerNote: 'Cave Trivia'
   };
 
   // Plain-text value (for textContent).
@@ -147,7 +147,7 @@
       var st = lastStateDoc;
       var waiting = activePlayerCount() > 0;
       // Players waiting but no active game: (re)start it.
-      if (waiting && (!st || !st.phase || st.phase === 'idle')) {
+      if (waiting && (!st || !st.phase || st.phase === 'idle') && !currentQ && !pendingWagerQ && !imgChecking) {
         kickstartGame(2000);
         return;
       }
@@ -158,7 +158,7 @@
         return;
       }
       var stuckMs = Date.now() - lastPhaseChangeTs;
-      var now = serverNow();
+      var now = Date.now(); // deadlines are stamped with this TV's clock
       if (st.phase === 'question' && st.deadlineTs && now > st.deadlineTs + 15000 && stuckMs > 20000) {
         console.warn('[watchdog] question stuck, forcing reveal');
         revealQuestion();
@@ -338,7 +338,9 @@
     // Clear it so we never resume a dead question — start fresh instead.
     refs.state.once('value').then(function (snap) {
       var st = snap.val();
-      var stale = st && st.phase && st.phase !== 'idle' && st.deadlineTs && (Date.now() - st.deadlineTs > 10000);
+      // Covers question/reveal (deadlineTs), wager (wagerDeadlineTs) and podium (no deadline).
+      var dl = st ? (st.deadlineTs || st.wagerDeadlineTs || 0) : 0;
+      var stale = st && st.phase && st.phase !== 'idle' && (Date.now() - dl > 10000);
       if (stale) {
         console.warn('[runner] clearing stale state from previous session');
         return Promise.all([refs.state.remove(), refs.question.remove(), refs.reveal.remove()]).catch(function () {});
@@ -360,17 +362,19 @@
   }
   // Build Firebase updates for a player's lifetime/month/day stats.
   // delta: score change (can be negative from lost wagers). correct: 1/0.
-  function statsUpdatesFor(name, delta, correct, upd) {
+  function statsUpdatesFor(name, delta, correct, upd, noAnswer) {
     if (!name) return;
     var key = statsKey(name);
     var tk = todayKeys();
     var cur = statsCache[key] || {};
-    var lifetime = (cur.lifetime || 0) + delta;
-    var month = (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta;
-    var day = (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta;
+    var lifetime = Math.max(0, (cur.lifetime || 0) + delta);
+    var month = Math.max(0, (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta);
+    var day = Math.max(0, (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta);
     // streaks: consecutive correct answers. Wrong answer (or no answer) resets.
     var streak = correct ? ((cur.streak || 0) + 1) : 0;
     var bestStreak = Math.max(cur.bestStreak || 0, streak);
+    var dayBestStreak = Math.max(cur.dayKey === tk.day ? (cur.dayBestStreak || 0) : 0, streak);
+    var bestDay = Math.max(cur.bestDay || 0, day);
     var base = ROOM + '/playerStats/' + key;
     upd[base + '/name'] = String(name).slice(0, 24);
     upd[base + '/lifetime'] = lifetime;
@@ -380,8 +384,10 @@
     upd[base + '/dayKey'] = tk.day;
     upd[base + '/streak'] = streak;
     upd[base + '/bestStreak'] = bestStreak;
+    upd[base + '/dayBestStreak'] = dayBestStreak;
+    upd[base + '/bestDay'] = bestDay;
     upd[base + '/correct'] = (cur.correct || 0) + (correct ? 1 : 0);
-    upd[base + '/answered'] = (cur.answered || 0) + 1;
+    upd[base + '/answered'] = (cur.answered || 0) + (noAnswer ? 0 : 1);
     upd[base + '/lastSeen'] = CT.rest.ts();
   }
 
@@ -409,6 +415,7 @@
       difficulty: q.difficulty,
       image: q.image || null,
       video: q.video || null,
+      tag: q.tag || null,
       isWager: !!isWager,
       isLightning: !!q._lightning,
       seconds: seconds,
@@ -447,14 +454,70 @@
     return 'hard'; // Q8-Q9
   }
 
+  /* ---- bank readiness: retry the load instead of silently stalling ---- */
+  var bankLoading = null;
+  function bankReady() { return bank && bank.length > 0; }
+  function ensureBank() {
+    if (bankReady()) return Promise.resolve(bank);
+    if (bankLoading) return bankLoading;
+    bankLoading = E.loadBank().then(function (b) {
+      bank = b;
+      mergeCustomIntoBank();
+      return bank;
+    }).catch(function (e) {
+      console.warn('[bank] load failed, will retry: ' + (e && e.message));
+      return null;
+    }).then(function (b) { bankLoading = null; return b; });
+    return bankLoading;
+  }
+  // Shown in the attract card slot (never on top of it) while the bank loads.
+  function showLoadingCard() {
+    stopAttractLoop();
+    var ac = $('#arCard');
+    if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Get ready</div><div class="ar-big chrome-text">LOADING<br>QUESTIONS</div>';
+  }
+  var bankRetryTimer = null;
+  function waitForBankThenAdvance() {
+    showLoadingCard();
+    if (bankRetryTimer) return;
+    ensureBank().then(function () {
+      bankRetryTimer = setTimeout(function () {
+        bankRetryTimer = null;
+        if (bankReady()) advanceGame(); else waitForBankThenAdvance();
+      }, bankReady() ? 50 : 5000);
+    });
+  }
+
+  /* ---- picture questions: preload the image; a broken image = skip it ---- */
+  var imgOk = {};
+  var imgChecking = false;
+  var pendingImgQ = null;
+  function preloadImage(url, timeoutMs) {
+    return new Promise(function (resolve) {
+      var done = false;
+      var im = new Image();
+      var t = setTimeout(function () { finish(false); }, timeoutMs || 5000);
+      function finish(ok) { if (done) return; done = true; clearTimeout(t); im.onload = im.onerror = null; resolve(ok); }
+      im.onload = function () { finish(im.naturalWidth > 0); };
+      im.onerror = function () { finish(false); };
+      im.src = url;
+    });
+  }
+  function dropImageQuestions(url) {
+    bank = bank.filter(function (x) { return x.image !== url; });
+  }
+
   function dealQuestion() {
+    if (!bankReady()) return waitForBankThenAdvance();
+    if (imgChecking) return;
     var st = drawSettings();
     var qibPreview = blockDealt + 1; // what the next question-in-block will be
-    var drawn = E.drawQuestion({
+    var drawn = pendingImgQ ? { q: pendingImgQ, askedIds: askedIds, recentCats: recentCats } : E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
       disabledCats: st.disabledCats, familyMode: st.familyMode,
       difficulty: difficultyForQib(qibPreview),
     });
+    pendingImgQ = null;
     if (!drawn) {
       // Bank exhausted — reset asked history and try again (allows repeats after full cycle).
       askedIds = {};
@@ -467,6 +530,16 @@
     }
     var q = drawn.q;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
+    if (q.image && !imgOk[q.image]) {
+      imgChecking = true;
+      preloadImage(q.image, 5000).then(function (ok) {
+        imgChecking = false;
+        if (ok) { imgOk[q.image] = true; pendingImgQ = q; }
+        else { console.warn('[bank] skipping picture question, image failed: ' + q.image); dropImageQuestions(q.image); }
+        dealQuestion();
+      });
+      return;
+    }
     clearTimer();
     blockDealt += 1; // 1..9 — the 10th question of the block is the wager round
     round += 1;
@@ -493,7 +566,12 @@
   // Every 10th question is Final-Jeopardy style: the category is announced
   // first, players wager 0..their score, then the question drops.
   // Mid-block (Q3/Q6/Q9): "Wager Up" — same flow on a hard question, shorter window.
+  var wagerToken = 0;
   function startWager(isWagerUp, qib) {
+    if (!bankReady()) return waitForBankThenAdvance();
+    // Guard: a wager window is already open (double advance or watchdog re-entry).
+    // Re-entering would draw a new question and restart the countdown.
+    if (pendingWagerQ) { console.warn('[wager] startWager ignored: wager already pending'); return; }
     var st = drawSettings();
     var drawn = E.drawQuestion({
       bank: bank, askedIds: askedIds, recentCats: recentCats,
@@ -514,6 +592,7 @@
     pendingWagerQib = qib || E.BLOCK_SIZE;
     askedIds = drawn.askedIds; recentCats = drawn.recentCats;
     clearTimer();
+    var myToken = ++wagerToken;
     var secs = isWagerUp ? E.WAGER_UP_SECONDS : E.WAGER_SECONDS;
     var deadlineTs = Date.now() + secs * 1000;
     clearPlayerFields().then(function () {
@@ -525,12 +604,20 @@
         podium: null,
       });
     }).then(function () {
+      if (myToken !== wagerToken || !pendingWagerQ) return; // superseded
+      clearTimer();
       questionTimer = setTimeout(dealWagerQuestion, secs * 1000 + 400);
     });
   }
 
   function dealWagerQuestion() {
-    if (!pendingWagerQ) return advanceGame();
+    if (!pendingWagerQ) {
+      // Nothing pending (already dealt). If the screen still says wager, close the slot
+      // instead of letting advanceGame open a fresh wager window.
+      var ls = lastStateDoc;
+      if (ls && ls.phase === 'wager') blockDealt = Math.max(blockDealt, ls.questionInBlock || 0);
+      return advanceGame();
+    }
     var q = pendingWagerQ;
     var isWagerUp = pendingWagerUp;
     var qib = pendingWagerQib;
@@ -542,7 +629,8 @@
     // snapshot wagers players placed during the wager window
     var wagers = {};
     Object.keys(players).forEach(function (pid) {
-      var w = players[pid].wager || 0;
+      // optional wager, capped at the player's current score (never forced, never negative)
+      var w = E.roundWager(players[pid].wager, players[pid].score);
       if (w > 0) wagers[pid] = w;
     });
     currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: true, isWagerUp: isWagerUp, wagers: wagers };
@@ -618,6 +706,11 @@
           upd[ROOM + '/players/' + pid + '/wagersLost'] = (p.wagersLost || 0) + 1;
           results.push({ pid: pid, name: p.name, delta: -(p.score - ns), wager: wager, correct: false });
         }
+        // a no-answer from someone in the room breaks their streak (a skipped wager does not)
+        if (p.name && Date.now() - (p.lastSeen || 0) < 3 * 60 * 1000) {
+          var nb = bStat(pid); nb.n += 1; nb.s = 0;
+          statsUpdatesFor(p.name, (cq.isWager && wager > 0) ? (E.clampScore((p.score || 0) - wager) - (p.score || 0)) : 0, false, upd, true);
+        }
         return;
       }
       answeredCount += 1;
@@ -634,7 +727,7 @@
         scoreArgs._closestWin = isWinner;
         scoreArgs._closestDiff = myDiff;
       } else if (isTextQ) {
-        var correctText = q.answerText || q.options[q.answer] || '';
+        var correctText = q.answerText || (q.options || [])[q.answer] || '';
         scoreArgs.textCorrect = E.textMatch(a.text, correctText);
       } else {
         scoreArgs.choice = a.choice;
@@ -642,7 +735,7 @@
       }
       var r;
       if (isNumQ && scoreArgs._closestWin) {
-        r = { correct: true, points: 150 + (wager > 0 ? wager : 0) };
+        r = { correct: true, points: E.CLOSEST_CASH + (wager > 0 ? wager : 0), speed: 0 };
       } else if (isNumQ) {
         r = { correct: false, points: 0 };
       } else {
@@ -701,12 +794,16 @@
       var resEntry = {
         pid: pid, name: p.name,
         delta: newScore - (p.score || 0),
-        wager: wager, correct: r.correct,
+        wager: wager, correct: r.correct, speed: r.speed || 0,
       };
       if (isNumQ && numGuesses[pid]) {
         resEntry.guess = numGuesses[pid].guess;
         resEntry.offBy = numGuesses[pid].diff;
       }
+      var bs = bStat(pid);
+      bs.n += 1;
+      if (r.correct) { bs.c += 1; bs.s += 1; bs.best = Math.max(bs.best, bs.s); if (wager > 0) bs.w = Math.max(bs.w, wager); }
+      else bs.s = 0;
       results.push(resEntry);
     });
     results.sort(function (a, b) { return b.delta - a.delta; });
@@ -759,7 +856,7 @@
       var isTextQ = E.isTextQuestion(q);
       return refs.reveal.set({
         correctIndex: isTextQ ? -1 : q.answer,
-        correctText: isTextQ ? (q.answerText || q.options[q.answer] || '') : q.options[q.answer],
+        correctText: isTextQ ? (q.answerText || (q.options || [])[q.answer] || '') : ((q.options || [])[q.answer] || (isNumQ ? String(numAnswer) : "")),
         answerType: q.answerType || 'choice',
         answerNumber: isNumQ ? numAnswer : null,
         closestDiff: isNumQ ? (closestDiff === Infinity ? null : closestDiff) : null,
@@ -782,7 +879,7 @@
       // them in the moment queue (see renderRevealFinal).
       var pause = cq.isWager ? E.WAGER_REVEAL_SECONDS : E.REVEAL_SECONDS;
       questionTimer = setTimeout(function () {
-        if (cq.isWager) showPodium(); else advanceGame();
+        if (cq.isWager && !cq.isWagerUp) showPodium(); else advanceGame();
       }, pause * 1000);
     });
   }
@@ -794,6 +891,11 @@
   var momentBusy = false;
   var momentToken = 0; // invalidates pending moment timeouts after a cut
 
+  // After a pop-up clears, bring attract back only if nothing started meanwhile.
+  function resumeAttractIfIdle() {
+    var phase = (lastStateDoc && lastStateDoc.phase) || 'idle';
+    if (phase === 'idle' && !questionTimer && !arRunning) startAttractLoop();
+  }
   function momentIdle() { return !momentBusy && momentQueue.length === 0; }
 
   function queueMoment(m) {
@@ -814,6 +916,8 @@
     momentBusy = true;
     var tok = ++momentToken;
     ov.innerHTML = '<div class="moment-inner ' + (m.cls || '') + '">' + m.html + '</div>';
+    document.body.classList.add('moment-on');
+    stopAttractLoop();
     ov.hidden = false;
     ov.classList.remove('show');
     void ov.offsetWidth;
@@ -827,6 +931,7 @@
         ov.hidden = true;
         ov.innerHTML = '';
         momentBusy = false;
+        if (!momentQueue.length) { document.body.classList.remove('moment-on'); resumeAttractIfIdle(); }
         pumpMoments();
       }, 320);
     }, m.dur || 2600);
@@ -839,6 +944,7 @@
     momentBusy = false;
     var ov = $('#momentOverlay');
     if (ov) { ov.classList.remove('show'); ov.hidden = true; ov.innerHTML = ''; }
+    document.body.classList.remove('moment-on');
   }
 
   function escName(n) { return E.escapeHtml(String(n || 'Player').slice(0, 24)); }
@@ -883,7 +989,7 @@
       cls: 'wagerbeat', dur: 2400, sound: sRiskBeat,
       html: '<div class="moment-kicker">' + E.escapeHtml(ct('wagerBeatKicker')) + '</div>' +
         '<div class="moment-name">' + label + '</div>' +
-        '<div class="moment-line chrome-text">Risked ' + E.fmtNum(amt) + '</div>'
+        '<div class="moment-line chrome-text">Risked ' + E.fmtCash(amt) + '</div>'
     };
   }
 
@@ -904,7 +1010,7 @@
 
   // "NEW HIGH SCORE — REESE GETS TO 400" with named milestone tiers
   // Tier visuals escalate: t1 gold burst → t3 screen shake → t6 confetti rain
-  function celebrationMoment(name, score, tier) {
+  function celebrationMoment(name, score, tier, total) {
     tier = tier || 1;
     var tierKey = 'milestoneT' + Math.min(6, Math.max(1, tier));
     var tierName = ct(tierKey);
@@ -919,14 +1025,15 @@
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('celebrationKicker')) + '</div>' +
         '<div class="moment-tier">' + E.escapeHtml(tierName) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
-        '<div class="moment-line">Gets to ' + E.fmtNum(score) + '</div>' +
+        '<div class="moment-line">PASSES ' + E.fmtCash(score) + ' TODAY</div>' +
+        (total ? '<div class="moment-sub">TOTAL ' + E.fmtCash(total) + '</div>' : '') +
         (tier >= 6 ? '<div class="confetti-rain"></div>' : '')
     };
   }
 
   // KING OF THE HILL: full-screen takeover when #1 is dethroned
   function kingMoment(d) {
-    var line = fillTokens(ctHtml('kingLine'), { old: d.oldKing, amount: E.fmtNum(d.amount) });
+    var line = fillTokens(ctHtml('kingLine'), { old: d.oldKing, amount: E.fmtCash(d.amount) });
     return {
       cls: 'king', dur: 3800, sound: function () { sFanfare(); setTimeout(sBigWin, 500); },
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('kingKicker')) + '</div>' +
@@ -955,10 +1062,15 @@
   }
 
   // Block-capping ceremony after the wager reveal: top 3 of the block.
+  // Per-block stats for the champion screen (TV memory; reset each block).
+  var blockStats = {};
+  function bStat(pid) { return blockStats[pid] || (blockStats[pid] = { s: 0, best: 0, c: 0, n: 0, w: 0 }); }
+
   function showPodium() {
     clearTimer();
     var top = E.leaderboard(players, 'block').slice(0, 3).map(function (r) {
-      return { name: r.name, score: r.score };
+      var b = blockStats[r.id || r.pid] || {};
+      return { name: r.name, score: r.score, best: b.best || 0, correct: b.c || 0, asked: E.BLOCK_SIZE, bigWager: b.w || 0 };
     });
     writeState({ phase: 'podium', questionInBlock: E.BLOCK_SIZE, podium: { top: top } })
       .then(function () {
@@ -969,6 +1081,7 @@
           });
           blockNum += 1;
           blockDealt = 0;
+          blockStats = {};
           db.ref().update(upd).then(function () {
             return writeState({ podium: null });
           }).then(advanceGame);
@@ -1160,14 +1273,14 @@
     var el = $('#blockBoard');
     el.innerHTML = '';
     if (!board.length) {
-      el.innerHTML = '<div class="board-empty">No scores yet &mdash; be the first legend of the cave.</div>';
+      el.innerHTML = '<div class="board-empty">No scores yet</div>';
       return;
     }
     board.forEach(function (r, i) {
       var li = document.createElement('li');
       li.innerHTML = '<span class="rank">' + (i + 1) + '</span>' +
         '<span class="nm">' + E.escapeHtml(r.name) + streakFlame(r.name) + '</span>' +
-        '<span class="sc">' + E.fmtNum(r.score) + '</span>';
+        '<span class="sc">' + E.fmtCash(r.score) + '</span>';
       el.appendChild(li);
     });
   }
@@ -1207,6 +1320,8 @@
       var el = document.getElementById('phase-' + p);
       if (el) el.classList.toggle('active', p === name);
     });
+    document.body.classList.toggle('in-attract', name === 'idle');
+    document.body.classList.toggle('in-podium', name === 'podium');
   }
 
   function sweepStreak() {
@@ -1223,6 +1338,57 @@
     else if (phase === 'wager') sWagerSwell();
     else if (phase === 'podium') sFanfare();
   }
+
+  // Pick a size class by length so short questions read big and long ones never overflow.
+  function fitText(el) {
+    if (!el) return;
+    var n = (el.textContent || '').length;
+    el.classList.remove('fit-s', 'fit-m', 'fit-l', 'fit-xl');
+    el.classList.add(n <= 50 ? 'fit-s' : n <= 95 ? 'fit-m' : n <= 170 ? 'fit-l' : 'fit-xl');
+  }
+
+  // ---- Look (Arcade Cyan default / Millionaire Blue), saved on this TV ----
+  var LOOKS = ['look-cyan', 'look-blue'];
+  function applyLook(look) {
+    if (LOOKS.indexOf(look) < 0) look = 'look-cyan';
+    LOOKS.forEach(function (c) { document.body.classList.toggle(c, c === look); });
+    try { localStorage.setItem('ct-look', look); } catch (e) {}
+    var bs = document.querySelectorAll('.look-btn');
+    for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('active', bs[i].getAttribute('data-look') === look);
+  }
+  (function initLook() {
+    var saved = null;
+    try { saved = localStorage.getItem('ct-look'); } catch (e) {}
+    applyLook(saved || 'look-cyan');
+    var bs = document.querySelectorAll('.look-btn');
+    for (var i = 0; i < bs.length; i++) bs[i].addEventListener('click', function () { applyLook(this.getAttribute('data-look')); });
+  })();
+
+  // ---- D-pad navigation: arrows move focus to the nearest button in that direction ----
+  document.addEventListener('keydown', function (e) {
+    var dir = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[e.key];
+    if (!dir) return;
+    var t = document.activeElement;
+    if (t && (t.tagName === 'INPUT' && t.type !== 'checkbox' && t.type !== 'radio' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+    var ov = document.getElementById('settingsOverlay');
+    var scope = (ov && !ov.hidden) ? ov : document;
+    var els = Array.prototype.filter.call(scope.querySelectorAll('button, input, select, [tabindex]:not([tabindex="-1"])'), function (el) {
+      return !el.disabled && el.offsetParent !== null;
+    });
+    if (!els.length) return;
+    e.preventDefault();
+    if (!t || els.indexOf(t) < 0) { (scope === document ? (document.getElementById('btnSettings') || els[0]) : els[0]).focus(); return; }
+    var a = t.getBoundingClientRect(), ax = a.left + a.width / 2, ay = a.top + a.height / 2, best = null, bestD = 1e9;
+    els.forEach(function (el) {
+      if (el === t) return;
+      var b = el.getBoundingClientRect(), dx = b.left + b.width / 2 - ax, dy = b.top + b.height / 2 - ay;
+      var along = dx * dir[0] + dy * dir[1];
+      if (along <= 4) return;
+      var d = along + 2.5 * Math.abs(dx * dir[1] + dy * dir[0]);
+      if (d < bestD) { bestD = d; best = el; }
+    });
+    if (best) { best.focus(); if (best.scrollIntoView) best.scrollIntoView({ block: 'nearest' }); }
+  });
 
   function buildOptions(container, options, correctIndex, revealed) {
     container.innerHTML = '';
@@ -1323,6 +1489,7 @@
     { q: "What do you call a group of wolves?", a: "Pack", cat: "Nature" }
   ];
   var arTeaserIdx = 0;
+  var bankFailed = false;
   var arLastTeaser = null;
 
   // Resolve a displayable answer for any bank question shape:
@@ -1334,11 +1501,38 @@
     return '';
   }
 
+  // Attract teasers: ONE shuffled no-repeat queue over the whole eligible
+  // bank. Order is a seeded shuffle; {seed, cursor} persists in localStorage
+  // so a reload picks up where it left off instead of replaying the same few.
+  var AR_Q_KEY = 'ct-attract-queue';
+  var arOrder = [];
+  var arQ = { seed: 0, idx: 0, sig: '' };
+  function arHash(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  function arRng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function arSaveQ() { try { localStorage.setItem(AR_Q_KEY, JSON.stringify(arQ)); } catch (e) {} }
+  function arShuffle() {
+    var r = arRng(arQ.seed);
+    for (var i = arOrder.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1));
+      var t = arOrder[i]; arOrder[i] = arOrder[j]; arOrder[j] = t;
+    }
+  }
   function arBuildPool() {
     var sig = (bank ? bank.length : 0) + ':' + (bank && bank.length ? (bank[0].id || '') : '');
-    if (sig === arPoolSig && (arPool.length || arPoolImg.length)) return;
+    if (sig === arPoolSig && arOrder.length) return;
     arPoolSig = sig;
-    arPool = []; arPoolImg = [];
+    arPool = []; arPoolImg = []; arOrder = [];
     if (!bank || !bank.length) return;
     for (var i = 0; i < bank.length; i++) {
       var q = bank[i];
@@ -1347,33 +1541,35 @@
       if (text.length > 140 || text.length < 15) continue;
       if (q.kid_safe === false) continue;
       if (!arAnswerFor(q)) continue;
-      // Attract teasers favor easy/medium (enticing, not intimidating).
-      // Hard questions appear at ~15% rate for variety.
+      // Favor easy/medium; keep ~15% of hard ones (deterministic per id).
       var diff = q.difficulty || 'medium';
-      if (diff === 'hard' && Math.random() > 0.15) continue;
-      if (q.image) arPoolImg.push(q); else arPool.push(q);
+      if (diff === 'hard' && (arHash(String(q.id || text)) % 100) >= 15) continue;
+      arOrder.push(q);
     }
+    arOrder.sort(function (x, y) { return String(x.id || x.question) < String(y.id || y.question) ? -1 : 1; });
+    try { var saved = JSON.parse(localStorage.getItem(AR_Q_KEY) || 'null'); if (saved) arQ = saved; } catch (e) {}
+    var poolSig = arOrder.length + ':' + String(arOrder[0] && (arOrder[0].id || ''));
+    if (arQ.sig !== poolSig || !arQ.seed) { arQ = { seed: (Math.random() * 4294967296) >>> 0, idx: 0, sig: poolSig }; }
+    arShuffle();
+    arSaveQ();
   }
 
   function arPickTeaser() {
     arBuildPool();
-    var useImg = arPoolImg.length && (!arPool.length || Math.random() < 0.6);
-    var pool = useImg ? arPoolImg : arPool;
-    if (pool.length) {
-      var picked = null;
-      for (var tries = 0; tries < 12; tries++) {
-        var cand = pool[Math.floor(Math.random() * pool.length)];
-        var cid = cand.id || cand.question;
-        if (arRecentIds.indexOf(cid) < 0 || pool.length <= 10) { picked = cand; break; }
+    if (arOrder.length) {
+      if (arQ.idx >= arOrder.length) {          // full pass done: reshuffle
+        arQ.seed = (arQ.seed * 1103515245 + 12345) >>> 0 || 1;
+        arQ.idx = 0;
+        arShuffle();
       }
-      if (!picked) picked = pool[Math.floor(Math.random() * pool.length)];
-      var pid = picked.id || picked.question;
-      arRecentIds.push(pid);
-      if (arRecentIds.length > 10) arRecentIds.shift();
+      var picked = arOrder[arQ.idx++];
+      arSaveQ();
       arLastTeaser = picked;
       return picked;
     }
-    // bank empty/failed: cycle the 50 hardcoded (no repeats within a cycle)
+    // bank still loading: don't burn a fallback teaser (it would repeat on every boot)
+    if (!bankFailed) return null;
+    // bank failed: cycle the 50 hardcoded (no repeats within a cycle)
     var f = AR_FALLBACK[arTeaserIdx % AR_FALLBACK.length];
     arTeaserIdx++;
     arLastTeaser = { question: f.q, text: f.q, category: f.cat, answerText: f.a };
@@ -1452,7 +1648,7 @@
     var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
       .filter(function (s) { return moneyVal(s, view, tk) > 0; })
       .sort(function (a, b) { return moneyVal(b, view, tk) - moneyVal(a, view, tk); })
-      .slice(0, 5);
+      .slice(0, view === 'all' ? 4 : 5); // lifetime rows carry a BEST DAY line, so show 4 to stay clear of the ticker
     var rows;
     if (list.length) {
       rows = '<div class="ar-rows money-rows">';
@@ -1461,32 +1657,36 @@
       list.forEach(function (s, i) {
         var val = moneyVal(s, view, tk);
         var chase = '';
-        if (i > 0 && topScore > val) {
+        if (view === 'all' && (s.bestDay || 0) > 0) {
+          chase = '<div class="ar-chase">BEST DAY ' + E.fmtCash(s.bestDay) + '</div>';
+        } else if (i > 0 && topScore > val) {
           var behind = topScore - val;
           chase = '<div class="ar-chase">' + fillTokens(E.escapeHtml(ct('chaseLabel')), {
-            n: E.fmtNum(behind)
+            n: E.fmtCash(behind)
           }) + '</div>';
         }
         rows += '<div class="ar-row money-row' + (i === 0 ? ' first' : '') + '">' +
           '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + chase + '</span>' +
-          '<span class="ar-score money-score">$' + E.fmtNum(val) + '</span></div>';
+          '<span class="ar-score money-score">' + E.fmtCash(val) + '</span></div>';
       });
       rows += '</div>';
     } else {
       rows = '<div class="ar-sub">' + E.escapeHtml(ct('moneyEmpty')) + '</div>';
     }
+    var TITLES = { day: 'TODAY CASH', month: 'THIS MONTH', all: 'LIFETIME CASH' };
     return '<div class="ar-eyebrow money-eyebrow">' + E.escapeHtml(ct('moneyEyebrow')) + '</div>' +
-      '<div class="ar-big chrome-text">' + ctHtml('moneyTitle') + '</div>' +
-      arMoneyTabs(view) + rows;
+      '<div class="ar-big chrome-text board-title">' + TITLES[view] + '</div>' + rows;
   }
 
   // ---- streak board: ranked by best streak, shows current + best ----
 
-  function arStreaksHtml() {
+  function arStreaksHtml(view) {
+    var today = todayKeys().day;
+    function bestOf(s) { return view === 'day' ? (s.dayKey === today ? (s.dayBestStreak || 0) : 0) : (s.bestStreak || 0); }
     var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
-      .filter(function (s) { return (s.bestStreak || 0) >= 2; })
-      .sort(function (a, b) { return (b.bestStreak || 0) - (a.bestStreak || 0); })
+      .filter(function (s) { return bestOf(s) >= 2; })
+      .sort(function (a, b) { return bestOf(b) - bestOf(a); })
       .slice(0, 5);
     var rows;
     if (list.length) {
@@ -1496,20 +1696,20 @@
         '<span class="ar-colhead">' + E.escapeHtml(ct('streakColNow')) + '</span>' +
         '<span class="ar-colhead">' + E.escapeHtml(ct('streakColBest')) + '</span></div>';
       list.forEach(function (s, i) {
-        var now = s.streak || 0;
+        var now = (view === 'day' && s.dayKey !== today) ? 0 : (s.streak || 0);
         var fire = now >= 3 ? '<span class="streak-fire" aria-hidden="true"></span>' : '';
         rows += '<div class="ar-row streak-row' + (i === 0 ? ' first' : '') + '">' +
           '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
           '<span class="ar-streak-now">' + fire + now + '</span>' +
-          '<span class="ar-streak-best">' + (s.bestStreak || 0) + '</span></div>';
+          '<span class="ar-streak-best">' + bestOf(s) + '</span></div>';
       });
       rows += '</div>';
     } else {
       rows = '<div class="ar-sub">' + E.escapeHtml(ct('streakEmpty')) + '</div>';
     }
     return '<div class="ar-eyebrow streak-eyebrow">' + E.escapeHtml(ct('streakEyebrow')) + '</div>' +
-      '<div class="ar-big chrome-text">' + ctHtml('streakTitle') + '</div>' + rows;
+      '<div class="ar-big chrome-text board-title">' + (view === 'day' ? 'TODAY STREAKS' : 'LIFETIME STREAKS') + '</div>' + rows;
   }
 
   function arLegendsHtml() {
@@ -1525,12 +1725,12 @@
       '<div class="ar-legend-line">' + best.bestStreak + ' correct in a row</div></div>';
     if (rich && (!best || rich.name !== best.name)) bits += '<div class="ar-legend"><div class="ar-legend-kicker">Richest player ever</div>' +
       '<div class="ar-legend-name chrome-text">' + E.escapeHtml(rich.name) + '</div>' +
-      '<div class="ar-legend-line">' + E.fmtNum(rich.lifetime) + ' lifetime</div></div>';
+      '<div class="ar-legend-line">' + E.fmtCash(rich.lifetime) + ' lifetime</div></div>';
     if (lastHighlight && Date.now() - lastHighlight.ts < 24 * 60 * 60 * 1000) {
       var h = lastHighlight;
       bits += '<div class="ar-legend"><div class="ar-legend-kicker">Latest big moment</div>' +
         '<div class="ar-legend-name">' + E.escapeHtml(h.name) + '</div>' +
-        '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtNum(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
+        '<div class="ar-legend-line">' + (h.type === 'wager' ? 'banked +' + E.fmtCash(h.amount) + ' on a wager' : h.amount + ' in a row') + '</div></div>';
     }
     if (!bits) bits = '<div class="ar-sub">' + E.escapeHtml(ct('legendsEmpty')) + '</div>';
     return '<div class="ar-eyebrow gold">' + E.escapeHtml(ct('legendsEyebrow')) + '</div>' +
@@ -1547,11 +1747,13 @@
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'money-day', html: function () { return arMoneyHtml('day'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
-    { name: 'money-month', html: function () { return arMoneyHtml('month'); } },
+    { name: 'streaks-day', html: function () { return arStreaksHtml('day'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'money-all', html: function () { return arMoneyHtml('all'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
-    { name: 'streaks', html: arStreaksHtml },
+    { name: 'streaks-all', html: function () { return arStreaksHtml('all'); } },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'money-month', html: function () { return arMoneyHtml('month'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'legends', html: arLegendsHtml },
   ];
@@ -1631,7 +1833,7 @@
       var s = statsCache[k] || {};
       if (s.dayKey === tk.day && (s.day || 0) > 0 && (!rich || s.day > rich.day)) rich = s;
     });
-    if (rich && (!hot || rich.name !== hot.name)) out.push('<b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtNum(rich.day) + '</b> today');
+    if (rich && (!hot || rich.name !== hot.name)) out.push('<b>' + E.escapeHtml(rich.name) + '</b> is up <b>' + E.fmtCash(rich.day) + '</b> today');
     // reigning champ: all-time #1 (storyline for non-players)
     var champ = null;
     Object.keys(statsCache).forEach(function (k) {
@@ -1639,13 +1841,13 @@
       if ((s.lifetime || 0) > 0 && (!champ || s.lifetime > champ.lifetime)) champ = s;
     });
     if (champ) out.push(fillTokens(ctHtml('tickerChamp'), {
-      name: champ.name || '?', amount: E.fmtNum(champ.lifetime || 0)
+      name: champ.name || '?', amount: E.fmtCash(champ.lifetime || 0)
     }));
     // latest big moment (30 min window)
     if (lastHighlight && Date.now() - lastHighlight.ts < 30 * 60 * 1000) {
       var h = lastHighlight;
       out.push(h.type === 'wager'
-        ? '<b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtNum(h.amount) + '</b> on a wager'
+        ? '<b>' + E.escapeHtml(h.name) + '</b> just banked <b>+' + E.fmtCash(h.amount) + '</b> on a wager'
         : '<b>' + E.escapeHtml(h.name) + '</b> hit <b>' + h.amount + ' in a row</b>');
     }
     // social proof: players in right now
@@ -1687,8 +1889,8 @@
       : 'Final wager &middot; question 10 of 10';
     $('#wagerTitle').innerHTML = isUp ? 'WAGER<br>UP' : 'FINAL<br>WAGER';
     $('#wagerHint').innerHTML = isUp
-      ? 'Hard question &mdash; risk it all on your phone, <b>now</b>'
-      : 'Wager <b>0</b> up to your whole score &mdash; on your phone, now';
+      ? 'Hard one. Bet it on your phone.'
+      : 'Bet up to your score. On your phone.';
     $('#wagerCat').textContent = E.fmtCategory(st.wagerCategory) || 'MYSTERY';
     // players who placed any wager (0 = pass counts as placed)
     var n = Object.keys(players).filter(function (pid) { return players[pid].wagerPlaced; }).length;
@@ -1706,8 +1908,13 @@
       qp.classList.remove('q-enter');
       void qp.offsetWidth;
       qp.classList.add('q-enter');
-      $('#qCat').textContent = E.fmtCategory(q.category);
-      $('#qDiff').textContent = q.difficulty || '';
+      $('#qCat').textContent = E.fmtCategory(q.category) + (q.tag ? ' \u00B7 ' + String(q.tag).toUpperCase() : '');
+      // Millionaire questions show the money-ladder rung for this slot.
+      var LADDER = ['$100', '$500', '$1,000', '$5,000', '$10,000', '$50,000', '$100,000', '$250,000', '$500,000', '$1 MILLION'];
+      var qibNow = (lastStateDoc && lastStateDoc.questionInBlock) || 1;
+      $('#qDiff').textContent = E.fmtCash(q.isLightning ? E.LIGHTNING_POINTS : (q.answerType === 'number' ? E.CLOSEST_CASH : E.cashFor(q.difficulty)));
+      // Ladder rung is a label only; the cash paid follows the normal rules.
+      if (q.category === 'millionaire') $('#qCat').textContent = 'MILLIONAIRE \u00B7 ' + LADDER[Math.max(0, Math.min(9, qibNow - 1))];
       $('#qWagerBadge').hidden = !q.isWager;
       var qlb = $('#qLightningBadge');
       if (qlb) qlb.hidden = !q.isLightning;
@@ -1720,6 +1927,7 @@
       qTextEl.classList.remove('q-long', 'q-xlong');
       if (qlen > 280) qTextEl.classList.add('q-xlong');
       else if (qlen > 150) qTextEl.classList.add('q-long');
+      fitText(qTextEl);
       if (q.answerType === 'text') {
         var box = $('#qOptions');
         box.innerHTML = '<div class="q-text-hint">TYPE YOUR ANSWER ON YOUR PHONE</div>';
@@ -1735,6 +1943,7 @@
       if (q.image) {
         media.hidden = false;
         media.classList.add('bleed');
+        img.onerror = function () { img.removeAttribute('src'); media.hidden = true; media.classList.remove('bleed'); };
         img.src = q.image;
       } else if (q.video && q.video.youtubeId) {
         media.hidden = false;
@@ -1788,10 +1997,10 @@
     var qd = lastQuestionDoc || {};
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
-    $('#rText').textContent = qd.text || '';
+    $('#rText').textContent = qd.text || ''; fitText($('#rText'));
     // options shown dimmed, correct answer NOT highlighted yet
     if (r.answerType === 'text') {
-      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+      $('#rOptions').innerHTML = '<div class="q-text-hint">ANSWER</div>';
     } else {
       buildOptions($('#rOptions'), qd.options || [], -1, false);
     }
@@ -1806,13 +2015,13 @@
     var qd = lastQuestionDoc || {};
     $('#rCat').textContent = E.fmtCategory(qd.category);
     $('#rWagerBadge').hidden = !r.isWager;
-    $('#rText').textContent = qd.text || '';
+    $('#rText').textContent = qd.text || ''; fitText($('#rText'));
     var isNumR = r.answerType === 'number';
     if (isNumR) {
-      $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">The answer was</span>' +
+      $('#rOptions').innerHTML = '<div class="q-text-hint"><span class="hint-kicker">ANSWER</span>' +
         '<span class="answer-hero">' + E.fmtNum(r.answerNumber) + '</span></div>';
     } else if (r.answerType === 'text') {
-      $('#rOptions').innerHTML = '<div class="q-text-hint">THE ANSWER WAS</div>';
+      $('#rOptions').innerHTML = '<div class="q-text-hint">ANSWER</div>';
     } else {
       buildOptions($('#rOptions'), qd.options || [], r.correctIndex, true);
     }
@@ -1820,7 +2029,7 @@
     if (isNumR) {
       var winners = (r.results || []).filter(function (x) { return x.correct; });
       var wnames = winners.slice(0, 3).map(function (x) { return E.escapeHtml(x.name); }).join(', ');
-      note = '<b>Closest wins</b> &mdash; ' + E.fmtNum(r.answerNumber) +
+      note = '<b>Closest wins</b> &middot; ' + E.fmtNum(r.answerNumber) +
         (wnames ? ' &nbsp;<span style="color:var(--gold)">&#9733; ' + wnames + '</span>' : '');
     } else {
       note = '<span class="answer-hero">' + E.escapeHtml(r.correctText || '') + '</span>' +
@@ -1829,8 +2038,8 @@
     }
     if (r.streaksLost && r.streaksLost.length) {
       var sl = r.streaksLost[0];
-      note += ' &nbsp;<span style="color:#ff8f7d">&hearts; ' + E.escapeHtml(sl.name) +
-        '&rsquo;s ' + sl.streak + '-streak snapped</span>';
+      note += ' &nbsp;<span style="color:#ff8f7d">' + E.escapeHtml(sl.name) +
+        ' streak over (' + sl.streak + ')</span>';
     }
     $('#rNote').innerHTML = note;
     var list = $('#rResults');
@@ -1840,13 +2049,14 @@
       var li = document.createElement('li');
       var d = Number(row.delta || 0);
       var wagerNote = (r.isWager && row.wager > 0)
-        ? '<span class="wg">risked ' + E.fmtNum(row.wager) + '</span>' : '';
+        ? '<span class="wg">risked ' + E.fmtCash(row.wager) + '</span>' : '';
+      if (row.correct && row.speed > 0) wagerNote += '<span class="wg spd">SPEED +' + E.fmtCash(row.speed) + '</span>';
       if (isNumR && row.guess !== undefined) {
         wagerNote = '<span class="wg">guessed ' + E.fmtNum(row.guess) + '</span>';
       }
       if (r.isWager && row.correct && d >= 800) { li.classList.add('bigwin'); hasBigWin = true; }
       li.innerHTML = '<span class="nm">' + E.escapeHtml(row.name) + '</span>' + wagerNote +
-        '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtDelta(d) + '</span>';
+        '<span class="delta ' + (d >= 0 ? 'pos' : 'neg') + '">' + E.fmtCashDelta(d) + '</span>';
       list.appendChild(li);
     });
     if (hasBigWin) sBigWin();
@@ -1859,7 +2069,7 @@
     }
     if (r.highScoreCelebrations && r.highScoreCelebrations.length) {
       var hc = r.highScoreCelebrations[0];
-      queueMoment(celebrationMoment(hc.name, hc.score, hc.tier));
+      queueMoment(celebrationMoment(hc.name, hc.score, hc.tier, hc.dayTotal));
     }
     (r.streakCallouts || []).slice()
       .sort(function (a, b) { return b.streak - a.streak; })
@@ -1878,23 +2088,50 @@
     var p = st.podium;
     var pe = $('#podiumEyebrow');
     if (pe) pe.innerHTML = fillTokens(ctHtml('podiumEyebrow'), { n: st.blockNum || '' });
-    var steps = $('#podiumSteps');
-    if (!p || !p.top) { steps.innerHTML = ''; return; }
+    var champ = $('#champ');
+    if (!champ) return;
+    if (!p || !p.top || !p.top.length) { champ.innerHTML = ''; champ.dataset.sig = ''; return; }
     var sig = JSON.stringify(p.top);
-    if (steps.dataset.sig === sig) return;
-    steps.dataset.sig = sig;
-    steps.innerHTML = '';
-    var order = [1, 0, 2], cls = ['second', 'first', 'third'], medals = ['2', '1', '3'];
-    order.forEach(function (idx, k) {
-      var row = p.top[idx];
-      if (!row) return;
-      var d = document.createElement('div');
-      d.className = 'podium-step ' + cls[k];
-      d.innerHTML = '<div class="p-name">' + E.escapeHtml(row.name) + '</div>' +
-        '<div class="p-score">' + E.fmtNum(row.score) + '</div>' +
-        '<div class="p-block">' + medals[k] + '</div>';
-      steps.appendChild(d);
+    if (champ.dataset.sig === sig) return;
+    champ.dataset.sig = sig;
+    champ.innerHTML = champHtml(p.top, st.blockNum);
+  }
+
+  var TROPHY_SVG = '<svg class="ch-trophy" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="chg" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="#fff3b0"/><stop offset=".45" stop-color="#f2c14e"/><stop offset="1" stop-color="#9a6a12"/></linearGradient></defs>' +
+    '<path d="M30 14h60v22c0 20-12 34-30 36-18-2-30-16-30-36z" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<path d="M30 22H14c0 18 8 26 18 28M90 22h16c0 18-8 26-18 28" fill="none" stroke="#e0ac36" stroke-width="7" stroke-linecap="round"/>' +
+    '<rect x="52" y="72" width="16" height="16" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<rect x="34" y="88" width="52" height="16" rx="3" fill="url(#chg)" stroke="#5a3d05" stroke-width="3"/>' +
+    '<path d="M60 26l5 10 11 1-8 7 2 11-10-5-10 5 2-11-8-7 11-1z" fill="#fff8d6"/></svg>';
+
+  function champHtml(top, blockN) {
+    var w = top[0];
+    var nm = E.escapeHtml(String(w.name || '?').toUpperCase());
+    var wmLine = '';
+    for (var i = 0; i < 8; i++) wmLine += 'CHAMPION \u2605 ' + nm + '\u2003';
+    var wm = '';
+    for (var k = 0; k < 14; k++) wm += '<div>' + wmLine + '</div>';
+    var chips = '<div class="ch-chip">BEST STREAK<b>' + (w.best || 0) + '</b></div>' +
+      '<div class="ch-chip">CORRECT<b>' + (w.correct || 0) + '/' + (w.asked || E.BLOCK_SIZE) + '</b></div>' +
+      (w.bigWager > 0 ? '<div class="ch-chip">BIGGEST WAGER<b>+' + E.fmtCash(w.bigWager) + '</b></div>' : '');
+    var nameLen = String(w.name || '').length;
+    var plates = '';
+    [[1, 'silver', '2ND'], [2, 'bronze', '3RD']].forEach(function (x) {
+      var r = top[x[0]];
+      plates += r
+        ? '<div class="ch-plate ' + x[1] + '"><div class="rk">' + x[2] + '</div><div class="nm">' + E.escapeHtml(r.name || '?') +
+          '</div><div class="sc">' + E.fmtCash(r.score) + '</div></div>'
+        : '<div class="ch-plate ' + x[1] + ' empty"></div>';
     });
+    return '<div class="ch-rays"></div><div class="ch-wm" aria-hidden="true">' + wm + '</div>' +
+      '<div class="ch-beams"></div><div class="ch-bokeh"></div><div class="ch-grain"></div><div class="ch-vig"></div>' +
+      '<div class="ch-wrap"><div class="ch-kick">BLOCK ' + (blockN || '') + ' FINAL</div>' +
+      '<div class="ch-title">CHAMPION</div>' +
+      '<div class="ch-hero"><div class="ch-halo"></div>' + TROPHY_SVG +
+      '<div class="ch-name' + (nameLen > 14 ? ' long' : '') + (nameLen > 22 ? ' xlong' : '') + '">' + nm + '</div>' +
+      '<div class="ch-cash">' + E.fmtCash(w.score) + '</div><div class="ch-chips">' + chips + '</div></div></div>' +
+      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">UNDEFEATED</div>');
   }
 
   function stopVideo() {
@@ -1932,7 +2169,7 @@
 
   function timeLeftMs(deadlineTs) {
     if (!deadlineTs) return 0;
-    return Math.max(0, deadlineTs - serverNow());
+    return Math.max(0, deadlineTs - Date.now());
   }
 
   function tickTimers(force, st) {
@@ -2431,7 +2668,21 @@
     function liveListen(path, cb, pollMs) {
       return CT.poll.listen(path, cb, { databaseURL: DBURL, pollMs: pollMs });
     }
-    // No server clock in REST mode — serverNow() uses the local clock (serverOffset stays 0).
+    // REST has no .info/serverTimeOffset, so measure it: write a server timestamp and read it back.
+    // Phones stamp lastSeen with server time, so a TV clock that is minutes off would
+    // otherwise count everyone as gone.
+    function syncServerClock() {
+      var t0 = Date.now();
+      fetch(DBURL.replace(/\/$/, '') + '/' + ROOM + '/tvClock.json', {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: '{".sv":"timestamp"}'
+      }).then(function (r) { return r.ok ? r.json() : null; }).then(function (ts) {
+        if (typeof ts !== 'number') return;
+        var t1 = Date.now();
+        if (t1 - t0 < 5000) serverOffset = ts - (t0 + t1) / 2;
+      }).catch(function () {});
+    }
+    syncServerClock();
+    setInterval(syncServerClock, 10 * 60 * 1000);
 
     liveListen(ROOM + '/players', onPlayers, 1500);
     liveListen(ROOM + '/settings', onSettings, 5000);
@@ -2476,7 +2727,7 @@
       try {
         var st = lastStateDoc;
         var phase = (st && st.phase) || 'idle';
-        if (phase === 'idle' && activePlayerCount() > 0 && momentIdle()) {
+        if (phase === 'idle' && activePlayerCount() > 0 && momentIdle() && !currentQ && !pendingWagerQ && !imgChecking && !questionTimer) {
           console.warn('[watchdog] players waiting in idle, forcing game start');
           clearTimer();
           advanceGame();
@@ -2490,10 +2741,10 @@
     setPhase('idle');
     renderIdle();
 
-    E.loadBank().then(function (b) {
-      bank = b;
-      mergeCustomIntoBank();
+    ensureBank().then(function (b) {
+      if (!b) throw new Error('empty');
     }).catch(function () {
+      bankFailed = true;
       var ac = $('#arCard');
       if (ac) ac.innerHTML = '<div class="ar-eyebrow gold">Error</div><div class="ar-big">QUESTION BANK<br>FAILED TO LOAD</div>';
     });

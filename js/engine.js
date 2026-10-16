@@ -26,9 +26,11 @@
     disney: 2.5, pixar: 2.5, parks: 2, jeopardy: 2.5,
     movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
     toys: 1, mixed: 1,
+    dozen: 3, millionaire: 2.5, mario: 3, kidsmovies: 2.5,
   };
   var ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon',
-    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel'];
+    'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel',
+    'dozen', 'millionaire', 'mario', 'kidsmovies'];
 
   var FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
 
@@ -55,13 +57,26 @@
     parts.push('data/questions-video.json');
     parts.push('data/questions-pics.json');
     parts.push('data/questions-closest.json');
+    parts.push('data/questions-dozen.json');
+    parts.push('data/questions-millionaire.json');
+    parts.push('data/questions-jeopardy-style.json');
+    parts.push('data/questions-real.json');
+    parts.push('data/questions-real2.json');
     return Promise.all(parts.map(function (u) {
+      // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {
-        if (!r.ok) throw new Error('question bank failed to load: ' + u);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
+      }).then(function (arr) {
+        return Array.isArray(arr) ? arr : [];
+      }).catch(function (e) {
+        console.warn('[bank] skipped ' + u + ': ' + (e && e.message));
+        return [];
       });
     })).then(function (chunks) {
-      return [].concat.apply([], chunks);
+      var all = [].concat.apply([], chunks);
+      if (!all.length) throw new Error('question bank is empty');
+      return all;
     });
   }
 
@@ -225,13 +240,15 @@
   function scoreAnswer(a) {
     var total = a.seconds * 1000;
     var wager = a.wager || 0;
-    var base = (typeof a.basePoints === 'number') ? a.basePoints : BASE_POINTS;
+    var base = (typeof a.basePoints === 'number') ? a.basePoints : cashFor(a.difficulty);
     var isCorrect = (typeof a.textCorrect === 'boolean') ? a.textCorrect : (a.choice === a.correctIndex);
     if (isCorrect) {
-      var speed = Math.max(0, Math.min(1, (a.deadlineTs - a.answeredAt) / total));
-      var pts = base + Math.round(SPEED_BONUS_MAX * speed);
+      // Flat cash plus a round speed tier: first third of the clock +$50, middle third +$25.
+      var left = (a.deadlineTs - a.answeredAt) / total;
+      var speedCash = left >= 2 / 3 ? 50 : (left >= 1 / 3 ? 25 : 0);
+      var pts = base + speedCash;
       if (wager > 0) pts += wager;
-      return { correct: true, points: pts };
+      return { correct: true, points: pts, speed: speedCash };
     }
     if (wager > 0) return { correct: false, points: -wager };
     return { correct: false, points: 0 };
@@ -253,6 +270,17 @@
   }
 
   function clampScore(s) { return Math.max(0, s); }
+  // Cash per question: easy $100, medium/hard $200 (lightning and closest-number use $200 too).
+  var CASH_EASY = 100, CASH_HARD = 200, CASH_STEP = 25;
+  function cashFor(difficulty) { return difficulty === 'easy' ? CASH_EASY : CASH_HARD; }
+  // Wagers are whole $25s, never more than the player's cash.
+  function roundWager(w, score) {
+    var cap = Math.max(0, Math.floor(Number(score) || 0));
+    var n = Math.max(0, Math.min(Math.floor(Number(w) || 0), cap));
+    return Math.floor(n / CASH_STEP) * CASH_STEP;
+  }
+  function fmtCash(n) { n = Number(n || 0); return (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString('en-US'); }
+  function fmtCashDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtCash(d); }
 
   // Leaderboard rows from a players map. mode: 'all' | 'block'.
   function leaderboard(players, mode) {
@@ -275,7 +303,9 @@
     return String(n || '').trim().replace(/[<>&"']/g, '').slice(0, 18);
   }
 
-  function fmtCategory(c) { return String(c || '').replace(/-/g, ' ').toUpperCase(); }
+  var CAT_LABELS = { disney: 'DISNEY', pixar: 'PIXAR', parks: 'DISNEY PARKS', mario: 'SUPER MARIO',
+    kidsmovies: "KIDS' MOVIES", dozen: 'THE DOZEN', millionaire: 'MILLIONAIRE', jeopardy: 'JEOPARDY' };
+  function fmtCategory(c) { var k = String(c || ''); return CAT_LABELS[k] || k.replace(/-/g, ' ').toUpperCase(); }
   function fmtNum(n) { return Number(n || 0).toLocaleString('en-US'); }
   function fmtDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtNum(d); }
   function escapeHtml(s) {
@@ -318,6 +348,12 @@
     sanitizeName: sanitizeName,
     fmtCategory: fmtCategory,
     fmtNum: fmtNum,
+    fmtCash: fmtCash,
+    fmtCashDelta: fmtCashDelta,
+    cashFor: cashFor,
+    roundWager: roundWager,
+    CASH_STEP: 25,
+    CLOSEST_CASH: 200,
     fmtDelta: fmtDelta,
     escapeHtml: escapeHtml,
   };

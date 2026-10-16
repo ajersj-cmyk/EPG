@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:,">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cave Trivia</title>
 <link rel="stylesheet" href="css/common.css?v=202610151340">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tv.css?v=202610151340">
+<link rel="stylesheet" href="css/looks.css">
+<link rel="stylesheet" href="css/champ.css">
 </head>
-<body>
+<body class="look-cyan">
 <div class="connmode" id="connMode" hidden>LIVE</div>
 <div class="ambient"></div>
 <div class="vignette"></div>
@@ -15,7 +19,7 @@
 
 <div class="tv-shell">
   <header class="tv-top">
-    <div class="wordmark"><span id="venueName">CAVE TRIVIA</span><small id="venueTagline">ALWAYS-ON LEAGUE</small></div>
+    <div class="wordmark"><span id="venueName">CAVE TRIVIA</span><small id="venueTagline">TRIVIA LEAGUE</small></div>
     <div class="tv-meta">
       <span class="family-badge" id="familyBadge" hidden>Family</span>
       <div class="tv-clock" id="clock">--:--</div>
@@ -47,7 +51,7 @@
             </svg>
             <div class="wager-secs" id="wagerSecs">15</div>
           </div>
-          <div class="wager-hint" id="wagerHint">Wager <b>0</b> up to your whole score &mdash; on your phone, now</div>
+          <div class="wager-hint" id="wagerHint">Wager <b>0</b> on your phone</div>
           <div class="wager-count" id="wagerCount" hidden></div>
         </div>
       </section>
@@ -83,9 +87,9 @@
         <div class="q-inner">
           <div class="q-eyebrow">
             <span class="q-cat" id="rCat">&mdash;</span>
-            <span class="q-diff">Answer</span>
+            <span class="q-diff">Correct answer</span>
             <span class="wager-badge" id="rWagerBadge" hidden>Wager</span>
-            <span class="q-round" id="rRound">&mdash;</span>
+            <span class="q-round" id="rRound"></span>
           </div>
           <h2 class="q-text" id="rText"></h2>
           <div class="q-options" id="rOptions"></div>
@@ -96,8 +100,9 @@
 
       <!-- podium : block top 3 -->
       <section class="phase" id="phase-podium">
+        <div class="champ" id="champ"></div>
         <div class="podium-inner">
-          <div class="eyebrow" id="podiumEyebrow">Block &mdash; final &middot; top of the block</div>
+          <div class="eyebrow" id="podiumEyebrow">Block final</div>
           <h1 class="podium-title chrome-text" id="podiumTitle">CHAMPIONS</h1>
           <div class="podium-steps" id="podiumSteps"></div>
         </div>
@@ -115,7 +120,7 @@
         <ol class="board" id="blockBoard"></ol>
       </div>
       <div class="rail-card qr-card">
-        <div class="qr-scan" id="railScanText">Scan to join</div>
+        <div class="qr-scan" id="railScanText">Scan to play</div>
         <div id="qr"></div>
         <div class="qr-url" id="joinUrl">&hellip;</div>
       </div>
@@ -124,7 +129,7 @@
   </div>
 
   <footer class="hostbar">
-    <span class="attrib" id="footerNote">Cave Trivia &middot; free forever edition</span>
+    <span class="attrib" id="footerNote">Cave Trivia</span>
     <span class="spacer"></span>
     <button class="btn ghost" id="btnSound" title="Toggle sound">Sound on</button>
     <button class="btn ghost" id="btnSettings" title="Game settings">&#9881; Settings</button>
@@ -139,6 +144,13 @@
     <div class="settings-head">
       <span class="eyebrow">Game Settings</span>
       <button class="btn ghost" id="btnSettingsClose">&#10005;</button>
+    </div>
+    <div class="settings-row look-row">
+      <div class="settings-label">Look (this TV)</div>
+      <div class="look-grid">
+        <button class="look-btn" data-look="look-cyan">Arcade Cyan</button>
+        <button class="look-btn" data-look="look-blue">Millionaire Blue</button>
+      </div>
     </div>
     <div class="settings-body">
       <section>
@@ -189,7 +201,7 @@
       </section>
       <section>
         <h3>Custom Questions</h3>
-        <p class="settings-hint">Add your own questions — inside jokes, family trivia, bar-specific stuff. They mix into the game rotation and attract teasers.</p>
+        <p class="settings-hint">Add your own questions. They mix into the game and attract teasers.</p>
         <div class="cq-form">
           <input type="text" id="cqQuestion" maxlength="280" placeholder="Question text">
           <input type="text" id="cqAnswer" maxlength="120" placeholder="Correct answer">
@@ -217,7 +229,7 @@
             <input type="text" class="cq-opt" maxlength="80" placeholder="Option B" data-opt="1">
             <input type="text" class="cq-opt" maxlength="80" placeholder="Option C" data-opt="2">
             <input type="text" class="cq-opt" maxlength="80" placeholder="Option D" data-opt="3">
-            <p class="settings-hint">First option is the correct answer — options shuffle automatically.</p>
+            <p class="settings-hint">First option is correct. Options shuffle.</p>
           </div>
           <div class="title-row" style="margin-top:.5rem">
             <span style="flex:1"></span>

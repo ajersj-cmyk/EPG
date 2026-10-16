@@ -1859,3 +1859,50 @@ html, body { height: 100%; overflow: hidden; }
 /* connection mode indicator (LIVE vs POLLING fallback) */
 .connmode{position:fixed;right:10px;bottom:10px;z-index:9999;font:600 10px/1.2 -apple-system,system-ui,sans-serif;letter-spacing:.14em;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.6);color:#7dffa8;border:1px solid rgba(125,255,168,.35);pointer-events:none}
 .connmode.polling{color:#ffd27d;border-color:rgba(255,210,125,.45)}
+
+/* While a pop-up (join, streak, sendoff) is up, the attract card is hidden,
+   never drawn underneath it. */
+body.moment-on #arCard { visibility: hidden; }
+/* Over the attract screen the pop-up gets a solid dark backdrop. In-game
+   moments keep the light vignette so the question stays visible. */
+body.in-attract .moment-overlay { background: rgba(6, 5, 3, 0.94); }
+
+/* ============================================================
+   GAME-SHOW QUESTION LOOK (light: flat fills, one shadow max)
+   Big bold text, tight measure, crisp A-D tiles, clear timer.
+   ============================================================ */
+#phase-question .q-inner, #phase-reveal .q-inner {
+  background: #0b0d14; box-shadow: none; border: 2px solid rgba(217,180,92,0.35);
+}
+.q-text, .q-media.bleed ~ .q-inner .q-text {
+  font-family: var(--sans); font-weight: 900; letter-spacing: -0.01em;
+  line-height: 1.12; max-width: 26ch; color: #fff;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.9);
+}
+.q-media.bleed ~ .q-inner .q-text { text-shadow: 0 2px 6px rgba(0,0,0,0.95); }
+.q-cat, .q-diff {
+  font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.q-diff { background: var(--gold); color: #120d03; border: 0; padding: 0.25em 0.8em; border-radius: 0.3em; }
+.q-opt {
+  background: #141a2b; border: 2px solid #2a3350; box-shadow: none;
+  border-radius: 0.6vmin; font-weight: 800; color: #fff;
+}
+.q-opt > span:last-child { text-shadow: none; }
+.q-opt .letter {
+  background: var(--gold); color: #120d03; box-shadow: none; text-shadow: none; font-weight: 900;
+}
+.q-opt.correct { background: #1f6b3a; border-color: #3fd17a; box-shadow: none; }
+.q-opt.correct .letter { background: #fff; box-shadow: none; }
+.q-opt.dim { opacity: 0.22; }
+.q-timerbar { height: 1.4vmin; background: #1c2133; border-radius: 1vmin; }
+.q-timerbar i { background: var(--gold); box-shadow: none; }
+.q-timerbar.low i { background: #ff4d4d; box-shadow: none; }
+/* picture questions: photo sits in its own panel on the right, text on the left */
+#phase-question .q-media.bleed { left: auto; right: 2.4vmin; top: 2.4vmin; bottom: 2.4vmin; width: 36%; z-index: 2; border-radius: 1vmin; overflow: hidden; background: #05060a; border: 2px solid rgba(217,180,92,0.35); }
+#phase-question .q-media.bleed::after { display: none; }
+#phase-question .q-media.bleed img { object-fit: contain; padding: 3%; box-sizing: border-box; }
+#phase-question .q-media.bleed ~ .q-inner { padding-right: calc(36% + 5vmin); }
+#phase-question .q-media.bleed ~ .q-inner .q-options { grid-template-columns: 1fr; }
+/* connection badge sits in the empty middle of the header, clear of the footer controls */
+.connmode{right:auto;bottom:auto;top:6px;left:50%;transform:translateX(-50%)}

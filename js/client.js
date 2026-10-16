@@ -59,7 +59,7 @@
     $('#statsDay').textContent = fmt(s.day || 0);
     $('#statsMonth').textContent = fmt(s.month || 0);
     $('#statsLifetime').textContent = fmt(s.lifetime || 0);
-    $('#statsAnswered').textContent = fmt(s.answered || 0);
+    $('#statsAnswered').textContent = E.fmtNum(s.answered || 0);
   }
   function openStats() {
     lastStatsPhase = 'board';
@@ -81,7 +81,7 @@
     t._h = setTimeout(function () { t.hidden = true; }, 2600);
   }
 
-  function fmt(n) { return E.fmtNum(n); }
+  function fmt(n) { return E.fmtCash(n); }
 
   /* ---------------- config ---------------- */
 
@@ -190,7 +190,7 @@
     if (!playerId) { $('#playFoot').hidden = true; return; }
     $('#playFoot').hidden = false;
     $('#footName').textContent = playerName;
-    $('#footScore').textContent = fmt(myScore()) + ' pts';
+    $('#footScore').textContent = fmt(myScore());
     var bp = myBlockPos();
     var bnum = (lastState && lastState.blockNum) || 1;
     $('#footBlock').textContent = bp > 0 ? 'Block #' + bp : 'Block ' + bnum;
@@ -226,7 +226,7 @@
 
   /* ---------------- wager phase ---------------- */
 
-  function wagerMax() { return Math.max(0, Math.floor(myScore())); }
+  function wagerMax() { return E.roundWager(myScore(), myScore()); }
 
   function updateWagerAmount() {
     var s = $('#wagerSlider');
@@ -246,7 +246,8 @@
       s.disabled = max <= 0;
       var btn = $('#wagerBtn');
       btn.disabled = max <= 0;
-      btn.textContent = 'Place wager';
+      btn.textContent = 'LOCK IT';
+      var sk = $('#wagerSkip'); if (sk) { sk.disabled = false; sk.textContent = 'SKIP'; }
       $('#wagerNote').hidden = true;
     } else {
       var s2 = $('#wagerSlider');
@@ -254,22 +255,22 @@
     }
     $('#wagerCat').textContent = E.fmtCategory(st.wagerCategory) || 'MYSTERY';
     $('#wagerSub').textContent = max <= 0
-      ? 'No points in your stack yet \u2014 build it up and wager next block!'
-      : 'How much of your stack are you risking?';
+      ? 'Nothing to wager. Just answer.'
+      : 'Bet it or skip.';
     updateWagerAmount();
     setPhase('wager');
   }
 
-  function placeWager() {
+  function placeWager(skip) {
     if (!playerId || !lastState || lastState.phase !== 'wager') return;
     if (serverNow() > (lastState.wagerDeadlineTs || 0)) {
-      toast('Wager window closed \u2014 too slow!');
+      toast('TIME');
       return;
     }
-    var amount = Math.max(0, Math.min(parseInt($('#wagerSlider').value, 10) || 0, wagerMax()));
+    var amount = skip === true ? 0 : E.roundWager(parseInt($('#wagerSlider').value, 10) || 0, wagerMax());
     var btn = $('#wagerBtn');
     btn.disabled = true;
-    btn.textContent = 'Locking in\u2026';
+    btn.textContent = '\u2026';
     refs.player.update({
       wager: amount,
       wagerPlaced: true,
@@ -277,14 +278,14 @@
     }).then(function () {
       myWager = amount;
       btn.disabled = false;
-      btn.textContent = 'Update wager';
+      btn.textContent = 'CHANGE';
       var note = $('#wagerNote');
       note.hidden = false;
-      note.textContent = 'Wager locked: ' + fmt(myWager) + '. No take-backs.';
+      note.textContent = myWager > 0 ? 'LOCKED: ' + fmt(myWager) : 'SKIPPED';
     }).catch(function () {
       btn.disabled = false;
-      btn.textContent = 'Update wager';
-      toast('Connection hiccup \u2014 try again.');
+      btn.textContent = 'LOCK IT';
+      toast('Connection lost. Try again.');
     });
   }
 
@@ -361,7 +362,7 @@
     var qid = lastQuestion.id;
     if (answeredQid === qid) return;
     if (serverNow() > (lastQuestion.deadlineTs || 0)) {
-      toast('Too slow \u2014 that question moved on!');
+      toast('TIME');
       return;
     }
     var btns = $('#pqOptions').querySelectorAll('.pq-opt');
@@ -374,7 +375,7 @@
       answeredQid = qid;
       setPhase('locked');
     }).catch(function () {
-      toast('Hmm, that didn\u2019t land. Tap again.');
+      toast('Didn\u2019t send. Tap again.');
       btns.forEach(function (b) { b.disabled = false; b.classList.remove('picked'); });
     });
   }
@@ -386,11 +387,11 @@
     var ti = $('#pqTextInput');
     var text = ti.value.trim();
     if (!text) {
-      toast('Type an answer first!');
+      toast('Type an answer.');
       return;
     }
     if (serverNow() > (lastQuestion.deadlineTs || 0)) {
-      toast('Too slow \u2014 that question moved on!');
+      toast('TIME');
       return;
     }
     ti.disabled = true;
@@ -402,7 +403,7 @@
       answeredQid = qid;
       setPhase('locked');
     }).catch(function () {
-      toast('Hmm, that didn\u2019t land. Try again.');
+      toast('Didn\u2019t send. Try again.');
       ti.disabled = false;
       $('#pqTextSubmit').disabled = false;
     });
@@ -416,11 +417,11 @@
     var raw = ni.value.trim().replace(/,/g, '');
     var num = Number(raw);
     if (raw === '' || isNaN(num)) {
-      toast('Enter a number first!');
+      toast('Enter a number.');
       return;
     }
     if (serverNow() > (lastQuestion.deadlineTs || 0)) {
-      toast('Too slow \u2014 that question moved on!');
+      toast('TIME');
       return;
     }
     ni.disabled = true;
@@ -432,7 +433,7 @@
       answeredQid = qid;
       setPhase('locked');
     }).catch(function () {
-      toast('Hmm, that didn\u2019t land. Try again.');
+      toast('Didn\u2019t send. Try again.');
       ni.disabled = false;
       $('#pqNumSubmit').disabled = false;
     });
@@ -455,16 +456,16 @@
       if (me && me.correct) {
         pts.hidden = false;
         pts.textContent = '+' + fmt(me.delta);
-        $('#rvTitle').textContent = 'CLOSEST! You take it.';
+        $('#rvTitle').textContent = 'CLOSEST';
       } else if (me) {
         pts.hidden = true;
-        $('#rvTitle').textContent = 'Not the closest this time.';
+        $('#rvTitle').textContent = 'NOT CLOSEST';
       } else {
         pts.hidden = true;
-        $('#rvTitle').textContent = 'You sat this one out.';
+        $('#rvTitle').textContent = 'NO ANSWER';
       }
-      var sub = 'The answer was ' + fmt(r.answerNumber) + '.';
-      if (myGuess !== null) sub += ' You guessed ' + fmt(myGuess) + ' (off by ' + fmt(Math.abs(myGuess - r.answerNumber)) + ').';
+      var sub = 'The answer was ' + E.fmtNum(r.answerNumber) + '.';
+      if (myGuess !== null) sub += ' You guessed ' + E.fmtNum(myGuess) + ' (off by ' + E.fmtNum(Math.abs(myGuess - r.answerNumber)) + ').';
       $('#rvSub').textContent = sub;
     } else if (me) {
       var correct = !!me.correct;
@@ -480,15 +481,15 @@
         pts.hidden = true;
       }
       $('#rvTitle').textContent = correct
-        ? (r.isWager ? 'BOOM. Wager paid off.' : 'BOOM. Nice one.')
-        : (r.isWager ? 'Ouch. There goes the wager.' : 'Not this time.');
+        ? (r.isWager ? 'CORRECT' : 'CORRECT')
+        : (r.isWager ? 'WRONG' : 'WRONG');
       $('#rvSub').textContent = 'Correct answer: ' + (r.correctText || '') +
-        (correct ? '' : '. You\u2019ll get the next one.');
+        (correct ? '' : '');
     } else {
       pts.hidden = true;
       $('#rvKicker').textContent = 'The answer';
-      $('#rvTitle').textContent = 'You sat this one out.';
-      $('#rvSub').textContent = 'Correct answer: ' + (r.correctText || '') + '. Next one\u2019s yours.';
+      $('#rvTitle').textContent = 'NO ANSWER';
+      $('#rvSub').textContent = 'Correct answer: ' + (r.correctText || '') + '';
     }
     // reset flag button
     var fb = $('#flagBtn');
@@ -528,7 +529,7 @@
       if (dt.newKing === myName && key !== lastCelebrationKey) {
         $('#pcKicker').textContent = 'NEW KING OF THE HILL';
         $('#pcTitle').textContent = 'You dethroned ' + dt.oldKing + '!';
-        $('#pcSub').textContent = 'At ' + fmt(dt.amount) + ' — the crown is yours';
+        $('#pcSub').textContent = 'At ' + fmt(dt.amount) + '';
         shown = true;
       }
     }
@@ -567,7 +568,7 @@
     ol.innerHTML = '';
     if (!rows.length) {
       var li = document.createElement('li');
-      li.innerHTML = '<span class="mb-name">No scores yet \u2014 be the first legend.</span>';
+      li.innerHTML = '<span class="mb-name">No scores yet</span>';
       ol.appendChild(li);
     }
     rows.forEach(function (r, i) {
@@ -589,8 +590,8 @@
       ol.appendChild(li2);
     });
     $('#boardMsg').textContent = isPodium
-      ? 'New block starting \u2014 fresh scores, same legends.'
-      : ('Block ' + (st.blockNum || 1) + ' \u00b7 question ' + (st.questionInBlock || 1) + ' of 10 \u00b7 next up soon.');
+      ? 'NEW BLOCK'
+      : ('Block ' + (st.blockNum || 1) + ' \u00b7 question ' + (st.questionInBlock || 1) + ' of 10');
     setPhase('board');
   }
 
@@ -717,9 +718,13 @@
         renderMyStats(snap.val());
       }
     }, 3000);
+    $('#wagerZero').addEventListener('click', function () {
+      $('#wagerSlider').value = 0; updateWagerAmount();
+    });
+    $('#wagerSkip').addEventListener('click', function () { placeWager(true); });
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
-      s.value = Math.floor(Number(s.max) / 2);
+      s.value = E.roundWager(Number(s.max) / 2, s.max);
       updateWagerAmount();
     });
     $('#wagerFull').addEventListener('click', function () {
@@ -750,7 +755,7 @@
       if (hero) {
         hero.innerHTML = '<div class="eyebrow">Not connected</div>' +
           '<h1>Scan the QR code<br><em>on the TV.</em></h1>' +
-          '<p>That code carries everything your phone needs to join the game \u2014 no typing, no setup.</p>';
+          '';
       }
     });
   } else {
