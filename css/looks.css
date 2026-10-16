@@ -187,3 +187,7 @@ body[class*="look-"] .q-text-hint { font-family: "Oswald", var(--sans); font-wei
 .look-row { padding: 1.2rem 1.5rem 0; }
 .look-row .settings-label { font: 700 0.85rem "Oswald", var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: #29e6ff; margin-bottom: 0.7rem; }
 body.look-blue .look-row .settings-label { color: #dfe6f3; }
+
+/* Hard cut between phases: no two full panels stacked mid-fade (cheaper on the onn boxes too). */
+body[class*="look-"] .phase { transition: none; transform: none; }
+body[class*="look-"] .phase:not(.active) { visibility: hidden; }
