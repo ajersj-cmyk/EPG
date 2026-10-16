@@ -1325,6 +1325,7 @@
     });
     document.body.classList.toggle('in-attract', name === 'idle');
     document.body.classList.toggle('in-podium', name === 'podium');
+    document.body.classList.toggle('in-podium', name === 'podium');
   }
 
   function sweepStreak() {
@@ -2151,7 +2152,7 @@
       '<div class="ch-hero"><div class="ch-halo"></div>' + TROPHY_SVG +
       '<div class="ch-name' + (nameLen > 14 ? ' long' : '') + (nameLen > 22 ? ' xlong' : '') + '">' + nm + '</div>' +
       '<div class="ch-cash">' + E.fmtCash(w.score) + '</div><div class="ch-chips">' + chips + '</div></div></div>' +
-      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">UNDEFEATED</div>');
+      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">SOLO CHAMP</div>');
   }
 
   function stopVideo() {
