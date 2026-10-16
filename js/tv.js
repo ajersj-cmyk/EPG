@@ -362,7 +362,7 @@
   }
   // Build Firebase updates for a player's lifetime/month/day stats.
   // delta: score change (can be negative from lost wagers). correct: 1/0.
-  function statsUpdatesFor(name, delta, correct, upd) {
+  function statsUpdatesFor(name, delta, correct, upd, noAnswer) {
     if (!name) return;
     var key = statsKey(name);
     var tk = todayKeys();
@@ -373,6 +373,8 @@
     // streaks: consecutive correct answers. Wrong answer (or no answer) resets.
     var streak = correct ? ((cur.streak || 0) + 1) : 0;
     var bestStreak = Math.max(cur.bestStreak || 0, streak);
+    var dayBestStreak = Math.max(cur.dayKey === tk.day ? (cur.dayBestStreak || 0) : 0, streak);
+    var bestDay = Math.max(cur.bestDay || 0, day);
     var base = ROOM + '/playerStats/' + key;
     upd[base + '/name'] = String(name).slice(0, 24);
     upd[base + '/lifetime'] = lifetime;
@@ -382,8 +384,10 @@
     upd[base + '/dayKey'] = tk.day;
     upd[base + '/streak'] = streak;
     upd[base + '/bestStreak'] = bestStreak;
+    upd[base + '/dayBestStreak'] = dayBestStreak;
+    upd[base + '/bestDay'] = bestDay;
     upd[base + '/correct'] = (cur.correct || 0) + (correct ? 1 : 0);
-    upd[base + '/answered'] = (cur.answered || 0) + 1;
+    upd[base + '/answered'] = (cur.answered || 0) + (noAnswer ? 0 : 1);
     upd[base + '/lastSeen'] = CT.rest.ts();
   }
 
@@ -701,6 +705,10 @@
           upd[ROOM + '/players/' + pid + '/blockScore'] = nbs;
           upd[ROOM + '/players/' + pid + '/wagersLost'] = (p.wagersLost || 0) + 1;
           results.push({ pid: pid, name: p.name, delta: -(p.score - ns), wager: wager, correct: false });
+        }
+        // a no-answer from someone in the room breaks their streak (a skipped wager does not)
+        if (p.name && Date.now() - (p.lastSeen || 0) < 3 * 60 * 1000) {
+          statsUpdatesFor(p.name, (cq.isWager && wager > 0) ? (E.clampScore((p.score || 0) - wager) - (p.score || 0)) : 0, false, upd, true);
         }
         return;
       }
