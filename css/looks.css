@@ -194,3 +194,8 @@ body[class*="look-"] .phase:not(.active) { visibility: hidden; }
 .q-round:empty { display: none; }
 /* pop-ups always cover the screen under them, so their text never mixes with the reveal */
 body[class*="look-"] .moment-overlay { background: rgba(4, 6, 10, 0.94); }
+body[class*="look-"] .ar-card .board-title { font-size: 7vmin; margin-bottom: 1.6vmin; }
+body[class*="look-"] .ar-row .ar-name, body[class*="look-"] .ar-row .ar-rank { font-family: "Archivo Black", var(--sans); font-weight: 400; color: #fff; text-shadow: var(--lk-emboss-sm); }
+body[class*="look-"] .ar-row .ar-score, body[class*="look-"] .ar-streak-now, body[class*="look-"] .ar-streak-best, body[class*="look-"] .ar-colhead { font-family: "Oswald", var(--sans); font-weight: 700; color: var(--lk-accent); text-shadow: var(--lk-emboss-sm); }
+body.look-blue .ar-row .ar-score { color: #f6c544; }
+body[class*="look-"] .ar-chase { font-family: "Oswald", var(--sans); letter-spacing: 0.12em; color: var(--lk-hot); }

@@ -1644,7 +1644,9 @@
       list.forEach(function (s, i) {
         var val = moneyVal(s, view, tk);
         var chase = '';
-        if (i > 0 && topScore > val) {
+        if (view === 'all' && (s.bestDay || 0) > 0) {
+          chase = '<div class="ar-chase">BEST DAY ' + E.fmtCash(s.bestDay) + '</div>';
+        } else if (i > 0 && topScore > val) {
           var behind = topScore - val;
           chase = '<div class="ar-chase">' + fillTokens(E.escapeHtml(ct('chaseLabel')), {
             n: E.fmtCash(behind)
@@ -1653,23 +1655,25 @@
         rows += '<div class="ar-row money-row' + (i === 0 ? ' first' : '') + '">' +
           '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + chase + '</span>' +
-          '<span class="ar-score money-score">$' + E.fmtNum(val) + '</span></div>';
+          '<span class="ar-score money-score">' + E.fmtCash(val) + '</span></div>';
       });
       rows += '</div>';
     } else {
       rows = '<div class="ar-sub">' + E.escapeHtml(ct('moneyEmpty')) + '</div>';
     }
+    var TITLES = { day: 'TODAY CASH', month: 'THIS MONTH', all: 'LIFETIME CASH' };
     return '<div class="ar-eyebrow money-eyebrow">' + E.escapeHtml(ct('moneyEyebrow')) + '</div>' +
-      '<div class="ar-big chrome-text">' + ctHtml('moneyTitle') + '</div>' +
-      arMoneyTabs(view) + rows;
+      '<div class="ar-big chrome-text board-title">' + TITLES[view] + '</div>' + rows;
   }
 
   // ---- streak board: ranked by best streak, shows current + best ----
 
-  function arStreaksHtml() {
+  function arStreaksHtml(view) {
+    var today = todayKeys().day;
+    function bestOf(s) { return view === 'day' ? (s.dayKey === today ? (s.dayBestStreak || 0) : 0) : (s.bestStreak || 0); }
     var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
-      .filter(function (s) { return (s.bestStreak || 0) >= 2; })
-      .sort(function (a, b) { return (b.bestStreak || 0) - (a.bestStreak || 0); })
+      .filter(function (s) { return bestOf(s) >= 2; })
+      .sort(function (a, b) { return bestOf(b) - bestOf(a); })
       .slice(0, 5);
     var rows;
     if (list.length) {
@@ -1679,20 +1683,20 @@
         '<span class="ar-colhead">' + E.escapeHtml(ct('streakColNow')) + '</span>' +
         '<span class="ar-colhead">' + E.escapeHtml(ct('streakColBest')) + '</span></div>';
       list.forEach(function (s, i) {
-        var now = s.streak || 0;
+        var now = (view === 'day' && s.dayKey !== today) ? 0 : (s.streak || 0);
         var fire = now >= 3 ? '<span class="streak-fire" aria-hidden="true"></span>' : '';
         rows += '<div class="ar-row streak-row' + (i === 0 ? ' first' : '') + '">' +
           '<span class="ar-rank">' + (i + 1) + '</span>' +
           '<span class="ar-name">' + E.escapeHtml(s.name || '?') + '</span>' +
           '<span class="ar-streak-now">' + fire + now + '</span>' +
-          '<span class="ar-streak-best">' + (s.bestStreak || 0) + '</span></div>';
+          '<span class="ar-streak-best">' + bestOf(s) + '</span></div>';
       });
       rows += '</div>';
     } else {
       rows = '<div class="ar-sub">' + E.escapeHtml(ct('streakEmpty')) + '</div>';
     }
     return '<div class="ar-eyebrow streak-eyebrow">' + E.escapeHtml(ct('streakEyebrow')) + '</div>' +
-      '<div class="ar-big chrome-text">' + ctHtml('streakTitle') + '</div>' + rows;
+      '<div class="ar-big chrome-text board-title">' + (view === 'day' ? 'TODAY STREAKS' : 'LIFETIME STREAKS') + '</div>' + rows;
   }
 
   function arLegendsHtml() {
@@ -1730,11 +1734,13 @@
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'money-day', html: function () { return arMoneyHtml('day'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
-    { name: 'money-month', html: function () { return arMoneyHtml('month'); } },
+    { name: 'streaks-day', html: function () { return arStreaksHtml('day'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'money-all', html: function () { return arMoneyHtml('all'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
-    { name: 'streaks', html: arStreaksHtml },
+    { name: 'streaks-all', html: function () { return arStreaksHtml('all'); } },
+    { name: 'teaser', html: arTeaserHtml, teaser: true },
+    { name: 'money-month', html: function () { return arMoneyHtml('month'); } },
     { name: 'teaser', html: arTeaserHtml, teaser: true },
     { name: 'legends', html: arLegendsHtml },
   ];
