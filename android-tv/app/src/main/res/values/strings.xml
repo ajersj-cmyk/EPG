@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cave Trivia</string>
+    <!-- Live site: updates flow in without reinstalling the APK. -->
+    <string name="site_url" translatable="false">https://ajersj-cmyk.github.io/EPG/</string>
+    <string name="loading" translatable="false">LOADING CAVE TRIVIA…</string>
+</resources>
