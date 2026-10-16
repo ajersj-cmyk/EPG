@@ -3,7 +3,7 @@
 body[class*="look-"] #phase-podium{position:fixed;inset:0;z-index:80;padding:0;display:block}
 body[class*="look-"] #phase-podium.active{visibility:visible}
 body[class*="look-"] #phase-podium .podium-inner{display:none}
-.champ{position:absolute;inset:0;overflow:hidden;color:#fff;font-family:"Archivo Black",var(--sans);text-align:center}
+.champ{position:absolute;inset:0;overflow:hidden;color:#fff;font-family:"Archivo Black","Archivo Black",sans-serif;text-align:center}
 .champ:empty{display:none}
 body.look-cyan{--a:#29e6ff;--a2:#ff2fb9;--deep:#04343d;--bg1:#0b1a22;--bg0:#020407;--ray:rgba(41,230,255,.10);--emb:0 0.42vmin 0 #0a5560,0 0.83vmin 0 #063038,0 0 2.50vmin rgba(41,230,255,.55)}
 body.look-blue{--a:#e9eef7;--a2:#f6c544;--deep:#2c3a5e;--bg1:#163a86;--bg0:#030a1e;--ray:rgba(160,200,255,.10);--emb:0 0.14vmin 0 #9fb3d9,0 0.28vmin 0 #6f83ad,0 0.42vmin 0 #4b5d86,0 0.69vmin 0 #2c3a5e,0 1.25vmin 1.67vmin rgba(0,0,0,.7)}
@@ -14,19 +14,19 @@ body.look-blue{--a:#e9eef7;--a2:#f6c544;--deep:#2c3a5e;--bg1:#163a86;--bg0:#030a
  -webkit-mask:radial-gradient(circle,#000 0%,#000 25%,transparent 60%);mask:radial-gradient(circle,#000 0%,#000 25%,transparent 60%);
  animation:spin 90s linear infinite;will-change:transform}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ch-wm{position:absolute;inset:-5.56vmin;font:3.89vmin/1.6 var(--sans);color:rgba(255,255,255,.035);white-space:nowrap;transform:rotate(-12deg);letter-spacing:.2em;overflow:hidden}
+.ch-wm{position:absolute;inset:-5.56vmin;font:3.89vmin/1.6 "Archivo Black",sans-serif;color:rgba(255,255,255,.035);white-space:nowrap;transform:rotate(-12deg);letter-spacing:.2em;overflow:hidden}
 .ch-bokeh{position:absolute;inset:0;background-image:radial-gradient(0.28vmin 0.28vmin at 10% 20%,#fff8 50%,transparent 51%),radial-gradient(0.28vmin 0.28vmin at 85% 18%,#fff8 50%,transparent 51%),radial-gradient(0.42vmin 0.42vmin at 72% 62%,#fff6 50%,transparent 51%),radial-gradient(0.28vmin 0.28vmin at 22% 70%,#fff7 50%,transparent 51%),radial-gradient(0.28vmin 0.28vmin at 40% 12%,#fff6 50%,transparent 51%),radial-gradient(0.42vmin 0.42vmin at 92% 80%,#fff5 50%,transparent 51%),radial-gradient(0.28vmin 0.28vmin at 6% 88%,#fff6 50%,transparent 51%),radial-gradient(0.28vmin 0.28vmin at 60% 30%,#fff4 50%,transparent 51%)}
 .ch-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding-top:2.50vmin;animation:pop .6s cubic-bezier(.2,1.4,.4,1) both}
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
 .ch-kick{font:700 2.50vmin "Oswald";letter-spacing:.5em;color:var(--a);text-shadow:var(--emb)}
-.ch-title{font:12.78vmin/1 var(--sans);letter-spacing:.04em;color:#fff;-webkit-text-stroke:0.69vmin var(--a);paint-order:stroke fill;text-shadow:var(--emb);margin-top:0.28vmin}
+.ch-title{font:12.78vmin/1 "Archivo Black",sans-serif;letter-spacing:.04em;color:#fff;-webkit-text-stroke:0.69vmin var(--a);paint-order:stroke fill;text-shadow:var(--emb);margin-top:0.28vmin}
 body.look-blue .ch-title{-webkit-text-stroke:0.56vmin #c9d3e6}
 .ch-hero{position:relative;display:flex;flex-direction:column;align-items:center;margin-top:0.83vmin}
 .ch-halo{position:absolute;top:-0.83vmin;width:41.67vmin;height:41.67vmin;border-radius:50%;
  background:radial-gradient(circle,rgba(255,215,90,.30) 0%,rgba(255,215,90,.08) 45%,transparent 66%);
  box-shadow:0 0 0 0.56vmin var(--a),0 0 0 1.39vmin rgba(0,0,0,.4),0 0 0 1.81vmin var(--a2),0 0 5.56vmin var(--a)}
 .ch-trophy{position:relative;width:16.67vmin;height:16.67vmin;margin-top:3.06vmin}
-.ch-name{position:relative;font:8.89vmin/1 var(--sans);color:#fff;text-shadow:var(--emb);-webkit-text-stroke:0.28vmin var(--a);paint-order:stroke fill;max-width:152.78vmin;text-align:center;margin-top:6.39vmin;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-name{position:relative;font:8.89vmin/1 "Archivo Black",sans-serif;color:#fff;text-shadow:var(--emb);-webkit-text-stroke:0.28vmin var(--a);paint-order:stroke fill;max-width:152.78vmin;text-align:center;margin-top:6.39vmin;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ch-name.long{font-size:6.39vmin}
 .ch-cash{position:relative;font:700 8.06vmin/1 "Oswald";color:#ffd34d;text-shadow:0 0.42vmin 0 #8a5a00,0 0.83vmin 0 #4a3000,0 0 2.78vmin rgba(255,200,60,.6);margin-top:1.11vmin;letter-spacing:.04em}
 .ch-chips{display:flex;gap:1.94vmin;margin-top:1.67vmin}
@@ -35,7 +35,7 @@ body.look-blue .ch-title{-webkit-text-stroke:0.56vmin #c9d3e6}
 .ch-pod{position:absolute;bottom:3.06vmin;display:flex;justify-content:space-between;width:163.89vmin;left:6.94vmin;pointer-events:none}
 .ch-plate{width:41.67vmin;padding:1.39vmin 2.22vmin 1.67vmin;border-radius:1.39vmin;text-align:center;color:#1a1a1a;box-shadow:inset 0 0.28vmin 0 rgba(255,255,255,.7),0 0.83vmin 0 rgba(0,0,0,.45)}
 .ch-plate .rk{font:700 2.08vmin "Oswald";letter-spacing:.3em}
-.ch-plate .nm{font:3.61vmin/1.1 var(--sans);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch-plate .nm{font:3.61vmin/1.1 "Archivo Black",sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ch-plate .sc{font:700 3.06vmin "Oswald"}
 .silver{background:linear-gradient(180deg,#f4f6fa,#b9c1cf 55%,#8e98a8)}
 .bronze{background:linear-gradient(180deg,#f3c79a,#c98a4f 55%,#8c5627)}
@@ -84,3 +84,5 @@ body.look-blue .ch-chip b{color:#f6c544}
 .champ .ch-hero .ch-halo{width:29.17vmin;height:29.17vmin;top:-0.56vmin}
 
 .ch-name.xlong{font-size:5.4vmin}
+body[class*="look-"] #phase-podium{border:0;border-radius:0;box-shadow:none;background:#05060a}
+body.in-podium .connmode{display:none}

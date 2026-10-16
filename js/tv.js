@@ -1321,6 +1321,7 @@
       if (el) el.classList.toggle('active', p === name);
     });
     document.body.classList.toggle('in-attract', name === 'idle');
+    document.body.classList.toggle('in-podium', name === 'podium');
   }
 
   function sweepStreak() {
