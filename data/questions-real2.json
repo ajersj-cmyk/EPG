@@ -545,7 +545,7 @@
 },
 {
 "id": "kidsmovies-x-54798449",
-"category": "kidsmovies",
+"category": "movies",
 "difficulty": "medium",
 "question": "In Back to the Future, what speed does the DeLorean need to time travel?",
 "options": [
@@ -858,7 +858,7 @@
 },
 {
 "id": "toys-x-3d546782",
-"category": "toys",
+"category": "games",
 "difficulty": "medium",
 "question": "What year was the Nintendo Entertainment System released in North America?",
 "options": [
@@ -1101,7 +1101,7 @@
 },
 {
 "id": "kidsmovies-x-478f67e2",
-"category": "kidsmovies",
+"category": "movies",
 "difficulty": "easy",
 "question": "In Star Wars, what color is Darth Vader's lightsaber?",
 "options": [
@@ -1325,7 +1325,7 @@
 },
 {
 "id": "kidsmovies-x-1b6646a1",
-"category": "kidsmovies",
+"category": "movies",
 "difficulty": "easy",
 "question": "What is the orange and white bot's name in \"Star Wars: The Force Awakens\"?",
 "options": [
@@ -1421,7 +1421,7 @@
 },
 {
 "id": "movies-x-a197d895",
-"category": "movies",
+"category": "tv",
 "difficulty": "medium",
 "question": "What was the name of David Hasslehoff's Talking car in the show 'Knight Rider'?",
 "options": [
@@ -1853,7 +1853,7 @@
 },
 {
 "id": "movies-x-15759e95",
-"category": "movies",
+"category": "tv",
 "difficulty": "medium",
 "question": "What was the name of Norm's wife on Cheers?",
 "options": [

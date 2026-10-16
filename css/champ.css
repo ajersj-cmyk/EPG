@@ -86,3 +86,5 @@ body.look-blue .ch-chip b{color:#f6c544}
 .ch-name.xlong{font-size:5.4vmin}
 body[class*="look-"] #phase-podium{border:0;border-radius:0;box-shadow:none;background:#05060a}
 body.in-podium .connmode{display:none}
+body.in-podium .hostbar{visibility:hidden}
+body.in-podium #joinUrl, body.in-podium #railScanText{visibility:hidden}

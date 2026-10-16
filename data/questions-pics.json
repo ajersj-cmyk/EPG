@@ -1,1 +1,6802 @@
-[]
+[
+{
+"id": "pic-toy-story",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Finding Dory",
+"Ratatouille",
+"Toy Story",
+"Up"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Toy Story — TMDB backdrop 3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg",
+"image": "img/pics/m-toy-story.jpg",
+"pic": true
+},
+{
+"id": "pic-toy-story-2",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Toy Story 2",
+"Toy Story 3",
+"WALL-E",
+"Turning Red"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Toy Story 2 — TMDB backdrop nsfVr4QbbunUrHINN9N7JdVAMTf.jpg",
+"image": "img/pics/m-toy-story-2.jpg",
+"pic": true
+},
+{
+"id": "pic-toy-story-3",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Toy Story 3",
+"Toy Story 4",
+"The Incredibles",
+"Inside Out"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Toy Story 3 — TMDB backdrop wE5JGzujfvDPMIfFjJyrhXFjZLc.jpg",
+"image": "img/pics/m-toy-story-3.jpg",
+"pic": true
+},
+{
+"id": "pic-toy-story-4",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Toy Story 4",
+"Toy Story 2",
+"Finding Nemo",
+"Turning Red"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Toy Story 4 — TMDB backdrop q62bpQ67qaXY0u6b2wFEnQYIbPd.jpg",
+"image": "img/pics/m-toy-story-4.jpg",
+"pic": true
+},
+{
+"id": "pic-finding-nemo",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Finding Nemo",
+"Toy Story 2",
+"Turning Red",
+"Ratatouille"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Finding Nemo — TMDB backdrop eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+"image": "img/pics/m-finding-nemo.jpg",
+"pic": true
+},
+{
+"id": "pic-finding-dory",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Finding Dory",
+"Inside Out",
+"Finding Nemo",
+"Cars"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Finding Dory — TMDB backdrop wijltj1toRcicHlCn8Cpsp4yPXe.jpg",
+"image": "img/pics/m-finding-dory.jpg",
+"pic": true
+},
+{
+"id": "pic-monsters-inc",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"A Bug's Life",
+"Monsters, Inc.",
+"Finding Dory",
+"Luca"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Monsters, Inc. — TMDB backdrop c7VbRPlev1bRfKvTxr98erw5T7B.jpg",
+"image": "img/pics/m-monsters-inc.jpg",
+"pic": true
+},
+{
+"id": "pic-monsters-university",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Toy Story 4",
+"Monsters University",
+"Luca",
+"WALL-E"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Monsters University — TMDB backdrop mIpCxBWNz6SHCQBe2K2PFr5MB7f.jpg",
+"image": "img/pics/m-monsters-university.jpg",
+"pic": true
+},
+{
+"id": "pic-the-incredibles",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Elemental",
+"Coco",
+"Monsters, Inc.",
+"The Incredibles"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "The Incredibles — TMDB backdrop lxwzY9vNwjDgxWKt3zZ6zcU6rEJ.jpg",
+"image": "img/pics/m-the-incredibles.jpg",
+"pic": true
+},
+{
+"id": "pic-incredibles-2",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Inside Out 2",
+"Incredibles 2",
+"Turning Red",
+"WALL-E"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Incredibles 2 — TMDB backdrop mabuNsGJgRuCTuGqjFkWe1xdu19.jpg",
+"image": "img/pics/m-incredibles-2.jpg",
+"pic": true
+},
+{
+"id": "pic-cars",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Onward",
+"Monsters University",
+"Cars",
+"Toy Story 3"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Cars — TMDB backdrop sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+"image": "img/pics/m-cars.jpg",
+"pic": true
+},
+{
+"id": "pic-up",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Incredibles 2",
+"Inside Out 2",
+"Up",
+"Cars"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Up — TMDB backdrop hGGC9gKo7CFE3fW07RA587e5kol.jpg",
+"image": "img/pics/m-up.jpg",
+"pic": true
+},
+{
+"id": "pic-wall-e",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Finding Nemo",
+"Finding Dory",
+"Cars",
+"WALL-E"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "WALL-E — TMDB backdrop nYs4ZwnJBK4AgljhvzwNz7fpr3E.jpg",
+"image": "img/pics/m-wall-e.jpg",
+"pic": true
+},
+{
+"id": "pic-ratatouille",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"A Bug's Life",
+"Ratatouille",
+"Toy Story 3",
+"Luca"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ratatouille — TMDB backdrop zeoaHdXRDd5IoUiMVsNhwTZm78B.jpg",
+"image": "img/pics/m-ratatouille.jpg",
+"pic": true
+},
+{
+"id": "pic-inside-out",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Coco",
+"Turning Red",
+"Elemental",
+"Inside Out"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Inside Out — TMDB backdrop jJKZaTBNenlFclQyjrnvzkRmvWE.jpg",
+"image": "img/pics/m-inside-out.jpg",
+"pic": true
+},
+{
+"id": "pic-inside-out-2",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Onward",
+"Coco",
+"Inside Out 2",
+"The Incredibles"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Inside Out 2 — TMDB backdrop p5ozvmdgsmbWe0H8Xk7Rc8SCwAB.jpg",
+"image": "img/pics/m-inside-out-2.jpg",
+"pic": true
+},
+{
+"id": "pic-coco",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Soul",
+"A Bug's Life",
+"Turning Red",
+"Coco"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Coco — TMDB backdrop g7CHF8gTLGooTbP4GznIGwaqAGL.jpg",
+"image": "img/pics/m-coco.jpg",
+"pic": true
+},
+{
+"id": "pic-brave",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Toy Story",
+"A Bug's Life",
+"Up",
+"Brave"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Brave — TMDB backdrop qx9ts2hBYJrkIQxhryitxnLlm2u.jpg",
+"image": "img/pics/m-brave.jpg",
+"pic": true
+},
+{
+"id": "pic-luca",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Inside Out 2",
+"Toy Story 4",
+"Luca",
+"Elemental"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Luca — TMDB backdrop 620hnMVLu6RSZW6a5rwO8gqpt0t.jpg",
+"image": "img/pics/m-luca.jpg",
+"pic": true
+},
+{
+"id": "pic-turning-red",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"WALL-E",
+"Finding Nemo",
+"Monsters University",
+"Turning Red"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Turning Red — TMDB backdrop fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg",
+"image": "img/pics/m-turning-red.jpg",
+"pic": true
+},
+{
+"id": "pic-elemental",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Elemental",
+"Inside Out",
+"Finding Dory",
+"WALL-E"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Elemental — TMDB backdrop 4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg",
+"image": "img/pics/m-elemental.jpg",
+"pic": true
+},
+{
+"id": "pic-soul",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Brave",
+"Onward",
+"The Incredibles",
+"Soul"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Soul — TMDB backdrop rQaHA74pevnGsxcKGaoZVGWe9TC.jpg",
+"image": "img/pics/m-soul.jpg",
+"pic": true
+},
+{
+"id": "pic-a-bug-s-life",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"A Bug's Life",
+"Toy Story 3",
+"Monsters University",
+"Finding Nemo"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "A Bug's Life — TMDB backdrop hwwFyowfcbLRVmRBOkvnABBNIOs.jpg",
+"image": "img/pics/m-a-bug-s-life.jpg",
+"pic": true
+},
+{
+"id": "pic-onward",
+"category": "pixar",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Monsters University",
+"Soul",
+"Toy Story",
+"Onward"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Onward — TMDB backdrop bcT8CaBIj086WVD7K529h78eujb.jpg",
+"image": "img/pics/m-onward.jpg",
+"pic": true
+},
+{
+"id": "pic-frozen",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Tangled",
+"Frozen II",
+"Frozen",
+"Wish"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Frozen — TMDB backdrop rj58WQ9ImI0mYDptXdM7euX1Wjt.jpg",
+"image": "img/pics/m-frozen.jpg",
+"pic": true
+},
+{
+"id": "pic-frozen-ii",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Frozen II",
+"Aladdin",
+"Zootopia",
+"Wish"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Frozen II — TMDB backdrop AoSZyb37ljMAxw0RdeQEBHKtgcc.jpg",
+"image": "img/pics/m-frozen-ii.jpg",
+"pic": true
+},
+{
+"id": "pic-moana",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Wreck-It Ralph",
+"Lilo & Stitch",
+"Mulan",
+"Moana"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Moana — TMDB backdrop qLVNZFHYUR6Li64He67SWl6BHQe.jpg",
+"image": "img/pics/m-moana.jpg",
+"pic": true
+},
+{
+"id": "pic-moana-2",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Frozen II",
+"Wreck-It Ralph",
+"Big Hero 6",
+"Moana 2"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Moana 2 — TMDB backdrop vYqt6kb4lcF8wwqsMMaULkP9OEn.jpg",
+"image": "img/pics/m-moana-2.jpg",
+"pic": true
+},
+{
+"id": "pic-encanto",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Wreck-It Ralph",
+"Encanto",
+"Frozen II",
+"Moana 2"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Encanto — TMDB backdrop 3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg",
+"image": "img/pics/m-encanto.jpg",
+"pic": true
+},
+{
+"id": "pic-tangled",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Frozen",
+"Tangled",
+"Frozen II",
+"Aladdin"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Tangled — TMDB backdrop cWczNud8Y8i8ab0Z4bxos4myWYO.jpg",
+"image": "img/pics/m-tangled.jpg",
+"pic": true
+},
+{
+"id": "pic-zootopia",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Frozen II",
+"Tangled",
+"Zootopia",
+"The Lion King"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Zootopia — TMDB backdrop 9tOkjBEiiGcaClgJFtwocStZvIT.jpg",
+"image": "img/pics/m-zootopia.jpg",
+"pic": true
+},
+{
+"id": "pic-big-hero-6",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Aladdin",
+"Big Hero 6",
+"Zootopia",
+"Moana"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Big Hero 6 — TMDB backdrop 4s2d3xdyqotiVNHTlTlJjrr3q0H.jpg",
+"image": "img/pics/m-big-hero-6.jpg",
+"pic": true
+},
+{
+"id": "pic-wreck-it-ralph",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Big Hero 6",
+"Mulan",
+"Frozen II",
+"Wreck-It Ralph"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Wreck-It Ralph — TMDB backdrop 3IFRjBDwtk0DlIsDfJ2zEzLjUBi.jpg",
+"image": "img/pics/m-wreck-it-ralph.jpg",
+"pic": true
+},
+{
+"id": "pic-the-lion-king",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Frozen II",
+"The Lion King",
+"Big Hero 6",
+"Encanto"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "The Lion King — TMDB backdrop q00H8EqULYSK74lgevMkhmGGLHn.jpg",
+"image": "img/pics/m-the-lion-king.jpg",
+"pic": true
+},
+{
+"id": "pic-aladdin",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Aladdin",
+"Beauty and the Beast",
+"Big Hero 6",
+"Encanto"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Aladdin — TMDB backdrop nenJjvfe2Eq8uBMXFJnWj5mw4bi.jpg",
+"image": "img/pics/m-aladdin.jpg",
+"pic": true
+},
+{
+"id": "pic-the-little-mermaid",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Little Mermaid",
+"Moana 2",
+"Tangled",
+"Wreck-It Ralph"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "The Little Mermaid — TMDB backdrop qGZXYHvWR1TYOU9raCaEABrj9m7.jpg",
+"image": "img/pics/m-the-little-mermaid.jpg",
+"pic": true
+},
+{
+"id": "pic-beauty-and-the-beast",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Beauty and the Beast",
+"Wreck-It Ralph",
+"Encanto",
+"Lilo & Stitch"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Beauty and the Beast — TMDB backdrop fW4ZCoEZRBqLAJGFQ2g5AdAfPQR.jpg",
+"image": "img/pics/m-beauty-and-the-beast.jpg",
+"pic": true
+},
+{
+"id": "pic-lilo-stitch",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Lilo & Stitch",
+"Tangled",
+"Wreck-It Ralph",
+"Moana"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Lilo & Stitch — TMDB backdrop AcxbOWUbwtIEDisfuhNGHQNfnMK.jpg",
+"image": "img/pics/m-lilo-stitch.jpg",
+"pic": true
+},
+{
+"id": "pic-mulan",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Lion King",
+"Mulan",
+"Aladdin",
+"Moana 2"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mulan — TMDB backdrop mUYV0ZdsDEliGaQahcQH1F3grsP.jpg",
+"image": "img/pics/m-mulan.jpg",
+"pic": true
+},
+{
+"id": "pic-wish",
+"category": "disney",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Little Mermaid",
+"Wish",
+"Moana 2",
+"Beauty and the Beast"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Wish — TMDB backdrop ehumsuIBbgAe1hg343oszCLrAfI.jpg",
+"image": "img/pics/m-wish.jpg",
+"pic": true
+},
+{
+"id": "pic-shrek",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Puss in Boots: The Last Wish",
+"Shrek",
+"Shrek 2",
+"The Super Mario Bros. Movie"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Shrek — TMDB backdrop w0eKUOEog2ImtktCHAMUZws8qif.jpg",
+"image": "img/pics/m-shrek.jpg",
+"pic": true
+},
+{
+"id": "pic-shrek-2",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Shrek 2",
+"Ice Age",
+"Puss in Boots: The Last Wish",
+"Spider-Man: Across the Spider-Verse"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Shrek 2 — TMDB backdrop 8ohobj5lAIbl5XWw11FywS3IRrS.jpg",
+"image": "img/pics/m-shrek-2.jpg",
+"pic": true
+},
+{
+"id": "pic-despicable-me",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Pokémon Detective Pikachu",
+"Kung Fu Panda",
+"The Lego Movie",
+"Despicable Me"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Despicable Me — TMDB backdrop 2XSeKDmIa2KxaiJy4J9e8FrIZhk.jpg",
+"image": "img/pics/m-despicable-me.jpg",
+"pic": true
+},
+{
+"id": "pic-minions",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Ice Age",
+"The Boss Baby",
+"Shrek",
+"Minions"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Minions — TMDB backdrop wKrxeY6lbu7KFBsWVcMH6M8avwr.jpg",
+"image": "img/pics/m-minions.jpg",
+"pic": true
+},
+{
+"id": "pic-kung-fu-panda",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Wild Robot",
+"Despicable Me",
+"Kung Fu Panda",
+"Minions"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Kung Fu Panda — TMDB backdrop qdthf9WrRDSaIkGVQGhhJ9pz1hn.jpg",
+"image": "img/pics/m-kung-fu-panda.jpg",
+"pic": true
+},
+{
+"id": "pic-how-to-train-your-dragon",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Into the Spider-Verse",
+"Despicable Me",
+"The Bad Guys",
+"How to Train Your Dragon"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "How to Train Your Dragon — TMDB backdrop 59vDC1BuEQvti24OMr0ZvtAK6R1.jpg",
+"image": "img/pics/m-how-to-train-your-dragon.jpg",
+"pic": true
+},
+{
+"id": "pic-madagascar",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Madagascar",
+"The Super Mario Bros. Movie",
+"Despicable Me",
+"How to Train Your Dragon"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Madagascar — TMDB backdrop tPaurpIUskVji5vwV0dhy9pq4Vs.jpg",
+"image": "img/pics/m-madagascar.jpg",
+"pic": true
+},
+{
+"id": "pic-ice-age",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Pokémon Detective Pikachu",
+"Spider-Man: Across the Spider-Verse",
+"Kung Fu Panda",
+"Ice Age"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Ice Age — TMDB backdrop 8pwIhymsxfAVjrAE7syDjQULn37.jpg",
+"image": "img/pics/m-ice-age.jpg",
+"pic": true
+},
+{
+"id": "pic-the-lego-movie",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Super Mario Bros. Movie",
+"Pokémon Detective Pikachu",
+"The Lego Movie",
+"Kung Fu Panda"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "The Lego Movie — TMDB backdrop 6gI1dAkOaUQ6659OdRPsTLlsem5.jpg",
+"image": "img/pics/m-the-lego-movie.jpg",
+"pic": true
+},
+{
+"id": "pic-sing",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Sing",
+"Spider-Man: Into the Spider-Verse",
+"The Secret Life of Pets",
+"Kung Fu Panda"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Sing — TMDB backdrop z9ft5HYHzWcasR6SGcgeluxTznB.jpg",
+"image": "img/pics/m-sing.jpg",
+"pic": true
+},
+{
+"id": "pic-trolls",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Lego Movie",
+"Trolls",
+"Sing",
+"Madagascar"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Trolls — TMDB backdrop gXyYOWAkk4FdQU3adK8WFj8nN9J.jpg",
+"image": "img/pics/m-trolls.jpg",
+"pic": true
+},
+{
+"id": "pic-the-bad-guys",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Into the Spider-Verse",
+"The Bad Guys",
+"The Lego Movie",
+"The Super Mario Bros. Movie"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "The Bad Guys — TMDB backdrop a8w3luV9uCjveB8v7grHfvXVOFJ.jpg",
+"image": "img/pics/m-the-bad-guys.jpg",
+"pic": true
+},
+{
+"id": "pic-puss-in-boots-the-last-wish",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Puss in Boots: The Last Wish",
+"Spider-Man: Across the Spider-Verse",
+"Spider-Man: Into the Spider-Verse",
+"The Secret Life of Pets"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Puss in Boots: The Last Wish — TMDB backdrop jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg",
+"image": "img/pics/m-puss-in-boots-the-last-wish.jpg",
+"pic": true
+},
+{
+"id": "pic-the-wild-robot",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Pokémon Detective Pikachu",
+"Shrek",
+"The Secret Life of Pets",
+"The Wild Robot"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "The Wild Robot — TMDB backdrop 1pmXyN3sKeYoUhu5VBZiDU4BX21.jpg",
+"image": "img/pics/m-the-wild-robot.jpg",
+"pic": true
+},
+{
+"id": "pic-spider-man-into-the-spider-verse",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Minions",
+"Shrek",
+"Spider-Man: Across the Spider-Verse",
+"Spider-Man: Into the Spider-Verse"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Spider-Man: Into the Spider-Verse — TMDB backdrop 1ntePsIqeklfmrQJqZPncCydsqY.jpg",
+"image": "img/pics/m-spider-man-into-the-spider-verse.jpg",
+"pic": true
+},
+{
+"id": "pic-spider-man-across-the-spider-verse",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Into the Spider-Verse",
+"Shrek",
+"Minions",
+"Spider-Man: Across the Spider-Verse"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Spider-Man: Across the Spider-Verse — TMDB backdrop kVd3a9YeLGkoeR50jGEXM6EqseS.jpg",
+"image": "img/pics/m-spider-man-across-the-spider-verse.jpg",
+"pic": true
+},
+{
+"id": "pic-the-boss-baby",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Lego Movie",
+"Madagascar",
+"The Boss Baby",
+"Ice Age"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "The Boss Baby — TMDB backdrop 4IrZC1uuaDpGScO4TDyEe4E4bq2.jpg",
+"image": "img/pics/m-the-boss-baby.jpg",
+"pic": true
+},
+{
+"id": "pic-the-secret-life-of-pets",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Despicable Me",
+"The Super Mario Bros. Movie",
+"Shrek",
+"The Secret Life of Pets"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "The Secret Life of Pets — TMDB backdrop c1Ywtvlqls6tPBZ3BqbPtBwHyng.jpg",
+"image": "img/pics/m-the-secret-life-of-pets.jpg",
+"pic": true
+},
+{
+"id": "pic-the-super-mario-bros-movie",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Into the Spider-Verse",
+"The Lego Movie",
+"The Boss Baby",
+"The Super Mario Bros. Movie"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "The Super Mario Bros. Movie — TMDB backdrop 9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+"image": "img/pics/m-the-super-mario-bros-movie.jpg",
+"pic": true
+},
+{
+"id": "pic-pok-mon-detective-pikachu",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Madagascar",
+"The Lego Movie",
+"The Boss Baby",
+"Pokémon Detective Pikachu"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Pokémon Detective Pikachu — TMDB backdrop yXybBEC45p84D0Ky7GmQQYrclVr.jpg",
+"image": "img/pics/m-pok-mon-detective-pikachu.jpg",
+"pic": true
+},
+{
+"id": "pic-iron-man",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Doctor Strange",
+"Iron Man",
+"Guardians of the Galaxy",
+"Spider-Man: Homecoming"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Iron Man — TMDB backdrop cKvDv2LpwVEqbdXWoQl4XgGN6le.jpg",
+"image": "img/pics/m-iron-man.jpg",
+"pic": true
+},
+{
+"id": "pic-the-avengers",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Avengers: Infinity War",
+"The Avengers",
+"Captain America: Civil War",
+"Guardians of the Galaxy"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "The Avengers — TMDB backdrop 9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
+"image": "img/pics/m-the-avengers.jpg",
+"pic": true
+},
+{
+"id": "pic-avengers-endgame",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Captain America: The First Avenger",
+"Captain Marvel",
+"Avengers: Endgame",
+"Guardians of the Galaxy Vol. 2"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Avengers: Endgame — TMDB backdrop 7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+"image": "img/pics/m-avengers-endgame.jpg",
+"pic": true
+},
+{
+"id": "pic-avengers-infinity-war",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Doctor Strange",
+"Captain America: The Winter Soldier",
+"Guardians of the Galaxy",
+"Avengers: Infinity War"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Avengers: Infinity War — TMDB backdrop mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
+"image": "img/pics/m-avengers-infinity-war.jpg",
+"pic": true
+},
+{
+"id": "pic-guardians-of-the-galaxy",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Black Panther",
+"Spider-Man: No Way Home",
+"Captain America: Civil War",
+"Guardians of the Galaxy"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Guardians of the Galaxy — TMDB backdrop uLtVbjvS1O7gXL8lUOwsFOH4man.jpg",
+"image": "img/pics/m-guardians-of-the-galaxy.jpg",
+"pic": true
+},
+{
+"id": "pic-guardians-of-the-galaxy-vol-2",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Guardians of the Galaxy Vol. 2",
+"Captain Marvel",
+"Black Panther",
+"Thor: Ragnarok"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Guardians of the Galaxy Vol. 2 — TMDB backdrop aJn9XeesqsrSLKcHfHP4u5985hn.jpg",
+"image": "img/pics/m-guardians-of-the-galaxy-vol-2.jpg",
+"pic": true
+},
+{
+"id": "pic-black-panther",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: No Way Home",
+"Iron Man",
+"Ant-Man",
+"Black Panther"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Black Panther — TMDB backdrop b6ZJZHUdMEFECvGiDpJjlfUWela.jpg",
+"image": "img/pics/m-black-panther.jpg",
+"pic": true
+},
+{
+"id": "pic-thor-ragnarok",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Ant-Man",
+"Doctor Strange",
+"Thor: Ragnarok",
+"Spider-Man: No Way Home"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Thor: Ragnarok — TMDB backdrop vLmHH8jAy8Jq8uBsLucd3592WGh.jpg",
+"image": "img/pics/m-thor-ragnarok.jpg",
+"pic": true
+},
+{
+"id": "pic-spider-man-homecoming",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Homecoming",
+"Avengers: Infinity War",
+"Spider-Man: Far From Home",
+"Spider-Man: No Way Home"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Spider-Man: Homecoming — TMDB backdrop tPpYGm2mVecue7Bk3gNVoSPA5qn.jpg",
+"image": "img/pics/m-spider-man-homecoming.jpg",
+"pic": true
+},
+{
+"id": "pic-spider-man-no-way-home",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Homecoming",
+"Iron Man",
+"Spider-Man: No Way Home",
+"Spider-Man: Far From Home"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Spider-Man: No Way Home — TMDB backdrop iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg",
+"image": "img/pics/m-spider-man-no-way-home.jpg",
+"pic": true
+},
+{
+"id": "pic-spider-man-far-from-home",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Far From Home",
+"Spider-Man: No Way Home",
+"The Avengers",
+"Avengers: Infinity War"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Spider-Man: Far From Home — TMDB backdrop wqBW5ltBJu0gs26yCc8shQQV82d.jpg",
+"image": "img/pics/m-spider-man-far-from-home.jpg",
+"pic": true
+},
+{
+"id": "pic-ant-man",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Black Panther",
+"Ant-Man",
+"Guardians of the Galaxy Vol. 2",
+"The Avengers"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ant-Man — TMDB backdrop 1K3JmSNUN8OpjYsCjc0Hy0SYxAb.jpg",
+"image": "img/pics/m-ant-man.jpg",
+"pic": true
+},
+{
+"id": "pic-captain-marvel",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"The Avengers",
+"Captain Marvel",
+"Avengers: Endgame",
+"Spider-Man: Homecoming"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Captain Marvel — TMDB backdrop qAzYK4YPSWDc7aa4R43LcwRIAyb.jpg",
+"image": "img/pics/m-captain-marvel.jpg",
+"pic": true
+},
+{
+"id": "pic-doctor-strange",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Avengers: Infinity War",
+"Captain America: The Winter Soldier",
+"Doctor Strange",
+"Iron Man"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Doctor Strange — TMDB backdrop kkoiH8ZWxJ9WSAjOadGtuHUQxbm.jpg",
+"image": "img/pics/m-doctor-strange.jpg",
+"pic": true
+},
+{
+"id": "pic-captain-america-civil-war",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Captain America: Civil War",
+"Iron Man",
+"Spider-Man: Homecoming",
+"Guardians of the Galaxy"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Captain America: Civil War — TMDB backdrop 7FWlcZq3r6525LWOcvO9kNWurN1.jpg",
+"image": "img/pics/m-captain-america-civil-war.jpg",
+"pic": true
+},
+{
+"id": "pic-captain-america-the-winter-soldier",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Spider-Man: Homecoming",
+"Avengers: Endgame",
+"Captain America: The Winter Soldier",
+"The Avengers"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Captain America: The Winter Soldier — TMDB backdrop 1RWLMyC9KcFfcaoViMiJGSSZzzr.jpg",
+"image": "img/pics/m-captain-america-the-winter-soldier.jpg",
+"pic": true
+},
+{
+"id": "pic-captain-america-the-first-avenger",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Black Panther",
+"Shang-Chi and the Legend of the Ten Rings",
+"Guardians of the Galaxy",
+"Captain America: The First Avenger"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Captain America: The First Avenger — TMDB backdrop yFuKvT4Vm3sKHdFY4eG6I4ldAnn.jpg",
+"image": "img/pics/m-captain-america-the-first-avenger.jpg",
+"pic": true
+},
+{
+"id": "pic-shang-chi-and-the-legend-of-the-ten-rings",
+"category": "marvel",
+"difficulty": "easy",
+"question": "NAME THE MOVIE",
+"options": [
+"Captain Marvel",
+"Shang-Chi and the Legend of the Ten Rings",
+"Ant-Man",
+"Spider-Man: Homecoming"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Shang-Chi and the Legend of the Ten Rings — TMDB backdrop r7K6Xt0RX4Mw0cAbZVw5cyb1Tux.jpg",
+"image": "img/pics/m-shang-chi-and-the-legend-of-the-ten-rings.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-blastoise",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Bulbasaur",
+"Blastoise",
+"Venusaur",
+"Charizard"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Blastoise — official artwork via PokeAPI sprites",
+"image": "img/pics/p-blastoise.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-bulbasaur",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Lugia",
+"Sylveon",
+"Eevee",
+"Bulbasaur"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Bulbasaur — official artwork via PokeAPI sprites",
+"image": "img/pics/p-bulbasaur.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-charizard",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Mewtwo",
+"Charizard",
+"Snorlax",
+"Venusaur"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Charizard — official artwork via PokeAPI sprites",
+"image": "img/pics/p-charizard.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-charmander",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gengar",
+"Charmander",
+"Jolteon",
+"Snorlax"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Charmander — official artwork via PokeAPI sprites",
+"image": "img/pics/p-charmander.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-clefairy",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Ditto",
+"Magikarp",
+"Blastoise",
+"Clefairy"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Clefairy — official artwork via PokeAPI sprites",
+"image": "img/pics/p-clefairy.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-ditto",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Raichu",
+"Dragonite",
+"Ditto",
+"Venusaur"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Ditto — official artwork via PokeAPI sprites",
+"image": "img/pics/p-ditto.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-dragonite",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Togepi",
+"Dragonite",
+"Mew",
+"Charizard"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Dragonite — official artwork via PokeAPI sprites",
+"image": "img/pics/p-dragonite.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-eevee",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Sylveon",
+"Eevee",
+"Blastoise",
+"Magikarp"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Eevee — official artwork via PokeAPI sprites",
+"image": "img/pics/p-eevee.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-flareon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Mewtwo",
+"Lugia",
+"Flareon",
+"Charizard"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Flareon — official artwork via PokeAPI sprites",
+"image": "img/pics/p-flareon.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-gengar",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gengar",
+"Raichu",
+"Pikachu",
+"Blastoise"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Gengar — official artwork via PokeAPI sprites",
+"image": "img/pics/p-gengar.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-greninja",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Lugia",
+"Jolteon",
+"Greninja",
+"Venusaur"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Greninja — official artwork via PokeAPI sprites",
+"image": "img/pics/p-greninja.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-gyarados",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Snorlax",
+"Gyarados",
+"Gengar",
+"Ditto"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Gyarados — official artwork via PokeAPI sprites",
+"image": "img/pics/p-gyarados.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-jigglypuff",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Mewtwo",
+"Jigglypuff",
+"Ditto",
+"Lucario"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Jigglypuff — official artwork via PokeAPI sprites",
+"image": "img/pics/p-jigglypuff.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-jolteon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Vaporeon",
+"Mimikyu",
+"Jolteon",
+"Gengar"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Jolteon — official artwork via PokeAPI sprites",
+"image": "img/pics/p-jolteon.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-lapras",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Lapras",
+"Charizard",
+"Squirtle",
+"Venusaur"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Lapras — official artwork via PokeAPI sprites",
+"image": "img/pics/p-lapras.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-lucario",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Bulbasaur",
+"Ditto",
+"Lucario",
+"Lapras"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Lucario — official artwork via PokeAPI sprites",
+"image": "img/pics/p-lucario.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-lugia",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Raichu",
+"Lugia",
+"Sylveon",
+"Dragonite"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Lugia — official artwork via PokeAPI sprites",
+"image": "img/pics/p-lugia.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-magikarp",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Lugia",
+"Magikarp",
+"Vaporeon",
+"Lucario"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Magikarp — official artwork via PokeAPI sprites",
+"image": "img/pics/p-magikarp.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-meowth",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Clefairy",
+"Venusaur",
+"Ditto",
+"Meowth"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Meowth — official artwork via PokeAPI sprites",
+"image": "img/pics/p-meowth.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-mew",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Lugia",
+"Mew",
+"Jolteon",
+"Lucario"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mew — official artwork via PokeAPI sprites",
+"image": "img/pics/p-mew.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-mewtwo",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Vaporeon",
+"Raichu",
+"Clefairy",
+"Mewtwo"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Mewtwo — official artwork via PokeAPI sprites",
+"image": "img/pics/p-mewtwo.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-mimikyu",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Charizard",
+"Clefairy",
+"Mimikyu",
+"Jigglypuff"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Mimikyu — official artwork via PokeAPI sprites",
+"image": "img/pics/p-mimikyu.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-pikachu",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Blastoise",
+"Flareon",
+"Mew",
+"Pikachu"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Pikachu — official artwork via PokeAPI sprites",
+"image": "img/pics/p-pikachu.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-piplup",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Magikarp",
+"Jolteon",
+"Dragonite",
+"Piplup"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Piplup — official artwork via PokeAPI sprites",
+"image": "img/pics/p-piplup.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-psyduck",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Psyduck",
+"Eevee",
+"Togepi",
+"Jigglypuff"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Psyduck — official artwork via PokeAPI sprites",
+"image": "img/pics/p-psyduck.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-raichu",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Raichu",
+"Meowth",
+"Togepi",
+"Bulbasaur"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Raichu — official artwork via PokeAPI sprites",
+"image": "img/pics/p-raichu.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-snorlax",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Snorlax",
+"Jolteon",
+"Magikarp",
+"Psyduck"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Snorlax — official artwork via PokeAPI sprites",
+"image": "img/pics/p-snorlax.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-sprigatito",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gengar",
+"Sprigatito",
+"Piplup",
+"Lugia"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Sprigatito — official artwork via PokeAPI sprites",
+"image": "img/pics/p-sprigatito.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-squirtle",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Eevee",
+"Lapras",
+"Piplup",
+"Squirtle"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Squirtle — official artwork via PokeAPI sprites",
+"image": "img/pics/p-squirtle.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-sylveon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Bulbasaur",
+"Greninja",
+"Blastoise",
+"Sylveon"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Sylveon — official artwork via PokeAPI sprites",
+"image": "img/pics/p-sylveon.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-togepi",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Raichu",
+"Gengar",
+"Mew",
+"Togepi"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Togepi — official artwork via PokeAPI sprites",
+"image": "img/pics/p-togepi.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-umbreon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Umbreon",
+"Mimikyu",
+"Eevee",
+"Mewtwo"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Umbreon — official artwork via PokeAPI sprites",
+"image": "img/pics/p-umbreon.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-vaporeon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Vaporeon",
+"Eevee",
+"Jigglypuff",
+"Raichu"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Vaporeon — official artwork via PokeAPI sprites",
+"image": "img/pics/p-vaporeon.jpg",
+"pic": true
+},
+{
+"id": "pic-poke-venusaur",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Clefairy",
+"Lugia",
+"Piplup",
+"Venusaur"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Venusaur — official artwork via PokeAPI sprites",
+"image": "img/pics/p-venusaur.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-birdo",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Koopa Troopa",
+"Birdo",
+"Rosalina",
+"Mario"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Birdo — Super Mario Wiki artwork",
+"image": "img/pics/r-birdo.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-boo",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Bowser",
+"Donkey Kong",
+"Boo",
+"Lakitu"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Boo — Super Mario Wiki artwork",
+"image": "img/pics/r-boo.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-bowser",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Bowser",
+"Toadette",
+"Luigi",
+"Kamek"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Bowser — Super Mario Wiki artwork",
+"image": "img/pics/r-bowser.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-bowser-jr",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Bowser Jr.",
+"Princess Daisy",
+"Waluigi",
+"Princess Peach"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Bowser Jr. — Super Mario Wiki artwork",
+"image": "img/pics/r-bowser-jr.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-diddy-kong",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Boo",
+"Diddy Kong",
+"Shy Guy",
+"Rosalina"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Diddy Kong — Super Mario Wiki artwork",
+"image": "img/pics/r-diddy-kong.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-donkey-kong",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Waluigi",
+"Donkey Kong",
+"Toad",
+"Boo"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Donkey Kong — Super Mario Wiki artwork",
+"image": "img/pics/r-donkey-kong.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-goomba",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Rosalina",
+"Goomba",
+"Luigi",
+"Lakitu"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Goomba — Super Mario Wiki artwork",
+"image": "img/pics/r-goomba.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-kamek",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Princess Peach",
+"King Boo",
+"Lakitu",
+"Kamek"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Kamek — Super Mario Wiki artwork",
+"image": "img/pics/r-kamek.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-king-boo",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Yoshi",
+"Donkey Kong",
+"King Boo",
+"Bowser Jr."
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "King Boo — Super Mario Wiki artwork",
+"image": "img/pics/r-king-boo.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-koopa-troopa",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Waluigi",
+"Koopa Troopa",
+"Kamek",
+"Shy Guy"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Koopa Troopa — Super Mario Wiki artwork",
+"image": "img/pics/r-koopa-troopa.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-lakitu",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Lakitu",
+"Goomba",
+"Diddy Kong",
+"Waluigi"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Lakitu — Super Mario Wiki artwork",
+"image": "img/pics/r-lakitu.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-luigi",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Luigi",
+"Waluigi",
+"Lakitu",
+"Bowser"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Luigi — Super Mario Wiki artwork",
+"image": "img/pics/r-luigi.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-mario",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mario",
+"Wario",
+"Goomba",
+"King Boo"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Mario — Super Mario Wiki artwork",
+"image": "img/pics/r-mario.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-princess-peach",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mario",
+"Toadette",
+"Princess Peach",
+"Rosalina"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Princess Peach — Super Mario Wiki artwork",
+"image": "img/pics/r-princess-peach.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-rosalina",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Lakitu",
+"Boo",
+"Rosalina",
+"Toad"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Rosalina — Super Mario Wiki artwork",
+"image": "img/pics/r-rosalina.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-shy-guy",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Yoshi",
+"Shy Guy",
+"Diddy Kong",
+"Toadette"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Shy Guy — Super Mario Wiki artwork",
+"image": "img/pics/r-shy-guy.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-toad",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Kamek",
+"Yoshi",
+"Mario",
+"Toad"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Toad — Super Mario Wiki artwork",
+"image": "img/pics/r-toad.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-toadette",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Birdo",
+"Diddy Kong",
+"Boo",
+"Toadette"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Toadette — Super Mario Wiki artwork",
+"image": "img/pics/r-toadette.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-waluigi",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Waluigi",
+"Birdo",
+"Shy Guy",
+"Wario"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Waluigi — Super Mario Wiki artwork",
+"image": "img/pics/r-waluigi.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-wario",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Wario",
+"Bowser Jr.",
+"Rosalina",
+"Kamek"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Wario — Super Mario Wiki artwork",
+"image": "img/pics/r-wario.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-yoshi",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Bowser Jr.",
+"Yoshi",
+"Rosalina",
+"Toad"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Yoshi — Super Mario Wiki artwork",
+"image": "img/pics/r-yoshi.jpg",
+"pic": true
+},
+{
+"id": "pic-mario-princess-daisy",
+"category": "mario",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Princess Daisy",
+"Diddy Kong",
+"Kamek",
+"Birdo"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Princess Daisy — Super Mario Wiki artwork",
+"image": "img/pics/r-princess-daisy.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-anthony-stark",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Shuri",
+"Iron Man",
+"Scarlet Witch",
+"Spider-Man"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Iron Man — marvelcinematicuniverse.fandom.com (Anthony Stark)",
+"image": "img/pics/hero-anthony-stark.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-steve-rogers",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Captain America",
+"Drax",
+"Vision",
+"Wasp"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Captain America — marvelcinematicuniverse.fandom.com (Steve Rogers)",
+"image": "img/pics/hero-steve-rogers.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-bruce-banner",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hulk",
+"Black Widow",
+"Spider-Man",
+"Captain Marvel"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Hulk — marvelcinematicuniverse.fandom.com (Bruce Banner)",
+"image": "img/pics/hero-bruce-banner.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-natasha-romanoff",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Black Widow",
+"Scarlet Witch",
+"Vision",
+"Wasp"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Black Widow — marvelcinematicuniverse.fandom.com (Natasha Romanoff)",
+"image": "img/pics/hero-natasha-romanoff.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-clint-barton",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Black Widow",
+"Black Panther",
+"Hawkeye",
+"Shuri"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Hawkeye — marvelcinematicuniverse.fandom.com (Clint Barton)",
+"image": "img/pics/hero-clint-barton.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-peter-parker",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Spider-Man",
+"Vision",
+"Ant-Man",
+"Rocket"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Spider-Man — marvelcinematicuniverse.fandom.com (Peter Parker)",
+"image": "img/pics/hero-peter-parker.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-t-challa",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Black Panther",
+"Shuri",
+"Groot",
+"Wasp"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Black Panther — marvelcinematicuniverse.fandom.com (T'Challa)",
+"image": "img/pics/hero-t-challa.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-stephen-strange",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Doctor Strange",
+"Winter Soldier",
+"Black Widow",
+"Scarlet Witch"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Doctor Strange — marvelcinematicuniverse.fandom.com (Stephen Strange)",
+"image": "img/pics/hero-stephen-strange.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-carol-danvers",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Wong",
+"Captain Marvel",
+"Iron Man",
+"Hawkeye"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Captain Marvel — marvelcinematicuniverse.fandom.com (Carol Danvers)",
+"image": "img/pics/hero-carol-danvers.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-scott-lang",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Star-Lord",
+"Ant-Man",
+"Captain America",
+"Black Panther"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ant-Man — marvelcinematicuniverse.fandom.com (Scott Lang)",
+"image": "img/pics/hero-scott-lang.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-wanda-maximoff",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Nick Fury",
+"Scarlet Witch",
+"Black Widow",
+"Hawkeye"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Scarlet Witch — marvelcinematicuniverse.fandom.com (Wanda Maximoff)",
+"image": "img/pics/hero-wanda-maximoff.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-vision",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Drax",
+"Black Panther",
+"Scarlet Witch",
+"Vision"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Vision — marvelcinematicuniverse.fandom.com (Vision)",
+"image": "img/pics/hero-vision.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-bucky-barnes",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Okoye",
+"Winter Soldier",
+"Spider-Man",
+"Black Widow"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Winter Soldier — marvelcinematicuniverse.fandom.com (Bucky Barnes)",
+"image": "img/pics/hero-bucky-barnes.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-groot",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Groot",
+"Black Widow",
+"Iron Man",
+"Hulk"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Groot — marvelcinematicuniverse.fandom.com (Groot)",
+"image": "img/pics/hero-groot.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-rocket",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Captain Marvel",
+"Gamora",
+"Rocket",
+"Captain America"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Rocket — marvelcinematicuniverse.fandom.com (Rocket)",
+"image": "img/pics/hero-rocket.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-peter-quill",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Doctor Strange",
+"Rocket",
+"Star-Lord",
+"Scarlet Witch"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Star-Lord — marvelcinematicuniverse.fandom.com (Peter Quill)",
+"image": "img/pics/hero-peter-quill.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-gamora",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Wasp",
+"Rocket",
+"Captain Marvel",
+"Gamora"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Gamora — marvelcinematicuniverse.fandom.com (Gamora)",
+"image": "img/pics/hero-gamora.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-drax",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Rocket",
+"Gamora",
+"Drax",
+"Ant-Man"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Drax — marvelcinematicuniverse.fandom.com (Drax)",
+"image": "img/pics/hero-drax.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-shang-chi",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Drax",
+"Ant-Man",
+"Doctor Strange",
+"Shang-Chi"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Shang-Chi — marvelcinematicuniverse.fandom.com (Shang-Chi)",
+"image": "img/pics/hero-shang-chi.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-hope-van-dyne",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Drax",
+"Black Panther",
+"Captain Marvel",
+"Wasp"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Wasp — marvelcinematicuniverse.fandom.com (Hope van Dyne)",
+"image": "img/pics/hero-hope-van-dyne.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-shuri",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hulk",
+"Hawkeye",
+"Vision",
+"Shuri"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Shuri — marvelcinematicuniverse.fandom.com (Shuri)",
+"image": "img/pics/hero-shuri.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-nick-fury",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Star-Lord",
+"Nick Fury",
+"Black Widow",
+"Drax"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Nick Fury — marvelcinematicuniverse.fandom.com (Nick Fury)",
+"image": "img/pics/hero-nick-fury.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-wong",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Iron Man",
+"Wong",
+"Rocket",
+"Star-Lord"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Wong — marvelcinematicuniverse.fandom.com (Wong)",
+"image": "img/pics/hero-wong.jpg",
+"pic": true
+},
+{
+"id": "pic2-hero-okoye",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Okoye",
+"Star-Lord",
+"Nick Fury",
+"Captain Marvel"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Okoye — marvelcinematicuniverse.fandom.com (Okoye)",
+"image": "img/pics/hero-okoye.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-thanos",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Thanos",
+"Mysterio",
+"Erik Killmonger",
+"Vulture"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Thanos — marvelcinematicuniverse.fandom.com (Thanos)",
+"image": "img/pics/villain-thanos.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-loki",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Kaecilius",
+"Loki",
+"Red Skull",
+"Ronan"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Loki — marvelcinematicuniverse.fandom.com (Loki)",
+"image": "img/pics/villain-loki.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-ultron",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Mysterio",
+"Ebony Maw",
+"Whiplash",
+"Ultron"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Ultron — marvelcinematicuniverse.fandom.com (Ultron)",
+"image": "img/pics/villain-ultron.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-hela",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Hela",
+"Dormammu",
+"Erik Killmonger",
+"Mysterio"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Hela — marvelcinematicuniverse.fandom.com (Hela)",
+"image": "img/pics/villain-hela.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-erik-killmonger",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ultron",
+"Mysterio",
+"Loki",
+"Erik Killmonger"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Erik Killmonger — marvelcinematicuniverse.fandom.com (Erik Killmonger)",
+"image": "img/pics/villain-erik-killmonger.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-red-skull",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Whiplash",
+"Ego",
+"Erik Killmonger",
+"Red Skull"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Red Skull — marvelcinematicuniverse.fandom.com (Red Skull)",
+"image": "img/pics/villain-red-skull.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-vulture",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ultron",
+"Erik Killmonger",
+"Vulture",
+"Malekith"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Vulture — marvelcinematicuniverse.fandom.com (Vulture)",
+"image": "img/pics/villain-vulture.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-mysterio",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Loki",
+"Erik Killmonger",
+"Mysterio",
+"Ultron"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Mysterio — marvelcinematicuniverse.fandom.com (Mysterio)",
+"image": "img/pics/villain-mysterio.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-ego",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Mysterio",
+"Ego",
+"Obadiah Stane",
+"Kang"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ego — marvelcinematicuniverse.fandom.com (Ego)",
+"image": "img/pics/villain-ego.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-ronan",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Vulture",
+"Hela",
+"Ronan",
+"Loki"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Ronan — marvelcinematicuniverse.fandom.com (Ronan)",
+"image": "img/pics/villain-ronan.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-kang",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ebony Maw",
+"Dormammu",
+"Vulture",
+"Kang"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Kang — marvelcinematicuniverse.fandom.com (Kang)",
+"image": "img/pics/villain-kang.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-obadiah-stane",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Mysterio",
+"Obadiah Stane",
+"Dormammu",
+"Ebony Maw"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Obadiah Stane — marvelcinematicuniverse.fandom.com (Obadiah Stane)",
+"image": "img/pics/villain-obadiah-stane.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-ivan-vanko",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ego",
+"Kaecilius",
+"Whiplash",
+"Mysterio"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Whiplash — marvelcinematicuniverse.fandom.com (Ivan Vanko)",
+"image": "img/pics/villain-ivan-vanko.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-ebony-maw",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ronan",
+"Dormammu",
+"Ebony Maw",
+"Whiplash"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Ebony Maw — marvelcinematicuniverse.fandom.com (Ebony Maw)",
+"image": "img/pics/villain-ebony-maw.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-dormammu",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Malekith",
+"Dormammu",
+"Red Skull",
+"Erik Killmonger"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Dormammu — marvelcinematicuniverse.fandom.com (Dormammu)",
+"image": "img/pics/villain-dormammu.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-malekith",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Dormammu",
+"Whiplash",
+"Obadiah Stane",
+"Malekith"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Malekith — marvelcinematicuniverse.fandom.com (Malekith)",
+"image": "img/pics/villain-malekith.jpg",
+"pic": true
+},
+{
+"id": "pic2-villain-kaecilius",
+"category": "marvel",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Kaecilius",
+"Vulture",
+"Ebony Maw",
+"Ego"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Kaecilius — marvelcinematicuniverse.fandom.com (Kaecilius)",
+"image": "img/pics/villain-kaecilius.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-stitch",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Pumbaa",
+"Heihei",
+"Genie",
+"Stitch"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Stitch — disney.fandom.com (Stitch)",
+"image": "img/pics/dchar-stitch.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-mickey-mouse",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Ariel",
+"Mickey Mouse",
+"Mulan",
+"Sven"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mickey Mouse — disney.fandom.com (Mickey Mouse)",
+"image": "img/pics/dchar-mickey-mouse.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-minnie-mouse",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Minnie Mouse",
+"Donald Duck",
+"Abu",
+"Mickey Mouse"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Minnie Mouse — disney.fandom.com (Minnie Mouse)",
+"image": "img/pics/dchar-minnie-mouse.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-donald-duck",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Donald Duck",
+"Flounder",
+"Tinker Bell",
+"Abu"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Donald Duck — disney.fandom.com (Donald Duck)",
+"image": "img/pics/dchar-donald-duck.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-goofy",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Pascal",
+"Belle",
+"Goofy",
+"Nick Wilde"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Goofy — disney.fandom.com (Goofy)",
+"image": "img/pics/dchar-goofy.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-olaf",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mickey Mouse",
+"Olaf",
+"Tinker Bell",
+"Donald Duck"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Olaf — disney.fandom.com (Olaf)",
+"image": "img/pics/dchar-olaf.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-elsa",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Maui",
+"Elsa",
+"Belle",
+"Olaf"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Elsa — disney.fandom.com (Elsa)",
+"image": "img/pics/dchar-elsa.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-anna",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mushu",
+"Anna",
+"Elsa",
+"Vanellope von Schweetz"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Anna — disney.fandom.com (Anna)",
+"image": "img/pics/dchar-anna.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-maui",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Minnie Mouse",
+"Maui",
+"Goofy",
+"Bambi"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Maui — disney.fandom.com (Maui)",
+"image": "img/pics/dchar-maui.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-rapunzel",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Sven",
+"Rapunzel",
+"Wreck-It Ralph",
+"Elsa"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Rapunzel — disney.fandom.com (Rapunzel)",
+"image": "img/pics/dchar-rapunzel.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-ariel",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Minnie Mouse",
+"Vanellope von Schweetz",
+"Ariel",
+"Flounder"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Ariel — disney.fandom.com (Ariel)",
+"image": "img/pics/dchar-ariel.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-belle",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Olaf",
+"Mirabel",
+"Belle",
+"Minnie Mouse"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Belle — disney.fandom.com (Belle)",
+"image": "img/pics/dchar-belle.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-mulan",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Sven",
+"Mulan",
+"Ariel",
+"Genie"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mulan — disney.fandom.com (Mulan)",
+"image": "img/pics/dchar-mulan.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-simba",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Simba",
+"Olaf",
+"Pascal",
+"Elsa"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Simba — disney.fandom.com (Simba)",
+"image": "img/pics/dchar-simba.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-baloo",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Baymax",
+"Judy Hopps",
+"Olaf",
+"Baloo"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Baloo — disney.fandom.com (Baloo)",
+"image": "img/pics/dchar-baloo.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-mirabel-madrigal",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mirabel",
+"Elsa",
+"Simba",
+"Sven"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Mirabel — disney.fandom.com (Mirabel Madrigal)",
+"image": "img/pics/dchar-mirabel-madrigal.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-judy-hopps",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Judy Hopps",
+"Baloo",
+"Mickey Mouse",
+"Olaf"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Judy Hopps — disney.fandom.com (Judy Hopps)",
+"image": "img/pics/dchar-judy-hopps.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-nick-wilde",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Pascal",
+"Nick Wilde",
+"Wreck-It Ralph",
+"Ariel"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Nick Wilde — disney.fandom.com (Nick Wilde)",
+"image": "img/pics/dchar-nick-wilde.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-baymax",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Pumbaa",
+"Baymax",
+"Belle",
+"Flounder"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Baymax — disney.fandom.com (Baymax)",
+"image": "img/pics/dchar-baymax.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-wreck-it-ralph",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Donald Duck",
+"Baymax",
+"Wreck-It Ralph",
+"Elsa"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Wreck-It Ralph — disney.fandom.com (Wreck-It Ralph)",
+"image": "img/pics/dchar-wreck-it-ralph.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-vanellope-von-schweetz",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Simba",
+"Vanellope von Schweetz",
+"Heihei",
+"Sven"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Vanellope von Schweetz — disney.fandom.com (Vanellope von Schweetz)",
+"image": "img/pics/dchar-vanellope-von-schweetz.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-pascal",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Rapunzel",
+"Tinker Bell",
+"Vanellope von Schweetz",
+"Pascal"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Pascal — disney.fandom.com (Pascal)",
+"image": "img/pics/dchar-pascal.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-heihei",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Heihei",
+"Olaf",
+"Belle",
+"Mickey Mouse"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Heihei — disney.fandom.com (Heihei)",
+"image": "img/pics/dchar-heihei.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-sven",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Sven",
+"Nick Wilde",
+"Maui",
+"Genie"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Sven — disney.fandom.com (Sven)",
+"image": "img/pics/dchar-sven.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-flounder",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Tinker Bell",
+"Donald Duck",
+"Belle",
+"Flounder"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Flounder — disney.fandom.com (Flounder)",
+"image": "img/pics/dchar-flounder.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-abu",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Abu",
+"Mulan",
+"Stitch",
+"Vanellope von Schweetz"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Abu — disney.fandom.com (Abu)",
+"image": "img/pics/dchar-abu.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-genie",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Genie",
+"Ariel",
+"Mirabel",
+"Heihei"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Genie — disney.fandom.com (Genie)",
+"image": "img/pics/dchar-genie.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-mushu",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mushu",
+"Mirabel",
+"Judy Hopps",
+"Simba"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Mushu — disney.fandom.com (Mushu)",
+"image": "img/pics/dchar-mushu.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-timon",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Sven",
+"Timon",
+"Simba",
+"Belle"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Timon — disney.fandom.com (Timon)",
+"image": "img/pics/dchar-timon.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-pumbaa",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Genie",
+"Baymax",
+"Pumbaa",
+"Mirabel"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Pumbaa — disney.fandom.com (Pumbaa)",
+"image": "img/pics/dchar-pumbaa.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-tinker-bell",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Pumbaa",
+"Minnie Mouse",
+"Timon",
+"Tinker Bell"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Tinker Bell — disney.fandom.com (Tinker Bell)",
+"image": "img/pics/dchar-tinker-bell.jpg",
+"pic": true
+},
+{
+"id": "pic2-dchar-bambi",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Elsa",
+"Simba",
+"Bambi",
+"Mickey Mouse"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Bambi — disney.fandom.com (Bambi)",
+"image": "img/pics/dchar-bambi.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-ursula",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Shan Yu",
+"Ursula",
+"Yzma",
+"The Evil Queen"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ursula — disney.fandom.com (Ursula)",
+"image": "img/pics/dvil-ursula.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-jafar",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ursula",
+"Jafar",
+"Maleficent",
+"Hades"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Jafar — disney.fandom.com (Jafar)",
+"image": "img/pics/dvil-jafar.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-scar",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Shan Yu",
+"Ursula",
+"Hades",
+"Scar"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Scar — disney.fandom.com (Scar)",
+"image": "img/pics/dvil-scar.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-maleficent",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Captain Hook",
+"Maleficent",
+"Scar",
+"The Evil Queen"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Maleficent — disney.fandom.com (Maleficent)",
+"image": "img/pics/dvil-maleficent.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-cruella-de-vil",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Yzma",
+"Cruella De Vil",
+"Scar",
+"The Evil Queen"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Cruella De Vil — disney.fandom.com (Cruella De Vil)",
+"image": "img/pics/dvil-cruella-de-vil.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-hades",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Gaston",
+"The Evil Queen",
+"Cruella De Vil",
+"Hades"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Hades — disney.fandom.com (Hades)",
+"image": "img/pics/dvil-hades.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-captain-hook",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Shan Yu",
+"Jafar",
+"Maleficent",
+"Captain Hook"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Captain Hook — disney.fandom.com (Captain Hook)",
+"image": "img/pics/dvil-captain-hook.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-mother-gothel",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Shan Yu",
+"Mother Gothel",
+"Scar",
+"The Evil Queen"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mother Gothel — disney.fandom.com (Mother Gothel)",
+"image": "img/pics/dvil-mother-gothel.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-gaston",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Ursula",
+"Gaston",
+"Scar",
+"Captain Hook"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Gaston — disney.fandom.com (Gaston)",
+"image": "img/pics/dvil-gaston.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-the-evil-queen",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Gaston",
+"The Evil Queen",
+"Captain Hook",
+"Hades"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "The Evil Queen — disney.fandom.com (The Evil Queen)",
+"image": "img/pics/dvil-the-evil-queen.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-yzma",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Hades",
+"Ursula",
+"Maleficent",
+"Yzma"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Yzma — disney.fandom.com (Yzma)",
+"image": "img/pics/dvil-yzma.jpg",
+"pic": true
+},
+{
+"id": "pic2-dvil-shan-yu",
+"category": "disney",
+"difficulty": "easy",
+"question": "WHO IS THIS VILLAIN?",
+"options": [
+"Cruella De Vil",
+"Ursula",
+"Shan Yu",
+"The Evil Queen"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Shan Yu — disney.fandom.com (Shan Yu)",
+"image": "img/pics/dvil-shan-yu.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-woody",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Sulley",
+"Nemo",
+"Anxiety",
+"Woody"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Woody — disney.fandom.com (Woody)",
+"image": "img/pics/pchar-woody.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-buzz-lightyear",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Buzz Lightyear",
+"WALL-E",
+"Woody",
+"Forky"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Buzz Lightyear — disney.fandom.com (Buzz Lightyear)",
+"image": "img/pics/pchar-buzz-lightyear.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-jessie",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Woody",
+"Jessie",
+"WALL-E",
+"Hamm"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Jessie — disney.fandom.com (Jessie)",
+"image": "img/pics/pchar-jessie.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-rex",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Rex",
+"Frozone",
+"Forky",
+"Luca"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Rex — disney.fandom.com (Rex)",
+"image": "img/pics/pchar-rex.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-hamm",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"EVE",
+"Jessie",
+"Disgust"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Hamm — disney.fandom.com (Hamm)",
+"image": "img/pics/pchar-hamm.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-slinky-dog",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Woody",
+"Slinky Dog",
+"Nemo",
+"Mike Wazowski"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Slinky Dog — disney.fandom.com (Slinky Dog)",
+"image": "img/pics/pchar-slinky-dog.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-lotso",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Lotso",
+"Anxiety",
+"Dory",
+"Frozone"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Lotso — disney.fandom.com (Lotso)",
+"image": "img/pics/pchar-lotso.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-forky",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"Forky",
+"Mater",
+"Sulley"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Forky — disney.fandom.com (Forky)",
+"image": "img/pics/pchar-forky.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-dory",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Boo",
+"Sulley",
+"Anxiety",
+"Dory"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Dory — disney.fandom.com (Dory)",
+"image": "img/pics/pchar-dory.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-nemo",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"Nemo",
+"Forky",
+"Dug"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Nemo — disney.fandom.com (Nemo)",
+"image": "img/pics/pchar-nemo.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-marlin",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Buzz Lightyear",
+"EVE",
+"Dory",
+"Marlin"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Marlin — disney.fandom.com (Marlin)",
+"image": "img/pics/pchar-marlin.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-mike-wazowski",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Luca",
+"Miguel",
+"Russell",
+"Mike Wazowski"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Mike Wazowski — disney.fandom.com (Mike Wazowski)",
+"image": "img/pics/pchar-mike-wazowski.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-james-p-sullivan",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"Sulley",
+"Mei Lee",
+"Nemo"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Sulley — disney.fandom.com (James P. Sullivan)",
+"image": "img/pics/pchar-james-p-sullivan.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-boo",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"Nemo",
+"Frozone",
+"Boo"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Boo — disney.fandom.com (Boo)",
+"image": "img/pics/pchar-boo.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-lightning-mcqueen",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Frozone",
+"Lightning McQueen",
+"Fear",
+"Mike Wazowski"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Lightning McQueen — disney.fandom.com (Lightning McQueen)",
+"image": "img/pics/pchar-lightning-mcqueen.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-mater",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Luca",
+"Mater",
+"Mike Wazowski",
+"Disgust"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mater — disney.fandom.com (Mater)",
+"image": "img/pics/pchar-mater.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-carl-fredricksen",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"EVE",
+"Joy",
+"Carl Fredricksen",
+"Lightning McQueen"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Carl Fredricksen — disney.fandom.com (Carl Fredricksen)",
+"image": "img/pics/pchar-carl-fredricksen.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-russell",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mei Lee",
+"Woody",
+"Marlin",
+"Russell"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Russell — disney.fandom.com (Russell)",
+"image": "img/pics/pchar-russell.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-dug",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Héctor",
+"Dug",
+"Frozone",
+"Carl Fredricksen"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Dug — disney.fandom.com (Dug)",
+"image": "img/pics/pchar-dug.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-wall-e",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mater",
+"Anger",
+"WALL-E",
+"Dory"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "WALL-E — disney.fandom.com (WALL-E)",
+"image": "img/pics/pchar-wall-e.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-eve",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mater",
+"Luca",
+"Héctor",
+"EVE"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "EVE — disney.fandom.com (EVE)",
+"image": "img/pics/pchar-eve.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-remy",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Carl Fredricksen",
+"Woody",
+"Merida",
+"Remy"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Remy — disney.fandom.com (Remy)",
+"image": "img/pics/pchar-remy.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-joy",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mike Wazowski",
+"Joy",
+"Anxiety",
+"Dug"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Joy — disney.fandom.com (Joy)",
+"image": "img/pics/pchar-joy.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-sadness",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Jessie",
+"Jack-Jack",
+"Remy",
+"Sadness"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Sadness — disney.fandom.com (Sadness)",
+"image": "img/pics/pchar-sadness.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-anger",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Anger",
+"Anxiety",
+"Miguel",
+"Hamm"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Anger — disney.fandom.com (Anger)",
+"image": "img/pics/pchar-anger.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-disgust",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mater",
+"Lightning McQueen",
+"Woody",
+"Disgust"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Disgust — disney.fandom.com (Disgust)",
+"image": "img/pics/pchar-disgust.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-fear",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Boo",
+"Carl Fredricksen",
+"Rex",
+"Fear"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Fear — disney.fandom.com (Fear)",
+"image": "img/pics/pchar-fear.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-anxiety",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Anxiety",
+"Slinky Dog",
+"Forky",
+"Sadness"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Anxiety — disney.fandom.com (Anxiety)",
+"image": "img/pics/pchar-anxiety.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-miguel-rivera",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Nemo",
+"Lightning McQueen",
+"WALL-E",
+"Miguel"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Miguel — disney.fandom.com (Miguel Rivera)",
+"image": "img/pics/pchar-miguel-rivera.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-h-ctor",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Merida",
+"WALL-E",
+"Lotso",
+"Héctor"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Héctor — disney.fandom.com (Héctor)",
+"image": "img/pics/pchar-h-ctor.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-merida",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Merida",
+"Lightning McQueen",
+"Anger",
+"Anxiety"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Merida — disney.fandom.com (Merida)",
+"image": "img/pics/pchar-merida.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-edna-mode",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Edna Mode",
+"Miguel",
+"Nemo",
+"Forky"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Edna Mode — disney.fandom.com (Edna Mode)",
+"image": "img/pics/pchar-edna-mode.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-frozone",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Buzz Lightyear",
+"Carl Fredricksen",
+"Frozone",
+"Marlin"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Frozone — disney.fandom.com (Frozone)",
+"image": "img/pics/pchar-frozone.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-jack-jack-parr",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Jack-Jack",
+"Jessie",
+"Boo",
+"Joy"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Jack-Jack — disney.fandom.com (Jack-Jack Parr)",
+"image": "img/pics/pchar-jack-jack-parr.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-luca-paguro",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Luca",
+"Jack-Jack",
+"Dug",
+"Edna Mode"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Luca — disney.fandom.com (Luca Paguro)",
+"image": "img/pics/pchar-luca-paguro.jpg",
+"pic": true
+},
+{
+"id": "pic2-pchar-mei-lee",
+"category": "pixar",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Hamm",
+"Mei Lee",
+"Dug",
+"Russell"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mei Lee — disney.fandom.com (Mei Lee)",
+"image": "img/pics/pchar-mei-lee.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-donkey",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Fiona",
+"Donkey",
+"Skipper",
+"Po"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Donkey — dreamworks.fandom.com (Donkey)",
+"image": "img/pics/dw-donkey.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-puss-in-boots",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Marty",
+"Skipper",
+"Puss in Boots",
+"Poppy"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Puss in Boots — dreamworks.fandom.com (Puss in Boots)",
+"image": "img/pics/dw-puss-in-boots.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-fiona",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Marty",
+"Gingerbread Man",
+"Melman",
+"Fiona"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Fiona — dreamworks.fandom.com (Fiona)",
+"image": "img/pics/dw-fiona.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-lord-farquaad",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Po",
+"Tigress",
+"Lord Farquaad",
+"Master Shifu"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Lord Farquaad — dreamworks.fandom.com (Lord Farquaad)",
+"image": "img/pics/dw-lord-farquaad.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-gingerbread-man",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Gingerbread Man",
+"Master Shifu",
+"Lord Farquaad",
+"Marty"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Gingerbread Man — dreamworks.fandom.com (Gingerbread Man)",
+"image": "img/pics/dw-gingerbread-man.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-po",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Astrid",
+"Po",
+"Toothless",
+"Alex"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Po — dreamworks.fandom.com (Po)",
+"image": "img/pics/dw-po.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-master-shifu",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Alex",
+"Master Shifu",
+"Donkey",
+"Astrid"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Master Shifu — dreamworks.fandom.com (Master Shifu)",
+"image": "img/pics/dw-master-shifu.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-tigress",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Branch",
+"Tigress",
+"Gingerbread Man",
+"Toothless"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Tigress — dreamworks.fandom.com (Tigress)",
+"image": "img/pics/dw-tigress.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-tai-lung",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Skipper",
+"Mr. Wolf",
+"Tai Lung",
+"Toothless"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Tai Lung — dreamworks.fandom.com (Tai Lung)",
+"image": "img/pics/dw-tai-lung.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-toothless",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Branch",
+"Toothless",
+"Fiona",
+"Skipper"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Toothless — dreamworks.fandom.com (Toothless)",
+"image": "img/pics/dw-toothless.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-astrid-hofferson",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Master Shifu",
+"Puss in Boots",
+"Skipper",
+"Astrid"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Astrid — dreamworks.fandom.com (Astrid Hofferson)",
+"image": "img/pics/dw-astrid-hofferson.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-poppy",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Fiona",
+"Master Shifu",
+"Poppy",
+"Melman"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Poppy — dreamworks.fandom.com (Poppy)",
+"image": "img/pics/dw-poppy.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-branch",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Skipper",
+"Branch",
+"Mr. Wolf",
+"Fiona"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Branch — dreamworks.fandom.com (Branch)",
+"image": "img/pics/dw-branch.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-alex",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Tai Lung",
+"Alex",
+"Puss in Boots",
+"Skipper"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Alex — dreamworks.fandom.com (Alex)",
+"image": "img/pics/dw-alex.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-marty",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Melman",
+"Marty",
+"Gloria",
+"Branch"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Marty — dreamworks.fandom.com (Marty)",
+"image": "img/pics/dw-marty.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-gloria",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Melman",
+"Fiona",
+"Gloria",
+"Marty"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Gloria — dreamworks.fandom.com (Gloria)",
+"image": "img/pics/dw-gloria.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-melman",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Po",
+"Donkey",
+"Mr. Wolf",
+"Melman"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Melman — dreamworks.fandom.com (Melman)",
+"image": "img/pics/dw-melman.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-skipper",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Master Shifu",
+"Puss in Boots",
+"Tigress",
+"Skipper"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Skipper — dreamworks.fandom.com (Skipper)",
+"image": "img/pics/dw-skipper.jpg",
+"pic": true
+},
+{
+"id": "pic2-dw-mr-wolf",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Mr. Wolf",
+"Lord Farquaad",
+"Tigress",
+"Poppy"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Mr. Wolf — dreamworks.fandom.com (Mr. Wolf)",
+"image": "img/pics/dw-mr-wolf.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-gru",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Margo",
+"Kevin",
+"Agnes",
+"Gru"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Gru — despicableme.fandom.com (Gru)",
+"image": "img/pics/il-gru.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-agnes",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Agnes",
+"Dr. Nefario",
+"Margo",
+"Stuart"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Agnes — despicableme.fandom.com (Agnes)",
+"image": "img/pics/il-agnes.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-margo",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Margo",
+"Scarlet Overkill",
+"Agnes",
+"Edith"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Margo — despicableme.fandom.com (Margo)",
+"image": "img/pics/il-margo.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-edith",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Edith",
+"Bob",
+"Gru",
+"Stuart"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Edith — despicableme.fandom.com (Edith)",
+"image": "img/pics/il-edith.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-kevin",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Edith",
+"Kevin",
+"Stuart",
+"Balthazar Bratt"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Kevin — despicableme.fandom.com (Kevin)",
+"image": "img/pics/il-kevin.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-stuart",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Balthazar Bratt",
+"Gru",
+"Stuart",
+"Edith"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Stuart — despicableme.fandom.com (Stuart)",
+"image": "img/pics/il-stuart.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-bob",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Balthazar Bratt",
+"Edith",
+"Bob",
+"Margo"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Bob — despicableme.fandom.com (Bob)",
+"image": "img/pics/il-bob.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-vector",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Vector",
+"Margo",
+"Kevin",
+"Gru"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Vector — despicableme.fandom.com (Vector)",
+"image": "img/pics/il-vector.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-dr-nefario",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Dr. Nefario",
+"Balthazar Bratt",
+"Vector",
+"Scarlet Overkill"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Dr. Nefario — despicableme.fandom.com (Dr. Nefario)",
+"image": "img/pics/il-dr-nefario.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-scarlet-overkill",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Kevin",
+"Agnes",
+"Balthazar Bratt",
+"Scarlet Overkill"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Scarlet Overkill — despicableme.fandom.com (Scarlet Overkill)",
+"image": "img/pics/il-scarlet-overkill.jpg",
+"pic": true
+},
+{
+"id": "pic2-il-balthazar-bratt",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "WHO IS THIS?",
+"options": [
+"Balthazar Bratt",
+"Agnes",
+"Kevin",
+"Stuart"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Balthazar Bratt — despicableme.fandom.com (Balthazar Bratt)",
+"image": "img/pics/il-balthazar-bratt.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-dry-bones",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Cappy",
+"Dry Bones",
+"Thwomp",
+"Cheep Cheep"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Dry Bones — www.mariowiki.com (Dry Bones)",
+"image": "img/pics/mchar-dry-bones.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-petey-piranha",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Roy Koopa",
+"Funky Kong",
+"Petey Piranha",
+"Captain Toad"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Petey Piranha — www.mariowiki.com (Petey Piranha)",
+"image": "img/pics/mchar-petey-piranha.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-pauline",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Pauline",
+"Cranky Kong",
+"Dry Bones",
+"Morton Koopa Jr."
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Pauline — www.mariowiki.com (Pauline)",
+"image": "img/pics/mchar-pauline.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-cranky-kong",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Cranky Kong",
+"Funky Kong",
+"Thwomp",
+"Bullet Bill"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Cranky Kong — www.mariowiki.com (Cranky Kong)",
+"image": "img/pics/mchar-cranky-kong.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-funky-kong",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Baby Mario",
+"Ludwig von Koopa",
+"Toadsworth",
+"Funky Kong"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Funky Kong — www.mariowiki.com (Funky Kong)",
+"image": "img/pics/mchar-funky-kong.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-nabbit",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Chain Chomp",
+"Nabbit",
+"Bullet Bill",
+"Captain Toad"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Nabbit — www.mariowiki.com (Nabbit)",
+"image": "img/pics/mchar-nabbit.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-hammer-bro",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Morton Koopa Jr.",
+"Piranha Plant",
+"Hammer Bro",
+"Spike"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Hammer Bro — www.mariowiki.com (Hammer Bro)",
+"image": "img/pics/mchar-hammer-bro.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-bob-omb",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Dry Bones",
+"Larry Koopa",
+"Bob-omb",
+"Chain Chomp"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Bob-omb — www.mariowiki.com (Bob-omb)",
+"image": "img/pics/mchar-bob-omb.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-chain-chomp",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Morton Koopa Jr.",
+"Dry Bones",
+"Chain Chomp",
+"Larry Koopa"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Chain Chomp — www.mariowiki.com (Chain Chomp)",
+"image": "img/pics/mchar-chain-chomp.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-blooper",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Cranky Kong",
+"Larry Koopa",
+"Blooper",
+"Morton Koopa Jr."
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Blooper — www.mariowiki.com (Blooper)",
+"image": "img/pics/mchar-blooper.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-cheep-cheep",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Larry Koopa",
+"Cheep Cheep",
+"Wendy O. Koopa",
+"Nabbit"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Cheep Cheep — www.mariowiki.com (Cheep Cheep)",
+"image": "img/pics/mchar-cheep-cheep.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-thwomp",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Hammer Bro",
+"Ludwig von Koopa",
+"Baby Mario",
+"Thwomp"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Thwomp — www.mariowiki.com (Thwomp)",
+"image": "img/pics/mchar-thwomp.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-wiggler",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Larry Koopa",
+"Petey Piranha",
+"Wiggler",
+"Captain Toad"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Wiggler — www.mariowiki.com (Wiggler)",
+"image": "img/pics/mchar-wiggler.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-larry-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Cranky Kong",
+"Larry Koopa",
+"Nabbit",
+"Wendy O. Koopa"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Larry Koopa — www.mariowiki.com (Larry Koopa)",
+"image": "img/pics/mchar-larry-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-morton-koopa-jr",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Morton Koopa Jr.",
+"Nabbit",
+"Blooper",
+"Pauline"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Morton Koopa Jr. — www.mariowiki.com (Morton Koopa Jr.)",
+"image": "img/pics/mchar-morton-koopa-jr.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-wendy-o-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Wendy O. Koopa",
+"Wiggler",
+"Baby Mario",
+"Chain Chomp"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Wendy O. Koopa — www.mariowiki.com (Wendy O. Koopa)",
+"image": "img/pics/mchar-wendy-o-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-iggy-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Iggy Koopa",
+"Piranha Plant",
+"Cranky Kong",
+"Hammer Bro"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Iggy Koopa — www.mariowiki.com (Iggy Koopa)",
+"image": "img/pics/mchar-iggy-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-roy-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Thwomp",
+"Roy Koopa",
+"Bob-omb",
+"Pauline"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Roy Koopa — www.mariowiki.com (Roy Koopa)",
+"image": "img/pics/mchar-roy-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-lemmy-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Roy Koopa",
+"Lemmy Koopa",
+"Chain Chomp",
+"Larry Koopa"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Lemmy Koopa — www.mariowiki.com (Lemmy Koopa)",
+"image": "img/pics/mchar-lemmy-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-ludwig-von-koopa",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Larry Koopa",
+"Pauline",
+"Blooper",
+"Ludwig von Koopa"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Ludwig von Koopa — www.mariowiki.com (Ludwig von Koopa)",
+"image": "img/pics/mchar-ludwig-von-koopa.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-captain-toad",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Captain Toad",
+"Funky Kong",
+"Larry Koopa",
+"Hammer Bro"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Captain Toad — www.mariowiki.com (Captain Toad)",
+"image": "img/pics/mchar-captain-toad.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-baby-mario",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Spike",
+"Baby Mario",
+"Roy Koopa",
+"Ludwig von Koopa"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Baby Mario — www.mariowiki.com (Baby Mario)",
+"image": "img/pics/mchar-baby-mario.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-toadsworth",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Pom Pom",
+"Cappy",
+"Bullet Bill",
+"Toadsworth"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Toadsworth — www.mariowiki.com (Toadsworth)",
+"image": "img/pics/mchar-toadsworth.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-spike",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Spike",
+"Wendy O. Koopa",
+"Wiggler",
+"Thwomp"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Spike — www.mariowiki.com (Spike)",
+"image": "img/pics/mchar-spike.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-piranha-plant",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Spike",
+"Iggy Koopa",
+"Baby Mario",
+"Piranha Plant"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Piranha Plant — www.mariowiki.com (Piranha Plant)",
+"image": "img/pics/mchar-piranha-plant.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-bullet-bill",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Cappy",
+"Bullet Bill",
+"Ludwig von Koopa",
+"Petey Piranha"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Bullet Bill — www.mariowiki.com (Bullet Bill)",
+"image": "img/pics/mchar-bullet-bill.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-pom-pom",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Petey Piranha",
+"Cappy",
+"Dry Bones",
+"Pom Pom"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Pom Pom — www.mariowiki.com (Pom Pom)",
+"image": "img/pics/mchar-pom-pom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mchar-cappy",
+"category": "mario",
+"difficulty": "medium",
+"question": "WHO IS THIS?",
+"options": [
+"Larry Koopa",
+"Cappy",
+"Toadsworth",
+"Hammer Bro"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Cappy — www.mariowiki.com (Cappy)",
+"image": "img/pics/mchar-cappy.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-super-mushroom",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Fire Flower",
+"Super Mushroom",
+"Power Star",
+"Boomerang Flower"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Super Mushroom — www.mariowiki.com (Super Mushroom)",
+"image": "img/pics/mitem-super-mushroom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-fire-flower",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Mini Mushroom",
+"Super Star",
+"Super Bell",
+"Fire Flower"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Fire Flower — www.mariowiki.com (Fire Flower)",
+"image": "img/pics/mitem-fire-flower.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-super-star",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Super Star",
+"Boomerang Flower",
+"Wonder Flower",
+"Cape Feather"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Super Star — www.mariowiki.com (Super Star)",
+"image": "img/pics/mitem-super-star.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-1-up-mushroom",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Propeller Mushroom",
+"1-Up Mushroom",
+"Green Shell",
+"Fire Flower"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "1-Up Mushroom — www.mariowiki.com (1-Up Mushroom)",
+"image": "img/pics/mitem-1-up-mushroom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-super-leaf",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Banana",
+"Super Leaf",
+"Boomerang Flower",
+"Green Shell"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Super Leaf — www.mariowiki.com (Super Leaf)",
+"image": "img/pics/mitem-super-leaf.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-cape-feather",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Blue Shell",
+"Red Shell",
+"Mini Mushroom",
+"Cape Feather"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Cape Feather — www.mariowiki.com (Cape Feather)",
+"image": "img/pics/mitem-cape-feather.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-mini-mushroom",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Fire Flower",
+"Propeller Mushroom",
+"Cape Feather",
+"Mini Mushroom"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Mini Mushroom — www.mariowiki.com (Mini Mushroom)",
+"image": "img/pics/mitem-mini-mushroom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-mega-mushroom",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"1-Up Mushroom",
+"Mega Mushroom",
+"Wonder Flower",
+"Propeller Mushroom"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Mega Mushroom — www.mariowiki.com (Mega Mushroom)",
+"image": "img/pics/mitem-mega-mushroom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-ice-flower",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Lightning",
+"Ice Flower",
+"Mini Mushroom",
+"Fire Flower"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ice Flower — www.mariowiki.com (Ice Flower)",
+"image": "img/pics/mitem-ice-flower.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-propeller-mushroom",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Boomerang Flower",
+"Propeller Mushroom",
+"Power Star",
+"Super Mushroom"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Propeller Mushroom — www.mariowiki.com (Propeller Mushroom)",
+"image": "img/pics/mitem-propeller-mushroom.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-super-bell",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Lightning",
+"Boomerang Flower",
+"Super Bell",
+"Coin"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Super Bell — www.mariowiki.com (Super Bell)",
+"image": "img/pics/mitem-super-bell.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-boomerang-flower",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Boomerang Flower",
+"Super Mushroom",
+"Power Star",
+"Ice Flower"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Boomerang Flower — www.mariowiki.com (Boomerang Flower)",
+"image": "img/pics/mitem-boomerang-flower.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-super-acorn",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Super Acorn",
+"1-Up Mushroom",
+"Super Leaf",
+"Fire Flower"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Super Acorn — www.mariowiki.com (Super Acorn)",
+"image": "img/pics/mitem-super-acorn.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-wonder-flower",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Wonder Flower",
+"Green Shell",
+"Super Acorn",
+"Propeller Mushroom"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Wonder Flower — www.mariowiki.com (Wonder Flower)",
+"image": "img/pics/mitem-wonder-flower.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-blue-shell",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Super Acorn",
+"Blue Shell",
+"Lightning",
+"Power Star"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Blue Shell — www.mariowiki.com (Blue Shell)",
+"image": "img/pics/mitem-blue-shell.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-banana",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Banana",
+"Super Star",
+"Super Mushroom",
+"Ice Flower"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Banana — www.mariowiki.com (Banana)",
+"image": "img/pics/mitem-banana.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-green-shell",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Cape Feather",
+"Mini Mushroom",
+"Green Shell",
+"Coin"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Green Shell — www.mariowiki.com (Green Shell)",
+"image": "img/pics/mitem-green-shell.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-red-shell",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Red Shell",
+"Wonder Flower",
+"Mini Mushroom",
+"Green Shell"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Red Shell — www.mariowiki.com (Red Shell)",
+"image": "img/pics/mitem-red-shell.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-lightning",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Lightning",
+"Super Acorn",
+"Propeller Mushroom",
+"Banana"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Lightning — www.mariowiki.com (Lightning)",
+"image": "img/pics/mitem-lightning.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-coin",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"1-Up Mushroom",
+"Coin",
+"Mega Mushroom",
+"Propeller Mushroom"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Coin — www.mariowiki.com (Coin)",
+"image": "img/pics/mitem-coin.jpg",
+"pic": true
+},
+{
+"id": "pic2-mitem-power-star",
+"category": "mario",
+"difficulty": "medium",
+"question": "NAME THIS ITEM",
+"options": [
+"Cape Feather",
+"Banana",
+"Super Acorn",
+"Power Star"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Power Star — www.mariowiki.com (Power Star)",
+"image": "img/pics/mitem-power-star.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-cinderella-castle",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Hollywood Studios",
+"Disney California Adventure",
+"Magic Kingdom",
+"Disneyland"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Magic Kingdom — en.wikipedia.org (Cinderella Castle)",
+"image": "img/pics/park-cinderella-castle.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-sleeping-beauty-castle",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Disneyland Paris",
+"Disneyland",
+"Animal Kingdom",
+"Magic Kingdom"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Disneyland — en.wikipedia.org (Sleeping Beauty Castle)",
+"image": "img/pics/park-sleeping-beauty-castle.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-tree-of-life-disney",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Animal Kingdom",
+"Magic Kingdom",
+"Tokyo DisneySea",
+"Hollywood Studios"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Animal Kingdom — en.wikipedia.org (Tree of Life (Disney))",
+"image": "img/pics/park-tree-of-life-disney.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-le-ch-teau-de-la-belle-au-bois-dormant",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Hollywood Studios",
+"Shanghai Disneyland",
+"Magic Kingdom",
+"Disneyland Paris"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Disneyland Paris — en.wikipedia.org (Le Château de la Belle au Bois Dormant)",
+"image": "img/pics/park-le-ch-teau-de-la-belle-au-bois-dormant.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-enchanted-storybook-castle",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Magic Kingdom",
+"Tokyo DisneySea",
+"Disneyland Paris",
+"Shanghai Disneyland"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Shanghai Disneyland — en.wikipedia.org (Enchanted Storybook Castle)",
+"image": "img/pics/park-enchanted-storybook-castle.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-matterhorn-bobsleds",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Tokyo DisneySea",
+"Magic Kingdom",
+"Disneyland Paris",
+"Disneyland"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Disneyland — en.wikipedia.org (Matterhorn Bobsleds)",
+"image": "img/pics/park-matterhorn-bobsleds.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-expedition-everest",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Disneyland Paris",
+"Disney California Adventure",
+"Tokyo DisneySea",
+"Animal Kingdom"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Animal Kingdom — en.wikipedia.org (Expedition Everest)",
+"image": "img/pics/park-expedition-everest.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-big-thunder-mountain-railroad",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Disneyland",
+"Shanghai Disneyland",
+"Magic Kingdom",
+"Hollywood Studios"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Magic Kingdom — en.wikipedia.org (Big Thunder Mountain Railroad)",
+"image": "img/pics/park-big-thunder-mountain-railroad.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-galaxy-s-edge",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Disney California Adventure",
+"Disneyland Paris",
+"Tokyo DisneySea",
+"Hollywood Studios"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Hollywood Studios — en.wikipedia.org (Galaxy's Edge)",
+"image": "img/pics/park-galaxy-s-edge.jpg",
+"pic": true
+},
+{
+"id": "pic2-park-pixar-pier",
+"category": "parks",
+"difficulty": "medium",
+"question": "WHICH PARK?",
+"options": [
+"Shanghai Disneyland",
+"Disney California Adventure",
+"Magic Kingdom",
+"Animal Kingdom"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Disney California Adventure — en.wikipedia.org (Pixar Pier)",
+"image": "img/pics/park-pixar-pier.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-chikorita",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Chikorita",
+"Pichu",
+"Gimmighoul",
+"Treecko"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Chikorita — PokeAPI official artwork",
+"image": "img/pics/poke-chikorita.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-cyndaquil",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Sobble",
+"Cyndaquil",
+"Snivy",
+"Pikachu"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Cyndaquil — PokeAPI official artwork",
+"image": "img/pics/poke-cyndaquil.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-totodile",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Dedenne",
+"Totodile",
+"Chikorita",
+"Snorlax"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Totodile — PokeAPI official artwork",
+"image": "img/pics/poke-totodile.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-pichu",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Sobble",
+"Snivy",
+"Dedenne",
+"Pichu"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Pichu — PokeAPI official artwork",
+"image": "img/pics/poke-pichu.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-espeon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Leafeon",
+"Espeon",
+"Zorua",
+"Gimmighoul"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Espeon — PokeAPI official artwork",
+"image": "img/pics/poke-espeon.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-scizor",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Shinx",
+"Popplio",
+"Chikorita",
+"Scizor"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Scizor — PokeAPI official artwork",
+"image": "img/pics/poke-scizor.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-tyranitar",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gardevoir",
+"Tyranitar",
+"Sobble",
+"Turtwig"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Tyranitar — PokeAPI official artwork",
+"image": "img/pics/poke-tyranitar.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-treecko",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Treecko",
+"Quaxly",
+"Leafeon",
+"Lapras"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Treecko — PokeAPI official artwork",
+"image": "img/pics/poke-treecko.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-torchic",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Garchomp",
+"Rayquaza",
+"Torchic",
+"Fuecoco"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Torchic — PokeAPI official artwork",
+"image": "img/pics/poke-torchic.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-mudkip",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Leafeon",
+"Lycanroc",
+"Fuecoco",
+"Mudkip"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Mudkip — PokeAPI official artwork",
+"image": "img/pics/poke-mudkip.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-gardevoir",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gardevoir",
+"Totodile",
+"Snorlax",
+"Tyranitar"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Gardevoir — PokeAPI official artwork",
+"image": "img/pics/poke-gardevoir.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-rayquaza",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Rayquaza",
+"Toxel",
+"Chespin",
+"Fuecoco"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Rayquaza — PokeAPI official artwork",
+"image": "img/pics/poke-rayquaza.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-turtwig",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Glaceon",
+"Zacian",
+"Turtwig",
+"Pichu"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Turtwig — PokeAPI official artwork",
+"image": "img/pics/poke-turtwig.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-chimchar",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Froakie",
+"Pikachu",
+"Chimchar",
+"Cyndaquil"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Chimchar — PokeAPI official artwork",
+"image": "img/pics/poke-chimchar.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-shinx",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Tyranitar",
+"Shinx",
+"Zacian",
+"Fuecoco"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Shinx — PokeAPI official artwork",
+"image": "img/pics/poke-shinx.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-garchomp",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Garchomp",
+"Scorbunny",
+"Treecko",
+"Lapras"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Garchomp — PokeAPI official artwork",
+"image": "img/pics/poke-garchomp.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-glaceon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Shinx",
+"Glaceon",
+"Tepig",
+"Gardevoir"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Glaceon — PokeAPI official artwork",
+"image": "img/pics/poke-glaceon.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-leafeon",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Totodile",
+"Leafeon",
+"Eevee",
+"Glaceon"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Leafeon — PokeAPI official artwork",
+"image": "img/pics/poke-leafeon.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-snivy",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Chikorita",
+"Scorbunny",
+"Snivy",
+"Popplio"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Snivy — PokeAPI official artwork",
+"image": "img/pics/poke-snivy.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-tepig",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Pikachu",
+"Gimmighoul",
+"Tepig",
+"Shinx"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Tepig — PokeAPI official artwork",
+"image": "img/pics/poke-tepig.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-oshawott",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gengar",
+"Fuecoco",
+"Oshawott",
+"Froakie"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Oshawott — PokeAPI official artwork",
+"image": "img/pics/poke-oshawott.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zorua",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Froakie",
+"Espeon",
+"Charizard",
+"Zorua"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Zorua — PokeAPI official artwork",
+"image": "img/pics/poke-zorua.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-chandelure",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Chikorita",
+"Chandelure",
+"Ceruledge",
+"Scizor"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Chandelure — PokeAPI official artwork",
+"image": "img/pics/poke-chandelure.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-chespin",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Chespin",
+"Treecko",
+"Rowlet",
+"Litten"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Chespin — PokeAPI official artwork",
+"image": "img/pics/poke-chespin.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-fennekin",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Fennekin",
+"Scorbunny",
+"Turtwig",
+"Totodile"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Fennekin — PokeAPI official artwork",
+"image": "img/pics/poke-fennekin.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-froakie",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Dedenne",
+"Froakie",
+"Popplio",
+"Tinkaton"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Froakie — PokeAPI official artwork",
+"image": "img/pics/poke-froakie.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-dedenne",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Snorlax",
+"Zacian",
+"Dedenne",
+"Glaceon"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Dedenne — PokeAPI official artwork",
+"image": "img/pics/poke-dedenne.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-rowlet",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Tepig",
+"Snivy",
+"Gardevoir",
+"Rowlet"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Rowlet — PokeAPI official artwork",
+"image": "img/pics/poke-rowlet.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-litten",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Litten",
+"Tinkaton",
+"Zacian",
+"Fuecoco"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Litten — PokeAPI official artwork",
+"image": "img/pics/poke-litten.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-popplio",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Popplio",
+"Leafeon",
+"Espeon",
+"Froakie"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Popplio — PokeAPI official artwork",
+"image": "img/pics/poke-popplio.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-lycanroc",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Scorbunny",
+"Lycanroc",
+"Popplio",
+"Quaxly"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Lycanroc — PokeAPI official artwork",
+"image": "img/pics/poke-lycanroc.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-grookey",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Grookey",
+"Dedenne",
+"Sobble",
+"Froakie"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Grookey — PokeAPI official artwork",
+"image": "img/pics/poke-grookey.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-scorbunny",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Scorbunny",
+"Lapras",
+"Pikachu",
+"Chespin"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Scorbunny — PokeAPI official artwork",
+"image": "img/pics/poke-scorbunny.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-sobble",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Scorbunny",
+"Gimmighoul",
+"Torchic",
+"Sobble"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Sobble — PokeAPI official artwork",
+"image": "img/pics/poke-sobble.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-toxel",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Mudkip",
+"Gengar",
+"Toxel",
+"Gimmighoul"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Toxel — PokeAPI official artwork",
+"image": "img/pics/poke-toxel.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zacian",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Pichu",
+"Chespin",
+"Leafeon",
+"Zacian"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Zacian — PokeAPI official artwork",
+"image": "img/pics/poke-zacian.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-fuecoco",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Charizard",
+"Zacian",
+"Eevee",
+"Fuecoco"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Fuecoco — PokeAPI official artwork",
+"image": "img/pics/poke-fuecoco.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-quaxly",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Rayquaza",
+"Shinx",
+"Quaxly",
+"Espeon"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Quaxly — PokeAPI official artwork",
+"image": "img/pics/poke-quaxly.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-maushold",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Maushold",
+"Espeon",
+"Shinx",
+"Pikachu"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Maushold — PokeAPI official artwork",
+"image": "img/pics/poke-maushold.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-ceruledge",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Popplio",
+"Ceruledge",
+"Chimchar",
+"Rowlet"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Ceruledge — PokeAPI official artwork",
+"image": "img/pics/poke-ceruledge.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-tinkaton",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Grookey",
+"Dedenne",
+"Tinkaton",
+"Gimmighoul"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Tinkaton — PokeAPI official artwork",
+"image": "img/pics/poke-tinkaton.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-gimmighoul",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "WHO'S THAT POKÉMON?",
+"options": [
+"Gimmighoul",
+"Chimchar",
+"Gardevoir",
+"Mudkip"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Gimmighoul — PokeAPI official artwork",
+"image": "img/pics/poke-gimmighoul.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-snorlax",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Snorlax",
+"Fennekin",
+"Oshawott",
+"Charizard"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Snorlax — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-snorlax.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-gengar",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Sobble",
+"Tepig",
+"Gengar",
+"Tyranitar"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Gengar — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-gengar.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-pikachu",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Garchomp",
+"Chespin",
+"Pikachu",
+"Mudkip"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Pikachu — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-pikachu.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-charizard",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Snorlax",
+"Gimmighoul",
+"Charizard",
+"Fuecoco"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Charizard — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-charizard.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-lapras",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Pichu",
+"Tinkaton",
+"Garchomp",
+"Lapras"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Lapras — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-lapras.jpg",
+"pic": true
+},
+{
+"id": "pic2-poke-zoom-eevee",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Totodile",
+"Quaxly",
+"Eevee",
+"Scizor"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Eevee — PokeAPI official artwork",
+"image": "img/pics/poke-zoom-eevee.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-birdo",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Princess Peach",
+"Princess Daisy",
+"Birdo",
+"Toadette"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Birdo — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-birdo.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-boo",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Mario",
+"Boo",
+"Birdo",
+"Koopa Troopa"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Boo — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-boo.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-bowser",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Waluigi",
+"Toad",
+"Bowser",
+"Princess Daisy"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Bowser — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-bowser.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-bowser-jr",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Boo",
+"Bowser Jr.",
+"Mario",
+"Donkey Kong"
+],
+"answer": 1,
+"kid_safe": true,
+"source_note": "Bowser Jr. — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-bowser-jr.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-diddy-kong",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Luigi",
+"Bowser Jr.",
+"Birdo",
+"Diddy Kong"
+],
+"answer": 3,
+"kid_safe": true,
+"source_note": "Diddy Kong — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-diddy-kong.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-donkey-kong",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Donkey Kong",
+"Koopa Troopa",
+"Luigi",
+"Princess Daisy"
+],
+"answer": 0,
+"kid_safe": true,
+"source_note": "Donkey Kong — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-donkey-kong.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-goomba",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"King Boo",
+"Shy Guy",
+"Goomba",
+"Wario"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Goomba — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-goomba.jpg",
+"pic": true
+},
+{
+"id": "pic2-mario-zoom-kamek",
+"category": "mario",
+"difficulty": "medium",
+"question": "ZOOM: WHO IS IT?",
+"options": [
+"Diddy Kong",
+"Wario",
+"Kamek",
+"Toad"
+],
+"answer": 2,
+"kid_safe": true,
+"source_note": "Kamek — Super Mario Wiki artwork (crop)",
+"image": "img/pics/r-zoom-kamek.jpg",
+"pic": true
+}
+]

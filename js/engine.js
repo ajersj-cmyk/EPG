@@ -17,6 +17,7 @@
   var BASE_POINTS = 100;        // flat 100 per question
   var SPEED_BONUS_MAX = 100;
   var VIDEO_DRAW_CHANCE = 0.12;
+  var PIC_DRAW_CHANCE = 0.26;   // picture questions (q.pic): ~1 in 3-4 overall
   var LIGHTNING_SECONDS = 10;   // lightning round timer (every 4th block, Q1-Q5)
   var LIGHTNING_POINTS = 200;   // lightning round base points (double)
   var LIGHTNING_BLOCK_EVERY = 4;
@@ -49,6 +50,30 @@
     if (q.kid_safe === false) return false;
     if (FAMILY_BLOCK.test(q.question + ' ' + (q.options || []).join(' '))) return false;
     return true;
+  }
+
+  // Decorative card images for regular questions (data/deco.json).
+  // Franchise still only when its keyword is in the question text, not in any
+  // option, and the question isn't about looks; otherwise generic category art.
+  var LOOKS_RE = /\b(colou?r|colors|wear|wears|wearing|look|looks|type|kind|insect|animal|species|hat|shiny|shape|fruit|food|eat|eats)\b/i;
+  function loadDeco() {
+    return fetch('data/deco.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+  function decoHash(s) { var h = 0; s = String(s); for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  function decoFor(q, deco) {
+    if (!deco || !q || q.image || q.video) return null;
+    var t = String(q.question || '').toLowerCase();
+    var o = ((q.options || []).join(' | ') + ' ' + (q.answerText || '')).toLowerCase();
+    if (q.category !== 'jeopardy' && !LOOKS_RE.test(t)) {
+      for (var i = 0; i < deco.kw.length; i++) {
+        var k = deco.kw[i][0];
+        if (o.indexOf(k) >= 0) continue;
+        var re = new RegExp('(^|[^a-z0-9])' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^a-z0-9])');
+        if (re.test(t)) return deco.kw[i][1];
+      }
+    }
+    var list = deco.cat[q.category] || deco.def;
+    return list && list.length ? list[decoHash(q.id || t) % list.length] : null;
   }
 
   function loadBank() {
@@ -143,6 +168,22 @@
         askedIds[v.id] = true;
         recentCats.push(v.category);
         return { q: v, askedIds: askedIds, recentCats: recentCats };
+      }
+    }
+
+    // picture draws (~30%), avoiding the same category back to back
+    if (!hardOnly && Math.random() < PIC_DRAW_CHANCE) {
+      var last = recentCats[recentCats.length - 1];
+      var dis2 = {}; disabled.forEach(function (c) { dis2[c] = true; });
+      var pics = bank.filter(function (q) {
+        return q.pic && q.image && !askedIds[q.id] && !dis2[q.category] && q.category !== last && familyOk(q, familyMode);
+      });
+      if (pics.length) {
+        var pq = pics[Math.floor(Math.random() * pics.length)];
+        askedIds[pq.id] = true;
+        recentCats.push(pq.category);
+        if (recentCats.length > 8) recentCats = recentCats.slice(-8);
+        return { q: pq, askedIds: askedIds, recentCats: recentCats };
       }
     }
 
@@ -338,6 +379,8 @@
     loadBank: loadBank,
     familyOk: familyOk,
     drawQuestion: drawQuestion,
+    loadDeco: loadDeco,
+    decoFor: decoFor,
     scoreAnswer: scoreAnswer,
     normText: normText,
     textMatch: textMatch,

@@ -414,6 +414,7 @@
       category: q.category,
       difficulty: q.difficulty,
       image: q.image || null,
+      deco: q.image ? null : E.decoFor(q, decoData),
       video: q.video || null,
       tag: q.tag || null,
       isWager: !!isWager,
@@ -455,11 +456,13 @@
   }
 
   /* ---- bank readiness: retry the load instead of silently stalling ---- */
+  var decoData = null;
   var bankLoading = null;
   function bankReady() { return bank && bank.length > 0; }
   function ensureBank() {
     if (bankReady()) return Promise.resolve(bank);
     if (bankLoading) return bankLoading;
+    E.loadDeco().then(function (d) { decoData = d; });
     bankLoading = E.loadBank().then(function (b) {
       bank = b;
       mergeCustomIntoBank();
@@ -1322,6 +1325,7 @@
     });
     document.body.classList.toggle('in-attract', name === 'idle');
     document.body.classList.toggle('in-podium', name === 'podium');
+    document.body.classList.toggle('in-podium', name === 'podium');
   }
 
   function sweepStreak() {
@@ -1538,8 +1542,9 @@
       var q = bank[i];
       if (!q) continue;
       var text = q.question || q.text || '';
-      if (text.length > 140 || text.length < 15) continue;
       if (q.kid_safe === false) continue;
+      if (q.pic && q.image) { arPoolImg.push(q); continue; } // picture teasers: own rotation
+      if (text.length > 140 || text.length < 15) continue;
       if (!arAnswerFor(q)) continue;
       // Favor easy/medium; keep ~15% of hard ones (deterministic per id).
       var diff = q.difficulty || 'medium';
@@ -1554,8 +1559,18 @@
     arSaveQ();
   }
 
+  var arPicTurn = 0;
   function arPickTeaser() {
     arBuildPool();
+    // every 3rd teaser is a picture question (Jordan loves those)
+    if (arPoolImg.length && (++arPicTurn % 3 === 0)) {
+      var cands = arPoolImg.filter(function (x) { return arRecentIds.indexOf(x.id) < 0; });
+      if (!cands.length) { arRecentIds = []; cands = arPoolImg; }
+      var pq = cands[Math.floor(Math.random() * cands.length)];
+      arRecentIds.push(pq.id); if (arRecentIds.length > 40) arRecentIds.shift();
+      arLastTeaser = pq;
+      return pq;
+    }
     if (arOrder.length) {
       if (arQ.idx >= arOrder.length) {          // full pass done: reshuffle
         arQ.seed = (arQ.seed * 1103515245 + 12345) >>> 0 || 1;
@@ -1934,7 +1949,7 @@
       } else {
         buildOptions($('#qOptions'), q.options, -1, false);
       }
-      media.classList.remove('bleed');
+      media.classList.remove('bleed', 'deco');
       img.removeAttribute('src');
       frame.hidden = true;
       vid.src = 'about:blank';
@@ -1950,6 +1965,12 @@
         frame.hidden = false;
         vid.src = 'https://www.youtube.com/embed/' + encodeURIComponent(q.video.youtubeId) +
           '?autoplay=1&rel=0&start=' + (q.video.start || 0) + '&end=' + (q.video.end || 0);
+      } else if (q.deco) {
+        // decorative card art: same side slot as picture questions (no layout jump)
+        media.hidden = false;
+        media.classList.add('bleed', 'deco');
+        img.onerror = function () { img.removeAttribute('src'); media.hidden = true; media.classList.remove('bleed', 'deco'); };
+        img.src = q.deco;
       } else {
         media.hidden = true;
       }
@@ -2131,7 +2152,7 @@
       '<div class="ch-hero"><div class="ch-halo"></div>' + TROPHY_SVG +
       '<div class="ch-name' + (nameLen > 14 ? ' long' : '') + (nameLen > 22 ? ' xlong' : '') + '">' + nm + '</div>' +
       '<div class="ch-cash">' + E.fmtCash(w.score) + '</div><div class="ch-chips">' + chips + '</div></div></div>' +
-      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">UNDEFEATED</div>');
+      (top.length > 1 ? '<div class="ch-pod">' + plates + '</div>' : '<div class="ch-solo">SOLO CHAMP</div>');
   }
 
   function stopVideo() {
