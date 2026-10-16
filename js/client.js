@@ -246,7 +246,8 @@
       s.disabled = max <= 0;
       var btn = $('#wagerBtn');
       btn.disabled = max <= 0;
-      btn.textContent = 'Place wager';
+      btn.textContent = 'LOCK IT';
+      var sk = $('#wagerSkip'); if (sk) { sk.disabled = false; sk.textContent = 'SKIP'; }
       $('#wagerNote').hidden = true;
     } else {
       var s2 = $('#wagerSlider');
@@ -254,22 +255,22 @@
     }
     $('#wagerCat').textContent = E.fmtCategory(st.wagerCategory) || 'MYSTERY';
     $('#wagerSub').textContent = max <= 0
-      ? 'No points to wager yet.'
-      : 'Set your wager.';
+      ? 'Nothing to wager. Just answer.'
+      : 'Bet it or skip.';
     updateWagerAmount();
     setPhase('wager');
   }
 
-  function placeWager() {
+  function placeWager(skip) {
     if (!playerId || !lastState || lastState.phase !== 'wager') return;
     if (serverNow() > (lastState.wagerDeadlineTs || 0)) {
       toast('TIME');
       return;
     }
-    var amount = Math.max(0, Math.min(parseInt($('#wagerSlider').value, 10) || 0, wagerMax()));
+    var amount = skip === true ? 0 : Math.max(0, Math.min(parseInt($('#wagerSlider').value, 10) || 0, wagerMax()));
     var btn = $('#wagerBtn');
     btn.disabled = true;
-    btn.textContent = 'Locking in\u2026';
+    btn.textContent = '\u2026';
     refs.player.update({
       wager: amount,
       wagerPlaced: true,
@@ -277,13 +278,13 @@
     }).then(function () {
       myWager = amount;
       btn.disabled = false;
-      btn.textContent = 'Update wager';
+      btn.textContent = 'CHANGE';
       var note = $('#wagerNote');
       note.hidden = false;
-      note.textContent = 'Wager locked: ' + fmt(myWager) + '. No take-backs.';
+      note.textContent = myWager > 0 ? 'LOCKED: ' + fmt(myWager) : 'SKIPPED';
     }).catch(function () {
       btn.disabled = false;
-      btn.textContent = 'Update wager';
+      btn.textContent = 'LOCK IT';
       toast('Connection lost. Try again.');
     });
   }
@@ -717,6 +718,10 @@
         renderMyStats(snap.val());
       }
     }, 3000);
+    $('#wagerZero').addEventListener('click', function () {
+      $('#wagerSlider').value = 0; updateWagerAmount();
+    });
+    $('#wagerSkip').addEventListener('click', function () { placeWager(true); });
     $('#wagerHalf').addEventListener('click', function () {
       var s = $('#wagerSlider');
       s.value = Math.floor(Number(s.max) / 2);

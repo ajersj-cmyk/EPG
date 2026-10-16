@@ -367,9 +367,9 @@
     var key = statsKey(name);
     var tk = todayKeys();
     var cur = statsCache[key] || {};
-    var lifetime = (cur.lifetime || 0) + delta;
-    var month = (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta;
-    var day = (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta;
+    var lifetime = Math.max(0, (cur.lifetime || 0) + delta);
+    var month = Math.max(0, (cur.monthKey === tk.month ? (cur.month || 0) : 0) + delta);
+    var day = Math.max(0, (cur.dayKey === tk.day ? (cur.day || 0) : 0) + delta);
     // streaks: consecutive correct answers. Wrong answer (or no answer) resets.
     var streak = correct ? ((cur.streak || 0) + 1) : 0;
     var bestStreak = Math.max(cur.bestStreak || 0, streak);
@@ -625,7 +625,9 @@
     // snapshot wagers players placed during the wager window
     var wagers = {};
     Object.keys(players).forEach(function (pid) {
-      var w = players[pid].wager || 0;
+      // optional wager, capped at the player's current score (never forced, never negative)
+      var w = Math.floor(Number(players[pid].wager) || 0);
+      w = Math.max(0, Math.min(w, Math.floor(players[pid].score || 0)));
       if (w > 0) wagers[pid] = w;
     });
     currentQ = { q: q, deadlineTs: deadlineTs, seconds: secs, isWager: true, isWagerUp: isWagerUp, wagers: wagers };

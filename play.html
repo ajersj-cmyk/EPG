@@ -50,18 +50,20 @@
     <!-- wager -->
     <section class="phase" id="p-wager">
       <div class="wager-hero">
-        <div class="eyebrow">Final wager</div>
+        <div class="eyebrow">WAGER</div>
         <div class="wager-cat" id="wagerCat">&mdash;</div>
         <div class="pq-timerbar"><i id="wagerTimerFill"></i></div>
         <div class="wager-amount" id="wagerAmount">0</div>
-        <div class="wager-sub" id="wagerSub">Set your wager.</div>
+        <div class="wager-sub" id="wagerSub">Bet it or skip.</div>
         <input type="range" id="wagerSlider" class="wager-slider" min="0" max="0" step="10" value="0" aria-label="Wager amount">
         <div class="wager-scale"><span>0</span><span id="wagerMax">0</span></div>
         <div class="wager-quick">
-          <button class="btn ghost" id="wagerHalf" type="button">Half</button>
-          <button class="btn ghost" id="wagerFull" type="button">Max</button>
+          <button class="btn ghost" id="wagerZero" type="button">0</button>
+          <button class="btn ghost" id="wagerHalf" type="button">HALF</button>
+          <button class="btn ghost" id="wagerFull" type="button">ALL</button>
         </div>
-        <button class="btn solid wager-btn" id="wagerBtn">Place wager</button>
+        <button class="btn solid wager-btn" id="wagerBtn">LOCK IT</button>
+        <button class="btn ghost wager-skip" id="wagerSkip" type="button">SKIP</button>
         <div class="wager-note" id="wagerNote" hidden></div>
       </div>
     </section>
