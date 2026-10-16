@@ -158,7 +158,7 @@
         return;
       }
       var stuckMs = Date.now() - lastPhaseChangeTs;
-      var now = Date.now() // deadlines are stamped with this TV's clock;
+      var now = Date.now(); // deadlines are stamped with this TV's clock
       if (st.phase === 'question' && st.deadlineTs && now > st.deadlineTs + 15000 && stuckMs > 20000) {
         console.warn('[watchdog] question stuck, forcing reveal');
         revealQuestion();
