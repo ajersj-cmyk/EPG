@@ -52,6 +52,30 @@
     return true;
   }
 
+  // Decorative card images for regular questions (data/deco.json).
+  // Franchise still only when its keyword is in the question text, not in any
+  // option, and the question isn't about looks; otherwise generic category art.
+  var LOOKS_RE = /\b(colou?r|colors|wear|wears|wearing|look|looks|type|kind|insect|animal|species|hat|shiny|shape|fruit|food|eat|eats)\b/i;
+  function loadDeco() {
+    return fetch('data/deco.json').then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+  function decoHash(s) { var h = 0; s = String(s); for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+  function decoFor(q, deco) {
+    if (!deco || !q || q.image || q.video) return null;
+    var t = String(q.question || '').toLowerCase();
+    var o = ((q.options || []).join(' | ') + ' ' + (q.answerText || '')).toLowerCase();
+    if (q.category !== 'jeopardy' && !LOOKS_RE.test(t)) {
+      for (var i = 0; i < deco.kw.length; i++) {
+        var k = deco.kw[i][0];
+        if (o.indexOf(k) >= 0) continue;
+        var re = new RegExp('(^|[^a-z0-9])' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^a-z0-9])');
+        if (re.test(t)) return deco.kw[i][1];
+      }
+    }
+    var list = deco.cat[q.category] || deco.def;
+    return list && list.length ? list[decoHash(q.id || t) % list.length] : null;
+  }
+
   function loadBank() {
     var parts = [];
     for (var i = 1; i <= 27; i++) parts.push('data/questions-' + i + '.json');
@@ -355,6 +379,8 @@
     loadBank: loadBank,
     familyOk: familyOk,
     drawQuestion: drawQuestion,
+    loadDeco: loadDeco,
+    decoFor: decoFor,
     scoreAnswer: scoreAnswer,
     normText: normText,
     textMatch: textMatch,

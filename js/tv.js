@@ -414,6 +414,7 @@
       category: q.category,
       difficulty: q.difficulty,
       image: q.image || null,
+      deco: q.image ? null : E.decoFor(q, decoData),
       video: q.video || null,
       tag: q.tag || null,
       isWager: !!isWager,
@@ -455,11 +456,13 @@
   }
 
   /* ---- bank readiness: retry the load instead of silently stalling ---- */
+  var decoData = null;
   var bankLoading = null;
   function bankReady() { return bank && bank.length > 0; }
   function ensureBank() {
     if (bankReady()) return Promise.resolve(bank);
     if (bankLoading) return bankLoading;
+    E.loadDeco().then(function (d) { decoData = d; });
     bankLoading = E.loadBank().then(function (b) {
       bank = b;
       mergeCustomIntoBank();
@@ -1945,7 +1948,7 @@
       } else {
         buildOptions($('#qOptions'), q.options, -1, false);
       }
-      media.classList.remove('bleed');
+      media.classList.remove('bleed', 'deco');
       img.removeAttribute('src');
       frame.hidden = true;
       vid.src = 'about:blank';
@@ -1961,6 +1964,12 @@
         frame.hidden = false;
         vid.src = 'https://www.youtube.com/embed/' + encodeURIComponent(q.video.youtubeId) +
           '?autoplay=1&rel=0&start=' + (q.video.start || 0) + '&end=' + (q.video.end || 0);
+      } else if (q.deco) {
+        // decorative card art: same side slot as picture questions (no layout jump)
+        media.hidden = false;
+        media.classList.add('bleed', 'deco');
+        img.onerror = function () { img.removeAttribute('src'); media.hidden = true; media.classList.remove('bleed', 'deco'); };
+        img.src = q.deco;
       } else {
         media.hidden = true;
       }
