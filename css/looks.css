@@ -192,3 +192,5 @@ body.look-blue .look-row .settings-label { color: #dfe6f3; }
 body[class*="look-"] .phase { transition: none; transform: none; }
 body[class*="look-"] .phase:not(.active) { visibility: hidden; }
 .q-round:empty { display: none; }
+/* pop-ups always cover the screen under them, so their text never mixes with the reveal */
+body[class*="look-"] .moment-overlay { background: rgba(4, 6, 10, 0.94); }
