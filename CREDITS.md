@@ -7,3 +7,144 @@
 - Jeopardy! clue text in `data/questions-N.json` comes from the community jservice/J! Archive datasets.
 - QR codes: qrcode.js by Kazuhiko Arase (MIT).
 - Team logos and headshots, when used, come from the ESPN CDN.
+
+## Picture questions (`data/questions-pics.json`, images in `img/pics/`), personal use
+- Movie stills: textless backdrops from **The Movie Database (TMDB)**, https://www.themoviedb.org. This product uses the TMDB API/images but is not endorsed or certified by TMDB. Stills © their studios (Disney, Pixar, Marvel Studios, DreamWorks, Illumination, Sony Pictures Animation, Blue Sky, Warner Bros., Legendary).
+- Pokémon artwork: official artwork via **PokeAPI/sprites** (https://github.com/PokeAPI/sprites). Pokémon © Nintendo / Game Freak / The Pokémon Company.
+- Mario character artwork: **Super Mario Wiki** (https://www.mariowiki.com, CC BY-SA 3.0 site; artwork © Nintendo).
+
+### Per-image sources
+- img/pics/m-toy-story.jpg: Toy Story, TMDB backdrop https://image.tmdb.org/t/p/original/3Rfvhy1Nl6sSGJwyjb0QiZzZYlB.jpg (movie 862)
+- img/pics/m-toy-story-2.jpg: Toy Story 2, TMDB backdrop https://image.tmdb.org/t/p/original/nsfVr4QbbunUrHINN9N7JdVAMTf.jpg (movie 863)
+- img/pics/m-toy-story-3.jpg: Toy Story 3, TMDB backdrop https://image.tmdb.org/t/p/original/wE5JGzujfvDPMIfFjJyrhXFjZLc.jpg (movie 10193)
+- img/pics/m-toy-story-4.jpg: Toy Story 4, TMDB backdrop https://image.tmdb.org/t/p/original/q62bpQ67qaXY0u6b2wFEnQYIbPd.jpg (movie 301528)
+- img/pics/m-finding-nemo.jpg: Finding Nemo, TMDB backdrop https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg (movie 12)
+- img/pics/m-finding-dory.jpg: Finding Dory, TMDB backdrop https://image.tmdb.org/t/p/original/wijltj1toRcicHlCn8Cpsp4yPXe.jpg (movie 127380)
+- img/pics/m-monsters-inc.jpg: Monsters, Inc., TMDB backdrop https://image.tmdb.org/t/p/original/c7VbRPlev1bRfKvTxr98erw5T7B.jpg (movie 585)
+- img/pics/m-monsters-university.jpg: Monsters University, TMDB backdrop https://image.tmdb.org/t/p/original/mIpCxBWNz6SHCQBe2K2PFr5MB7f.jpg (movie 62211)
+- img/pics/m-the-incredibles.jpg: The Incredibles, TMDB backdrop https://image.tmdb.org/t/p/original/lxwzY9vNwjDgxWKt3zZ6zcU6rEJ.jpg (movie 9806)
+- img/pics/m-incredibles-2.jpg: Incredibles 2, TMDB backdrop https://image.tmdb.org/t/p/original/mabuNsGJgRuCTuGqjFkWe1xdu19.jpg (movie 260513)
+- img/pics/m-cars.jpg: Cars, TMDB backdrop https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg (movie 920)
+- img/pics/m-up.jpg: Up, TMDB backdrop https://image.tmdb.org/t/p/original/hGGC9gKo7CFE3fW07RA587e5kol.jpg (movie 14160)
+- img/pics/m-wall-e.jpg: WALL-E, TMDB backdrop https://image.tmdb.org/t/p/original/nYs4ZwnJBK4AgljhvzwNz7fpr3E.jpg (movie 10681)
+- img/pics/m-ratatouille.jpg: Ratatouille, TMDB backdrop https://image.tmdb.org/t/p/original/zeoaHdXRDd5IoUiMVsNhwTZm78B.jpg (movie 2062)
+- img/pics/m-inside-out.jpg: Inside Out, TMDB backdrop https://image.tmdb.org/t/p/original/jJKZaTBNenlFclQyjrnvzkRmvWE.jpg (movie 150540)
+- img/pics/m-inside-out-2.jpg: Inside Out 2, TMDB backdrop https://image.tmdb.org/t/p/original/p5ozvmdgsmbWe0H8Xk7Rc8SCwAB.jpg (movie 1022789)
+- img/pics/m-coco.jpg: Coco, TMDB backdrop https://image.tmdb.org/t/p/original/g7CHF8gTLGooTbP4GznIGwaqAGL.jpg (movie 354912)
+- img/pics/m-brave.jpg: Brave, TMDB backdrop https://image.tmdb.org/t/p/original/qx9ts2hBYJrkIQxhryitxnLlm2u.jpg (movie 62177)
+- img/pics/m-luca.jpg: Luca, TMDB backdrop https://image.tmdb.org/t/p/original/620hnMVLu6RSZW6a5rwO8gqpt0t.jpg (movie 508943)
+- img/pics/m-turning-red.jpg: Turning Red, TMDB backdrop https://image.tmdb.org/t/p/original/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg (movie 508947)
+- img/pics/m-elemental.jpg: Elemental, TMDB backdrop https://image.tmdb.org/t/p/original/4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg (movie 976573)
+- img/pics/m-soul.jpg: Soul, TMDB backdrop https://image.tmdb.org/t/p/original/rQaHA74pevnGsxcKGaoZVGWe9TC.jpg (movie 508442)
+- img/pics/m-a-bug-s-life.jpg: A Bug's Life, TMDB backdrop https://image.tmdb.org/t/p/original/hwwFyowfcbLRVmRBOkvnABBNIOs.jpg (movie 9487)
+- img/pics/m-onward.jpg: Onward, TMDB backdrop https://image.tmdb.org/t/p/original/bcT8CaBIj086WVD7K529h78eujb.jpg (movie 508439)
+- img/pics/m-frozen.jpg: Frozen, TMDB backdrop https://image.tmdb.org/t/p/original/rj58WQ9ImI0mYDptXdM7euX1Wjt.jpg (movie 109445)
+- img/pics/m-frozen-ii.jpg: Frozen II, TMDB backdrop https://image.tmdb.org/t/p/original/AoSZyb37ljMAxw0RdeQEBHKtgcc.jpg (movie 330457)
+- img/pics/m-moana.jpg: Moana, TMDB backdrop https://image.tmdb.org/t/p/original/qLVNZFHYUR6Li64He67SWl6BHQe.jpg (movie 277834)
+- img/pics/m-moana-2.jpg: Moana 2, TMDB backdrop https://image.tmdb.org/t/p/original/vYqt6kb4lcF8wwqsMMaULkP9OEn.jpg (movie 1241982)
+- img/pics/m-encanto.jpg: Encanto, TMDB backdrop https://image.tmdb.org/t/p/original/3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg (movie 568124)
+- img/pics/m-tangled.jpg: Tangled, TMDB backdrop https://image.tmdb.org/t/p/original/cWczNud8Y8i8ab0Z4bxos4myWYO.jpg (movie 38757)
+- img/pics/m-zootopia.jpg: Zootopia, TMDB backdrop https://image.tmdb.org/t/p/original/9tOkjBEiiGcaClgJFtwocStZvIT.jpg (movie 269149)
+- img/pics/m-big-hero-6.jpg: Big Hero 6, TMDB backdrop https://image.tmdb.org/t/p/original/4s2d3xdyqotiVNHTlTlJjrr3q0H.jpg (movie 177572)
+- img/pics/m-wreck-it-ralph.jpg: Wreck-It Ralph, TMDB backdrop https://image.tmdb.org/t/p/original/3IFRjBDwtk0DlIsDfJ2zEzLjUBi.jpg (movie 82690)
+- img/pics/m-the-lion-king.jpg: The Lion King, TMDB backdrop https://image.tmdb.org/t/p/original/q00H8EqULYSK74lgevMkhmGGLHn.jpg (movie 8587)
+- img/pics/m-aladdin.jpg: Aladdin, TMDB backdrop https://image.tmdb.org/t/p/original/nenJjvfe2Eq8uBMXFJnWj5mw4bi.jpg (movie 812)
+- img/pics/m-the-little-mermaid.jpg: The Little Mermaid, TMDB backdrop https://image.tmdb.org/t/p/original/qGZXYHvWR1TYOU9raCaEABrj9m7.jpg (movie 10144)
+- img/pics/m-beauty-and-the-beast.jpg: Beauty and the Beast, TMDB backdrop https://image.tmdb.org/t/p/original/fW4ZCoEZRBqLAJGFQ2g5AdAfPQR.jpg (movie 10020)
+- img/pics/m-lilo-stitch.jpg: Lilo & Stitch, TMDB backdrop https://image.tmdb.org/t/p/original/AcxbOWUbwtIEDisfuhNGHQNfnMK.jpg (movie 11544)
+- img/pics/m-mulan.jpg: Mulan, TMDB backdrop https://image.tmdb.org/t/p/original/mUYV0ZdsDEliGaQahcQH1F3grsP.jpg (movie 10674)
+- img/pics/m-wish.jpg: Wish, TMDB backdrop https://image.tmdb.org/t/p/original/ehumsuIBbgAe1hg343oszCLrAfI.jpg (movie 1022796)
+- img/pics/m-shrek.jpg: Shrek, TMDB backdrop https://image.tmdb.org/t/p/original/w0eKUOEog2ImtktCHAMUZws8qif.jpg (movie 808)
+- img/pics/m-shrek-2.jpg: Shrek 2, TMDB backdrop https://image.tmdb.org/t/p/original/8ohobj5lAIbl5XWw11FywS3IRrS.jpg (movie 809)
+- img/pics/m-despicable-me.jpg: Despicable Me, TMDB backdrop https://image.tmdb.org/t/p/original/2XSeKDmIa2KxaiJy4J9e8FrIZhk.jpg (movie 20352)
+- img/pics/m-minions.jpg: Minions, TMDB backdrop https://image.tmdb.org/t/p/original/wKrxeY6lbu7KFBsWVcMH6M8avwr.jpg (movie 211672)
+- img/pics/m-kung-fu-panda.jpg: Kung Fu Panda, TMDB backdrop https://image.tmdb.org/t/p/original/qdthf9WrRDSaIkGVQGhhJ9pz1hn.jpg (movie 9502)
+- img/pics/m-how-to-train-your-dragon.jpg: How to Train Your Dragon, TMDB backdrop https://image.tmdb.org/t/p/original/59vDC1BuEQvti24OMr0ZvtAK6R1.jpg (movie 10191)
+- img/pics/m-madagascar.jpg: Madagascar, TMDB backdrop https://image.tmdb.org/t/p/original/tPaurpIUskVji5vwV0dhy9pq4Vs.jpg (movie 953)
+- img/pics/m-ice-age.jpg: Ice Age, TMDB backdrop https://image.tmdb.org/t/p/original/8pwIhymsxfAVjrAE7syDjQULn37.jpg (movie 425)
+- img/pics/m-the-lego-movie.jpg: The Lego Movie, TMDB backdrop https://image.tmdb.org/t/p/original/6gI1dAkOaUQ6659OdRPsTLlsem5.jpg (movie 137106)
+- img/pics/m-sing.jpg: Sing, TMDB backdrop https://image.tmdb.org/t/p/original/z9ft5HYHzWcasR6SGcgeluxTznB.jpg (movie 335797)
+- img/pics/m-trolls.jpg: Trolls, TMDB backdrop https://image.tmdb.org/t/p/original/gXyYOWAkk4FdQU3adK8WFj8nN9J.jpg (movie 136799)
+- img/pics/m-the-bad-guys.jpg: The Bad Guys, TMDB backdrop https://image.tmdb.org/t/p/original/a8w3luV9uCjveB8v7grHfvXVOFJ.jpg (movie 629542)
+- img/pics/m-puss-in-boots-the-last-wish.jpg: Puss in Boots: The Last Wish, TMDB backdrop https://image.tmdb.org/t/p/original/jr8tSoJGj33XLgFBy6lmZhpGQNu.jpg (movie 315162)
+- img/pics/m-the-wild-robot.jpg: The Wild Robot, TMDB backdrop https://image.tmdb.org/t/p/original/1pmXyN3sKeYoUhu5VBZiDU4BX21.jpg (movie 1184918)
+- img/pics/m-spider-man-into-the-spider-verse.jpg: Spider-Man: Into the Spider-Verse, TMDB backdrop https://image.tmdb.org/t/p/original/1ntePsIqeklfmrQJqZPncCydsqY.jpg (movie 324857)
+- img/pics/m-spider-man-across-the-spider-verse.jpg: Spider-Man: Across the Spider-Verse, TMDB backdrop https://image.tmdb.org/t/p/original/kVd3a9YeLGkoeR50jGEXM6EqseS.jpg (movie 569094)
+- img/pics/m-the-boss-baby.jpg: The Boss Baby, TMDB backdrop https://image.tmdb.org/t/p/original/4IrZC1uuaDpGScO4TDyEe4E4bq2.jpg (movie 295693)
+- img/pics/m-the-secret-life-of-pets.jpg: The Secret Life of Pets, TMDB backdrop https://image.tmdb.org/t/p/original/c1Ywtvlqls6tPBZ3BqbPtBwHyng.jpg (movie 328111)
+- img/pics/m-the-super-mario-bros-movie.jpg: The Super Mario Bros. Movie, TMDB backdrop https://image.tmdb.org/t/p/original/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg (movie 502356)
+- img/pics/m-pok-mon-detective-pikachu.jpg: Pokémon Detective Pikachu, TMDB backdrop https://image.tmdb.org/t/p/original/yXybBEC45p84D0Ky7GmQQYrclVr.jpg (movie 447404)
+- img/pics/m-iron-man.jpg: Iron Man, TMDB backdrop https://image.tmdb.org/t/p/original/cKvDv2LpwVEqbdXWoQl4XgGN6le.jpg (movie 1726)
+- img/pics/m-the-avengers.jpg: The Avengers, TMDB backdrop https://image.tmdb.org/t/p/original/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg (movie 24428)
+- img/pics/m-avengers-endgame.jpg: Avengers: Endgame, TMDB backdrop https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg (movie 299534)
+- img/pics/m-avengers-infinity-war.jpg: Avengers: Infinity War, TMDB backdrop https://image.tmdb.org/t/p/original/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg (movie 299536)
+- img/pics/m-guardians-of-the-galaxy.jpg: Guardians of the Galaxy, TMDB backdrop https://image.tmdb.org/t/p/original/uLtVbjvS1O7gXL8lUOwsFOH4man.jpg (movie 118340)
+- img/pics/m-guardians-of-the-galaxy-vol-2.jpg: Guardians of the Galaxy Vol. 2, TMDB backdrop https://image.tmdb.org/t/p/original/aJn9XeesqsrSLKcHfHP4u5985hn.jpg (movie 283995)
+- img/pics/m-black-panther.jpg: Black Panther, TMDB backdrop https://image.tmdb.org/t/p/original/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg (movie 284054)
+- img/pics/m-thor-ragnarok.jpg: Thor: Ragnarok, TMDB backdrop https://image.tmdb.org/t/p/original/vLmHH8jAy8Jq8uBsLucd3592WGh.jpg (movie 284053)
+- img/pics/m-spider-man-homecoming.jpg: Spider-Man: Homecoming, TMDB backdrop https://image.tmdb.org/t/p/original/tPpYGm2mVecue7Bk3gNVoSPA5qn.jpg (movie 315635)
+- img/pics/m-spider-man-no-way-home.jpg: Spider-Man: No Way Home, TMDB backdrop https://image.tmdb.org/t/p/original/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg (movie 634649)
+- img/pics/m-spider-man-far-from-home.jpg: Spider-Man: Far From Home, TMDB backdrop https://image.tmdb.org/t/p/original/wqBW5ltBJu0gs26yCc8shQQV82d.jpg (movie 429617)
+- img/pics/m-ant-man.jpg: Ant-Man, TMDB backdrop https://image.tmdb.org/t/p/original/1K3JmSNUN8OpjYsCjc0Hy0SYxAb.jpg (movie 102899)
+- img/pics/m-captain-marvel.jpg: Captain Marvel, TMDB backdrop https://image.tmdb.org/t/p/original/qAzYK4YPSWDc7aa4R43LcwRIAyb.jpg (movie 299537)
+- img/pics/m-doctor-strange.jpg: Doctor Strange, TMDB backdrop https://image.tmdb.org/t/p/original/kkoiH8ZWxJ9WSAjOadGtuHUQxbm.jpg (movie 284052)
+- img/pics/m-captain-america-civil-war.jpg: Captain America: Civil War, TMDB backdrop https://image.tmdb.org/t/p/original/7FWlcZq3r6525LWOcvO9kNWurN1.jpg (movie 271110)
+- img/pics/m-captain-america-the-winter-soldier.jpg: Captain America: The Winter Soldier, TMDB backdrop https://image.tmdb.org/t/p/original/1RWLMyC9KcFfcaoViMiJGSSZzzr.jpg (movie 100402)
+- img/pics/m-captain-america-the-first-avenger.jpg: Captain America: The First Avenger, TMDB backdrop https://image.tmdb.org/t/p/original/yFuKvT4Vm3sKHdFY4eG6I4ldAnn.jpg (movie 1771)
+- img/pics/m-shang-chi-and-the-legend-of-the-ten-rings.jpg: Shang-Chi and the Legend of the Ten Rings, TMDB backdrop https://image.tmdb.org/t/p/original/r7K6Xt0RX4Mw0cAbZVw5cyb1Tux.jpg (movie 566525)
+- img/pics/p-blastoise.jpg: Blastoise official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-bulbasaur.jpg: Bulbasaur official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-charizard.jpg: Charizard official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-charmander.jpg: Charmander official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-clefairy.jpg: Clefairy official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-ditto.jpg: Ditto official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-dragonite.jpg: Dragonite official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-eevee.jpg: Eevee official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-flareon.jpg: Flareon official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-gengar.jpg: Gengar official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-greninja.jpg: Greninja official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-gyarados.jpg: Gyarados official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-jigglypuff.jpg: Jigglypuff official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-jolteon.jpg: Jolteon official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-lapras.jpg: Lapras official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-lucario.jpg: Lucario official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-lugia.jpg: Lugia official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-magikarp.jpg: Magikarp official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-meowth.jpg: Meowth official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-mew.jpg: Mew official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-mewtwo.jpg: Mewtwo official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-mimikyu.jpg: Mimikyu official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-pikachu.jpg: Pikachu official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-piplup.jpg: Piplup official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-psyduck.jpg: Psyduck official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-raichu.jpg: Raichu official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-snorlax.jpg: Snorlax official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-sprigatito.jpg: Sprigatito official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-squirtle.jpg: Squirtle official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-sylveon.jpg: Sylveon official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-togepi.jpg: Togepi official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-umbreon.jpg: Umbreon official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-vaporeon.jpg: Vaporeon official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/p-venusaur.jpg: Venusaur official artwork, via PokeAPI/sprites (github.com/PokeAPI/sprites)
+- img/pics/r-birdo.jpg: Birdo artwork from Super Mario Wiki (https://mario.wiki.gallery/images/e/ed/MP9_Birdo_Main_Artwork.png), © Nintendo
+- img/pics/r-boo.jpg: Boo artwork from Super Mario Wiki (https://mario.wiki.gallery/images/3/3f/MPS_Boo_Artwork.png), © Nintendo
+- img/pics/r-bowser.jpg: Bowser artwork from Super Mario Wiki (https://mario.wiki.gallery/images/c/c7/SMBW_Artwork_Bowser.png), © Nintendo
+- img/pics/r-bowser-jr.jpg: Bowser Jr. artwork from Super Mario Wiki (https://mario.wiki.gallery/images/f/f5/SMBW_Bowser_Jr_Artwork_1.png), © Nintendo
+- img/pics/r-diddy-kong.jpg: Diddy Kong artwork from Super Mario Wiki (https://mario.wiki.gallery/images/1/10/DKJC_Diddy_Kong_Updated_Artwork.png), © Nintendo
+- img/pics/r-donkey-kong.jpg: Donkey Kong artwork from Super Mario Wiki (https://mario.wiki.gallery/images/e/e7/HoM_Donkey_Kong_2025.png), © Nintendo
+- img/pics/r-goomba.jpg: Goomba artwork from Super Mario Wiki (https://mario.wiki.gallery/images/7/7d/SMBW_Goomba.png), © Nintendo
+- img/pics/r-kamek.jpg: Kamek artwork from Super Mario Wiki (https://mario.wiki.gallery/images/3/3c/SMPJ_Kamek_Artwork.png), © Nintendo
+- img/pics/r-king-boo.jpg: King Boo artwork from Super Mario Wiki (https://mario.wiki.gallery/images/4/47/Mario_Party_Star_Rush_King_Boo.png), © Nintendo
+- img/pics/r-koopa-troopa.jpg: Koopa Troopa artwork from Super Mario Wiki (https://mario.wiki.gallery/images/5/5c/SuperMarioParty_KoopaTroopa.png), © Nintendo
+- img/pics/r-lakitu.jpg: Lakitu artwork from Super Mario Wiki (https://mario.wiki.gallery/images/8/87/NSMBU_Lakitu_Artwork.png), © Nintendo
+- img/pics/r-luigi.jpg: Luigi artwork from Super Mario Wiki (https://mario.wiki.gallery/images/7/76/SMPJ_Luigi.png), © Nintendo
+- img/pics/r-mario.jpg: Mario artwork from Super Mario Wiki (https://mario.wiki.gallery/images/0/0d/MarioAlternateJamboreeRender.png), © Nintendo
+- img/pics/r-princess-peach.jpg: Princess Peach artwork from Super Mario Wiki (https://mario.wiki.gallery/images/7/7c/Peach_Posing_Alt_3D_Artwork.png), © Nintendo
+- img/pics/r-rosalina.jpg: Rosalina artwork from Super Mario Wiki (https://mario.wiki.gallery/images/f/f3/SMG%2BSMG2_Rosalina.png), © Nintendo
+- img/pics/r-shy-guy.jpg: Shy Guy artwork from Super Mario Wiki (https://mario.wiki.gallery/images/b/b2/MPS_Shy_Guy_Artwork.png), © Nintendo
+- img/pics/r-toad.jpg: Toad artwork from Super Mario Wiki (https://mario.wiki.gallery/images/5/53/SMG1%2BSMG2_Toad.png), © Nintendo
+- img/pics/r-toadette.jpg: Toadette artwork from Super Mario Wiki (https://mario.wiki.gallery/images/7/7d/SMBW_Toadette.png), © Nintendo
+- img/pics/r-waluigi.jpg: Waluigi artwork from Super Mario Wiki (https://mario.wiki.gallery/images/2/27/SuperMarioParty_Waluigi.png), © Nintendo
+- img/pics/r-wario.jpg: Wario artwork from Super Mario Wiki (https://mario.wiki.gallery/images/2/29/SMPWario.png), © Nintendo
+- img/pics/r-yoshi.jpg: Yoshi artwork from Super Mario Wiki (https://mario.wiki.gallery/images/5/5f/SMPJ_Yoshi.png), © Nintendo
+- img/pics/r-princess-daisy.jpg: Princess Daisy artwork from Super Mario Wiki (https://mario.wiki.gallery/images/b/b5/Daisy_Render_MP6_2.png), © Nintendo

@@ -17,6 +17,7 @@
   var BASE_POINTS = 100;        // flat 100 per question
   var SPEED_BONUS_MAX = 100;
   var VIDEO_DRAW_CHANCE = 0.12;
+  var PIC_DRAW_CHANCE = 0.30;   // picture questions (q.pic): ~1 in 3-4 overall
   var LIGHTNING_SECONDS = 10;   // lightning round timer (every 4th block, Q1-Q5)
   var LIGHTNING_POINTS = 200;   // lightning round base points (double)
   var LIGHTNING_BLOCK_EVERY = 4;
@@ -143,6 +144,22 @@
         askedIds[v.id] = true;
         recentCats.push(v.category);
         return { q: v, askedIds: askedIds, recentCats: recentCats };
+      }
+    }
+
+    // picture draws (~30%), avoiding the same category back to back
+    if (!hardOnly && Math.random() < PIC_DRAW_CHANCE) {
+      var last = recentCats[recentCats.length - 1];
+      var dis2 = {}; disabled.forEach(function (c) { dis2[c] = true; });
+      var pics = bank.filter(function (q) {
+        return q.pic && q.image && !askedIds[q.id] && !dis2[q.category] && q.category !== last && familyOk(q, familyMode);
+      });
+      if (pics.length) {
+        var pq = pics[Math.floor(Math.random() * pics.length)];
+        askedIds[pq.id] = true;
+        recentCats.push(pq.category);
+        if (recentCats.length > 8) recentCats = recentCats.slice(-8);
+        return { q: pq, askedIds: askedIds, recentCats: recentCats };
       }
     }
 

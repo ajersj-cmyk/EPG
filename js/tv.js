@@ -1538,8 +1538,9 @@
       var q = bank[i];
       if (!q) continue;
       var text = q.question || q.text || '';
-      if (text.length > 140 || text.length < 15) continue;
       if (q.kid_safe === false) continue;
+      if (q.pic && q.image) { arPoolImg.push(q); continue; } // picture teasers: own rotation
+      if (text.length > 140 || text.length < 15) continue;
       if (!arAnswerFor(q)) continue;
       // Favor easy/medium; keep ~15% of hard ones (deterministic per id).
       var diff = q.difficulty || 'medium';
@@ -1554,8 +1555,18 @@
     arSaveQ();
   }
 
+  var arPicTurn = 0;
   function arPickTeaser() {
     arBuildPool();
+    // every 3rd teaser is a picture question (Jordan loves those)
+    if (arPoolImg.length && (++arPicTurn % 3 === 0)) {
+      var cands = arPoolImg.filter(function (x) { return arRecentIds.indexOf(x.id) < 0; });
+      if (!cands.length) { arRecentIds = []; cands = arPoolImg; }
+      var pq = cands[Math.floor(Math.random() * cands.length)];
+      arRecentIds.push(pq.id); if (arRecentIds.length > 40) arRecentIds.shift();
+      arLastTeaser = pq;
+      return pq;
+    }
     if (arOrder.length) {
       if (arQ.idx >= arOrder.length) {          // full pass done: reshuffle
         arQ.seed = (arQ.seed * 1103515245 + 12345) >>> 0 || 1;
