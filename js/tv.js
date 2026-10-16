@@ -1635,7 +1635,7 @@
     var list = Object.keys(statsCache).map(function (k) { return statsCache[k]; })
       .filter(function (s) { return moneyVal(s, view, tk) > 0; })
       .sort(function (a, b) { return moneyVal(b, view, tk) - moneyVal(a, view, tk); })
-      .slice(0, 5);
+      .slice(0, view === 'all' ? 4 : 5); // lifetime rows carry a BEST DAY line, so show 4 to stay clear of the ticker
     var rows;
     if (list.length) {
       rows = '<div class="ar-rows money-rows">';

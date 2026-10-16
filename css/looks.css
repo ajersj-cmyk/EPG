@@ -199,3 +199,8 @@ body[class*="look-"] .ar-row .ar-name, body[class*="look-"] .ar-row .ar-rank { f
 body[class*="look-"] .ar-row .ar-score, body[class*="look-"] .ar-streak-now, body[class*="look-"] .ar-streak-best, body[class*="look-"] .ar-colhead { font-family: "Oswald", var(--sans); font-weight: 700; color: var(--lk-accent); text-shadow: var(--lk-emboss-sm); }
 body.look-blue .ar-row .ar-score { color: #f6c544; }
 body[class*="look-"] .ar-chase { font-family: "Oswald", var(--sans); letter-spacing: 0.12em; color: var(--lk-hot); }
+/* boards fit under the ticker: tighter title and rows */
+body[class*="look-"] .ar-card .board-title { font-size: 5.6vmin; margin-bottom: 1vmin; }
+body[class*="look-"] .ar-card .ar-eyebrow { margin-bottom: 0.4vmin; }
+body[class*="look-"] .ar-rows .ar-row { padding-top: 0.6vmin; padding-bottom: 0.6vmin; min-height: 0; }
+body[class*="look-"] .ar-rows { gap: 0.8vmin; }
