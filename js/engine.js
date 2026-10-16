@@ -26,11 +26,11 @@
     disney: 2.5, pixar: 2.5, parks: 2, jeopardy: 2.5,
     movies: 1.5, tv: 1.5, music: 1.5, toons: 1.5,
     toys: 1, mixed: 1,
-    dozen: 3, millionaire: 2.5,
+    dozen: 3, millionaire: 2.5, mario: 3, kidsmovies: 2.5,
   };
   var ALL_CATS = ['movies', 'music', 'tv', 'sports', 'games', 'toys', 'pokemon',
     'disney', 'pixar', 'parks', 'toons', 'jeopardy', 'mixed', 'marvel',
-    'dozen', 'millionaire'];
+    'dozen', 'millionaire', 'mario', 'kidsmovies'];
 
   var FAMILY_BLOCK = /\b(damn|bitch|bastard|shit|fuck|porn|nude|naked|cocaine|marijuana|whore|slut)\b/i;
 
@@ -60,6 +60,7 @@
     parts.push('data/questions-dozen.json');
     parts.push('data/questions-millionaire.json');
     parts.push('data/questions-jeopardy-style.json');
+    parts.push('data/questions-real.json');
     return Promise.all(parts.map(function (u) {
       // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {
@@ -288,7 +289,9 @@
     return String(n || '').trim().replace(/[<>&"']/g, '').slice(0, 18);
   }
 
-  function fmtCategory(c) { return String(c || '').replace(/-/g, ' ').toUpperCase(); }
+  var CAT_LABELS = { disney: 'DISNEY', pixar: 'PIXAR', parks: 'DISNEY PARKS', mario: 'SUPER MARIO',
+    kidsmovies: "KIDS' MOVIES", dozen: 'THE DOZEN', millionaire: 'MILLIONAIRE', jeopardy: 'JEOPARDY' };
+  function fmtCategory(c) { var k = String(c || ''); return CAT_LABELS[k] || k.replace(/-/g, ' ').toUpperCase(); }
   function fmtNum(n) { return Number(n || 0).toLocaleString('en-US'); }
   function fmtDelta(d) { d = Number(d || 0); return (d > 0 ? '+' : '') + fmtNum(d); }
   function escapeHtml(s) {
