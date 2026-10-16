@@ -1005,7 +1005,7 @@
 
   // "NEW HIGH SCORE — REESE GETS TO 400" with named milestone tiers
   // Tier visuals escalate: t1 gold burst → t3 screen shake → t6 confetti rain
-  function celebrationMoment(name, score, tier) {
+  function celebrationMoment(name, score, tier, total) {
     tier = tier || 1;
     var tierKey = 'milestoneT' + Math.min(6, Math.max(1, tier));
     var tierName = ct(tierKey);
@@ -1020,7 +1020,8 @@
       html: '<div class="moment-kicker glow">' + E.escapeHtml(ct('celebrationKicker')) + '</div>' +
         '<div class="moment-tier">' + E.escapeHtml(tierName) + '</div>' +
         '<div class="moment-name huge">' + escName(name) + '</div>' +
-        '<div class="moment-line">Gets to ' + E.fmtCash(score) + '</div>' +
+        '<div class="moment-line">PASSES ' + E.fmtCash(score) + ' TODAY</div>' +
+        (total ? '<div class="moment-sub">TOTAL ' + E.fmtCash(total) + '</div>' : '') +
         (tier >= 6 ? '<div class="confetti-rain"></div>' : '')
     };
   }
@@ -2056,7 +2057,7 @@
     }
     if (r.highScoreCelebrations && r.highScoreCelebrations.length) {
       var hc = r.highScoreCelebrations[0];
-      queueMoment(celebrationMoment(hc.name, hc.score, hc.tier));
+      queueMoment(celebrationMoment(hc.name, hc.score, hc.tier, hc.dayTotal));
     }
     (r.streakCallouts || []).slice()
       .sort(function (a, b) { return b.streak - a.streak; })
