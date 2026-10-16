@@ -36,8 +36,8 @@ body.look-blue {
 body[class*="look-"] #phase-question .q-inner,
 body[class*="look-"] #phase-reveal .q-inner,
 body[class*="look-"] .ar-card,
-body[class*="look-"] .wager-inner,
-body[class*="look-"] .podium-inner {
+body[class*="look-"] #phase-wager,
+body[class*="look-"] #phase-podium {
   background: var(--lk-fill);
   border: 3px solid var(--lk-frame);
   border-radius: 1.4vmin;
@@ -45,7 +45,7 @@ body[class*="look-"] .podium-inner {
   text-align: center;
 }
 body.look-blue #phase-question .q-inner, body.look-blue #phase-reveal .q-inner,
-body.look-blue .ar-card, body.look-blue .wager-inner, body.look-blue .podium-inner { border-color: transparent; background-clip: padding-box; }
+body.look-blue .ar-card, body.look-blue #phase-wager, body.look-blue #phase-podium { border-color: transparent; background-clip: padding-box; }
 body[class*="look-"] .rail-card { background: var(--lk-fill); border: 2px solid var(--lk-frame-dark); box-shadow: none; }
 
 /* ---------- centered layout ---------- */
@@ -171,3 +171,13 @@ body[class*="look-"] .tv-clock, body[class*="look-"] .tv-players b { color: #fff
 body.look-blue .pips i.now, body.look-blue .board li:nth-child(1) .rank { color: #f6c544; }
 body.look-blue .pips i.now { background: #f6c544; }
 body[class*="look-"] .wordmark small { color: var(--lk-accent); }
+
+/* stage frames + wager drama follow the look (static: no pulsing filter) */
+body[class*="look-"] .tv-stage.wagerup-frame::after { border-color: var(--lk-hot); box-shadow: none; animation: none; opacity: 1; }
+body[class*="look-"] #phase-wager .wager-title { animation: titleIn 0.7s var(--ease) both; filter: none; }
+body[class*="look-"] #phase-wager::before { background: none; animation: none; }
+body[class*="look-"] .wager-up-tag { background: var(--lk-hot); color: var(--lk-hot-ink); box-shadow: none; animation: none; font-family: "Oswald", var(--sans); }
+body[class*="look-"] .wager-ring .ring-fg { stroke: var(--lk-accent); }
+body.look-blue .wager-ring .ring-fg { stroke: #f6c544; }
+body[class*="look-"] .wager-hint b { color: var(--lk-hot); }
+body[class*="look-"] #phase-wager .wager-title { font-size: min(13vmin, 9rem); }
