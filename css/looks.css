@@ -204,3 +204,7 @@ body[class*="look-"] .ar-card .board-title { font-size: 5.6vmin; margin-bottom: 
 body[class*="look-"] .ar-card .ar-eyebrow { margin-bottom: 0.4vmin; }
 body[class*="look-"] .ar-rows .ar-row { padding-top: 0.6vmin; padding-bottom: 0.6vmin; min-height: 0; }
 body[class*="look-"] .ar-rows { gap: 0.8vmin; }
+/* Keep text clear of the neon frame: inner padding + smaller long text beside a photo */
+body[class*="look-"] #phase-question .q-inner, body[class*="look-"] #phase-reveal .q-inner { padding-top: 4.2vmin; padding-bottom: 3.2vmin; box-sizing: border-box; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.q-long { font-size: 3.2vmin; max-width: 26ch; }
+body[class*="look-"] #phase-question .q-media.bleed ~ .q-inner .q-text.q-xlong { font-size: 2.8vmin; max-width: 28ch; }
