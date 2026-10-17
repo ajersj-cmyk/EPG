@@ -416,3 +416,337 @@
 - img/pics/r-zoom-donkey-kong.jpg: crop of Donkey Kong artwork, Super Mario Wiki
 - img/pics/r-zoom-goomba.jpg: crop of Goomba artwork, Super Mario Wiki
 - img/pics/r-zoom-kamek.jpg: crop of Kamek artwork, Super Mario Wiki
+### Batch 3 (Oct 16): Marvel Cinematic Universe Wiki, Disney Wiki, DreamWorks Wiki, Despicable Me Wiki, Sonic Wiki, LEGO Wiki, Wookieepedia (Fandom, CC BY-SA), Super Mario Wiki, Wikipedia/Wikimedia Commons ride photos, PokeAPI artwork. Characters © their owners (Disney, Pixar, Marvel, Lucasfilm, DreamWorks, Illumination, SEGA, The LEGO Group, Nintendo, The Pokémon Company).
+- img/pics/hero3-nebula.jpg: Nebula, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/37/Nebula_Vol._3.jpg/revision/latest)
+- img/pics/hero3-valkyrie.jpg: Valkyrie, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/d8/Valkyrie_in_LoveAndThunder_Poster.png/revision/latest)
+- img/pics/hero3-korg.jpg: Korg, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/80/Korg_-_Infobox.jpg/revision/latest)
+- img/pics/hero3-yondu-udonta.jpg: Yondu Udonta, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Yondu_Infobox.png/revision/latest)
+- img/pics/hero3-james-rhodes.jpg: James Rhodes, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/7/77/WarMachine-EndgameProfile.jpg/revision/latest)
+- img/pics/hero3-pepper-potts.jpg: Pepper Potts, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/d4/Rescue_Infobox.png/revision/latest)
+- img/pics/hero3-happy-hogan.jpg: Happy Hogan, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/89/Happy_Hogan_Infobox.png/revision/latest)
+- img/pics/hero3-ned-leeds.jpg: Ned Leeds, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/88/Ned_Leeds_Infobox.jpg/revision/latest)
+- img/pics/hero3-kate-bishop.jpg: Kate Bishop, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/d9/Kate_Bishop_Infobox.jpg/revision/latest)
+- img/pics/hero3-kamala-khan.jpg: Kamala Khan, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/22/Ms._Marvel_Infobox.png/revision/latest)
+- img/pics/hero3-marc-spector.jpg: Marc Spector, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/ea/Moon_Knight_Poster_Textless.png/revision/latest)
+- img/pics/hero3-jennifer-walters.jpg: Jennifer Walters, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/5/5a/She-Hulk_-_Infobox.jpg/revision/latest)
+- img/pics/hero3-america-chavez.jpg: America Chavez, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/a/a8/America_Chavez.png/revision/latest)
+- img/pics/hero3-mobius-m-mobius.jpg: Mobius M. Mobius, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/2d/Mobius_M._Mobius.png/revision/latest)
+- img/pics/hero3-miss-minutes.jpg: Miss Minutes, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/29/Miss_Minutes_Profile.png/revision/latest)
+- img/pics/hero3-peggy-carter.jpg: Peggy Carter, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/6/6b/Peggy_Carter_Infobox.png/revision/latest)
+- img/pics/hero3-hank-pym.jpg: Hank Pym, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/0e/Hank_Pym_Quantumania.jpg/revision/latest)
+- img/pics/hero3-janet-van-dyne.jpg: Janet van Dyne, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/c9/Janet_van_Dyne_Quantumania.jpg/revision/latest)
+- img/pics/hero3-yelena-belova.jpg: Yelena Belova, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/8e/Yelena_Belova_Infobox.jpg/revision/latest)
+- img/pics/hero3-m-baku.jpg: M'Baku, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/e4/M%27Baku_Infobox.png/revision/latest)
+- img/pics/hero3-nakia.jpg: Nakia, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/2/2f/Black_Panther_Wakanda_Forever_poster_025_Textless.jpg/revision/latest)
+- img/pics/hero3-talos.jpg: Talos, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/a/a1/Talos_Infobox.png/revision/latest)
+- img/pics/hero3-monica-rambeau.jpg: Monica Rambeau, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/dc/Monica_Rambeau_Profile.png/revision/latest)
+- img/pics/hero3-riri-williams.jpg: Riri Williams, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/4/48/Ironheart_Infobox.jpg/revision/latest)
+- img/pics/hero3-sersi.jpg: Sersi, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/cc/Sersi_Character_Poster.jpg/revision/latest)
+- img/pics/hero3-ikaris.jpg: Ikaris, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Ikaris_Character_Poster.jpg/revision/latest)
+- img/pics/hero3-thena.jpg: Thena, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/db/Thena_First_Look.jpg/revision/latest)
+- img/pics/villain3-arnim-zola.jpg: Arnim Zola, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/6/67/Arnim_Zola.png/revision/latest)
+- img/pics/villain3-alexander-pierce.jpg: Alexander Pierce, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/3/3e/Alexander_Pierce_profile.png/revision/latest)
+- img/pics/villain3-helmut-zemo.jpg: Helmut Zemo, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/d/d5/TF%26TWS_Textless_Character_Posters_02.jpg/revision/latest)
+- img/pics/villain3-ava-starr.jpg: Ava Starr, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/4/4f/Ghost_Infobox.jpg/revision/latest)
+- img/pics/villain3-emil-blonsky.jpg: Emil Blonsky, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/a/a4/Abomination_Infobox.jpg/revision/latest)
+- img/pics/villain3-grandmaster.jpg: Grandmaster, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/9/92/Thor_Ragnarok_Textless_Character_Posters_06.jpg/revision/latest)
+- img/pics/villain3-surtur.jpg: Surtur, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/e7/Surtur_Profile.png/revision/latest)
+- img/pics/villain3-proxima-midnight.jpg: Proxima Midnight, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/c6/Proxima02.jpg/revision/latest)
+- img/pics/villain3-corvus-glaive.jpg: Corvus Glaive, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/0/0f/Corvus_Glaive_Infobox.png/revision/latest)
+- img/pics/villain3-cull-obsidian.jpg: Cull Obsidian, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/f/f5/Cull_Obsidian.JPG/revision/latest)
+- img/pics/villain3-gorr.jpg: Gorr, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/7/71/Gorr_Infobox.png/revision/latest)
+- img/pics/villain3-high-evolutionary.jpg: High Evolutionary, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/c2/High_Evolutionary_Infobox.png/revision/latest)
+- img/pics/villain3-ulysses-klaue.jpg: Ulysses Klaue, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/f/f7/Black_Panther_Textless_Character_Poster_02.jpg/revision/latest)
+- img/pics/villain3-agatha-harkness.jpg: Agatha Harkness, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/a/a5/Agatha_Harkness_Infobox.jpg/revision/latest)
+- img/pics/villain3-namor.jpg: Namor, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/8/89/Namor_Profile.png/revision/latest)
+- img/pics/villain3-taserface.jpg: Taserface, image from marvelcinematicuniverse.fandom.com (https://static.wikia.nocookie.net/marvelcinematicuniverse/images/e/ef/TFace_Profile.JPG/revision/latest)
+- img/pics/dchar3-pocahontas.jpg: Pocahontas, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/7b/Profile_-_Pocahontas.jpeg/revision/latest)
+- img/pics/dchar3-meeko.jpg: Meeko, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/ff/Meeko_%28Pocahontas%29.jpg/revision/latest)
+- img/pics/dchar3-tiana.jpg: Tiana, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/fa/Profile_-_Tiana.jpeg/revision/latest)
+- img/pics/dchar3-kuzco.jpg: Kuzco, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/ff/Profile_-_Kuzco.jpeg/revision/latest)
+- img/pics/dchar3-kronk.jpg: Kronk, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/64/Kronk_.jpg/revision/latest)
+- img/pics/dchar3-hercules.jpg: Hercules, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/70/Profile_-_Hercules.jpeg/revision/latest)
+- img/pics/dchar3-megara.jpg: Megara, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/9/91/Profile_-_Megara.jpeg/revision/latest)
+- img/pics/dchar3-quasimodo.jpg: Quasimodo, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/7f/Quasimodo.jpeg/revision/latest)
+- img/pics/dchar3-esmeralda.jpg: Esmeralda, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/e4/Profile_-_Esmeralda.png/revision/latest)
+- img/pics/dchar3-fairy-godmother.jpg: Fairy Godmother, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/d/d9/Profile_-_Fairy_Godmother.jpeg/revision/latest)
+- img/pics/dchar3-aurora.jpg: Aurora, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/2/2a/Profile_-_Aurora.jpeg/revision/latest)
+- img/pics/dchar3-snow-white.jpg: Snow White, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/33/Profile_-_Snow_White.jpeg/revision/latest)
+- img/pics/dchar3-grumpy.jpg: Grumpy, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/ef/Profile_-_Grumpy.png/revision/latest)
+- img/pics/dchar3-dopey.jpg: Dopey, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/f7/Profile_-_Dopey.png/revision/latest)
+- img/pics/dchar3-peter-pan.jpg: Peter Pan, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/85/1085519-peter_pan_782_super.jpg/revision/latest)
+- img/pics/dchar3-mr-smee.jpg: Mr. Smee, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/6f/Mr._Smee_Profile.jpg/revision/latest)
+- img/pics/dchar3-pinocchio.jpg: Pinocchio, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/85/595152-pinocchio2_large.jpg/revision/latest)
+- img/pics/dchar3-jiminy-cricket.jpg: Jiminy Cricket, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/f0/Profile_-_Jiminy_Cricket.jpeg/revision/latest)
+- img/pics/dchar3-alice.jpg: Alice, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/75/Profile_-_Alice.jpeg/revision/latest)
+- img/pics/dchar3-cheshire-cat.jpg: Cheshire Cat, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/8e/DisneyCheshireCat.jpg/revision/latest)
+- img/pics/dchar3-mad-hatter.jpg: Mad Hatter, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/1/19/Profile_-_Mad_Hatter.jpeg/revision/latest)
+- img/pics/dchar3-winnie-the-pooh.jpg: Winnie the Pooh, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/0/03/Profile_-_Winnie_the_Pooh.png/revision/latest)
+- img/pics/dchar3-tigger.jpg: Tigger, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/60/Profile_-_Tigger.png/revision/latest)
+- img/pics/dchar3-eeyore.jpg: Eeyore, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/1/1c/Profile_-_Eeyore.png/revision/latest)
+- img/pics/dchar3-piglet.jpg: Piglet, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/5d/Profile_-_Piglet.png/revision/latest)
+- img/pics/dchar3-raya.jpg: Raya, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/8b/Profile_-_Raya.jpg/revision/latest)
+- img/pics/dchar3-sisu.jpg: Sisu, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/2/20/Profile_-_Sisu.jpeg/revision/latest)
+- img/pics/dchar3-asha.jpg: Asha, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/4/40/Profile_-_Asha.jpg/revision/latest)
+- img/pics/dchar3-kristoff.jpg: Kristoff, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/b/b4/Profile_-_Kristoff.jpeg/revision/latest)
+- img/pics/dchar3-daisy-duck.jpg: Daisy Duck, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/c/c9/Classic_Daisy_Duck.png/revision/latest)
+- img/pics/dchar3-pluto.jpg: Pluto, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/1/13/Pluto_the_pup.png/revision/latest)
+- img/pics/dchar3-scrooge-mcduck.jpg: Scrooge McDuck, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/54/Scrooge_McDuck.png/revision/latest)
+- img/pics/dchar3-jumba-jookiba.jpg: Jumba Jookiba, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/3d/Profile_-_Jumba.jpg/revision/latest)
+- img/pics/dchar3-pleakley.jpg: Pleakley, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/4/48/Profile_-_Pleakley.jpg/revision/latest)
+- img/pics/dvil3-queen-of-hearts.jpg: Queen of Hearts, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/61/Profile_-_Queen_of_Hearts.jpeg/revision/latest)
+- img/pics/dvil3-hans.jpg: Hans, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/ee/Profile_-_Hans.jpeg/revision/latest)
+- img/pics/dvil3-lady-tremaine.jpg: Lady Tremaine, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/4/42/Profile_-_Lady_Tremaine.jpeg/revision/latest)
+- img/pics/dvil3-dr-facilier.jpg: Dr. Facilier, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/3f/Profile_-_Dr._Facilier.jpeg/revision/latest)
+- img/pics/dvil3-ratcliffe.jpg: Ratcliffe, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/79/Profile_-_Governor_Ratcliffe.png/revision/latest)
+- img/pics/dvil3-frollo.jpg: Frollo, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/64/Judge_Frollo.jpg/revision/latest)
+- img/pics/dvil3-clayton.jpg: Clayton, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/e2/Clayton_profile_.jpg/revision/latest)
+- img/pics/dvil3-shere-khan.jpg: Shere Khan, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/9/93/Profile_-_Shere_Khan.jpeg/revision/latest)
+- img/pics/dvil3-kaa.jpg: Kaa, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/f8/Profile_-_Kaa.jpeg/revision/latest)
+- img/pics/dvil3-madame-medusa.jpg: Madame Medusa, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/5d/Madame-Medusa_.png/revision/latest)
+- img/pics/dvil3-prince-john.jpg: Prince John, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/b/b1/Prince_John_Disney.jpg/revision/latest)
+- img/pics/dvil3-magnifico.jpg: Magnifico, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/b/b5/Profile_-_King_Magnifico.jpg/revision/latest)
+- img/pics/dvil3-captain-gantu.jpg: Captain Gantu, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/50/Profile_-_Captain_Gantu.jpeg/revision/latest)
+- img/pics/dvil3-oogie-boogie.jpg: Oogie Boogie, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/32/Profile_-_Oogie_Boogie.jpeg/revision/latest)
+- img/pics/pchar3-bo-peep.jpg: Bo Peep, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/30/Profile_-_Bo_Peep.jpeg/revision/latest)
+- img/pics/pchar3-mr-potato-head.jpg: Mr. Potato Head, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/55/Profile_-_Mr._Potato_Head.jpeg/revision/latest)
+- img/pics/pchar3-emperor-zurg.jpg: Emperor Zurg, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/c/c5/Toy-story2-disneyscreencaps.com-8243.jpg/revision/latest)
+- img/pics/pchar3-bullseye.jpg: Bullseye, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/d/d9/Profile_-_Bullseye.png/revision/latest)
+- img/pics/pchar3-gabby-gabby.jpg: Gabby Gabby, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/2/20/Gabby_TS4.jpg/revision/latest)
+- img/pics/pchar3-duke-caboom.jpg: Duke Caboom, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/87/Profile_-_Duke_Caboom.png/revision/latest)
+- img/pics/pchar3-bing-bong.jpg: Bing Bong, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/a/ab/Profile_-_Bing_Bong.jpg/revision/latest)
+- img/pics/pchar3-ember-lumen.jpg: Ember Lumen, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/36/Profile_-_Ember_Lumen.png/revision/latest)
+- img/pics/pchar3-wade-ripple.jpg: Wade Ripple, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/0/0f/Profile_-_Wade_Ripple.png/revision/latest)
+- img/pics/pchar3-alberto-scorfano.jpg: Alberto Scorfano, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/c/ce/Profile_-_Alberto_Scorfano.png/revision/latest)
+- img/pics/pchar3-joe-gardner.jpg: Joe Gardner, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/31/Profile_-_Joe_Gardner.png/revision/latest)
+- img/pics/pchar3-ian-lightfoot.jpg: Ian Lightfoot, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/c/c5/Profile_-_Ian_Lightfoot.jpg/revision/latest)
+- img/pics/pchar3-flik.jpg: Flik, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/86/Flik%E2%80%99s_Profile.jpeg/revision/latest)
+- img/pics/pchar3-hopper.jpg: Hopper, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/4/46/Profile_-_Hopper.jpg/revision/latest)
+- img/pics/pchar3-heimlich.jpg: Heimlich, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/7/75/Profile_-_Circus_Bugs.png/revision/latest)
+- img/pics/pchar3-crush.jpg: Crush, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/1/19/Profile_-_Crush.jpg/revision/latest)
+- img/pics/pchar3-hank.jpg: Hank, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/d/d1/Profile_-_Hank.jpg/revision/latest)
+- img/pics/pchar3-doc-hudson.jpg: Doc Hudson, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/e8/Profile-Doc_hudson.png/revision/latest)
+- img/pics/pchar3-sally-carrera.jpg: Sally Carrera, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/2/27/Profile-_Sally_Carrera.png/revision/latest)
+- img/pics/pchar3-celia-mae.jpg: Celia Mae, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/9/96/Profile_-_Celia.png/revision/latest)
+- img/pics/pchar3-randall-boggs.jpg: Randall Boggs, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/4/47/Profile_-_Randall_Boggs.jpeg/revision/latest)
+- img/pics/pchar3-mr-incredible.jpg: Mr. Incredible, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/d/d2/Profile_-_Bob_Parr.jpeg/revision/latest)
+- img/pics/pchar3-elastigirl.jpg: Elastigirl, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/3/3a/Profile_-_Helen_Parr.jpeg/revision/latest)
+- img/pics/pchar3-violet-parr.jpg: Violet Parr, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/e/e0/Profile_-_Violet_Parr.jpeg/revision/latest)
+- img/pics/pchar3-dash-parr.jpg: Dash Parr, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/5/5e/Profile_-_Dash_Parr.jpeg/revision/latest)
+- img/pics/pchar3-syndrome.jpg: Syndrome, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/9/96/Profile_-_Syndrome.png/revision/latest)
+- img/pics/pchar3-colette-tatou.jpg: Colette Tatou, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/a/a4/Profile_-_Colette_Tatou.jpg/revision/latest)
+- img/pics/pchar3-anton-ego.jpg: Anton Ego, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/9/91/Profile_-_Anton_Ego.jpg/revision/latest)
+- img/pics/pchar3-ernesto-de-la-cruz.jpg: Ernesto de la Cruz, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/82/Profile_-_Ernesto_de_la_Cruz.png/revision/latest)
+- img/pics/pchar3-dante.jpg: Dante, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/8/82/Profile_-_Dante.jpeg/revision/latest)
+- img/pics/pchar3-embarrassment.jpg: Embarrassment, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/d/dc/Profile_-_Embarrassment.jpg/revision/latest)
+- img/pics/pchar3-envy.jpg: Envy, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/6/65/Profile_-_Envy.jpg/revision/latest)
+- img/pics/pchar3-queen-elinor.jpg: Queen Elinor, image from disney.fandom.com (https://static.wikia.nocookie.net/disney/images/f/f5/Profile_-_Queen_Elinor.jpeg/revision/latest)
+- img/pics/dw3-monkey.jpg: Monkey, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/9/9d/Monkey_Profile.jpg/revision/latest)
+- img/pics/dw3-viper.jpg: Viper, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/7/70/Viper_Profile.jpg/revision/latest)
+- img/pics/dw3-crane.jpg: Crane, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/6/6f/Crane_Profile.jpg/revision/latest)
+- img/pics/dw3-lord-shen.jpg: Lord Shen, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/5/56/Lord_Shen_Profile.jpg/revision/latest)
+- img/pics/dw3-kai.jpg: Kai, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/c/ca/Kai_Profile.jpg/revision/latest)
+- img/pics/dw3-stoick-the-vast.jpg: Stoick the Vast, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/3/35/Stoick_the_Vast_Profile.jpg/revision/latest)
+- img/pics/dw3-fishlegs-ingerman.jpg: Fishlegs Ingerman, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/7/79/Fishlegs_Ingerman_Profile.jpg/revision/latest)
+- img/pics/dw3-stormfly.jpg: Stormfly, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/0/0d/Stormfly_Profile.jpg/revision/latest)
+- img/pics/dw3-megamind.jpg: Megamind, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/d/de/Megamind-poster-3-wallpaper.jpg/revision/latest)
+- img/pics/dw3-metro-man.jpg: Metro Man, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/d/db/Metro_Man_Profile.jpg/revision/latest)
+- img/pics/dw3-guy-diamond.jpg: Guy Diamond, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/6/68/Guy_Diamond_Profile.jpg/revision/latest)
+- img/pics/dw3-biggie.jpg: Biggie, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/9/94/Biggie_Profile.jpg/revision/latest)
+- img/pics/dw3-mr-snake.jpg: Mr. Snake, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/6/66/Mr._Snake_Profile.jpg/revision/latest)
+- img/pics/dw3-mr-shark.jpg: Mr. Shark, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/1/19/Mr._Shark_Profile.jpg/revision/latest)
+- img/pics/dw3-ms-tarantula.jpg: Ms. Tarantula, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/9/9e/Ms._Tarantula_Profile.jpg/revision/latest)
+- img/pics/dw3-diane-foxington.jpg: Diane Foxington, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/c/c8/Diane_Foxington.png/revision/latest)
+- img/pics/dw3-perrito.jpg: Perrito, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/d/d1/Perrito_Profile.jpg/revision/latest)
+- img/pics/dw3-kitty-softpaws.jpg: Kitty Softpaws, image from dreamworks.fandom.com (https://static.wikia.nocookie.net/dreamworks/images/c/c7/Kitty_Softpaws_Profile.jpg/revision/latest)
+- img/pics/il3-lucy-wilde.jpg: Lucy Wilde, image from despicableme.fandom.com (https://static.wikia.nocookie.net/despicableme/images/b/b1/Lucy_Wilde_DM4.webp/revision/latest)
+- img/pics/il3-el-macho.jpg: El Macho, image from despicableme.fandom.com (https://static.wikia.nocookie.net/despicableme/images/a/aa/Eduardo.png/revision/latest)
+- img/pics/il3-maxime-le-mal.jpg: Maxime Le Mal, image from despicableme.fandom.com (https://static.wikia.nocookie.net/despicableme/images/3/31/Maxime_Le_Mal_%289%29.png/revision/latest)
+- img/pics/il3-herb-overkill.jpg: Herb Overkill, image from despicableme.fandom.com (https://static.wikia.nocookie.net/despicableme/images/5/5a/HerbOverkill.jpeg/revision/latest)
+- img/pics/sonic-sonic-the-hedgehog.jpg: Sonic the Hedgehog, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/1/10/SRCSonic.png/revision/latest)
+- img/pics/sonic-miles-tails-prower.jpg: Miles "Tails" Prower, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/a/a8/SRCTails.png/revision/latest)
+- img/pics/sonic-knuckles-the-echidna.jpg: Knuckles the Echidna, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/2/2c/SRCKnuckles.png/revision/latest)
+- img/pics/sonic-shadow-the-hedgehog.jpg: Shadow the Hedgehog, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/4/45/SRCShadow.png/revision/latest)
+- img/pics/sonic-doctor-eggman.jpg: Doctor Eggman, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/2/23/SRCWEggman.png/revision/latest)
+- img/pics/sonic-amy-rose.jpg: Amy Rose, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/1/12/SRCAmy.png/revision/latest)
+- img/pics/sonic-rouge-the-bat.jpg: Rouge the Bat, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/2/21/SRCWRouge.png/revision/latest)
+- img/pics/sonic-cream-the-rabbit.jpg: Cream the Rabbit, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/2/28/SRCWCream.png/revision/latest)
+- img/pics/sonic-big-the-cat.jpg: Big the Cat, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/3/33/SonicBlitzBigRender.png/revision/latest)
+- img/pics/sonic-silver-the-hedgehog.jpg: Silver the Hedgehog, image from sonic.fandom.com (https://static.wikia.nocookie.net/sonic/images/5/50/SRCWSilver.png/revision/latest)
+- img/pics/lego-emmet-brickowski.jpg: Emmet Brickowski, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/9/9a/Emmet_from_%22The_Second_Part%22.jpeg/revision/latest)
+- img/pics/lego-wyldstyle.jpg: Wyldstyle, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/3/36/Lucy-70849.png/revision/latest)
+- img/pics/lego-unikitty.jpg: Unikitty, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/6/62/70822-3.jpg/revision/latest)
+- img/pics/lego-lord-business.jpg: Lord Business, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/2/25/President_Buisness.jpg/revision/latest)
+- img/pics/lego-metalbeard.jpg: MetalBeard, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/0/06/70807-metalbeard.jpg/revision/latest)
+- img/pics/lego-vitruvius.jpg: Vitruvius, image from lego.fandom.com (https://static.wikia.nocookie.net/lego/images/6/66/Vitruvius_front.JPG/revision/latest)
+- img/pics/sw-yoda.jpg: Yoda, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png/revision/latest)
+- img/pics/sw-chewbacca.jpg: Chewbacca, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/25/Chewbacca-SWBC5cvr.png/revision/latest)
+- img/pics/sw-r2-d2.jpg: R2-D2, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/9/95/R2-D2-TROSOCE.png/revision/latest)
+- img/pics/sw-c-3po.jpg: C-3PO, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/a/a2/C-3PO-TROSTGG.png/revision/latest)
+- img/pics/sw-bb-8.jpg: BB-8, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/6/68/BB8-Fathead.png/revision/latest)
+- img/pics/sw-grogu.jpg: Grogu, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/0/06/Grogu-BoBFBox.png/revision/latest)
+- img/pics/sw-anakin-skywalker.jpg: Anakin Skywalker, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest)
+- img/pics/sw-luke-skywalker.jpg: Luke Skywalker, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/3/3d/LukeSkywalker.png/revision/latest)
+- img/pics/sw-leia-organa.jpg: Leia Organa, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/f/f1/Leia_Organa_TROS.png/revision/latest)
+- img/pics/sw-han-solo.jpg: Han Solo, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/e/e2/TFAHanSolo.png/revision/latest)
+- img/pics/sw-obi-wan-kenobi.jpg: Obi-Wan Kenobi, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/4/4e/ObiWanHS-SWE.jpg/revision/latest)
+- img/pics/sw-boba-fett.jpg: Boba Fett, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/6/62/BobaFettHS-SWI213.png/revision/latest)
+- img/pics/sw-jabba-desilijic-tiure.jpg: Jabba Desilijic Tiure, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/f/fe/Jabba_MMSWCA.png/revision/latest)
+- img/pics/sw-ahsoka-tano.jpg: Ahsoka Tano, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/27/Ahsoka-Tano-AG-2023.png/revision/latest)
+- img/pics/sw-ben-solo.jpg: Ben Solo, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/b/bc/KyloRenVFcover-TROS.png/revision/latest)
+- img/pics/sw-rey-skywalker.jpg: Rey Skywalker, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/2b/Rey_TROS_Fathead.png/revision/latest)
+- img/pics/sw-din-djarin.jpg: Din Djarin, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/4/46/DinDjarinArmor-CGSWG.png/revision/latest)
+- img/pics/sw-sheev-palpatine.jpg: Sheev Palpatine, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/e/e2/Palpatine-CEUEEd.png/revision/latest)
+- img/pics/sw-lando-calrissian.jpg: Lando Calrissian, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/29/LandoCalrissian-TROSOCE.png/revision/latest)
+- img/pics/sw-maul.jpg: Maul, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/8/89/MaulHS_SWI185.png/revision/latest)
+- img/pics/sw-padm-amidala.jpg: Padmé Amidala, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/b/b2/Padmegreenscrshot.jpg/revision/latest)
+- img/pics/sw-mace-windu.jpg: Mace Windu, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/27/MaceWindu_-WoSW.png/revision/latest)
+- img/pics/sw-qui-gon-jinn.jpg: Qui-Gon Jinn, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/f/f6/Qui-Gon_Jinn_Headshot_TPM.jpg/revision/latest)
+- img/pics/sw-k-2so.jpg: K-2SO, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/2/23/K2SO-SWBC35cvr.png/revision/latest)
+- img/pics/sw-chopper.jpg: Chopper, image from starwars.fandom.com (https://static.wikia.nocookie.net/starwars/images/b/bb/Chopper_Live_Action.png/revision/latest)
+- img/pics/toon-patrick-star.jpg: Patrick Star, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/2/28/Patrick_Star_character.png)
+- img/pics/toon-popeye.jpg: Popeye, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/2/26/Popeye_transparent.png)
+- img/pics/ride-jungle-cruise.jpg: Jungle Cruise, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/5/5b/Disneyland_park_-_Anaheim_Los_Angeles_California_USA_%289894255866%29.jpg)
+- img/pics/ride-seven-dwarfs-mine-train.jpg: Seven Dwarfs Mine Train, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/f/f0/Seven_Dwarfs_Mine_Train.jpg)
+- img/pics/ride-avatar-flight-of-passage.jpg: Avatar Flight of Passage, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/f/f1/Avatar_Flight_of_Passage_%2833825577724%29.jpg)
+- img/pics/ride-tron-lightcycle-power-run.jpg: Tron Lightcycle Power Run, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/2/26/TRON_Lightcycle_Power_Run%2C_attraction_exterior.jpg)
+- img/pics/ride-guardians-of-the-galaxy-cosmic-rewind.jpg: Guardians of the Galaxy: Cosmic Rewind, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/f/f6/Guardians_of_the_Galaxy_Cosmic_Rewind-Cast_Preview_%2852030963400%29_%28cropped%29.jpg)
+- img/pics/ride-slinky-dog-dash.jpg: Slinky Dog Dash, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/0/0a/Slinky_Dog_Dash_%2829262611338%29_%28cropped%29.jpg)
+- img/pics/ride-rock-n-roller-coaster-starring-aerosmith.jpg: Rock 'n' Roller Coaster Starring Aerosmith, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/c/ce/Rock_%27n%27_Roller_Coaster_Starring_The_Muppets_entrance.jpeg)
+- img/pics/ride-star-wars-rise-of-the-resistance.jpg: Star Wars: Rise of the Resistance, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/0/0a/Rise_of_the_Resistance.jpg)
+- img/pics/ride-millennium-falcon-smugglers-run.jpg: Millennium Falcon: Smugglers Run, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/7/7d/Galaxy%27s_Edge%2C_Disneyland.jpg)
+- img/pics/ride-incredicoaster.jpg: Incredicoaster, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/6/6f/Ride_Loading_Area.jpg)
+- img/pics/ride-radiator-springs-racers.jpg: Radiator Springs Racers, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/7/79/Radiator_Springs_Racers_at_Cars_Land.jpg)
+- img/pics/ride-the-twilight-zone-tower-of-terror.jpg: The Twilight Zone Tower of Terror, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/a/a0/The_Twilight_Zone_Tower_of_Terror%2C_2024.jpg)
+- img/pics/ride-mad-tea-party.jpg: Mad Tea Party, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/8/80/TeacupsMadTeaParty_wb.jpg)
+- img/pics/ride-walt-disney-world-monorail-system.jpg: Walt Disney World Monorail System, image from en.wikipedia.org (https://upload.wikimedia.org/wikipedia/commons/3/3f/Monorail_Coral.jpg)
+- img/pics/track-moo-moo-meadows.jpg: Moo Moo Meadows, image from www.mariowiki.com (https://mario.wiki.gallery/images/f/f4/Moo_Moo_Meadows_MKWii.png)
+- img/pics/track-coconut-mall.jpg: Coconut Mall, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/7d/Coconut_Mall_MKWii.png)
+- img/pics/track-dk-mountain.jpg: DK Mountain, image from www.mariowiki.com (https://mario.wiki.gallery/images/d/d9/MKDD_DKMountain.png)
+- img/pics/track-baby-park.jpg: Baby Park, image from www.mariowiki.com (https://mario.wiki.gallery/images/4/4d/MKDD_Baby_Park_Overview.png)
+- img/pics/track-shy-guy-falls.jpg: Shy Guy Falls, image from www.mariowiki.com (https://mario.wiki.gallery/images/0/02/MK8_Shy_Guy_Falls.png)
+- img/pics/track-royal-raceway.jpg: Royal Raceway, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/50/Royal_Raceway_MK64.png)
+- img/pics/track-yoshi-valley.jpg: Yoshi Valley, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/b7/Yoshi_Valley_MK64.png)
+- img/pics/track-maple-treeway.jpg: Maple Treeway, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/e9/MKW_Maple_Treeway_Overlook.png)
+- img/pics/track-mount-wario.jpg: Mount Wario, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/b9/MK8_Mount_Wario.png)
+- img/pics/track-electrodrome.jpg: Electrodrome, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/ba/MK8_Electrodrome.png)
+- img/pics/track-sweet-sweet-canyon.jpg: Sweet Sweet Canyon, image from www.mariowiki.com (https://mario.wiki.gallery/images/3/3c/MK8_Sweet_Sweet_Canyon.png)
+- img/pics/track-cheese-land.jpg: Cheese Land, image from www.mariowiki.com (https://mario.wiki.gallery/images/4/46/MKSC_Cheese_Land_Starting_Line.png)
+- img/pics/track-thwomp-ruins.jpg: Thwomp Ruins, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/7c/MK8_Thwomp_Ruins.png)
+- img/pics/track-twisted-mansion.jpg: Twisted Mansion, image from www.mariowiki.com (https://mario.wiki.gallery/images/c/cd/MK8_Twisted_Mansion.png)
+- img/pics/track-dolphin-shoals.jpg: Dolphin Shoals, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/e2/MK8_Dolphin_Shoals.png)
+- img/pics/track-water-park.jpg: Water Park, image from www.mariowiki.com (https://mario.wiki.gallery/images/d/d6/MK8_Water_Park.png)
+- img/pics/track-ninja-hideaway.jpg: Ninja Hideaway, image from www.mariowiki.com (https://mario.wiki.gallery/images/d/d2/MKT_Ninja_Hideaway_Scene.jpg)
+- img/pics/track-neo-bowser-city.jpg: Neo Bowser City, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/ed/NeoBowserCity.png)
+- img/pics/track-daisy-cruiser.jpg: Daisy Cruiser, image from www.mariowiki.com (https://mario.wiki.gallery/images/6/68/Daisy_Cruiser.png)
+- img/pics/track-peach-beach.jpg: Peach Beach, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/b3/PeachBeachIcon-MKDD.png)
+- img/pics/track-mushroom-gorge.jpg: Mushroom Gorge, image from www.mariowiki.com (https://mario.wiki.gallery/images/8/84/Mushroom_Gorge_MKWii.png)
+- img/pics/track-grumble-volcano.jpg: Grumble Volcano, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/55/Grumble_Volcano.png)
+- img/pics/track-dino-dino-jungle.jpg: Dino Dino Jungle, image from www.mariowiki.com (https://mario.wiki.gallery/images/2/23/DinoDinoJungleIcon-MKDD.png)
+- img/pics/track-music-park.jpg: Music Park, image from www.mariowiki.com (https://mario.wiki.gallery/images/2/23/MusicPark.png)
+- img/pics/enemy-spiny.jpg: Spiny, image from www.mariowiki.com (https://mario.wiki.gallery/images/3/3e/Spiny_Artwork_-_New_Super_Mario_Bros._2.png)
+- img/pics/enemy-buzzy-beetle.jpg: Buzzy Beetle, image from www.mariowiki.com (https://mario.wiki.gallery/images/3/35/NSMBU_Buzzy_Beetle_Artwork.png)
+- img/pics/enemy-monty-mole.jpg: Monty Mole, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/56/Monty_Mole_SMP.png)
+- img/pics/enemy-pokey.jpg: Pokey, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/e6/NSMBU_Pokey_Artwork.png)
+- img/pics/enemy-fuzzy.jpg: Fuzzy, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/75/NSMBU_Fuzzy_Artwork.png)
+- img/pics/enemy-banzai-bill.jpg: Banzai Bill, image from www.mariowiki.com (https://mario.wiki.gallery/images/2/2b/BanzaibillNSMBU.png)
+- img/pics/enemy-dry-bowser.jpg: Dry Bowser, image from www.mariowiki.com (https://mario.wiki.gallery/images/9/9d/Dry_Bowser_Artwork.png)
+- img/pics/enemy-swoop.jpg: Swoop, image from www.mariowiki.com (https://mario.wiki.gallery/images/3/32/Swoop_SMR.png)
+- img/pics/enemy-rocky-wrench.jpg: Rocky Wrench, image from www.mariowiki.com (https://mario.wiki.gallery/images/6/6c/RockyWrenchWorld.png)
+- img/pics/enemy-torpedo-ted.jpg: Torpedo Ted, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/bd/Torpedo_Ted_-_NSMBU_%28render%29.png)
+- img/pics/enemy-urchin.jpg: Urchin, image from www.mariowiki.com (https://mario.wiki.gallery/images/4/48/NSMBU_Urchin_Artwork.png)
+- img/pics/enemy-porcupuffer.jpg: Porcupuffer, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/74/NSMBU_Porcupuffer_Artwork.png)
+- img/pics/enemy-ninji.jpg: Ninji, image from www.mariowiki.com (https://mario.wiki.gallery/images/a/a4/Ninji_artwork_Play_Nintendo_2024.png)
+- img/pics/enemy-snifit.jpg: Snifit, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/5b/MPS_Model_Snifit.png)
+- img/pics/enemy-paragoomba.jpg: Paragoomba, image from www.mariowiki.com (https://mario.wiki.gallery/images/8/8e/ParagoombaNSMBU.png)
+- img/pics/enemy-koopa-paratroopa.jpg: Koopa Paratroopa, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/e4/Paratroopart.png)
+- img/pics/enemy-whomp.jpg: Whomp, image from www.mariowiki.com (https://mario.wiki.gallery/images/d/de/WhompSMP.png)
+- img/pics/enemy-mechakoopa.jpg: Mechakoopa, image from www.mariowiki.com (https://mario.wiki.gallery/images/1/1d/NewMechaKoopa.jpg)
+- img/pics/enemy-big-boo.jpg: Big Boo, image from www.mariowiki.com (https://mario.wiki.gallery/images/1/18/Big_Boo_SM3DW_Prima.jpg)
+- img/pics/enemy-fire-bro.jpg: Fire Bro, image from www.mariowiki.com (https://mario.wiki.gallery/images/3/3d/NSMBU_Fire_Bro_Artwork.png)
+- img/pics/enemy-boomerang-bro.jpg: Boomerang Bro, image from www.mariowiki.com (https://mario.wiki.gallery/images/8/82/NSMBU_Boomerang_Bro_Artwork.png)
+- img/pics/enemy-podoboo.jpg: Podoboo, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/7a/Lava_Bubble_SMR.png)
+- img/pics/enemy-klepto.jpg: Klepto, image from www.mariowiki.com (https://mario.wiki.gallery/images/b/ba/Klepto_Icon_SMO.png)
+- img/pics/enemy-bully.jpg: Bully, image from www.mariowiki.com (https://mario.wiki.gallery/images/c/c4/Bully_Artwork_-_Super_Mario_3D_World.png)
+- img/pics/enemy-chargin-chuck.jpg: Chargin' Chuck, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/7c/MKT_Artwork_CharginChuck.png)
+- img/pics/item3-super-crown.jpg: Super Crown, image from www.mariowiki.com (https://mario.wiki.gallery/images/6/67/SuperCrownNSMBUDeluxe.png)
+- img/pics/item3-double-cherry.jpg: Double Cherry, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/59/Double_Cherry_Artwork_-_Super_Mario_3D_World.png)
+- img/pics/item3-p-switch.jpg: P Switch, image from www.mariowiki.com (https://mario.wiki.gallery/images/6/6d/P-Switch_NSMB2.png)
+- img/pics/item3-gold-flower.jpg: Gold Flower, image from www.mariowiki.com (https://mario.wiki.gallery/images/2/2a/GoldFlower.png)
+- img/pics/item3-penguin-suit.jpg: Penguin Suit, image from www.mariowiki.com (https://mario.wiki.gallery/images/e/e8/Penguinsuit.png)
+- img/pics/item3-poison-mushroom.jpg: Poison Mushroom, image from www.mariowiki.com (https://mario.wiki.gallery/images/d/d4/SMP_Poison_Mushroom.png)
+- img/pics/item3-elephant-fruit.jpg: Elephant Fruit, image from www.mariowiki.com (https://mario.wiki.gallery/images/0/0a/SMBW_Elephant_Fruit.png)
+- img/pics/item3-bubble-flower.jpg: Bubble Flower, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/54/SMBW_Bubble_Flower.png)
+- img/pics/item3-drill-mushroom.jpg: Drill Mushroom, image from www.mariowiki.com (https://mario.wiki.gallery/images/a/a1/SMBW_Drill_Mushroom.png)
+- img/pics/item3-warp-pipe.jpg: Warp Pipe, image from www.mariowiki.com (https://mario.wiki.gallery/images/5/55/SMPJ_Pipe_Render.png)
+- img/pics/item3-super-horn.jpg: Super Horn, image from www.mariowiki.com (https://mario.wiki.gallery/images/9/95/SuperHornMK8.png)
+- img/pics/item3-crazy-eight.jpg: Crazy Eight, image from www.mariowiki.com (https://mario.wiki.gallery/images/7/71/Crazy8MK8.png)
+- img/pics/poke-vulpix.jpg: Vulpix official artwork via PokeAPI/sprites
+- img/pics/poke-ninetales.jpg: Ninetales official artwork via PokeAPI/sprites
+- img/pics/poke-growlithe.jpg: Growlithe official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-arcanine.jpg: Arcanine official artwork via PokeAPI/sprites
+- img/pics/poke-abra.jpg: Abra official artwork via PokeAPI/sprites
+- img/pics/poke-machop.jpg: Machop official artwork via PokeAPI/sprites
+- img/pics/poke-geodude.jpg: Geodude official artwork via PokeAPI/sprites
+- img/pics/poke-ponyta.jpg: Ponyta official artwork via PokeAPI/sprites
+- img/pics/poke-slowpoke.jpg: Slowpoke official artwork via PokeAPI/sprites
+- img/pics/poke-magnemite.jpg: Magnemite official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-onix.jpg: Onix official artwork via PokeAPI/sprites
+- img/pics/poke-cubone.jpg: Cubone official artwork via PokeAPI/sprites
+- img/pics/poke-hitmonlee.jpg: Hitmonlee official artwork via PokeAPI/sprites
+- img/pics/poke-chansey.jpg: Chansey official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-scyther.jpg: Scyther official artwork via PokeAPI/sprites
+- img/pics/poke-tauros.jpg: Tauros official artwork via PokeAPI/sprites
+- img/pics/poke-porygon.jpg: Porygon official artwork via PokeAPI/sprites
+- img/pics/poke-aerodactyl.jpg: Aerodactyl official artwork via PokeAPI/sprites
+- img/pics/poke-articuno.jpg: Articuno official artwork via PokeAPI/sprites
+- img/pics/poke-zapdos.jpg: Zapdos official artwork via PokeAPI/sprites
+- img/pics/poke-moltres.jpg: Moltres official artwork via PokeAPI/sprites
+- img/pics/poke-dratini.jpg: Dratini official artwork via PokeAPI/sprites
+- img/pics/poke-marill.jpg: Marill official artwork via PokeAPI/sprites
+- img/pics/poke-sudowoodo.jpg: Sudowoodo official artwork via PokeAPI/sprites
+- img/pics/poke-wooper.jpg: Wooper official artwork via PokeAPI/sprites
+- img/pics/poke-heracross.jpg: Heracross official artwork via PokeAPI/sprites
+- img/pics/poke-teddiursa.jpg: Teddiursa official artwork via PokeAPI/sprites
+- img/pics/poke-houndoom.jpg: Houndoom official artwork via PokeAPI/sprites
+- img/pics/poke-celebi.jpg: Celebi official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-blaziken.jpg: Blaziken official artwork via PokeAPI/sprites
+- img/pics/poke-swampert.jpg: Swampert official artwork via PokeAPI/sprites
+- img/pics/poke-wailord.jpg: Wailord official artwork via PokeAPI/sprites
+- img/pics/poke-absol.jpg: Absol official artwork via PokeAPI/sprites
+- img/pics/poke-spheal.jpg: Spheal official artwork via PokeAPI/sprites
+- img/pics/poke-bagon.jpg: Bagon official artwork via PokeAPI/sprites
+- img/pics/poke-metagross.jpg: Metagross official artwork via PokeAPI/sprites
+- img/pics/poke-latias.jpg: Latias official artwork via PokeAPI/sprites
+- img/pics/poke-kyogre.jpg: Kyogre official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-groudon.jpg: Groudon official artwork via PokeAPI/sprites
+- img/pics/poke-jirachi.jpg: Jirachi official artwork via PokeAPI/sprites
+- img/pics/poke-bidoof.jpg: Bidoof official artwork via PokeAPI/sprites
+- img/pics/poke-pachirisu.jpg: Pachirisu official artwork via PokeAPI/sprites
+- img/pics/poke-drifloon.jpg: Drifloon official artwork via PokeAPI/sprites
+- img/pics/poke-riolu.jpg: Riolu official artwork via PokeAPI/sprites
+- img/pics/poke-zoom-dialga.jpg: Dialga official artwork via PokeAPI/sprites
+- img/pics/poke-palkia.jpg: Palkia official artwork via PokeAPI/sprites
+- img/pics/poke-darkrai.jpg: Darkrai official artwork via PokeAPI/sprites
+- img/pics/poke-arceus.jpg: Arceus official artwork via PokeAPI/sprites
+- img/pics/poke-victini.jpg: Victini official artwork via PokeAPI/sprites
+- img/pics/poke-zoroark.jpg: Zoroark official artwork via PokeAPI/sprites
+- img/pics/poke-axew.jpg: Axew official artwork via PokeAPI/sprites
+- img/pics/poke-cubchoo.jpg: Cubchoo official artwork via PokeAPI/sprites
+- img/pics/poke-hawlucha.jpg: Hawlucha official artwork via PokeAPI/sprites
+- img/pics/poke-goomy.jpg: Goomy official artwork via PokeAPI/sprites
+- img/pics/poke-klefki.jpg: Klefki official artwork via PokeAPI/sprites
+- img/pics/poke-pikipek.jpg: Pikipek official artwork via PokeAPI/sprites
+- img/pics/poke-wooloo.jpg: Wooloo official artwork via PokeAPI/sprites
+- img/pics/poke-yamper.jpg: Yamper official artwork via PokeAPI/sprites
+- img/pics/poke-pawmi.jpg: Pawmi official artwork via PokeAPI/sprites
+- img/pics/poke-tinkatink.jpg: Tinkatink official artwork via PokeAPI/sprites
+- img/pics/poke-koraidon.jpg: Koraidon official artwork via PokeAPI/sprites
+- img/pics/poke-miraidon.jpg: Miraidon official artwork via PokeAPI/sprites
+### Did-you-know batch (data/questions-unique.json, Oct 2026)
+Facts paraphrased from Wikipedia articles (CC BY-SA 4.0); each question's `source` names the article. Subject photos reuse earlier movie stills and character art, plus these Wikimedia Commons images:
+- img/deco/u-teddy-bear.jpg: Wikipedia/Wikimedia Commons lead image of "Teddy bear" (https://upload.wikimedia.org/wikipedia/commons/d/d8/Teddy_bear_early_1900s_-_Smithsonian_Museum_of_Natural_History.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled)
+- img/deco/u-eiffel-tower.jpg: Wikipedia/Wikimedia Commons lead image of "Eiffel Tower" (https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/960px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-flamingo.jpg: Wikipedia/Wikimedia Commons lead image of "Flamingo" (https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Flamingos_Laguna_Colorada.jpg/960px-Flamingos_Laguna_Colorada.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-sloth.jpg: Wikipedia/Wikimedia Commons lead image of "Sloth" (https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Bicho-pregui%C3%A7a_3.jpg/960px-Bicho-pregui%C3%A7a_3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-rms-titanic.jpg: Wikipedia/Wikimedia Commons lead image of "Titanic" (https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/RMS_Titanic_3_%28cropped_to_ship%29.jpg/960px-RMS_Titanic_3_%28cropped_to_ship%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)

@@ -1411,7 +1411,7 @@
 
   function buildOptions(container, options, correctIndex, revealed) {
     container.innerHTML = '';
-    options.forEach(function (text, i) {
+    (options || []).forEach(function (text, i) {
       var d = document.createElement('div');
       d.className = 'q-opt';
       if (revealed) d.classList.add(i === correctIndex ? 'correct' : 'dim');

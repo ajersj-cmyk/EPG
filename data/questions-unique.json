@@ -1,0 +1,1837 @@
+[
+{
+"id": "uq-001",
+"category": "pixar",
+"difficulty": "medium",
+"question": "The famous Pixar easter egg \"A113\" is a nod to what?",
+"options": [
+"A CalArts classroom",
+"Pixar's street address",
+"John Lasseter's birthday",
+"A Toy Story license plate"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: A113",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-toy-story.jpg"
+},
+{
+"id": "uq-002",
+"category": "pixar",
+"difficulty": "easy",
+"question": "The Pizza Planet truck made its first appearance in which Pixar film?",
+"options": [
+"Monsters, Inc.",
+"Cars",
+"A Bug's Life",
+"Toy Story"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Toy Story",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-003",
+"category": "pixar",
+"difficulty": "easy",
+"question": "What is the name of the hopping desk lamp in Pixar's logo?",
+"options": [
+"Lumi",
+"Lampy",
+"Bulb",
+"Luxo Jr."
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Luxo Jr.",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-004",
+"category": "pixar",
+"difficulty": "easy",
+"question": "Buzz Lightyear got his first name from which astronaut?",
+"options": [
+"Alan Shepard",
+"Buzz Aldrin",
+"Neil Armstrong",
+"John Glenn"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Buzz Lightyear",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-toy-story-2.jpg"
+},
+{
+"id": "uq-005",
+"category": "pixar",
+"difficulty": "medium",
+"question": "In Monsters, Inc., Boo's real name is written on one of her drawings. What is it?",
+"options": [
+"Molly",
+"Mary",
+"Lucy",
+"Amy"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Monsters, Inc.",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-monsters-inc.jpg"
+},
+{
+"id": "uq-006",
+"category": "pixar",
+"difficulty": "medium",
+"question": "WALL-E's \"fully charged\" sound is borrowed from what?",
+"options": [
+"A microwave beep",
+"The Windows XP startup",
+"The Apple Mac startup chime",
+"A Nintendo coin sound"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: WALL-E",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-wall-e.jpg"
+},
+{
+"id": "uq-007",
+"category": "pixar",
+"difficulty": "hard",
+"question": "Remy's final ratatouille dish was styled by real chef Thomas Keller. What is his version called?",
+"options": [
+"Pistou",
+"Confit byaldi",
+"Tian provençal",
+"Bouillabaisse"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ratatouille (film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-ratatouille.jpg"
+},
+{
+"id": "uq-008",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Lightning McQueen is named after which person?",
+"options": [
+"Actor Steve McQueen",
+"Race driver Jim McQueen",
+"Pixar animator Glenn McQueen",
+"Designer Alexander McQueen"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Cars (film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-cars.jpg"
+},
+{
+"id": "uq-009",
+"category": "pixar",
+"difficulty": "easy",
+"question": "In Inside Out, Bing Bong is mostly made of what?",
+"options": [
+"Cotton candy",
+"Jelly beans",
+"Marshmallow",
+"Bubble gum"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Inside Out (2015 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-inside-out.jpg"
+},
+{
+"id": "uq-010",
+"category": "pixar",
+"difficulty": "medium",
+"question": "What breed of dog is Dante in Coco?",
+"options": [
+"Dachshund",
+"Chinese Crested",
+"Xoloitzcuintli",
+"Chihuahua"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Coco (2017 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-coco.jpg"
+},
+{
+"id": "uq-011",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Who voices Edna Mode in The Incredibles?",
+"options": [
+"Holly Hunter",
+"Ellen DeGeneres",
+"Jennifer Coolidge",
+"Director Brad Bird"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Incredibles",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-the-incredibles.jpg"
+},
+{
+"id": "uq-012",
+"category": "pixar",
+"difficulty": "easy",
+"question": "Brave was Pixar's first film with what?",
+"options": [
+"A 3D release",
+"A sequel",
+"A female lead",
+"A villain song"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Brave (2012 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-brave.jpg"
+},
+{
+"id": "uq-013",
+"category": "pixar",
+"difficulty": "hard",
+"question": "Toy Story 2 was nearly deleted. Where was the backup copy that saved it?",
+"options": [
+"A Disney vault",
+"Steve Jobs's laptop",
+"An employee's home computer",
+"A floppy disk in a desk"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Toy Story 2",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-toy-story-2.jpg"
+},
+{
+"id": "uq-014",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Mr. Potato Head made history in 1952 as the first toy to do what?",
+"options": [
+"Come with batteries",
+"Be advertised on TV",
+"Be sold in a box",
+"Sell a million units"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mr. Potato Head",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-015",
+"category": "pixar",
+"difficulty": "medium",
+"question": "A Bug's Life was inspired by which Aesop fable?",
+"options": [
+"The Lion and the Mouse",
+"The Ant and the Grasshopper",
+"The Tortoise and the Hare",
+"The Fox and the Grapes"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: A Bug's Life",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-a-bug-s-life.jpg"
+},
+{
+"id": "uq-016",
+"category": "pixar",
+"difficulty": "medium",
+"question": "In early versions of Toy Story, Woody was going to be what kind of toy?",
+"options": [
+"A wind-up soldier",
+"A ventriloquist dummy",
+"A robot",
+"A teddy bear"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Woody (Toy Story)",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-017",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Pixar began as the computer division of which company?",
+"options": [
+"Disney",
+"Lucasfilm",
+"Industrial Light & Magic",
+"Apple"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pixar",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-018",
+"category": "pixar",
+"difficulty": "easy",
+"question": "What was the first feature film made entirely with computer animation?",
+"options": [
+"Finding Nemo",
+"Toy Story",
+"Shrek",
+"Antz"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Toy Story",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-019",
+"category": "pixar",
+"difficulty": "medium",
+"question": "Who voices Woody in many Toy Story toys and video games?",
+"options": [
+"Billy Crystal",
+"Tim Allen",
+"Tom Hanks's brother Jim",
+"Tom Hanks's son Colin"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Jim Hanks",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-toy-story-3.jpg"
+},
+{
+"id": "uq-020",
+"category": "pixar",
+"difficulty": "easy",
+"question": "Soul was Pixar's first film with a lead character who is what?",
+"options": [
+"Black",
+"A grandmother",
+"A dog",
+"A robot"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Soul (2020 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-soul.jpg"
+},
+{
+"id": "uq-021",
+"category": "disney",
+"difficulty": "easy",
+"question": "Steamboat Willie (1928) was Mickey's first cartoon released with what?",
+"options": [
+"Minnie Mouse",
+"Color",
+"Synchronized sound",
+"A villain"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Steamboat Willie",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-022",
+"category": "disney",
+"difficulty": "easy",
+"question": "Who was the original voice of Mickey Mouse?",
+"options": [
+"Clarence Nash",
+"Walt Disney",
+"Pinto Colvig",
+"Roy Disney"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mickey Mouse",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-023",
+"category": "disney",
+"difficulty": "medium",
+"question": "Before \"Mickey,\" what name did Walt Disney first pick for his mouse?",
+"options": [
+"Milton",
+"Morris",
+"Marvin",
+"Mortimer"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mickey Mouse",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-024",
+"category": "disney",
+"difficulty": "easy",
+"question": "Frozen is loosely based on which Hans Christian Andersen story?",
+"options": [
+"The Tinderbox",
+"The Snow Queen",
+"The Little Match Girl",
+"The Ice Maiden"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Frozen (2013 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-frozen.jpg"
+},
+{
+"id": "uq-025",
+"category": "disney",
+"difficulty": "easy",
+"question": "In Swahili, what does \"Simba\" mean?",
+"options": [
+"Lion",
+"Brave",
+"King",
+"Sun"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Simba",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-the-lion-king.jpg"
+},
+{
+"id": "uq-026",
+"category": "disney",
+"difficulty": "medium",
+"question": "Which actor voices Heihei the rooster in Moana?",
+"options": [
+"Jemaine Clement",
+"Nicole Scherzinger",
+"Dwayne Johnson",
+"Alan Tudyk"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Alan Tudyk",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-moana.jpg"
+},
+{
+"id": "uq-027",
+"category": "disney",
+"difficulty": "medium",
+"question": "Disneyland's Sleeping Beauty Castle was inspired by which real German castle?",
+"options": [
+"Eltz",
+"Neuschwanstein",
+"Hohenzollern",
+"Heidelberg"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Sleeping Beauty Castle",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-sleeping-beauty-castle.jpg"
+},
+{
+"id": "uq-028",
+"category": "disney",
+"difficulty": "easy",
+"question": "What is Flynn Rider's real name in Tangled?",
+"options": [
+"Ethan Fitzgerald",
+"Edward Fairweather",
+"Elliot Finch",
+"Eugene Fitzherbert"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Flynn Rider",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-tangled.jpg"
+},
+{
+"id": "uq-029",
+"category": "disney",
+"difficulty": "easy",
+"question": "In The Little Mermaid, what does Scuttle call a fork?",
+"options": [
+"A dinglehopper",
+"A snarfblatt",
+"A whozit",
+"A thingamabob"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Little Mermaid (1989 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-the-little-mermaid.jpg"
+},
+{
+"id": "uq-030",
+"category": "disney",
+"difficulty": "medium",
+"question": "\"We Don't Talk About Bruno\" became the first Disney song to top the Billboard Hot 100 since which song?",
+"options": [
+"Under the Sea",
+"A Whole New World",
+"Let It Go",
+"Circle of Life"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: We Don't Talk About Bruno",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-encanto.jpg"
+},
+{
+"id": "uq-031",
+"category": "disney",
+"difficulty": "medium",
+"question": "Winnie the Pooh was named after a real bear at the London Zoo. What was her name?",
+"options": [
+"Willow",
+"Winnipeg",
+"Winifred",
+"Wendy"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Winnie-the-Pooh",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-032",
+"category": "disney",
+"difficulty": "medium",
+"question": "What is Dumbo's real name in the 1941 film?",
+"options": [
+"Timothy",
+"Little Jumbo",
+"Jumbo Jr.",
+"Baby Mumbo"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Dumbo",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-033",
+"category": "disney",
+"difficulty": "medium",
+"question": "Goofy first appeared in 1932 under what name?",
+"options": [
+"Dippy Dawg",
+"Goofus Dog",
+"Dopey Hound",
+"Silly Pup"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Goofy",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-034",
+"category": "disney",
+"difficulty": "medium",
+"question": "What is Donald Duck's middle name?",
+"options": [
+"Fauntleroy",
+"Ferdinand",
+"Frederick",
+"Fitzgerald"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Donald Duck",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-035",
+"category": "disney",
+"difficulty": "medium",
+"question": "Who has won the most Academy Awards of any individual?",
+"options": [
+"Meryl Streep",
+"Steven Spielberg",
+"John Williams",
+"Walt Disney"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Walt Disney",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-036",
+"category": "disney",
+"difficulty": "easy",
+"question": "In Zootopia, what is the name of the speedy-named sloth at the DMV?",
+"options": [
+"Dash",
+"Bolt",
+"Flash",
+"Zip"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Zootopia",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-zootopia.jpg"
+},
+{
+"id": "uq-037",
+"category": "parks",
+"difficulty": "easy",
+"question": "A classic \"Hidden Mickey\" is made from how many circles?",
+"options": [
+"Three",
+"Five",
+"Four",
+"Two"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Hidden Mickey",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-038",
+"category": "parks",
+"difficulty": "medium",
+"question": "Why is Cinderella Castle just under 200 feet tall?",
+"options": [
+"To stay shorter than Spaceship Earth",
+"Florida law caps buildings at 200 feet",
+"To avoid needing aircraft warning lights",
+"It cost too much to go higher"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Cinderella Castle",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-cinderella-castle.jpg"
+},
+{
+"id": "uq-039",
+"category": "parks",
+"difficulty": "medium",
+"question": "What are the hidden tunnels under Magic Kingdom called?",
+"options": [
+"Backlots",
+"Imagi-tunnels",
+"Castways",
+"Utilidors"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Magic Kingdom",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-cinderella-castle.jpg"
+},
+{
+"id": "uq-040",
+"category": "parks",
+"difficulty": "easy",
+"question": "How many \"happy haunts\" live in the Haunted Mansion?",
+"options": [
+"1,000",
+"666",
+"500",
+"999"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Haunted Mansion",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-041",
+"category": "parks",
+"difficulty": "medium",
+"question": "The names painted on Main Street U.S.A. windows honor whom?",
+"options": [
+"Imagineers and Disney legends",
+"Main Street shop owners",
+"Park ticket winners",
+"Walt's family members"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Main Street, U.S.A.",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-042",
+"category": "parks",
+"difficulty": "medium",
+"question": "About how many animal carvings cover the Tree of Life at Animal Kingdom?",
+"options": [
+"More than 1,000",
+"About 100",
+"More than 300",
+"About 50"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Tree of Life (Disney)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-tree-of-life-disney.jpg"
+},
+{
+"id": "uq-043",
+"category": "parks",
+"difficulty": "medium",
+"question": "Walt Disney World's property is roughly the size of which city?",
+"options": [
+"Los Angeles",
+"San Francisco",
+"New York City",
+"Chicago"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Walt Disney World",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-044",
+"category": "parks",
+"difficulty": "medium",
+"question": "Which ride was the last one Walt Disney personally helped design?",
+"options": [
+"Big Thunder Mountain",
+"Pirates of the Caribbean",
+"Haunted Mansion",
+"Space Mountain"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pirates of the Caribbean (attraction)",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-045",
+"category": "parks",
+"difficulty": "medium",
+"question": "\"It's a Small World\" first opened at which event?",
+"options": [
+"Disneyland's opening day",
+"Expo 67 in Montreal",
+"The 1964 New York World's Fair",
+"The 1962 Seattle World's Fair"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: It's a Small World",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-046",
+"category": "parks",
+"difficulty": "hard",
+"question": "What are the scent machines that pump smells like fresh cookies into Disney parks called?",
+"options": [
+"Scentinators",
+"Smellitzers",
+"Aromatrons",
+"Sniff-o-Matics"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Smellitzer",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-047",
+"category": "parks",
+"difficulty": "hard",
+"question": "Disneyland's Sleeping Beauty Castle drawbridge has been lowered for guests only how many times?",
+"options": [
+"Every Christmas",
+"Ten times",
+"Once",
+"Twice"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Sleeping Beauty Castle",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-sleeping-beauty-castle.jpg"
+},
+{
+"id": "uq-048",
+"category": "parks",
+"difficulty": "medium",
+"question": "The Expedition Everest yeti that switched to a flashing strobe effect got what nickname?",
+"options": [
+"Blinky",
+"Disco Yeti",
+"Yeti Spaghetti",
+"Party Yeti"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Expedition Everest",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-park-expedition-everest.jpg"
+},
+{
+"id": "uq-049",
+"category": "parks",
+"difficulty": "medium",
+"question": "What animals roam Disneyland at night to keep mice away?",
+"options": [
+"Cats",
+"Ferrets",
+"Owls",
+"Dogs"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Disneyland",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-050",
+"category": "mario",
+"difficulty": "easy",
+"question": "Nintendo was founded in 1889 to make what?",
+"options": [
+"Playing cards",
+"Radios",
+"Toys",
+"Pinball machines"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Nintendo",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-051",
+"category": "mario",
+"difficulty": "medium",
+"question": "Mario is named after Mario Segale. Who was he?",
+"options": [
+"Miyamoto's neighbor",
+"Nintendo of America's landlord",
+"A Nintendo programmer",
+"A famous pizza chef"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mario",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-mario.jpg"
+},
+{
+"id": "uq-052",
+"category": "mario",
+"difficulty": "medium",
+"question": "Before plumbing, what was Mario's job in Donkey Kong?",
+"options": [
+"Chef",
+"Firefighter",
+"Mailman",
+"Carpenter"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mario",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-mario.jpg"
+},
+{
+"id": "uq-053",
+"category": "mario",
+"difficulty": "medium",
+"question": "Why was Mario given a mustache?",
+"options": [
+"To look Italian",
+"Pixels were too few to draw a mouth",
+"It was Miyamoto's look",
+"A coin flip"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mario",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-mario.jpg"
+},
+{
+"id": "uq-054",
+"category": "mario",
+"difficulty": "easy",
+"question": "Who created Mario?",
+"options": [
+"Masahiro Sakurai",
+"Hideo Kojima",
+"Satoru Iwata",
+"Shigeru Miyamoto"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Shigeru Miyamoto",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-055",
+"category": "mario",
+"difficulty": "easy",
+"question": "Who voices Bowser in The Super Mario Bros. Movie (2023)?",
+"options": [
+"Charlie Day",
+"Seth Rogen",
+"Jack Black",
+"Keegan-Michael Key"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Super Mario Bros. Movie",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-bowser.jpg"
+},
+{
+"id": "uq-056",
+"category": "mario",
+"difficulty": "hard",
+"question": "According to the Super Mario World manual, what is Yoshi's full name?",
+"options": [
+"Y. Dinosaur Saddleback",
+"Sir Yoshi Eggbert",
+"Yoshi Koopa Greenback",
+"T. Yoshisaur Munchakoopas"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Yoshi",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-yoshi.jpg"
+},
+{
+"id": "uq-057",
+"category": "mario",
+"difficulty": "medium",
+"question": "In the U.S., Princess Peach was first known by what name?",
+"options": [
+"Princess Toadstool",
+"Princess Pauline",
+"Princess Mushroom",
+"Princess Rosalind"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Princess Peach",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-princess-peach.jpg"
+},
+{
+"id": "uq-058",
+"category": "mario",
+"difficulty": "medium",
+"question": "Wario's name blends Mario with the Japanese word \"warui.\" What does it mean?",
+"options": [
+"Yellow",
+"Bad",
+"Big",
+"Greedy"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Wario",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-wario.jpg"
+},
+{
+"id": "uq-059",
+"category": "mario",
+"difficulty": "medium",
+"question": "Ludwig von Koopa is named after which composer?",
+"options": [
+"Richard Wagner",
+"Johann Bach",
+"Wolfgang Mozart",
+"Ludwig van Beethoven"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ludwig von Koopa",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-mchar-ludwig-von-koopa.jpg"
+},
+{
+"id": "uq-060",
+"category": "mario",
+"difficulty": "easy",
+"question": "Which game came bundled with the original Game Boy in North America?",
+"options": [
+"Tetris",
+"Super Mario Land",
+"The Legend of Zelda",
+"Pokémon Red"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Game Boy",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-061",
+"category": "mario",
+"difficulty": "easy",
+"question": "In Japan, the NES was called what?",
+"options": [
+"Famicom",
+"Super Famicom",
+"Nintendo 8",
+"Game Center"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Nintendo Entertainment System",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-062",
+"category": "mario",
+"difficulty": "easy",
+"question": "What was the first 3D Mario platformer?",
+"options": [
+"Super Mario 64",
+"Super Mario 3D Land",
+"Super Mario Sunshine",
+"Super Mario Galaxy"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Super Mario 64",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-063",
+"category": "mario",
+"difficulty": "medium",
+"question": "In Japan, Goombas are called \"Kuribo.\" What are they based on?",
+"options": [
+"Acorns",
+"Chestnuts",
+"Shiitake mushrooms",
+"Potatoes"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Goomba",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-goomba.jpg"
+},
+{
+"id": "uq-064",
+"category": "mario",
+"difficulty": "medium",
+"question": "The Chain Chomp was inspired by what from Miyamoto's childhood?",
+"options": [
+"A dog on a chain",
+"A pet turtle",
+"A wrecking ball",
+"A bowling ball"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Chain Chomp",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-mchar-chain-chomp.jpg"
+},
+{
+"id": "uq-065",
+"category": "mario",
+"difficulty": "medium",
+"question": "Princess Daisy made her debut in which game?",
+"options": [
+"Mario Tennis",
+"Super Mario Land",
+"Mario Kart 64",
+"Super Mario Bros. 3"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Princess Daisy",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-r-princess-daisy.jpg"
+},
+{
+"id": "uq-066",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "Satoshi Tajiri dreamed up Pokémon after his childhood hobby of collecting what?",
+"options": [
+"Insects",
+"Stamps",
+"Seashells",
+"Rocks"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Satoshi Tajiri",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-067",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "\"Pokémon\" is short for what?",
+"options": [
+"Poke Monsters",
+"Pocket Monsters",
+"Pocket Mascots",
+"Power Monsters"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pokémon",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-068",
+"category": "pokemon",
+"difficulty": "hard",
+"question": "According to designer Ken Sugimori, which Pokémon was designed first?",
+"options": [
+"Bulbasaur",
+"Pikachu",
+"Rhydon",
+"Mew"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Rhydon",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-069",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "Which Pokémon is #001 in the National Pokédex?",
+"options": [
+"Bulbasaur",
+"Pikachu",
+"Charmander",
+"Mew"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Bulbasaur",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-070",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "Pikachu's name combines \"pika\" and \"chu.\" What is \"chu\"?",
+"options": [
+"A spark sound",
+"The word for yellow",
+"A cheek pinch",
+"A mouse's squeak"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pikachu",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-p-pikachu.jpg"
+},
+{
+"id": "uq-071",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "Which Pokémon was secretly slipped into Red and Green at the last minute?",
+"options": [
+"Mewtwo",
+"Mew",
+"Ditto",
+"Missingno."
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Mew (Pokémon)",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-072",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "What is Ash Ketchum's name in Japan?",
+"options": [
+"Kenji",
+"Satoshi",
+"Shigeru",
+"Takeshi"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ash Ketchum",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-073",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "In the anime, what does Jigglypuff do when everyone falls asleep during its song?",
+"options": [
+"Cries",
+"Sings louder",
+"Steals their food",
+"Draws on their faces"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Jigglypuff",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-p-jigglypuff.jpg"
+},
+{
+"id": "uq-074",
+"category": "pokemon",
+"difficulty": "hard",
+"question": "Snorlax was modeled on which real person?",
+"options": [
+"Ken Sugimori",
+"Shigeru Miyamoto",
+"Pokémon developer Koji Nishino",
+"Satoshi Tajiri"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Snorlax",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-p-snorlax.jpg"
+},
+{
+"id": "uq-075",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "In what year did Pokémon Go launch?",
+"options": [
+"2018",
+"2012",
+"2014",
+"2016"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pokémon Go",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-076",
+"category": "pokemon",
+"difficulty": "medium",
+"question": "In Japan, the first Pokémon games were Red and what other color?",
+"options": [
+"Blue",
+"Yellow",
+"Green",
+"Gold"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pokémon Red and Blue",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-077",
+"category": "pokemon",
+"difficulty": "easy",
+"question": "Who voices Detective Pikachu in the 2019 movie?",
+"options": [
+"Ryan Reynolds",
+"Kevin Hart",
+"Chris Pratt",
+"Danny DeVito"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Pokémon Detective Pikachu",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-pok-mon-detective-pikachu.jpg"
+},
+{
+"id": "uq-078",
+"category": "movies",
+"difficulty": "medium",
+"question": "In the original Wizard of Oz book, what color are Dorothy's magic shoes?",
+"options": [
+"Ruby red",
+"Silver",
+"Gold",
+"Emerald green"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ruby slippers",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-079",
+"category": "movies",
+"difficulty": "medium",
+"question": "R2-D2's name came from sound-editing shorthand. What did it stand for?",
+"options": [
+"Rebel 2, Defender 2",
+"Row 2, Desk 2",
+"Reel 2, Dialogue 2",
+"Robot 2, Droid 2"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: R2-D2",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-sw-r2-d2.jpg"
+},
+{
+"id": "uq-080",
+"category": "movies",
+"difficulty": "medium",
+"question": "Chewbacca's roar was built mostly from the sounds of which animal?",
+"options": [
+"Dog",
+"Walrus",
+"Lion",
+"Bear"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Chewbacca",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-sw-chewbacca.jpg"
+},
+{
+"id": "uq-081",
+"category": "movies",
+"difficulty": "medium",
+"question": "Jurassic Park's T. rex roar includes the sound of which baby animal?",
+"options": [
+"Pig",
+"Elephant",
+"Lion",
+"Whale"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Jurassic Park (film)",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-082",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Before Mike Myers, which comedian recorded most of Shrek's lines?",
+"options": [
+"Adam Sandler",
+"John Candy",
+"Chris Farley",
+"Robin Williams"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Shrek",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-shrek.jpg"
+},
+{
+"id": "uq-083",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Who voices the Minions?",
+"options": [
+"Chris Renaud",
+"Russell Brand",
+"Steve Carell",
+"Director Pierre Coffin"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Minions (Despicable Me)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-minions.jpg"
+},
+{
+"id": "uq-084",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Animators studied which pet to design Toothless's movements?",
+"options": [
+"Horses",
+"Cats",
+"Dogs",
+"Lizards"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Toothless (How to Train Your Dragon)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-how-to-train-your-dragon.jpg"
+},
+{
+"id": "uq-085",
+"category": "kidsmovies",
+"difficulty": "easy",
+"question": "What is the hit song from The Lego Movie?",
+"options": [
+"Everything Is Awesome",
+"Brick by Brick",
+"Let's Build",
+"Awesome Town"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: The Lego Movie",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-the-lego-movie.jpg"
+},
+{
+"id": "uq-086",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "The Home Alone house is in which Chicago suburb?",
+"options": [
+"Evanston",
+"Naperville",
+"Winnetka",
+"Oak Park"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Home Alone",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-087",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Into the Spider-Verse was the first non-Disney/Pixar film since Rango to win which Oscar?",
+"options": [
+"Best Animated Feature",
+"Best Original Song",
+"Best Visual Effects",
+"Best Score"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Spider-Man: Into the Spider-Verse",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-spider-man-into-the-spider-verse.jpg"
+},
+{
+"id": "uq-088",
+"category": "kidsmovies",
+"difficulty": "medium",
+"question": "Why was the first Sonic the Hedgehog movie pushed to 2020?",
+"options": [
+"It was turned into a musical",
+"Jim Carrey quit",
+"Sonic was redesigned after fans hated him",
+"A strike stopped filming"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Sonic the Hedgehog (film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-sonic-sonic-the-hedgehog.jpg"
+},
+{
+"id": "uq-089",
+"category": "marvel",
+"difficulty": "easy",
+"question": "Stan Lee's final live-action MCU cameo was in which film?",
+"options": [
+"Black Panther",
+"Avengers: Endgame",
+"Spider-Man: Far From Home",
+"Captain Marvel"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Stan Lee",
+"source_note": "Did-you-know batch, Oct 2026"
+},
+{
+"id": "uq-090",
+"category": "marvel",
+"difficulty": "medium",
+"question": "Iron Man's closing line \"I am Iron Man\" (2008) was what?",
+"options": [
+"A reshoot idea from fans",
+"Written by Stan Lee",
+"Improvised by Robert Downey Jr.",
+"Taken from the comics"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Iron Man (2008 film)",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-hero-anthony-stark.jpg"
+},
+{
+"id": "uq-091",
+"category": "marvel",
+"difficulty": "easy",
+"question": "Who voices Groot?",
+"options": [
+"Vin Diesel",
+"Dave Bautista",
+"Chris Pratt",
+"Bradley Cooper"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Groot",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-m-guardians-of-the-galaxy.jpg"
+},
+{
+"id": "uq-092",
+"category": "marvel",
+"difficulty": "easy",
+"question": "Captain America's shield is mostly made of what metal?",
+"options": [
+"Uru",
+"Vibranium",
+"Adamantium",
+"Titanium"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Captain America's shield",
+"source_note": "Did-you-know batch, Oct 2026",
+"deco": "img/deco/k-hero-steve-rogers.jpg"
+},
+{
+"id": "uq-093",
+"category": "mixed",
+"difficulty": "medium",
+"question": "About how long did the Anglo-Zanzibar War, the shortest war on record, last?",
+"options": [
+"Under an hour",
+"One week",
+"One day",
+"Three days"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Anglo-Zanzibar War",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-094",
+"category": "mixed",
+"difficulty": "hard",
+"question": "Which is older?",
+"options": [
+"The printing press",
+"Oxford University",
+"The Aztec Empire",
+"The Inca Empire"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: University of Oxford",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-095",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Cleopatra lived closer in time to the Moon landing than to the building of what?",
+"options": [
+"The Great Pyramid of Giza",
+"The Colosseum",
+"Stonehenge's last stones",
+"The Great Wall's Ming section"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Cleopatra",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-096",
+"category": "mixed",
+"difficulty": "easy",
+"question": "The teddy bear is named after which U.S. president?",
+"options": [
+"Theodore Roosevelt",
+"Franklin Roosevelt",
+"Ted Kennedy",
+"Thomas Jefferson"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Teddy bear",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know",
+"deco": "img/deco/u-teddy-bear.jpg"
+},
+{
+"id": "uq-097",
+"category": "mixed",
+"difficulty": "medium",
+"question": "In the 1830s, ketchup was sold as what?",
+"options": [
+"Soap",
+"Paint",
+"Hair dye",
+"Medicine"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Ketchup",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-098",
+"category": "mixed",
+"difficulty": "medium",
+"question": "What was the first item sold on eBay?",
+"options": [
+"A used toaster",
+"A broken laser pointer",
+"A Beanie Baby",
+"A baseball card"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: eBay",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-099",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Bubble Wrap was first invented to be what?",
+"options": [
+"Insulation",
+"A shower curtain",
+"Wallpaper",
+"A pool cover"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Bubble Wrap",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-100",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Before it was a toy, Play-Doh was sold as what?",
+"options": [
+"Modeling clay for dentists",
+"Bread dough",
+"Wallpaper cleaner",
+"Window putty"
+],
+"answer": 2,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Play-Doh",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-101",
+"category": "mixed",
+"difficulty": "medium",
+"question": "The Slinky was invented by what kind of engineer?",
+"options": [
+"A rocket scientist",
+"A toy designer",
+"A bridge builder",
+"A naval engineer"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Slinky",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-102",
+"category": "mixed",
+"difficulty": "medium",
+"question": "In summer heat, the Eiffel Tower can grow taller by about how much?",
+"options": [
+"5 meters",
+"1 millimeter",
+"1 meter (3 feet)",
+"15 centimeters (6 inches)"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Eiffel Tower",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know",
+"deco": "img/deco/u-eiffel-tower.jpg"
+},
+{
+"id": "uq-103",
+"category": "mixed",
+"difficulty": "easy",
+"question": "Which animal makes cube-shaped poop?",
+"options": [
+"Kangaroo",
+"Wombat",
+"Platypus",
+"Koala"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Wombat",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-104",
+"category": "mixed",
+"difficulty": "easy",
+"question": "Which food was found still edible in ancient Egyptian tombs?",
+"options": [
+"Honey",
+"Cheese",
+"Dates",
+"Bread"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Honey",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-105",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Botanically, which of these is a berry?",
+"options": [
+"Banana",
+"Blackberry",
+"Raspberry",
+"Strawberry"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Berry (botany)",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-106",
+"category": "mixed",
+"difficulty": "easy",
+"question": "What is a group of flamingos called?",
+"options": [
+"A flamboyance",
+"A blush",
+"A flutter",
+"A parade"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Flamingo",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know",
+"deco": "img/deco/u-flamingo.jpg"
+},
+{
+"id": "uq-107",
+"category": "mixed",
+"difficulty": "medium",
+"question": "About how long can a sloth hold its breath underwater?",
+"options": [
+"2 minutes",
+"10 seconds",
+"4 hours",
+"40 minutes"
+],
+"answer": 3,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Sloth",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know",
+"deco": "img/deco/u-sloth.jpg"
+},
+{
+"id": "uq-108",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Hippos make a natural sunscreen. What color is it?",
+"options": [
+"Reddish",
+"Green",
+"Blue",
+"Clear"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Hippopotamus",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-109",
+"category": "mixed",
+"difficulty": "medium",
+"question": "The Popsicle was invented in 1905 by whom?",
+"options": [
+"An ice cream factory",
+"An 11-year-old boy",
+"A dentist",
+"A Navy cook"
+],
+"answer": 1,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Popsicle",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+},
+{
+"id": "uq-110",
+"category": "mixed",
+"difficulty": "medium",
+"question": "Napoleon was about what height?",
+"options": [
+"Average for his time",
+"Over 6 feet",
+"Under 5 feet",
+"Exactly 5 feet"
+],
+"answer": 0,
+"kid_safe": true,
+"source": "Paraphrased from Wikipedia: Napoleon",
+"source_note": "Did-you-know batch, Oct 2026",
+"tag": "did you know"
+}
+]

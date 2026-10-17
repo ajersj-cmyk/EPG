@@ -61,7 +61,9 @@
   }
   function decoHash(s) { var h = 0; s = String(s); for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
   function decoFor(q, deco) {
-    if (!deco || !q || q.image || q.video) return null;
+    if (!q || q.image || q.video) return null;
+    if (q.deco) return q.deco;            // hand-picked subject photo
+    if (!deco) return null;
     var t = String(q.question || '').toLowerCase();
     var o = ((q.options || []).join(' | ') + ' ' + (q.answerText || '')).toLowerCase();
     if (q.category !== 'jeopardy' && !LOOKS_RE.test(t)) {
@@ -87,6 +89,7 @@
     parts.push('data/questions-jeopardy-style.json');
     parts.push('data/questions-real.json');
     parts.push('data/questions-real2.json');
+    parts.push('data/questions-unique.json');
     return Promise.all(parts.map(function (u) {
       // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {
