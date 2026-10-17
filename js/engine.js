@@ -89,6 +89,7 @@
     parts.push('data/questions-jeopardy-style.json');
     parts.push('data/questions-real.json');
     parts.push('data/questions-real2.json');
+    parts.push('data/questions-unique.json');
     return Promise.all(parts.map(function (u) {
       // One missing/broken chunk must never take down the whole bank.
       return fetch(u).then(function (r) {

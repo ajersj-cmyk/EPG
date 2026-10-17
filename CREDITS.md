@@ -743,3 +743,10 @@
 - img/pics/poke-tinkatink.jpg: Tinkatink official artwork via PokeAPI/sprites
 - img/pics/poke-koraidon.jpg: Koraidon official artwork via PokeAPI/sprites
 - img/pics/poke-miraidon.jpg: Miraidon official artwork via PokeAPI/sprites
+### Did-you-know batch (data/questions-unique.json, Oct 2026)
+Facts paraphrased from Wikipedia articles (CC BY-SA 4.0); each question's `source` names the article. Subject photos reuse earlier movie stills and character art, plus these Wikimedia Commons images:
+- img/deco/u-teddy-bear.jpg: Wikipedia/Wikimedia Commons lead image of "Teddy bear" (https://upload.wikimedia.org/wikipedia/commons/d/d8/Teddy_bear_early_1900s_-_Smithsonian_Museum_of_Natural_History.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled)
+- img/deco/u-eiffel-tower.jpg: Wikipedia/Wikimedia Commons lead image of "Eiffel Tower" (https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/960px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-flamingo.jpg: Wikipedia/Wikimedia Commons lead image of "Flamingo" (https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Flamingos_Laguna_Colorada.jpg/960px-Flamingos_Laguna_Colorada.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-sloth.jpg: Wikipedia/Wikimedia Commons lead image of "Sloth" (https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Bicho-pregui%C3%A7a_3.jpg/960px-Bicho-pregui%C3%A7a_3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
+- img/deco/u-rms-titanic.jpg: Wikipedia/Wikimedia Commons lead image of "Titanic" (https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/RMS_Titanic_3_%28cropped_to_ship%29.jpg/960px-RMS_Titanic_3_%28cropped_to_ship%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail)
