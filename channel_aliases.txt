@@ -650,7 +650,6 @@ TCM US	I256.12852.schedulesdirect.org	US: TCM US | US: TCM US HD | USA TCM US | 
 TCM US HD	I256.64312.schedulesdirect.org	US: TCM US HD | USA TCM US HD | TCM US
 TCT	I377.62881.schedulesdirect.org	US: TCT | US: TCT HD | USA TCT | TCT HD
 Telecentro canal 13	I429.60690.schedulesdirect.org	US: Telecentro canal 13 | US: Telecentro canal 13 HD | USA Telecentro canal 13 | Telecentro canal 13 HD
-Telemundo East	I835.10239.gracenote.com	US: Telemundo East | US: Telemundo East HD | USA Telemundo East | Telemundo East HD
 Telemundo Internacional	I406.77606.schedulesdirect.org	US: Telemundo Internacional | US: Telemundo Internacional HD | USA Telemundo Internacional | Telemundo Internacional HD
 Tennis Channel	I217.33395.schedulesdirect.org	US: Tennis Channel | US: Tennis Channel HD | USA Tennis Channel | Tennis Channel HD | US: Tennis HD
 Tennis Channel HD	I217.60316.schedulesdirect.org	US: Tennis Channel HD | USA Tennis Channel HD | Tennis Channel | US: Tennis HD
