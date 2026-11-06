@@ -246,7 +246,6 @@ Fanduel Sports Network South HD	I646.71288.gracenote.com	US: Fanduel Sports Netw
 Fanduel Sports Network South West	I1753.35295.gracenote.com	US: Fanduel Sports Network South West | US: Fanduel Sports Network South West HD | USA Fanduel Sports Network South West | Fanduel Sports Network South West HD
 Fanduel Sports Network Southeast	I649.71268.gracenote.com	US: Fanduel Sports Network Southeast | US: Fanduel Sports Network Southeast HD | USA Fanduel Sports Network Southeast | Fanduel Sports Network Southeast HD
 Fanduel Sports Network Southeast HD	I649.71271.gracenote.com	US: Fanduel Sports Network Southeast HD | USA Fanduel Sports Network Southeast HD | Fanduel Sports Network Southeast
-Fanduel Sports Network Souther California	I1774.59625.gracenote.com	US: Fanduel Sports Network Souther California | US: Fanduel Sports Network Souther California HD | USA Fanduel Sports Network Souther California | Fanduel Sports Network Souther California HD
 Fanduel Sports Network Southwest	I676.71290.gracenote.com	US: Fanduel Sports Network Southwest | US: Fanduel Sports Network Southwest HD | USA Fanduel Sports Network Southwest | Fanduel Sports Network Southwest HD
 Fanduel Sports Network Southwest HD	I676.71292.gracenote.com	US: Fanduel Sports Network Southwest HD | USA Fanduel Sports Network Southwest HD | Fanduel Sports Network Southwest
 Fanduel Sports Network Sun	I653.71262.gracenote.com	US: Fanduel Sports Network Sun | US: Fanduel Sports Network Sun HD | USA Fanduel Sports Network Sun | Fanduel Sports Network Sun HD
